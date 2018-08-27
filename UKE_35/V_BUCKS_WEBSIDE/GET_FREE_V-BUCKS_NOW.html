@@ -1,13 +1,101 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="no" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Get your free V-Bucks HERE</title>
+
+    <style>
+    img{
+      border-width: 5px;
+      border-style: solid;
+      border-color:yellow;
+    }
+    img:active{
+      width: 400px;
+    }
+    </style>
+
+
   </head>
 
   <body>
 
-<h1> hallo </h1>
-    
+    <body style="background:#2E2E2E">
+    <center>
+
+    <h1 style="color:red" id="demo"></h1>
+    <h2 style="color:red"> !!!LIMITED TIME OFFER ENDING SOON - WILL NEVER RETURN AGAIN!!!</h2>
+    <h1 style="padding:30px;background-color:red;color:yellow"> !!!GET FREE V-BUCKS NOW!!!</h1>
+
+<p style="color:white"> In order to receive your V-bucks, please follow the following instruction very carefully! <br> Please do not skip any steps </p>
+
+</center>
+
+<p style="float:left;clear:left"><img src="BILDER/V_BUCKS.jpg"width="200px";border="1px"></p>
+
+<p style="color:white"> Only <b> ONE </b> more step! </p>
+
+<p style="color:white"> In order to receive your <b> FREE </b> V-Bucks, you only have to do <b> ONE </b> more step! <br> STEP 1: Please click on the amount of V-Bucks you want to receive below <br> STEP 2: <b> [Optional]</b> Watch the entire featured video to <b> DOUBLE </b> your V-Bucks <br> STEP 3: Enter your Epic Games Account ID and password in the comment section below the video <br> STEP 4: Your V-Bucks will be received within 24hours of posting the comment! </p>
+
+<br>
+<br>
+<br>
+<br>
+
+<center>
+
+    <h2 style="padding:20px;background-color:red;color:yellow"> CHOOSE YOUR AMOUNT </h2>
+
+    <h2 style="padding:10px;background-color:yellow;color:red"> !!!Click --->>> <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"target="_blank"> HERE </a> <<<--- To receive 1000 V-Bucks for FREE now!!! </h2>
+
+    <h2 style="padding:10px;background-color:yellow;color:red"> !!!Click --->>> <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"target="_blank"> HERE </a> <<<--- To receive 5000 V-Bucks for FREE now!!! </h2>
+
+    <h2 style="padding:10px;background-color:yellow;color:red"> !!!Click --->>> <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"target="_blank"> HERE </a> <<<--- To receive 20.000 V-Bucks for FREE now!!! </h2>
+
+    <h2 style="padding:10px;background-color:yellow;color:red"> !!!Click --->>> <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"target="_blank"> HERE </a> <<<--- To receive 100.000 V-Bucks for FREE now!!! </h2>
+
+
+    <h2 style="color:white"> Feel free to check out our 100% charge <b> FREE </b> ultra rare skins and season 5 battle pass too!! </h2>
+
+    <a href="GET_FREE_SKINS_NOW.html"target="_blank"><img src="Bilder/FREE_SKULLTROOPER.jpg"width="300px"></a>
+
+    <a href="GET_FREE_BATTLEPASS_NOW.html"target="_blank"><img src="Bilder/FREE_BATTLEPASS.jpg"width="300px"></a>
+
+    <h2 style="color:white"> Click <a href="FREE_V-BUCKS_TODAY.html"target="_blank"> Here </a> to return to front page! </h2>
+
+    <h2 style="padding:10px;background-color:red;color:yellow"> Thank you for using our website :) </h2>
+
+
+    <script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("sep 3, 2018 15:37:25").getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+      // Get todays date and time
+      var now = new Date().getTime();
+
+      // Find the distance between now and the count down date
+      var distance = countDownDate - now;
+
+      // Time calculations for days, hours, minutes and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display the result in the element with id="demo"
+      document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+      + minutes + "m " + seconds + "s ";
+
+      // If the count down is finished, write some text
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "EXPIRED";
+      }
+    }, 1000);
+    </script>
+
   </body>
 </html>
