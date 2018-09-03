@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="no" dir="ltr">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title>FREE_V-BUCKS</title>
@@ -16,6 +16,17 @@
     }
     </style>
 
+    <style>
+    main{
+      display:grid;
+      grid-gap:5px;
+      grid-template-columns:
+      220px 785px 220px;
+    }
+    main > article > img {
+      width:100%;
+    }
+    </style>
 
   </head>
 
@@ -44,21 +55,77 @@
 
 <h2 style="padding:10px;background-color:#FCFF00;color:red"> !!!CLICK --->>> <a href="GET_FREE_BATTLEPASS_NOW.html" target="_blank">HERE </a> <<<--- FOR FREE SEASON 5 BATTLE PASS!!!</h2>
 
-<h2 style="padding:10px;background-color:red;color:#FCFF00"> FEADBACK </h2>
+<h2 style="padding:10px;background-color:red;color:#FCFF00"> V-BUCKS GIVEAWAY ENDING SOON!</h2>
+
+<main>
+  <article>
+    <img src="BILDER/V_BUCKS.jpg"width="200px";border="1px">
+  </article>
+  <article>
+    <center>
+      <p style="color:white"> So you want even MORE V-Bucks!!? <br> Click the link below to join our <b> Limited time only </b> 9.999.999.999.999 V-bucks Giveaway for <b> FREE </b> now!</p>
+
+      <h2 style="color:white">Click --->>> <a href="JOIN_V-BUCKS_GIVEAWAY_NOW.html" target="_blank"><b> HERE </b></a> <<<--- To register for the V-Bucks giveaway today!</h2>
+
+      <p style="color:white;font-size:17px"> Current participants: <b> 31 </b> <br> Your chances of winning: <b> 67% </b></p>
+
+      <h1 style="color:yellow" id="demo"></h1>
+  </center>
+  </article>
+  <article>
+    <img src="BILDER/V_BUCKS.jpg"width="200px";border="1px">
+  </article>
+</main>
+
+<h2 style="padding:10px;background-color:#FCFF00;color:red">CLICK --->>> <a href="JOIN_V-BUCKS_GIVEAWAY_NOW.html" target="_blank"><b> HERE </b></a> <<<--- TO REGISTER TODAY!</h2>
+
+<h2 style="padding:10px;background-color:red;color:#FCFF00"> FEEDBACK </h2>
 
 <p style="color:white"> Ninja: <br> "This is handsdown the best Free V-Bucks website I have ever used! <br> 100% successrate and fast and easy! Highly recommend!" </p>
 
-<p style="color:white"> Daequan: <br> "This webside Doo Doo <br> They always hookin` it up for ya boy! This is a must use!" </p>
+<p style="color:white"> Adam(EpicGames employee): <br> "Absolutely love this website! <br> They always hookin` it up for ya boy! This is a must use!" </p>
 
 <p style="color:white"> Jake Paul: <br> "Only true Jake Paulers uses this webside to get Free V-bucks <br> It boosted my Savageness by 9000%!!" </p>
 
 <h2 style="padding:10px;background-color:red;color:#FCFF00"> SUPPORT </h2>
 
-<p style="color:white"> We here at Free_V-Bucks_Today are contantly looking out for our users and are actively <br> making sure to better the user experience and saftly on this webside! <br> Therefore we ask you to please leave any feadback in the comment section down below on the following link! </p>
+<p style="color:white"> We here at Free_V-Bucks_Today are constantly looking out for our users and are actively <br> making sure to better the user experience and safety on this webside! <br> Therefore we ask you to please leave any feedback in the comment section down below on the following link! </p>
 
 <p style="color:white"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"target="_blank"> Click HERE to leave your feadback! </a> </p>
 
 <h2 style="padding:10px;background-color:red;color:#FCFF00"> Thank you for using our Webside! </h2>
+
+
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("sep 10, 2018 15:37:25").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get todays date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Display the result in the element with id="demo"
+  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+
+  // If the count down is finished, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
 
   </body>
 </html>
