@@ -1,0 +1,25 @@
+
+body{
+  background-color:black;
+}
+
+p{
+  background-color:red;
+  padding: 40px;
+}
+
+h1{
+  background-color:yellow;
+}
+
+p,h1{
+  color:white
+}
+
+img{
+  width:300px;
+  border-width:15px;
+  border-style:solid;
+  border-color:red;
+  margin:40px;
+}

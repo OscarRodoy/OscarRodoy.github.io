@@ -1,0 +1,77 @@
+body{
+  background-color:black;
+}
+
+main{
+  width:75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1{
+  background-color:yellow;
+  color:red;
+  padding:15px;
+  text-align:center;
+}
+
+p{
+  background-color:red;
+  color: white;
+  font-size:15px;
+  text-align:center;
+  padding:10px;
+  width: 900px;
+  border-radius:10px;
+}
+
+#text_type_2{
+  background-color:orange;
+  color: white;
+  font-size:15px;
+  text-align:center;
+  padding:10px;
+  width: 900px;
+  border-radius:10px;
+}
+
+#text_type_3{
+  background-color:firebrick;
+  color: white;
+  font-size:15px;
+  text-align:center;
+  padding:10px;
+  width: 900px;
+  border-radius:10px;
+}
+
+.rundtBilde{
+  Border-radius: 50%;
+  Border-style: 10px solid yellow;
+  width: 200px;
+  border-color: yellow;
+}
+
+ul{
+  border: 3px solid yellow;
+  list-style-type:none;
+  margin:0;
+  padding:20px;
+}
+
+ul li{
+  display: inline;
+}
+ul a{
+  background-color:red;
+  margin: 3px;
+  padding:10px 30px;
+  color:white;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius:5px;
+}
+
+ul a:hover{
+  background-color:pink;
+}
