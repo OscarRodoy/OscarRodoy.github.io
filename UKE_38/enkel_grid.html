@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="nb" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Grid</title>
+
+    <style media="screen">
+
+      main{
+        background-color: yellow;
+        margin: auto;
+        width: 700px;
+      }
+
+      main{
+        display:grid; /* Main-elementet skal være en grid */
+        grid-template-columns: 3fr 1fr; /* 3deler og 1 del */
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+      }
+      main>article{
+        background-color: red;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <main>
+      <article>Grid element 1</article>
+      <article>Grid element 2</article>
+      <article>Grid element 3</article>
+      <article>Grid element 4</article>
+      <article>Grid element 5</article>
+      <article>Grid element 6</article>
+      <article>Grid element 7</article>
+      <article>Grid element 8</article>
+    </main>
+
+  </body>
+</html>

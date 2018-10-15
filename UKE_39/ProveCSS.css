@@ -1,0 +1,43 @@
+body{
+  background-color:lightblue;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+h1{
+  font-style: italic;
+}
+
+img{
+  width:400px;
+  border-width:5px;
+  border-style:solid;
+  border-color: yellow;
+  border-radius: 15px;
+}
+
+ul{
+  list-style-type: none;
+  border: 3px solid yellow;
+  text-align: center;
+  margin: 0;
+  padding: 12px;
+}
+
+ul li{
+  display: inline;
+}
+
+ul a{
+  background-color: blue;
+  color:white;
+  text-decoration: none;
+  margin: 3px;
+  padding: 10px 30px;
+  font-weight: bold;
+}
+
+ul a:hover{
+  background-color:white;
+  color: black;
+}
