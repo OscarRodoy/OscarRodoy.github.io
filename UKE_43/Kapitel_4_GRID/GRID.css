@@ -1,0 +1,88 @@
+body{
+  font-family: helvetica, sans-serif;
+  background-color: orange;
+}
+
+h1{
+  text-align: center;
+}
+
+div{
+  padding-left: 0px;
+
+}
+
+section{
+  display:grid;
+  grid-gap: 4px;
+  margin-left: 3px;
+  grid-template-columns: 66px 66px 66px 66px 66px 66px 66px 66px 66px 66px 66px 66px 66px 66px 66px 66px 66px 66px;
+/*grid-template-columns: 1fr 1fr 1fr 1fr      (Alternativ metode)*/
+/*grid-template-columns: repeat(18, 1fr);     (Alternativ metode) (18) for antall ganger og (1fr) for en del*/
+  grid-auto-rows: 53px;
+/*grid-auto-rows: minmax(53px, auto);         (setter minst høyde på boksene til 53px, og max til auto(så stort som de trenger å være))*/
+}
+
+.span-1{ /*selektor for classen span-2 i grid.html*/
+  grid-column: span 16; /*valgte ruter, bruker 6 plasser bortover*/
+/*grid-row: span 3;    valgte ruter, bruker 3 plasser nedover*/
+}
+
+.span-2{
+  grid-column: span 10;
+}
+
+.usynlig{
+  opacity: 0; /*opacity er synlighet*/
+}
+
+.liten_skrift{
+  font-size: 10px;
+  text-align: center;
+}
+
+.tall{
+  text-align: center;
+}
+
+.bokstaver{
+  text-align: center;
+}
+
+.Ikke-Metal{
+  background-color: #FFFF84;
+}
+
+.Metal{
+  background-color: #14c19b;
+}
+
+.Halv-Metal{
+  background-color: #ffbb99;
+}
+
+.Ikke-Metal, .Metal, .Halv-Metal{
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 5px;
+}
+
+.midbox:active{
+  width: 100px;
+  height: 100px;
+  margin-left: -19px;
+  margin-top: -25px;
+}
+
+.leftbox:active{
+  width: 100px;
+  height: 100px;
+  margin-top: -25px;
+}
+
+.rightbox:active{
+  width: 100px;
+  height: 100px;
+  margin-top: -25px;
+  margin-left: -38px;
+}

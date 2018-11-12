@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="Stilark.css">
+  </head>
+  <body>
+    <header>
+
+      <section class="Menu">
+        <section id="logo">
+          <h1>Mens Watches</h1>
+        </section>
+        <section class="button">
+          <a href="index.html">Hjem</a>
+        </section>
+        <section class="button">
+          <a href="All_Watches.html">Alle Klokker</a>
+        </section>
+        <section class="button">
+          <a href="Best_Sellers.html">Best Selgere</a>
+        </section>
+        <section class="button">
+          <a href="Special_Offers.html">Tilbud</a>
+        </section>
+        <section class="button dropdown">
+          <button class="dropbtn">Mer</button>
+          <section class="dropdown-content">
+            <a href="#">Anmeldelser</a>
+            <a href="#">Om oss</a>
+            <a href="#">Brukerstøtte</a>
+          </section>
+        </section>
+      </section>
+
+      <section class="Front_Banner">
+        <section>
+          <h1>Elevate Your style</h1>
+          <p>Luxury Watches - Made affordable</p>
+        </section>
+      </section>
+
+    </header>
+    <main>
+
+      <section class="xMas">
+        <section class="xMas_deal">
+          <img src="Pictures/xMasSale.png">
+          <section class="xMasBTN_vm">
+            <a href="Special_Offers.html">Se mer salg</a>
+          </section>
+        </section>
+        <section class="xMas_pic">
+          <img src="Pictures/Example_img.jpg">
+        </section>
+        <section class="xMas_info">
+          <h2>Resterende tid:</h2>
+          <!-- Display the countdown timer in an element -->
+          <p id="demo"></p>
+
+          <script>
+            // Set the date we're counting down to
+            var countDownDate = new Date("Jan 1, 2019 15:37:25").getTime();
+
+            // Update the count down every 1 second
+            var x = setInterval(function() {
+
+              // Get todays date and time
+              var now = new Date().getTime();
+
+              // Find the distance between now and the count down date
+              var distance = countDownDate - now;
+
+              // Time calculations for days, hours, minutes and seconds
+              var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+              var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+              var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+              var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+              // Display the result in the element with id="demo"
+              document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+              + minutes + "m " + seconds + "s ";
+
+              // If the count down is finished, write some text
+              if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("demo").innerHTML = "EXPIRED";
+              }
+            }, 1000);
+          </script>
+          <h2>Chrono X</h2>
+          <h2>Før: $150</h2>
+          <h2>Nå: Bare $99!</h2>
+          <section class="xMasBTN_buy">
+            <a href="#">Kjøp nå!</a>
+          </section>
+        </section>
+      </section>
+
+      <h1 class="HeadLine">Featured</h1>
+
+      <section class="Featured">
+        <section>
+          <img src="Pictures/Example_img.jpg">
+          <p class="new">Ny!</p>
+          <p class="info">Chrono X<p>
+          <p class="info"> $150</p>
+          <p class="Buy">Se detaljer</p>
+        </section>
+        <section>
+          <img src="Pictures/Example_img.jpg">
+          <p class="new">Ny!</p>
+          <p class="info">Chrono Y</p>
+          <p class="info">$150</p>
+          <p class="Buy">Se detaljer</p>
+        </section>
+        <section>
+          <img src="Pictures/Example_img.jpg">
+          <p class="new">Ny!</p>
+          <p class="info">Chrono Z</p>
+          <p class="info">$150</p>
+          <p class="Buy">Se detaljer</p>
+        </section>
+        <section>
+          <img src="Pictures/Example_img.jpg">
+          <p class="new">Ny!</p>
+          <p class="info">Chrono ZX</p>
+          <p class="info">$150</p>
+          <p class="Buy">Se detaljer</p>
+        </section>
+      </section>
+
+      <h1 class="HeadLine">Kategorier</h1>
+
+      <section class="Categories">
+        <section class="span2 C_all_watches">
+          <section>
+            <h1>Alle Klokker</h1>
+          </section>
+        </section>
+        <section class="span2 C_best_sellers">
+          <section>
+          <h1>Best Selgere</h1>
+         </section>
+        </section>
+        <section class="span2 C_special_offers">
+          <section>
+            <h1>Tilbud</h1>
+          </section>
+        </section>
+        <section class="span3 C_about_us">
+          <section>
+            <h1>Om oss</h1>
+          </section>
+        </section>
+        <section class="span3 C_reviews">
+          <section>
+            <h1>Anmeldelser</h1>
+          </section>
+        </section>
+      </section>
+
+      <h1 class="HeadLine">Anmeldelser</h1>
+
+      <section class="Reviews">
+        <section>
+          <img src="Pictures/Example_img.jpg">
+          <p>kjøpt: <a href="#">Chrono X</a></p>
+          <p>Love it</p>
+        </section>
+        <section>
+          <img src="Pictures/Example_img.jpg">
+          <p>Kjøpt: <a href="#">Chrono X</a></p>
+          <p>Great</p>
+        </section>
+        <section>
+          <img src="Pictures/Example_img.jpg">
+          <p>Kjøpt: <a href="#">Chrono X</a></p>
+          <p>Amazing</p>
+        </section>
+      </section>
+
+    </main>
+    <footer>
+
+      <section class="Footer">
+        <section class="Footer_left">
+          <h2>Registrer deg på vår mailingliste</h2>
+          <p>for nye utgivelser, eksklusive produkter og andre tilbud!</p>
+        </section>
+        <section class="Footer_right">
+          <form action="Mailing_List.html">
+            <input type="text" name="Email" placeholder="Email adresse">
+            <button class="email_submit" type="submit">Registrer</button>
+          </form>
+        </section>
+      </section>
+
+      <section class="Footer2">
+        <section class="final_line_left">
+          <a href="About_Us.html">Om oss</a>
+        </section>
+        <section Class="final_line_mid">
+          <p> | </p>
+        </section>
+        <section class="final_line_right">
+          <p>C 2018-2020 Mens Watches</p>
+        </section>
+      </section>
+
+    </footer>
+  </body>
+</html>

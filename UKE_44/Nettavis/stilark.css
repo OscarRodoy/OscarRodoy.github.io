@@ -1,0 +1,72 @@
+body{
+  margin: 0px;
+}
+
+header{
+  display: grid;
+  grid-template-columns: 3fr 5fr 1fr 1fr 1fr;
+  grid-gap: 5px;
+  background-color: black;
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+header>.link>a{
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+main>section>section>a{
+  text-decoration: none;
+  color: black;
+}
+
+.link{
+  align-self: center;
+}
+
+#logo>h1{
+  font-size: 50px;
+  color: white;
+  padding-left: 10px;
+  font-family: helvetica, sans-serif;
+  margin: 1px;
+}
+
+main{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 5px;
+  grid-auto-rows: minmax(50px, auto);
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 64px;
+}
+
+img{
+  width: 100%;
+}
+
+.litentext{
+  font-size: 20px;
+}
+
+.middelsbox{
+  grid-column: span 2;
+  grid-row: span 2;
+}
+.middelstext{
+  font-size: 40px;
+}
+
+.storbox{
+  grid-column: span 3;
+  grid-row: span 3;
+}
+.stortext{
+  font-size: 80px;
+}
