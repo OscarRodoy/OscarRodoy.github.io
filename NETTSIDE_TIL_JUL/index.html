@@ -12,48 +12,47 @@
         <section id="logo">
           <h1>Mens Watches</h1>
         </section>
-        <section class="button">
-          <a href="index.html">Hjem</a>
-        </section>
-        <section class="button">
-          <a href="All_Watches.html">Alle Klokker</a>
-        </section>
-        <section class="button">
-          <a href="Best_Sellers.html">Best Selgere</a>
-        </section>
-        <section class="button">
-          <a href="Special_Offers.html">Tilbud</a>
-        </section>
-        <section class="button dropdown">
-          <section class="dropbtn">Mer</section>
-          <section class="dropdown-content">
-            <a href="#">Anmeldelser</a>
-            <a href="#">Om oss</a>
-            <a href="#">Brukerstøtte</a>
-          </section>
+        <section>
+          <ul>
+            <li><a href="index.html" class="button button_h">Hjem</a></li>
+            <li><a href="All_Watches.html" class="button button_h">Alle Klokker</a></li>
+            <li><a href="Best_Sellers.html" class="button button_h">Best Selgere</a></li>
+            <li><a href="Special_Offers.html" class="button button_h">Tilbud</a></li>
+            <li>
+              <section class="dropdown">
+                <section class="dropbtn">
+                  <a href="#" class="button">Mer</a>
+                </section>
+                <section class="dropdown-content">
+                  <a href="#Reviews">Anmeldelser</a>
+                  <a href="#">Om oss</a>
+                  <a href="#">Brukerstøtte</a>
+                </section>
+              </section>
+            </li>
+          </ul>
         </section>
       </section>
 
       <section class="Front_Banner">
-        <section>
-          <h1>Elevate Your style</h1>
-          <p>Luxury Watches - Made affordable</p>
-        </section>
+        <img src="Pictures/Home_Banner4.jpg">
       </section>
 
     </header>
     <main>
 
-      <section class="xMas">
+      <h1 class="HeadLine">Jule Salg!</h1>
+
+      <section class="HM_xMas">
         <section class="xMas_Left">
           <img src="Pictures/xMas_leftpicture.jpg">
-          <a class="xMasBTN_vm" href="Special_Offers.html">Se mer salg</a>
+          <a class="xMasBTN_sm" href="Special_Offers.html">Se mer salg</a>
         </section>
         <section class="xMas_Mid">
           <img src="Pictures/xMas_midpicture.jpg">
         </section>
         <section class="xMas_Right">
-          <h2>Resterende tid:</h2>
+          <h2 class="xMas_timer_text">Resterende tid:</h2>
           <!-- Display the countdown timer in an element -->
           <p id="demo"></p>
 
@@ -87,16 +86,16 @@
               }
             }, 1000);
           </script>
-          <h2>Chrono X</h2>
-          <h2>Før: $150</h2>
-          <h2 class="xMas_siste_text">Nå: Bare $99!</h2>
+          <h2 class="xMas_info_text">Chrono X</h2>
+          <h2>Før: $200</h2>
+          <h2>Nå: $120!</h2>
           <a class="xMasBTN_buy" href="#">Kjøp nå!</a>
         </section>
       </section>
 
       <h1 class="HeadLine">Featured</h1>
 
-      <section class="Featured">
+      <section class="HM_Featured">
         <section>
           <img src="Pictures/Example_img.jpg">
           <p class="new">Ny!</p>
@@ -129,37 +128,27 @@
 
       <h1 class="HeadLine">Kategorier</h1>
 
-      <section class="Categories">
-        <section class="span2 C_all_watches">
-          <section>
-            <h1>Alle Klokker</h1>
-          </section>
+      <section class="HM_Categories">
+        <section class="span2">
+          <img src="Pictures/All_Watches_2.jpg">
         </section>
-        <section class="span2 C_best_sellers">
-          <section>
-          <h1>Best Selgere</h1>
-         </section>
+        <section class="span2">
+          <img src="Pictures/Best_Selgere_2.jpg">
         </section>
-        <section class="span2 C_special_offers">
-          <section>
-            <h1>Tilbud</h1>
-          </section>
+        <section class="span2">
+          <img src="Pictures/Tilbud_2.jpg">
         </section>
-        <section class="span3 C_about_us">
-          <section>
-            <h1>Om oss</h1>
-          </section>
+        <section class="span3">
+          <h1>Om oss</h1>
         </section>
-        <section class="span3 C_reviews">
-          <section>
-            <h1>Anmeldelser</h1>
-          </section>
+        <section class="span3">
+          <h1>Anmeldelser</h1>
         </section>
       </section>
 
       <h1 class="HeadLine">Anmeldelser</h1>
 
-      <section class="Reviews">
+      <section class="Reviews" id="Reviews">
         <section>
           <img src="Pictures/Example_img.jpg">
           <p>kjøpt: <a href="#">Chrono X</a></p>
@@ -180,12 +169,12 @@
     </main>
     <footer>
 
-      <section class="Footer">
-        <section class="Footer_left">
+      <section class="Footer_ML">
+        <section class="Footer_ML_left">
           <h2>Registrer deg på vår mailingliste</h2>
           <p>for nye utgivelser, eksklusive produkter og andre tilbud!</p>
         </section>
-        <section class="Footer_right">
+        <section class="Footer_ML_right">
           <form action="Mailing_List.html">
             <input type="text" name="Email" placeholder="Email adresse">
             <button class="email_submit" type="submit">Registrer</button>
@@ -193,7 +182,7 @@
         </section>
       </section>
 
-      <section class="Footer2">
+      <section class="Footer_FL">
         <section class="final_line_left">
           <a href="About_Us.html">Om oss</a>
         </section>
