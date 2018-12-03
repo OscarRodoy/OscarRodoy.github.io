@@ -51,7 +51,7 @@ section> section{
   text-decoration: underline;
 }
 
-.dropbtn {
+.dropbtn { /* mer skal ikke være en link */
     font-size: 20px;
     border: none;
 }
@@ -100,24 +100,27 @@ section> section{
 }
 
 main{
-  margin-left: 100px;
-  margin-right: 100px;
+  width: 1065px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .HM_xMas{
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 528.5px 264.25px 264.25px;
   margin-top: 30px;
-  border: 2px solid black;
+  border: 2px solid yellow;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
 .HM_xMas>.xMas_Left{
   position: relative;
+  border-right: 1px solid orange;
 }
 
 .HM_xMas>.xMas_Left>img{
   display: block;
+  width: 528.5px;
 }
 
 .HM_xMas>.xMas_Left>.xMasBTN_sm{
@@ -139,16 +142,22 @@ main{
   background-color: lightgrey;
 }
 
+.HM_xMas>.xMas_Mid{
+  border-left: 1px solid yellow;
+  border-right: 1px solid green;
+}
+
 .HM_xMas>.xMas_Mid>img{
   display: block;
-  border-right: 2px solid black;
-  border-left: 2px solid black;
+  width: 264.25px;
+
 }
 
 .HM_xMas>.xMas_Right{
   position: relative;
   background-color: white;
   text-align: center;
+  border-left: 1px solid blue;
 }
 
 .HM_xMas>.xMas_Right>.xMasBTN_buy{
@@ -199,8 +208,8 @@ main{
 
 .HM_Featured{ /*Null bakgrunn?*/
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 30px;
+  grid-template-columns: repeat(4, 251.25px);
+  grid-gap: 20px;
   text-align: center;
 }
 
@@ -220,11 +229,12 @@ main{
   width: 248px;
   margin-right: -4px;
   margin-left: -4px;
-  margin-bottom: 0px;
+  margin-bottom: 0.084px;
 }
 
 .HM_Featured>section>img:hover + .new{
-  margin-right: -18px;
+  margin-right: -4px;
+  margin-top: 20px;
   font-size: 25px;
 }
 
@@ -234,11 +244,9 @@ main{
   font-size: 20px;
   border-bottom: 2px solid black;
   border-left: 2px solid black;
-  margin-right: -14px;
-  margin-top: -6px;
   position: absolute;
-  top: 8px;
-  right: 16px; /*bruk top: right: for å endre ny sin posisjon, ikke margin over*/
+  top: -18px;
+  right: 5.5px;
 }
 
 .HM_Featured>section>.info{
@@ -248,9 +256,12 @@ main{
 
 .HM_Featured>section>.Buy{
   border: 2px solid black;
-  padding: 15px;
+  width: 240px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   margin-bottom: 0px;
-  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
   background-color: white;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   cursor: pointer;
@@ -374,14 +385,13 @@ main{
 .AW_dropbtn { /*fungerer ikke!*/
     font-size: 20px;
     border: none;
-    background-color: red;
 }
 
 /* The container <div> - needed to position the dropdown content */
 .AW_dropdown {
     position: relative;
     display: inline-block;
-    background-color: yellow;
+    max-height: 0px;
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -392,6 +402,8 @@ main{
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    margin-left: -50px;
+    margin-top: -22px;
 }
 
 .AW_dropdown-content a {
@@ -415,8 +427,6 @@ main{
   font-size: 30px;
 }
 
-
-
 .AW_All_Watches{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -434,7 +444,7 @@ main{
 
 .AW_All_Watches>section>img:hover{
   width: 290px;
-  margin-bottom: 0px;
+  margin-bottom:-2.5px;
 }
 
 .AW_All_Watches>section>.AW_info{
@@ -445,8 +455,8 @@ main{
 .AW_All_Watches>section>.AW_Buy{
   border: 2px solid black;
   padding: 15px;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
   margin-bottom: 0px;
   text-align: center;
   background-color: white;
@@ -455,3 +465,32 @@ main{
 
 .AW_All_Watches>section>.AW_Buy:hover{
   background-color: lightgrey;
+}
+
+.BS_Best_Sellers{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 30px;
+  grid-row-gap: 30px;
+  text-align: center;
+}
+
+.BS_Best_Sellers>section{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.BS_Best_Sellers>section>section>img{
+  display: block;
+  width: 200px;
+}
+
+.SO_Special_Offers{
+  display: grid;
+  grid-row-gap: 30px;
+}
+
+.SO_Special_Offers>section{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr)
+}
