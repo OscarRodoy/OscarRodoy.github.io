@@ -25,64 +25,63 @@
                 </section>
                 <section class="dropdown-content">
                   <a href="#Reviews">Anmeldelser</a>
-                  <a href="#">Om oss</a>
-                  <a href="#">Brukerstøtte</a>
+                  <a href="About_Us.html">Om oss</a>
+                  <a href="Customer_Support.html">Brukerstøtte</a>
                 </section>
               </section>
             </li>
           </ul>
         </section>
+        <section class="Menu_Salg">
+          <p>Salg:</p>
+        </section>
+        <section class="Menu_Salg">
+          <p id="demo1"></p>
+        </section>
       </section>
 
       <section class="Front_Banner">
+        <img src="Pictures/Golden_Line.jpg">
         <img src="Pictures/Home_Banner4.jpg">
+        <img src="Pictures/Golden_Line.jpg">
       </section>
 
     </header>
     <main>
 
-      <h1 class="HeadLine">Jule Salg!</h1>
+      <h1 class="HeadLine HeadLine1">Jule Salg!</h1>
 
       <section class="HM_xMas">
         <section class="xMas_Left">
-          <img src="Pictures/xMas_leftpicture.jpg">
-          <a class="xMasBTN_sm" href="Special_Offers.html">Se mer salg</a>
+          <img src="Pictures/Ps_xMas_leftpicture.jpg">
         </section>
         <section class="xMas_Mid">
-          <img src="Pictures/xMas_midpicture.jpg">
+          <img src="Watches/Ps_Chrono_S_RoseGold.jpg">
         </section>
         <section class="xMas_Right">
           <h2 class="xMas_timer_text">Resterende tid:</h2>
-          <!-- Display the countdown timer in an element -->
           <p id="demo"></p>
-
           <script>
-            // Set the date we're counting down to
             var countDownDate = new Date("Jan 1, 2019 15:37:25").getTime();
+            var demo = document.getElementById("demo");
+            var demo1 = document.getElementById("demo1");
 
-            // Update the count down every 1 second
             var x = setInterval(function() {
-
-              // Get todays date and time
               var now = new Date().getTime();
-
-              // Find the distance between now and the count down date
               var distance = countDownDate - now;
-
-              // Time calculations for days, hours, minutes and seconds
               var days = Math.floor(distance / (1000 * 60 * 60 * 24));
               var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
               var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
               var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-              // Display the result in the element with id="demo"
-              document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+              demo.innerHTML = days + "d " + hours + "h "
+              + minutes + "m " + seconds + "s ";
+              demo1.innerHTML = days + "d " + hours + "h "
               + minutes + "m " + seconds + "s ";
 
-              // If the count down is finished, write some text
               if (distance < 0) {
                 clearInterval(x);
-                document.getElementById("demo").innerHTML = "EXPIRED";
+                demo.innerHTML = "EXPIRED";
+                demo1.innerHTML = "EXPIRED";
               }
             }, 1000);
           </script>
@@ -90,43 +89,44 @@
           <h2>Før: $200</h2>
           <h2>Nå: $120!</h2>
           <a class="xMasBTN_buy" href="#">Kjøp nå!</a>
+          <a class="xMasBTN_sm" href="Special_Offers.html">Se mer salg</a>
         </section>
       </section>
 
-      <h1 class="HeadLine">Featured</h1>
+      <h1 class="HeadLine HeadLine1">Featured</h1>
 
       <section class="HM_Featured">
         <section>
-          <img src="Pictures/Example_img.jpg">
+          <img src="Watches/Ps_Kairos_BlackGoldMesh.jpg">
           <p class="new">Ny!</p>
-          <p class="info">Chrono X<p>
-          <p class="info"> $150</p>
+          <p class="info">Kairos - Black & Gold<p>
+          <p class="info"> $130</p>
           <p class="Buy">Se detaljer</p>
         </section>
         <section>
-          <img src="Pictures/Example_img.jpg">
+          <img src="Watches/Ps_Kairos_BlueSilverMesh.jpg">
           <p class="new">Ny!</p>
-          <p class="info">Chrono Y</p>
+          <p class="info">Kairos - Blue & Silver</p>
+          <p class="info">$130</p>
+          <p class="Buy">Se detaljer</p>
+        </section>
+        <section>
+          <img src="Watches/Ps_Chrono_S_BlackSilver.jpg">
+          <p class="new">Ny!</p>
+          <p class="info">Chrono S - Black & Silver</p>
           <p class="info">$150</p>
           <p class="Buy">Se detaljer</p>
         </section>
         <section>
-          <img src="Pictures/Example_img.jpg">
+          <img src="Watches/Ps_Chrono_S_RoseGoldWhite.jpg">
           <p class="new">Ny!</p>
-          <p class="info">Chrono Z</p>
-          <p class="info">$150</p>
-          <p class="Buy">Se detaljer</p>
-        </section>
-        <section>
-          <img src="Pictures/Example_img.jpg">
-          <p class="new">Ny!</p>
-          <p class="info">Chrono ZX</p>
+          <p class="info">Chrono S - Rose Gold & White</p>
           <p class="info">$150</p>
           <p class="Buy">Se detaljer</p>
         </section>
       </section>
 
-      <h1 class="HeadLine">Kategorier</h1>
+      <h1 class="HeadLine HeadLine1">Kategorier</h1>
 
       <section class="HM_Categories">
         <section class="span2">
@@ -168,6 +168,10 @@
 
     </main>
     <footer>
+
+      <section class="Footer_Top">
+        <img src="Pictures/Golden_Line.jpg">
+      </section>
 
       <section class="Footer_ML">
         <section class="Footer_ML_left">
