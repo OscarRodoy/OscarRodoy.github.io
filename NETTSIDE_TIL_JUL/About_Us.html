@@ -10,7 +10,7 @@
 
       <section class="Menu">
         <section id="logo">
-          <h1>Mens Watches</h1>
+          <img src="Pictures/Logo2.png">
         </section>
         <section>
           <ul>
@@ -21,16 +21,42 @@
             <li>
               <section class="dropdown">
                 <section class="dropbtn">
-                  <a href="#" class="button">Mer</a>
+                  <p class="button">Mer</p>
                 </section>
                 <section class="dropdown-content">
-                  <a href="#Reviews">Anmeldelser</a>
+                  <a href="index.html#Reviews">Anmeldelser</a>
                   <a href="#">Om oss</a>
                   <a href="#">Brukerstøtte</a>
                 </section>
               </section>
             </li>
           </ul>
+        </section>
+        <section class="Menu_Salg_bilde">
+          <img src="Pictures/40_OFF.png">
+        </section>
+        <section class="Menu_Salg_text">
+          <p>Salg:</p>
+        </section>
+        <section class="Menu_Salg_timer">
+          <p id="demo1"></p>
+          <script>
+            var countDownDate = new Date("Jan 1, 2019 15:37:25").getTime();
+            var x = setInterval(function() {
+              var now = new Date().getTime();
+              var distance = countDownDate - now;
+              var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+              var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+              var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+              var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+              document.getElementById("demo1").innerHTML = days + "d " + hours + "h "
+              + minutes + "m " + seconds + "s ";
+              if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("demo1").innerHTML = "EXPIRED";
+              }
+            }, 1000);
+          </script>
         </section>
       </section>
 

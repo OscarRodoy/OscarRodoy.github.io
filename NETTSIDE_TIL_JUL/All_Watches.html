@@ -10,7 +10,7 @@
 
       <section class="Menu">
         <section id="logo">
-          <h1>Mens Watches</h1>
+          <img src="Pictures/Logo2.png">
         </section>
         <section>
           <ul>
@@ -21,16 +21,42 @@
             <li>
               <section class="dropdown">
                 <section class="dropbtn">
-                  <a href="#" class="button">Mer</a>
+                  <p class="button">Mer</p>
                 </section>
                 <section class="dropdown-content">
-                  <a href="#Reviews">Anmeldelser</a>
+                  <a href="index.html#Reviews">Anmeldelser</a>
                   <a href="About_Us.html">Om oss</a>
                   <a href="#">Brukerstøtte</a>
                 </section>
               </section>
             </li>
           </ul>
+        </section>
+        <section class="Menu_Salg_bilde">
+          <img src="Pictures/40_OFF.png">
+        </section>
+        <section class="Menu_Salg_text">
+          <p>Salg:</p>
+        </section>
+        <section class="Menu_Salg_timer">
+          <p id="demo1"></p>
+          <script>
+            var countDownDate = new Date("Jan 1, 2019 15:37:25").getTime();
+            var x = setInterval(function() {
+              var now = new Date().getTime();
+              var distance = countDownDate - now;
+              var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+              var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+              var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+              var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+              document.getElementById("demo1").innerHTML = days + "d " + hours + "h "
+              + minutes + "m " + seconds + "s ";
+              if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("demo1").innerHTML = "EXPIRED";
+              }
+            }, 1000);
+          </script>
         </section>
       </section>
 
@@ -44,7 +70,7 @@
     <main>
 
       <section class="AW_TopLine">
-        <section></section>
+        <section class="Empty"></section>
         <section>
           <section class="AW_dropdown">
             <section class="AW_dropbtn">
@@ -58,7 +84,7 @@
           </section>
         </section>
         <section>
-          <h1>All Watches</h1>
+          <h1>Alle Klokker</h1>
         </section>
         <section>
           <form action="#">
@@ -66,63 +92,135 @@
             <button class="Search_button" type="submit">Søk</button>
           </form>
         </section>
-        <section></section>
+        <section class="empty"></section>
       </section>
 
       <section class="AW_All_Watches">
         <section>
-          <img src="Pictures/Example_img.jpg">
-          <p class="AW_info">Chrono X<p>
-          <p class="AW_info"> $150</p>
-          <p class="AW_Buy">View Details</p>
+          <section class="AW_img">
+            <img src="Pictures/Example_img.jpg">
+          </section>
+          <section class="AW_imgtext">
+            <section class="AW_info">
+              <p> Chrono X</p>
+              <p> $150</p>
+            </section>
+          </section>
+          <section class="AW_imgtext">
+            <p class="AW_Buy">View Details</p>
+          </section>
         </section>
         <section>
-          <img src="Pictures/Example_img.jpg">
-          <p class="AW_info">Chrono Y</p>
-          <p class="AW_info">$150</p>
-          <p class="AW_Buy">View Details</p>
+          <section class="AW_img">
+            <img src="Pictures/Example_img.jpg">
+          </section>
+          <section class="AW_imgtext">
+            <section class="AW_info">
+              <p> Chrono X</p>
+              <p> $150</p>
+            </section>
+          </section>
+          <section class="AW_imgtext">
+            <p class="AW_Buy">View Details</p>
+          </section>
         </section>
         <section>
-          <img src="Pictures/Example_img.jpg">
-          <p class="AW_info">Chrono Z</p>
-          <p class="AW_info">$150</p>
-          <p class="AW_Buy">View Details</p>
+          <section class="AW_img">
+            <img src="Pictures/Example_img.jpg">
+          </section>
+          <section class="AW_imgtext">
+            <section class="AW_info">
+              <p> Chrono X</p>
+              <p> $150</p>
+            </section>
+          </section>
+          <section class="AW_imgtext">
+            <p class="AW_Buy">View Details</p>
+          </section>
         </section>
         <section>
-          <img src="Pictures/Example_img.jpg">
-          <p class="AW_info">Chrono XX</p>
-          <p class="AW_info">$150</p>
-          <p class="AW_Buy">View Details</p>
+          <section class="AW_img">
+            <img src="Pictures/Example_img.jpg">
+          </section>
+          <section class="AW_imgtext">
+            <section class="AW_info">
+              <p> Chrono X</p>
+              <p> $150</p>
+            </section>
+          </section>
+          <section class="AW_imgtext">
+            <p class="AW_Buy">View Details</p>
+          </section>
         </section>
         <section>
-          <img src="Pictures/Example_img.jpg">
-          <p class="AW_info">Chrono XY<p>
-          <p class="AW_info"> $150</p>
-          <p class="AW_Buy">View Details</p>
+          <section class="AW_img">
+            <img src="Pictures/Example_img.jpg">
+          </section>
+          <section class="AW_imgtext">
+            <section class="AW_info">
+              <p> Chrono X</p>
+              <p> $150</p>
+            </section>
+          </section>
+          <section class="AW_imgtext">
+            <p class="AW_Buy">View Details</p>
+          </section>
         </section>
         <section>
-          <img src="Pictures/Example_img.jpg">
-          <p class="AW_info">Chrono XZ</p>
-          <p class="AW_info">$150</p>
-          <p class="AW_Buy">View Details</p>
+          <section class="AW_img">
+            <img src="Pictures/Example_img.jpg">
+          </section>
+          <section class="AW_imgtext">
+            <section class="AW_info">
+              <p> Chrono X</p>
+              <p> $150</p>
+            </section>
+          </section>
+          <section class="AW_imgtext">
+            <p class="AW_Buy">View Details</p>
+          </section>
         </section>
         <section>
-          <img src="Pictures/Example_img.jpg">
-          <p class="AW_info">Chrono YX</p>
-          <p class="AW_info">$150</p>
-          <p class="AW_Buy">View Details</p>
+          <section class="AW_img">
+            <img src="Pictures/Example_img.jpg">
+          </section>
+          <section class="AW_imgtext">
+            <section class="AW_info">
+              <p> Chrono X</p>
+              <p> $150</p>
+            </section>
+          </section>
+          <section class="AW_imgtext">
+            <p class="AW_Buy">View Details</p>
+          </section>
         </section>
         <section>
-          <img src="Pictures/Example_img.jpg">
-          <p class="AW_info">Chrono YY</p>
-          <p class="AW_info">$150</p>
-          <p class="AW_Buy">View Details</p>
+          <section class="AW_img">
+            <img src="Pictures/Example_img.jpg">
+          </section>
+          <section class="AW_imgtext">
+            <section class="AW_info">
+              <p> Chrono X</p>
+              <p> $150</p>
+            </section>
+          </section>
+          <section class="AW_imgtext">
+            <p class="AW_Buy">View Details</p>
+          </section>
         </section>
         <section>
-          <img src="Pictures/Example_img.jpg">
-          <p class="AW_info">Chrono YZ</p>
-          <p class="AW_info">$150</p>
-          <p class="AW_Buy">View Details</p>
+          <section class="AW_img">
+            <img src="Pictures/Example_img.jpg">
+          </section>
+          <section class="AW_imgtext">
+            <section class="AW_info">
+              <p> Chrono X</p>
+              <p> $150</p>
+            </section>
+          </section>
+          <section class="AW_imgtext">
+            <p class="AW_Buy">View Details</p>
+          </section>
         </section>
       </section>
 

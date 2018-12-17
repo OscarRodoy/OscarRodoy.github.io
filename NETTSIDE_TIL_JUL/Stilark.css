@@ -1,6 +1,8 @@
-body{ /* må redigeres i Ps */
+body{
   margin: 0px;
-  background-image: url(Pictures/background_alternativ4_test15.jpg);
+  max-width: 100%;
+  overflow-x: hidden;
+  background-image: url(Pictures/Background_Valg1.3.jpg); /*Fjern headline margin ved bruk av annen bakgrunn*/
 }
 
 section> section{
@@ -9,27 +11,21 @@ section> section{
   border:;
 }
 
-#logo>h1{
-  font-size: 30px;
-  color: black;
-  padding-left: 20px;
-  font-family: helvetica, sans-serif;
-  margin: 1px;
-  font-weight: lighter;
-  margin-top: 20px;
-  margin-bottom: 20px;
+#logo>img{
+  width: 220px;
+  margin-left: 20px;
+  margin-top: 6px;
+  margin-bottom: 6px;
 }
 
-.Menu{ /*Få menyen til å følge nedover*/
+.Menu{
   display: grid;
-  grid-template-columns: 2fr 5fr 0.8fr 1.2fr;
+  grid-template-columns: 2fr 5fr 0.5fr 0.3fr 1.2fr;
   background-color: white;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-
   position: fixed;
   top: 0;
   width: 100%;
-  overflow: hidden;
   z-index: 2;
 }
 
@@ -76,6 +72,7 @@ section> section{
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 999;
     margin-left: -30px;
+    margin-top: -20px;
 }
 
 .dropdown-content a {
@@ -94,11 +91,24 @@ section> section{
   display: block;
 }
 
-.Menu_Salg{
+.Menu_Salg_text{
   align-self: center;
-  font-size: 20px;
   text-align: right;
-  margin-right: 20px;
+  font-size: 20px;
+}
+
+.Menu_Salg_bilde>img{
+  width: 40px;
+  display: block;
+  margin-top: 28px;
+  margin-left: 30px;
+}
+
+.Menu_Salg_timer{
+  align-self: center;
+  text-align: center;
+  font-size: 20px;
+  margin-left: -5px;
 }
 
 .Front_Banner{
@@ -115,6 +125,11 @@ main{
   width: 1065px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.HeadLine{
+  color: white;
+  text-align: center;
 }
 
 .HM_xMas{
@@ -193,16 +208,6 @@ main{
 
 .HM_xMas>.xMas_Right>.xMas_info_text{
   padding-top: 10px;
-}
-
-.HeadLine{
-  color: white;
-  text-align: center;
-}
-
-.HeadLine1{
-  margin-top: 60px;
-  margin-bottom: 60px;
 }
 
 .HM_Featured{
@@ -411,10 +416,10 @@ main{
     display: none;
     position: absolute;
     background-color: white;
-    min-width: 160px;
+    min-width: 120px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    margin-left: 23px;
+    margin-left: 89px;
     margin-top: -20px;
 
 }
@@ -461,35 +466,51 @@ main{
   text-align: center;
 }
 
-.AW_All_Watches>section>img{
-  width: 280px;
+.AW_All_Watches>section{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 5px;
+}
+
+.AW_All_Watches>section>.AW_img{
+  min-height: 370px;
+}
+
+.AW_All_Watches>section>.AW_img>img{
+  width: 284px;
   border: 2px solid black;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  margin-bottom: 10px;
 }
 
-.AW_All_Watches>section>img:hover{
+.AW_All_Watches>section>.AW_img>img:hover{
   width: 290px;
-  margin-bottom:-2.5px;
 }
 
-.AW_All_Watches>section>.AW_info{
+.AW_All_Watches>section>.AW_imgtext>.AW_info{
   text-align: center;
-  color: white;
+  background-color: #ffffff;
+  opacity: 0.6;
+  margin-left: 32px;
+  margin-right: 32px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 2px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
-.AW_All_Watches>section>.AW_Buy{
+.AW_All_Watches>section>.AW_imgtext>.AW_Buy{
   border: 2px solid black;
   padding: 15px;
   margin-left: 30px;
   margin-right: 30px;
   margin-bottom: 0px;
+  margin-top: 5px;
   text-align: center;
   background-color: white;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
-.AW_All_Watches>section>.AW_Buy:hover{
+.AW_All_Watches>section>.AW_imgtext>.AW_Buy:hover{
   background-color: lightgrey;
 }
 
