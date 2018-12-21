@@ -1,15 +1,11 @@
 body{
   margin: 0px;
+  margin-top: 74px;
   max-width: 100%;
   overflow-x: hidden;
-  background-image: url(Pictures/Background_Valg1.3.jpg); /*Fjern headline margin ved bruk av annen bakgrunn*/
+  background-image: url(Pictures/Background_MensWatches.jpg);
 }
 
-section> section{
-  background-color:;
-  font-family: inherit;
-  border:;
-}
 
 #logo>img{
   width: 220px;
@@ -17,29 +13,25 @@ section> section{
   margin-top: 6px;
   margin-bottom: 6px;
 }
-
 .Menu{
   display: grid;
   grid-template-columns: 2fr 5fr 0.5fr 0.3fr 1.2fr;
-  background-color: white;
+  background-color:#ffffff;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 2;
 }
-
 .Menu>section>ul{
   list-style-type:none;
   text-align: center;
   padding: 0px;
   margin: 0px;
 }
-
 .Menu>section>ul li{
   display: inline;
 }
-
 .Menu>section>ul .button{
   color: black;
   margin-left: 30px;
@@ -49,22 +41,18 @@ section> section{
   display: inline-block;
   font-size: 20px;
 }
-
-.Menu>section>ul .button_h:hover{
+.Menu>section>ul .button_hover:hover{
   text-decoration: underline;
 }
-
-.dropbtn {
+.dropbtn{
     font-size: 20px;
     border: none;
 }
-
-.dropdown {
+.dropdown{
     position: relative;
     display: inline-block;
 }
-
-.dropdown-content {
+.dropdown-content{
     display: none;
     position: absolute;
     background-color: white;
@@ -74,36 +62,30 @@ section> section{
     margin-left: -30px;
     margin-top: -20px;
 }
-
-.dropdown-content a {
+.dropdown-content a{
     color: black;
     font-size: 20px;
     padding: 10px;
     text-decoration: none;
     display: block;
 }
-
 .dropdown-content a:hover{
   background-color: lightgrey;
 }
-
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content{
   display: block;
 }
-
 .Menu_Salg_text{
   align-self: center;
   text-align: right;
   font-size: 20px;
 }
-
 .Menu_Salg_bilde>img{
   width: 40px;
   display: block;
   margin-top: 28px;
   margin-left: 30px;
 }
-
 .Menu_Salg_timer{
   align-self: center;
   text-align: center;
@@ -111,18 +93,14 @@ section> section{
   margin-left: -5px;
 }
 
+
 .Front_Banner{
   display: grid;
   grid-template-columns: 1fr;
-  margin-top: 74px;
-}
-
-.Front_Banner>img{
-  width: 1263px;
 }
 
 main{
-  width: 1065px;
+  width: 1063px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -132,6 +110,25 @@ main{
   text-align: center;
 }
 
+.Under_Konstruksjon{
+  font-size: 100px;
+  color: white;
+}
+
+#LineThrough{
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+#Space{
+  opacity: 0;
+}
+
+#LineUnder{
+  text-decoration: underline;
+}
+
+
 .HM_xMas{
   display: grid;
   grid-template-columns: 529px 268px 264px;
@@ -139,26 +136,21 @@ main{
   border: 2px solid black;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
-
 .HM_xMas>.xMas_Left>img{
   display: block;
 }
-
 .HM_xMas>.xMas_Mid{
   border-left: 2px solid black;
   border-right: 2px solid black;
 }
-
 .HM_xMas>.xMas_Mid>img{
   display: block;
 }
-
 .HM_xMas>.xMas_Right{
   position: relative;
   background-color: white;
   text-align: center;
 }
-
 .HM_xMas>.xMas_Right>.xMasBTN_buy, .xMasBTN_sm{
   border: 2px solid black;
   background-color: white;
@@ -169,46 +161,42 @@ main{
   color: black;
   font-size: 20px;
 }
-
 .HM_xMas>.xMas_Right>.xMasBTN_buy{
   position: absolute;
     left: 67px;
     bottom: -5px;
     transform: translate(-50%, -50%);
 }
-
 .HM_xMas>.xMas_Right>.xMasBTN_sm{
   position: absolute;
     right: -38px;
     bottom: -5px;
     transform: translate(-50%, -50%);
 }
-
 .HM_xMas>.xMas_Right>.xMasBTN_buy:hover,.xMasBTN_sm:hover{
   background-color: lightgrey;
 }
-
 .xMas_timer_text{
   background-color: #ff8080;
-  width: 100%;
   padding-top: 15px;
   margin-top: 0px;
 }
-
 #demo{
   font-size: 25px;
   font-weight: bold;
   background-color: #ff8080;
-  width: 100%;
   padding-top: 20px;
   padding-bottom: 10px;
   margin-top: -20px;
   border-bottom: 2px solid black;
 }
-
 .HM_xMas>.xMas_Right>.xMas_info_text{
   padding-top: 10px;
 }
+.xMas_expried{
+  cursor: not-allowed;
+}
+
 
 .HM_Featured{
   display: grid;
@@ -216,32 +204,26 @@ main{
   grid-gap: 20px;
   text-align: center;
 }
-
 .HM_Featured>section{
   position: relative;
 }
-
-.HM_Featured>section>img{
-  width: 240px;
+.HM_Featured>section>a>img{
   border: 2px solid black;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   margin-bottom: 10px;
   cursor: pointer;
 }
-
-.HM_Featured>section>img:hover{
+.HM_Featured>section>a>img:hover{
   width: 248px;
   margin-right: -4px;
   margin-left: -4px;
   margin-bottom: 0.084px;
 }
-
-.HM_Featured>section>img:hover + .new{
+.HM_Featured>section>a:hover + .new{
   margin-right: -4px;
   margin-top: 20px;
   font-size: 25px;
 }
-
 .HM_Featured>section>.new{
   background-color: red;
   color: white;
@@ -252,65 +234,87 @@ main{
   top: -18px;
   right: 5.5px;
 }
-
 .HM_Featured>section>.info{
   text-align: center;
   color: white;
 }
-
 .HM_Featured>section>.Buy{
+  color: black;
+  text-decoration: none;
   border: 2px solid black;
-  width: 240px;
+  padding-left: 86px;
+  padding-right: 86px;
   padding-top: 15px;
   padding-bottom: 15px;
   margin-bottom: 0px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 10px;
   background-color: white;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   cursor: pointer;
 }
-
 .HM_Featured>section>.Buy:hover{
   background-color: lightgrey;
 }
 
-.HM_Categories{ /*forskjellige bredde på bildene??  -  mangler 2 bilder*/
+
+.HM_Categories_Row1{
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-gap: 10px;
+  grid-template-columns: 348px 348px 348px;
+  grid-gap: 9.5px;
 }
-
-.HM_Categories> .span2{
-  grid-column: span 2;
+.HM_Categories_Row1>section{
   border: 2px solid black;
 }
-
-.HM_Categories> .span3{
-  grid-column: span 3;
-  border: 2px solid black;
-}
-
-.HM_Categories>.span2>img{ /*legg til .span3 også i samme*/
+.HM_Categories_Row1>section>a>img{
   display: block;
 }
+.HM_Categories_Row1>section>a>img:hover{
+  filter: brightness(70%);
+}
+.HM_Categories_Row2{
+  display: grid;
+  grid-template-columns: 526px 526px;
+  grid-gap: 10.25px;
+  margin-top: 10px;
+}
+.HM_Categories_Row2>section{
+  border: 2px solid black;
+}
+.HM_Categories_Row2>section>a>img{
+  display: block;
+}
+.HM_Categories_Row2>section>a>img:hover{
+  filter: brightness(70%);
+}
 
-.Reviews{
+
+.HM_Reviews{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 20px;
   text-align: center;
 }
-
-.Reviews>section{
+.HM_Reviews>section{
   background-color: white;
   border: 2px solid black;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
-
-.Reviews>section>img{
-  width: 150px;
+.HM_Reviews>section>.HMR_kjopt{
+  font-style: italic;
 }
+.HM_Reviews>section>.HMR_tekst{
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.HM_Reviews>section>.HMR_tekst::first-letter{
+  font-size: 25px;
+}
+
+
+.Footer_Top{
+  margin-bottom: -30px;
+}
+
 
 .Footer_ML{
   display: grid;
@@ -320,34 +324,24 @@ main{
   padding-bottom: 30px;
   background-color: #302C2C;
 }
-
-.Footer_Top>img{
-  width: 1263px;
-  margin-bottom: -30px;
-}
-
 .Footer_ML> .Footer_ML_left{
   padding-left: 100px;
   font-size: 20px;
   color: white;
   text-align: center;
 }
-
 .Footer_ML> .Footer_ML_left> h2{
   margin-bottom: -15px;
 }
-
 .Footer_ML>.Footer_ML_right{
   text-align: center;
   padding-right: 100px;
 }
-
 .Footer_ML>.Footer_ML_right>form>input{
   padding: 15px;
   margin-top: 30px;
   width: 290px;
 }
-
 .Footer_ML>.Footer_ML_right>form>button{
   padding: 15px;
   padding-left: 40px;
@@ -355,75 +349,106 @@ main{
   margin-left: -5px;
 }
 
-.Footer_FL{ /* gjør mindere */
+
+.Footer_FL{
   background-color: white;
   display: grid;
   grid-template-columns: 5fr 1fr 5fr;
   margin-top: 0px;
 }
-
 .Footer_FL> .final_line_left{
   align-self: center;
   text-align: right;
 }
-
 .Footer_FL> .final_line_left>a{
   text-decoration: none;
   color: black;
 }
-
 .Footer_FL>.final_line_mid{
   font-size: 20px;
   text-align: center;
   align-self: center;
 }
-
 .Footer_FL>.final_line_right{
   text-align: left;
   align-self: center;
 }
+
+
+.ML_Box{
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  background-image: url(Pictures/BackgroundPicture_ML.jpg);
+  border-radius: 15px;
+  border: 2px solid black;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.ML_Text{
+  color: white;
+  text-align: center;
+  align-self: center;
+  font-size: 40px;
+}
+.ML_TextMargin{
+  margin-bottom: -40px;
+}
+.ML_Box>.ML_BackBTN>form>input{
+  background-color: #ffffff;
+  margin-left: 425px;
+  padding: 10px;
+  width: 200px;
+  margin-bottom: 20px;
+  margin-top: -5px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.ML_Box>.ML_BackBTN>form>input:hover{
+  background-color: lightgrey;
+}
+.Footer_Top2{
+  margin-bottom: -5px;
+}
+
 
 .AW_TopLine{
   display: grid;
   grid-template-columns: 100px 1fr 1fr 1fr 100px;
   margin-left: -100px;
   margin-right: -100px;
-  margin-top: 20px;
-  margin-bottom: 20px;
   color: white;
+  background-color: #302C2C;
+  padding: 10px;
 }
-
 .AW_TopLine>section{
   text-align: center;
   align-self: center;
 }
-
 .AW_dropdown {
     position: relative;
     display: inline-block;
+    width: 212px;
 }
-
 .AW_dropbtn>p{
     font-size: 20px;
     background-color: white;
     color: black;
-    border: 2px solid black;
     padding: 12px;
+    border: 2px solid black;
     cursor: default;
+    text-align: left;
 }
-
 .AW_dropdown-content {
     display: none;
     position: absolute;
     background-color: white;
-    min-width: 120px;
+    min-width: 100px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    margin-left: 89px;
+    margin-left: 106px;
     margin-top: -20px;
-
 }
-
 .AW_dropdown-content a {
     color: black;
     font-size: 20px;
@@ -431,25 +456,19 @@ main{
     text-decoration: none;
     display: block;
 }
-
 .AW_dropdown-content a:hover{
   background-color: lightgrey;
 }
-
-.AW_dropdown:hover .AW_dropdown-content {
+.AW_dropdown:hover .AW_dropdown-content{
   display: block;
 }
-
-
 .AW_TopLine>section>h1{
   font-size: 30px;
 }
-
 .AW_TopLine>section>form>input{
   padding: 15px;
   width: 130px;
 }
-
 .AW_TopLine>section>form>button{
   padding: 15px;
   padding-left: 15px;
@@ -458,86 +477,158 @@ main{
   cursor: pointer;
 }
 
+
+.AW_Below_TopLine{
+  margin-left: -100px;
+  margin-bottom: 30px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+
 .AW_All_Watches{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
-  grid-row-gap: 30px;
+  grid-row-gap: 60px;
   text-align: center;
+  margin-bottom: 50px;
 }
-
 .AW_All_Watches>section{
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 5px;
 }
-
 .AW_All_Watches>section>.AW_img{
   min-height: 370px;
+  position: relative;
 }
-
 .AW_All_Watches>section>.AW_img>img{
-  width: 284px;
   border: 2px solid black;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  position: absolute;
+  bottom: 0px;
+  left: 30px;
 }
-
 .AW_All_Watches>section>.AW_img>img:hover{
   width: 290px;
+  left: 27px;
 }
-
 .AW_All_Watches>section>.AW_imgtext>.AW_info{
   text-align: center;
   background-color: #ffffff;
+  font-size: 18px;
   opacity: 0.6;
-  margin-left: 32px;
-  margin-right: 32px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  padding: 2px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
-
-.AW_All_Watches>section>.AW_imgtext>.AW_Buy{
-  border: 2px solid black;
-  padding: 15px;
   margin-left: 30px;
   margin-right: 30px;
-  margin-bottom: 0px;
-  margin-top: 5px;
+  border-right: 2px solid black;
+  border-left: 2px solid black;
+  padding: 1px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.AW_All_Watches>section>.AW_imgtext_buy>.AW_Buy{
+  color: black;
+  font-size: 20px;
+  border: 2px solid black;
+  padding: 15px;
+  width: 254px;
   text-align: center;
   background-color: white;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
-
-.AW_All_Watches>section>.AW_imgtext>.AW_Buy:hover{
+.AW_All_Watches>section>.AW_imgtext_buy>.AW_Enabled, .AW_Disabled{
+  display: inline-block;
+}
+.AW_All_Watches>section>.AW_imgtext_buy>.AW_Enabled{
+  transition: all 0.5s;
+  cursor: pointer;
+}
+.AW_Enabled span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.AW_Enabled span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+.AW_Enabled:hover span {
+  padding-right: 25px;
+}
+.AW_Enabled:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.AW_All_Watches>section>.AW_imgtext_buy>.AW_Enabled:hover{
   background-color: lightgrey;
 }
+.AW_All_Watches>section>.AW_imgtext_buy>.AW_Disabled{
+  background-color: #333131;
+  color: white;
+  cursor: not-allowed;
+}
+.AW_All_Watches>section>.AW_img>.AW_img_Disabled{
+  cursor: not-allowed;
+}
 
-.BS_Best_Sellers{
+
+.BS_Best_Selgere{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 30px;
   grid-row-gap: 30px;
   text-align: center;
 }
-
-.BS_Best_Sellers>section{
+.BS_Best_Selgere>section{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
-
-.BS_Best_Sellers>section>section>img{
+.BS_Best_Selgere>section>section>img{
   display: block;
   width: 200px;
 }
 
-.SO_Special_Offers{
+
+.Tb_Tilbud{
   display: grid;
   grid-row-gap: 30px;
 }
-
-.SO_Special_Offers>section{
+.Tb_Tilbud>section{
   display: grid;
   grid-template-columns: repeat(3, 1fr)
+}
+
+
+.OO_Headline{
+  text-align: center;
+  margin-bottom: 32px;
+  color: white
+}
+.OO_TextCol{
+  column-count: 2;
+  column-rule: 1px solid black;
+  column-gap: 32px;
+  background-color: white;
+  border-radius: 20px;
+  padding-top: 10px;
+}
+.OO_TextCol>p{
+  line-height: 1.6;
+  margin-bottom: 24px;
+  text-align: left;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.LineMove{
+  margin-top: 0px;
+}
+.OO_TextCol>p::first-letter{
+  font-size: 48px;
+  color: #100011;
+  float: left;
+  line-height: 1;
+  padding-right: 8px;
 }

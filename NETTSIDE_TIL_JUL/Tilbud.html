@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="nb" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Mens Watches - Tilbud</title>
+
+    <link rel="stylesheet" href="Stilark.css">
+
+  </head>
+  <body>
+    <header>
+
+      <section class="Menu">
+        <section id="logo">
+          <img src="Pictures/Logo_MensWatches.png">
+        </section>
+        <section>
+          <ul>
+            <li><a href="index.html" class="button button_hover">Hjem</a></li>
+            <li><a href="All_Watches.html" class="button button_hover">Alle Klokker</a></li>
+            <li><a href="Best_Selgere.html" class="button button_hover">Best Selgere</a></li>
+            <li><a href="Tilbud.html" class="button button_hover" id="LineUnder">Tilbud</a></li>
+            <li>
+              <section class="dropdown">
+                <section class="dropbtn">
+                  <p class="button">Mer</p>
+                </section>
+                <section class="dropdown-content">
+                  <a href="index.html#Reviews">Anmeldelser</a>
+                  <a href="Om_Oss.html">Om oss</a>
+                  <a href="Brukerstotte.html">Brukerstøtte</a>
+                </section>
+              </section>
+            </li>
+          </ul>
+        </section>
+        <section class="Menu_Salg_bilde">
+          <img src="Pictures/40_prosent_ikon.png">
+        </section>
+        <section class="Menu_Salg_text">
+          <p>Salg:</p>
+        </section>
+        <section class="Menu_Salg_timer">
+          <p id="demo1"></p>
+          <script>
+            var countDownDate = new Date("Jan 1, 2019 15:37:25").getTime();
+            var x = setInterval(function() {
+              var now = new Date().getTime();
+              var distance = countDownDate - now;
+              var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+              var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+              var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+              var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+              document.getElementById("demo1").innerHTML = days + "d " + hours + "h "
+              + minutes + "m " + seconds + "s ";
+              if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("demo1").innerHTML = "EXPIRED";
+              }
+            }, 1000);
+          </script>
+        </section>
+      </section>
+
+      <section class="Front_Banner">
+        <img src="Pictures/Golden_Line.jpg">
+        <img src="Pictures/Banner_Tilbud.jpg">
+        <img src="Pictures/Golden_Line.jpg">
+      </section>
+
+    </header>
+    <main>
+
+      <h1 class="HeadLine">Tilbud</h1>
+
+      <section class="HM_xMas">
+        <section class="xMas_Left">
+          <img src="Pictures/Ps_xMas_leftpicture.jpg">
+        </section>
+        <section class="xMas_Mid">
+          <img src="Watches/xMas_ChronoS-BlueBrown.jpg">
+        </section>
+        <section class="xMas_Right">
+          <h2 class="xMas_info_text">Chrono S</h2>
+          <h2 class="xMas_info_text">Color: Blue & Brown</h2>
+          <h2 class="xMas_info_text">Salg: 33%</h2>
+          <h2 id=LineThrough>Før: $149</h2>
+          <h2>Nå: $99!</h2>
+          <a class="xMasBTN_buy" href="https://vincerowatches.com/products/the-chrono-s-blue-brown" target="_blank">Kjøp nå!</a>
+          <a class="xMasBTN_sm" href="All_Watches.html">Alle klokker</a>
+        </section>
+      </section>
+
+      <section class="HM_xMas">
+        <section class="xMas_Left">
+          <img src="Pictures/Ps_xMas_leftpicture.jpg">
+        </section>
+        <section class="xMas_Mid">
+          <img src="Watches/xMas_ChronoS-RoseGold.jpg">
+        </section>
+        <section class="xMas_Right">
+          <h2 class="xMas_info_text">Chrono S</h2>
+          <h2 class="xMas_info_text">Color: RoseGold</h2>
+          <h2 class="xMas_info_text">Salg: 40%</h2>
+          <h2 id=LineThrough>Før: $199</h2>
+          <h2>Nå: $119!</h2>
+          <a class="xMasBTN_buy" href="https://vincerowatches.com/products/the-s-class-gold" target="_blank">Kjøp nå!</a>
+          <a class="xMasBTN_sm" href="All_Watches.html">Alle klokker</a>
+        </section>
+      </section>
+
+      <section class="HM_xMas">
+        <section class="xMas_Left">
+          <img src="Pictures/Ps_xMas_leftpicture.jpg">
+        </section>
+        <section class="xMas_Mid">
+          <img src="Watches/xMas_ChronoS-Silver.jpg">
+        </section>
+        <section class="xMas_Right">
+          <h2 class="xMas_info_text">Chrono S</h2>
+          <h2 class="xMas_info_text">Color: Silver</h2>
+          <h2 class="xMas_info_text">Salg: 33%</h2>
+          <h2 id=LineThrough>Før: $149</h2>
+          <h2>Nå: $99!</h2>
+          <a class="xMasBTN_buy xMas_expried">Utsolgt!</a>
+          <a class="xMasBTN_sm" href="All_Watches.html">Alle klokker</a>
+        </section>
+      </section>
+
+      <!--<section class="Tb_Tilbud">
+        <section>
+          <section>
+            <h1>text</h1>
+          </section>
+          <section>
+            <h1>text</h1>
+          </section>
+          <section>
+            <h1>text</h1>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h1>text</h1>
+          </section>
+          <section>
+            <h1>text</h1>
+          </section>
+          <section>
+            <h1>text</h1>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h1>text</h1>
+          </section>
+          <section>
+            <h1>text</h1>
+          </section>
+          <section>
+            <h1>text</h1>
+          </section>
+        </section>
+      </section>-->
+
+    </main>
+    <footer>
+
+      <img class="Footer_Top" src="Pictures/Golden_Line.jpg">
+
+      <section class="Footer_ML">
+        <section class="Footer_ML_left">
+          <h2>Registrer deg på vår mailingliste</h2>
+          <p>for nye utgivelser, eksklusive produkter og andre tilbud!</p>
+        </section>
+        <section class="Footer_ML_right">
+          <form action="Mailing_List.html">
+            <input type="text" name="Email" placeholder="Email adresse">
+            <button class="email_submit" type="submit">Registrer</button>
+          </form>
+        </section>
+      </section>
+
+      <section class="Footer_FL">
+        <section class="final_line_left">
+          <a href="Om_Oss.html">Om oss</a>
+        </section>
+        <section Class="final_line_mid">
+          <p> | </p>
+        </section>
+        <section class="final_line_right">
+          <p>© 2018-2020 Mens Watches</p>
+        </section>
+      </section>
+
+    </footer>
+  </body>
+</html>

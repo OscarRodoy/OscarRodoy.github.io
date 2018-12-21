@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="nb" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Mens Watches - Om oss</title>
+    <link rel="stylesheet" href="Stilark.css">
+  </head>
+  <body>
+    <header>
+
+      <section class="Menu">
+        <section id="logo">
+          <img src="Pictures/Logo_MensWatches.png">
+        </section>
+        <section>
+          <ul>
+            <li><a href="index.html" class="button button_hover">Hjem</a></li>
+            <li><a href="All_Watches.html" class="button button_hover">Alle Klokker</a></li>
+            <li><a href="Best_Selgere.html" class="button button_hover">Best Selgere</a></li>
+            <li><a href="Tilbud.html" class="button button_hover">Tilbud</a></li>
+            <li>
+              <section class="dropdown">
+                <section class="dropbtn">
+                  <p class="button" id="LineUnder">Mer</p>
+                </section>
+                <section class="dropdown-content">
+                  <a href="index.html#Reviews">Anmeldelser</a>
+                  <a href="Om_Oss.html" id="LineUnder">Om oss</a>
+                  <a href="Brukerstotte.html">Brukerstøtte</a>
+                </section>
+              </section>
+            </li>
+          </ul>
+        </section>
+        <section class="Menu_Salg_bilde">
+          <img src="Pictures/40_prosent_ikon.png">
+        </section>
+        <section class="Menu_Salg_text">
+          <p>Salg:</p>
+        </section>
+        <section class="Menu_Salg_timer">
+          <p id="demo1"></p>
+          <script>
+            var countDownDate = new Date("Jan 1, 2019 15:37:25").getTime();
+            var x = setInterval(function() {
+              var now = new Date().getTime();
+              var distance = countDownDate - now;
+              var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+              var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+              var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+              var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+              document.getElementById("demo1").innerHTML = days + "d " + hours + "h "
+              + minutes + "m " + seconds + "s ";
+              if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("demo1").innerHTML = "EXPIRED";
+              }
+            }, 1000);
+          </script>
+        </section>
+      </section>
+
+      <img src="Pictures/Golden_Line.jpg">
+
+    </header>
+    <main>
+
+      <h1 class="OO_Headline">Om Oss</h1>
+
+      <article class="OO_TextCol">
+        <p class="LineMove">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Eorem ipsum dolor sit amet, consectetur adipisicn voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Porem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Aorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duiate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Borem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proide.</p>
+      </article>
+
+    </main>
+    <footer>
+
+      <img class="Footer_Top" src="Pictures/Golden_Line.jpg">
+
+      <section class="Footer_ML">
+        <section class="Footer_ML_left">
+          <h2>Registrer deg på vår mailingliste</h2>
+          <p>for nye utgivelser, eksklusive produkter og andre tilbud!</p>
+        </section>
+        <section class="Footer_ML_right">
+          <form action="Mailing_List.html">
+            <input type="text" name="Email" placeholder="Email adresse">
+            <button class="email_submit" type="submit">Registrer</button>
+          </form>
+        </section>
+      </section>
+
+      <section class="Footer_FL">
+        <section class="final_line_left">
+          <a href="Om_Oss.html">Om oss</a>
+        </section>
+        <section Class="final_line_mid">
+          <p> | </p>
+        </section>
+        <section class="final_line_right">
+          <p>© 2018-2020 Mens Watches</p>
+        </section>
+      </section>
+
+    </footer>
+  </body>
+</html>
