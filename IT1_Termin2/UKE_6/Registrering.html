@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="nb" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Registrering</title>
+
+    <link rel="stylesheet" href="Registrering.css">
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDzLGTCz8Rp1vy29W93gpBbyJ5k2CKFBzM",
+        authDomain: "registrering-9b884.firebaseapp.com",
+        databaseURL: "https://registrering-9b884.firebaseio.com",
+        projectId: "registrering-9b884",
+        storageBucket: "",
+        messagingSenderId: "359774971840"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+  </head>
+  <body>
+
+    <section>
+      <form id="skjema">
+        <input id="inpNavn" type="text" required placeholder="navn">
+        <input id="inpTelefon" type="text" required placeholder="telefon">
+        <input id="inpEpost" type="text" required placeholder="epost">
+        <button type="submit">Registrer</button>
+      </form>
+    </section>
+    <section id="secKontakter"></section>
+
+    <script src="./Registrering.js"></script> 
+
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="nb" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+
+    <style media="screen">
+      main{
+        display:grid;
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+    <header>
+      <button type="button" name="button" onclick="vis20SterkestePokemon()">Vis 20 Sterkeste</button>
+      <button type="button" name="button" onlick="visGress()">Vis gress</button>
+    </header>
+
+    <main>
+
+    </main>
+
+    <script type="text/javascript">
+      //referanser til HTML-elementer
+      const main = document.querySelector("main");
+
+      //Referanse til databasen
+      const db = firebase.database();
+      const pokemon = db.ref("pokemon");
+
+      function genererHTML(snapshot){
+        //får fra lærer
+      }
+
+      function visAllePokemon(){
+        main.innerHTML = ``;
+        pokemon.on("child_added",genererHTML);
+      }
+
+      function vis20SterkestePokemon(){
+        main.innerHTML = ``;
+        pokemon
+          .orderByChild("Max CP")
+          .limitToLast(20)
+          .on("child_added",genererHTML);
+      }
+
+      function visGress(){
+        main.innerHTML = ``;
+        pokemon.orderByChild("Type 1").equalTo("Grass").on("child_added",genererHTML);
+        pokemon.orderByChild("Type 2").equalTo("Grass").on("child_added",genererHTML);
+      }
+
+      //når nettsiden lastes kjøres dette
+      visAllePokemon()
+    </script>
+
+  </body>
+</html>

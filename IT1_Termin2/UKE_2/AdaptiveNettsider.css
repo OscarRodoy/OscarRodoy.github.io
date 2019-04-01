@@ -1,0 +1,75 @@
+body{
+  background-color: yellow;
+  background-image: url("Bilder/Jupiter.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.grid{
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: 1fr 1fr 1fr 1fr; /*bruk fr og prosent for at det altid justerer seg*/
+}
+
+@media(max-width:1000px){ /*Endringene inni skjerm når bredden er under 1000px, bruk min-width for å endre seg når den går over*/
+  .grid{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  body{
+    background-color: green;
+    background-image: url(Bilder/Neptune.jpg);
+  }
+}
+
+@media(max-width:800px){
+  .grid{
+    grid-template-columns: 1fr 1fr;
+  }
+  body{
+    background-color: red;
+    background-image: url(Bilder/Jorda.jpg);
+  }
+}
+
+@media(max-width:600px){
+  .grid{
+    grid-template-columns: 1fr;
+  }
+  body{
+    background-color: blue;
+    background-image: url(Bilder/Mars.jpeg);
+  }
+}
+
+/* Navigasjonsbar */
+nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around; /*space-between*/
+}
+
+@media(max-width:500px){
+  nav{
+    flex-direction: column;
+    align-items: center;
+  }
+}
+/* Navigasjonsbar slutt */
+
+.burger{
+  display: flex;
+  width: 16px;
+  height: 16px;
+  flex-direction: column;
+  column-gap: 2px;
+}
+
+.strek{
+  background-color: black;
+  width: 10px;
+  height: 3px;
+}
+
+
+.

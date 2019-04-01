@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDY-gZb1RXA1_4hRpldWi0GxB6ar9jxVP4",
+        authDomain: "min-andre-database.firebaseapp.com",
+        databaseURL: "https://min-andre-database.firebaseio.com",
+        projectId: "min-andre-database",
+        storageBucket: "",
+        messagingSenderId: "744231209004"
+      };
+      firebase.initializeApp(config);
+    </script>
+  </head>
+  <body>
+    <script type="text/javascript">
+    
+      const db = firebase.database();
+      const bloggere = db.ref("bloggere");
+
+      //pusher et objekt til databasen
+      bloggere.push({
+        "navn":"Sophie Elise",
+        "følgere":59000,
+        "alder":23
+      });
+      //pusher 2 stings til databasen
+      bloggere.push("Pappahjerte");
+      bloggere.push("Annijor");
+      //pusher et objekt med egen primærnøkkel til databasen
+      const billGates = bloggere.child("Primærnøkkel")
+      billGates.set({
+        "navn": "Bill Gates",
+        "epost": "bill@microsoft.com"
+      });
+      //når man bruker samme primærnøkkel lagrer den siste over den andre
+      const steveJobs = bloggere.child("Primærnøkkel")
+      billGates.set({
+        "navn": "Steve Jobs",
+        "epost": "Steve@apple.com"
+      });
+      //for å endre data
+      steveJobs.update({
+        "navn": "Jeff Bezos",
+        "epost": "Jeff@Amazon.com"
+      });
+      // bloggere.remove(); (for å fjerne alt i bloggere)
+
+    </script>
+  </body>
+</html>

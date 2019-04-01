@@ -1,0 +1,254 @@
+body{
+  margin: 0px;
+  font-family: Arial;
+}
+
+/* header start */
+header{
+  height: 620px;
+}
+
+/* Nav bar start */
+.NavBar{
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+}
+.NavBar>.NavBarKnapper{
+  text-align: center;
+}
+.NavBar>.NavBarKnapper>ul{
+  margin-bottom: 0px;
+  padding: 0px;
+}
+.NavBar>.NavBarKnapper>ul li{
+  display: inline;
+  margin-left: 30px;
+  margin-right: 30px;
+  text-align: center;
+  font-size: 23px;
+}
+.NavBar>.NavBarKnapper>ul li a{
+  color: white;
+  text-decoration: none;
+}
+.NavBar>.NavBarKnapper>hr{
+  height: 1px;
+  border: 0;
+  background: black;
+  background: -webkit-gradient(linear, 0 0, 100% 0, from(black), to(black), color-stop(50%, white));
+}
+/* nav bar slutt */
+
+/* Forside bilde start*/
+.Hjem_ForsideBilde{
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  animation: animate 16s ease-in-out infinite;
+  background-size: cover;
+  filter: brightness(40%);
+}
+@keyframes animate{
+  0%, 100%{
+    background-image: url(Bilder/Home_Image_1.jpg);
+  }
+  25%{
+    background-image: url(Bilder/Home_Image_1.jpg);
+  }
+  50%{
+    background-image: url(Bilder/Home_Image_1.jpg);
+  }
+  75%{
+    background-image: url(Bilder/Home_Image_1.jpg);
+  }
+}
+.Hjem_Forside{
+  position: absolute;
+  left: 50%;
+  top: 43%;
+  width: 700px;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+/* forside bilde tekst/knapper start*/
+.Hjem_Forside .Hjem_ForsideOverskrift h1{
+  font-size: 3em;
+  color: white;
+  margin-bottom: 30px;
+}
+.Hjem_Forside .Hjem_ForsideKnapper .LoggInn_Knapp{
+  color: white;
+  text-decoration: none;
+  border: 2px solid white;
+  padding: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+  font-size: 20px;
+  margin-right: 5px;
+}
+.Hjem_Forside .Hjem_ForsideKnapper .LagBruker_Knapp{
+  color: black;
+  background-color: orange;
+  text-decoration: none;
+  border: 2px solid white;
+  padding: 10px;
+  padding-left: 45px;
+  padding-right: 45px;
+  font-size: 20px;
+  margin-left: 5px;
+}
+.Hjem_Forside .Hjem_ForsideKnapper .LoggInn_Knapp:hover{
+  color: black;
+  background-color: white;
+}
+.Hjem_Forside .Hjem_ForsideKnapper .LagBruker_Knapp:hover{
+  color: black;
+  background-color: white;
+}
+/* forside bilde tekst/knapper slutt */
+/* forside bilde slutt */
+/* header slutt */
+
+/* Main til hjem start*/
+main{
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+/* Under Overskrifter start */
+.Hjem_UnderOverskrift{
+  text-align: center;
+  font-size: 25px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+}
+/* Under Overskrifter slutt */
+
+/* Informasjon grid start*/
+.Hjem_GridInformasjon{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
+.Hjem_GridInformasjon section{
+  border: 1px solid black;
+  text-align: center;
+  position: relative;
+}
+.Hjem_GridInformasjon section a{
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  text-decoration: none;
+  color: black;
+  border: 2px solid black;
+  margin-left: 100px;
+  margin-right: 100px;
+  padding: 10px;
+}
+.Hjem_GridInformasjon .sec_LærOmOss p{
+  margin-bottom: 60px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+/*Informasjon grid slutt */
+
+/* Produkter grid start */
+.Hjem_GridProdukter{
+  display: grid;
+  grid-template-columns: repeat(4, 254px); /* feil lengde (bruk position?)*/
+  grid-gap: 10px;
+}
+.Hjem_GridProdukter section{
+  border: 2px solid black;
+  position: relative;
+  text-align: center;
+}
+.Hjem_GridProdukter section img{
+  display: block;
+  width: 100%;
+  filter: brightness(80%);
+}
+.Hjem_GridProdukter section h3{
+  position: absolute;
+  top: 0; /* plaser tekst i midten */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0px;
+  color: white;
+  z-index: 3;
+  font-size: 25px;
+}
+.Hjem_GridProdukter section a{
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  margin-left: 40px;
+  margin-right: 40px;
+  padding: 10px;
+  display: none;
+  text-decoration: none;
+  color: black;
+  border: 2px solid black;
+  background-color: orange;
+
+}
+.Hjem_GridProdukter section:hover img{
+  filter: brightness(100%);
+}
+.Hjem_GridProdukter section:hover h3{
+  font-size: 35px;
+}
+.Hjem_GridProdukter section:hover a{ /* legg til animasjon */
+  display: block;
+}
+.Hjem_GridProdukter section a:hover{ /* fungerer ikke */
+  background-color: white;
+}
+/* Produkter grid slutt */
+
+/*Bestselgere grid start */
+.Hjem_GridBestselgere{
+  display: grid;
+  grid-template-columns: 30% 70%
+}
+.Hjem_GridBestselgere .Bilde{
+  border: 2px solid black;
+  border-right: 0px;
+}
+.Hjem_GridBestselgere .Container{
+  border: 2px solid black;
+  text-align: center;
+}
+/* Bestselgere grid slutt */
+/* Main til hjem slutt*/
+
+/* Footer start */
+/* Fordeler start */
+.Fordeler{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: lightgrey;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  margin-top: 30px;
+}
+.Fordeler section{
+  text-align: center;
+  align-items: center;
+}
+/* Fordeler slutt */
+.Trademark{
+  text-align: center;
+}
+/* Footer slutt */
+
+/* Header til Produkter start */
+  .
+/* Header til Produkter slutt */

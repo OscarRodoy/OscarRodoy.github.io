@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDeJqPo4HiR255zv3B9NvJMVTvp4QRbrRI",
+        authDomain: "uke-7-oppgave.firebaseapp.com",
+        databaseURL: "https://uke-7-oppgave.firebaseio.com",
+        projectId: "uke-7-oppgave",
+        storageBucket: "",
+        messagingSenderId: "76456756449"
+      };
+      firebase.initializeApp(config);
+    </script>
+  </head>
+  <body>
+    <section id=secVarer>
+
+    </section>
+
+    <button type="button" name="button" onclick=""></button>
+
+    <script type="text/javascript">
+      const db = firebase.database();
+      const jakker = db.ref("varer/jakker");
+      const sko = db.ref("varer/sko");
+
+      const secVarer = document.querySelector("#secVarer");
+
+      function visVare(snapshot){
+        console.log(snapshot.val());
+        let vare = snapshop.val();
+        secVarer.innerHTML += `
+                    <article class="vare">
+                        <h1>${vare.merke} - ${vare.modell}</h1>
+                        <p>Pris: ${vare.pris}</p>
+                    </article>
+                `
+      }
+
+      jakker.on("child_added",visVare);
+
+      // Spørring som sorterer sko etter pris, laveste først
+       sko
+           .orderByChild("pris")
+           .on("child_added",visVare);
+
+       // Spørring som sorterer sko etter pris laveste først, og gir de tre billigste skoene
+       sko
+           .orderByChild("pris")
+           .limitToFirst(3)
+           .on("child_added",visVare);
+
+       // Spørring som gir alle sko med pris mellom 1800 og 2200, sortert etter pris.
+       sko
+           .orderByChild("pris")
+           .startAt(1800)
+           .endAt(2200)
+           .on("child_added",visVare);
+
+           function sorterPris(){
+             sko
+              .orderByChild("pris")
+              .limitToFirst(2)
+              .on("child_added",visVare);
+           }
+    </script>
+
+  </body>
+</html>

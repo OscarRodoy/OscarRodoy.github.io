@@ -1,0 +1,49 @@
+{
+  "1":{
+    "svar":"den tingen på toppen"
+  },
+  "2":{
+    "a":{
+      "svar":"navn og klasse / brukernavn på itslearning"
+    },
+    "b":{
+      "svar":"registreringsnummer"
+    },
+    "c":{
+      "svar":""
+    },
+    "d":{
+      "svar":"mobilnummer"
+    },
+    "e":{
+      "svar":"stjerne navn"
+    }
+  },
+  "3":{
+    "svar":"alternativer til det du skal bruke som primærnøkkel"
+  },
+  "4":{
+    "svar":"en teknik man bruker for å ikke dobbelt lagre / man bruker primærnøkkelen til noe til å linke andre elementer fra andre data baser til noe"
+  },
+  "5":{
+    "svar":"at man ikke dobbelt lagrer"
+  },
+  "6":{
+    "spillere":{
+      "xX_Magnus69_xX":{
+        "highscore":"-100",
+        "TimerSpilt":"90.000",
+        "rank":"Bronze"
+      }
+    },
+    "meldinger":{
+      "001":{
+        "tekst":"i fk ur mom noob",
+        "brukerID":"xX_Magnus69_xX"
+      }
+    }
+  },
+  "7":{
+    "svar":""
+  }
+}

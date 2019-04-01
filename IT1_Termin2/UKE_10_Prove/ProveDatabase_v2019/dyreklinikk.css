@@ -1,0 +1,33 @@
+body{
+  background-color: skyblue;
+  margin: 20px;
+}
+main{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
+main article{
+  border: 5px solid pink;
+  border-radius: 15px;
+  text-align: center;
+  background-color: white;
+}
+main article img{
+  border-radius: 15px;
+}
+header{
+  text-align: center;
+}
+header nav button{
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+header nav button:hover{
+  color: blue;
+}
+header nav .VisAlle{
+  background-color: pink;
+}

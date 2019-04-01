@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCFhmDveqpzRvevF6EyrLOh0NbACDQ3C_4",
+        authDomain: "pokemon-uke-8.firebaseapp.com",
+        databaseURL: "https://pokemon-uke-8.firebaseio.com",
+        projectId: "pokemon-uke-8",
+        storageBucket: "",
+        messagingSenderId: "974522538356"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+  </head>
+  <body>
+    <main>
+
+    </main>
+
+    <script type="text/javascript">
+      // referanser til html
+      const main = document.querySelector("main");
+
+      // kode som henter key fra forrige side
+      let url_string = window.location.href;
+      let url = new URL(url_string);
+      let id = url.searchParams.get("id");
+
+      //console.log(id);
+
+      // referanser til databasen
+      const db = firebase.database();
+      const pokemon = db.ref("pokemon");
+      const valgtPokemon = db.ref("pokemon/" + id);
+
+      valgtPokemon.on("value", visPokemon);
+
+      function visPokemon(snap){
+        console.log(snap.val());
+        let key = snap.key;
+        let objekt = snap.val();
+        main.innerHTML = `
+          <article>
+            <h1>${objekt.Name}</h1>
+            <p>${objekt.Type1}</p>
+            <p>${objekt.Type2}</p>
+            <p>${objekt.MaxCP}</p>
+            <p>${objekt.MaxHP}</p>
+            <img src=${objekt.ImageURL}>
+          </article>
+        `
+      }
+    </script>
+  </body>
+</html>
