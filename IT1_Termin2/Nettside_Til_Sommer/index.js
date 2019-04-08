@@ -20,7 +20,7 @@ function genererHTML(snapshot){
     main.innerHTML +=`
           <section class="secProdukter">
             <img src="${produktSnap.bildeURL}">
-            <a href="Underside.html?id=${key}">Les mer</a>
+            <a href="Underside.html?id=${key}">Se detaljer</a>
             <p>${produktSnap.Pris}</p>
           </section>
     `;

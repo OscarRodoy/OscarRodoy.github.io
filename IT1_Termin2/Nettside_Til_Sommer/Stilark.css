@@ -9,7 +9,7 @@ main{
   margin-right: 100px;
 }
   /* Nav bar Start */
-.NavBar{ /* legg til position fixed*/
+.NavBar{
   position: fixed;
   top: 0px;
   left: 0px;
@@ -265,11 +265,12 @@ main{
   transform: translateX(-50%);
   padding: 10px;
   width: 120px;
-  display: none;
   text-decoration: none;
   color: black;
   border: 2px solid black;
   background-color: orange;
+  opacity: 0;
+  transition: opacity 0.1s ease-in;
 }
 .Hjem_GridProdukter section:hover img{
   filter: brightness(100%);
@@ -278,7 +279,7 @@ main{
   font-size: 30px;
 }
 .Hjem_GridProdukter section:hover a{ /* legg til animasjon */
-  display: block;
+  opacity: 1;
 }
 .Hjem_GridProdukter section:hover a:hover{ /* fungerer ikke */
   background-color: white;
@@ -353,8 +354,11 @@ main{
   position: relative;
 }
 .mainProdukter .secProdukter img{
+  display: block;
   width: 100%;
   margin: 0px;
+  filter: brightness(95%);
+  transition: filter 0.1s ease-in;
 }
 .mainProdukter .secProdukter p{
   position: absolute;
@@ -367,19 +371,23 @@ main{
   position: absolute;
   bottom: 50px;
   right: 10px;
-  display: none;
   text-decoration: none;
   color: black;
   border: 2px solid black;
   padding: 10px;
   width: 80px;
   text-align: center;
+  opacity: 0;
+  transition: opacity 0.1s ease-in;
+}
+.mainProdukter .secProdukter img:hover{
+  filter: brightness(100%);
 }
 .mainProdukter .secProdukter img:hover ~ a{
-  display: inline-block;
+  opacity: 1;
 }
 .mainProdukter .secProdukter a:hover{
-  display: inline-block;
+  opacity: 1;
   background-color: black;
   color: white;
 }
@@ -456,3 +464,12 @@ main{
 }
   /* Anmeldelser Slutt */
 /* CSS til OmOss Main Slutt */
+
+
+
+/* Liste:
+  - Underoverskrifter fungerer kun 2 ganger, ikke den siste?
+  - Slider på forsidebilde er dårlig. Bruk js?
+  Mindreviktig:
+  - isteden for hvit bakgrunn på navbar, blur det som kommer bak?
+*/
