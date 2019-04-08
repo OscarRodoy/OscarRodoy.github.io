@@ -1,0 +1,117 @@
+main{
+  margin-left: 200px;
+  margin-right: 200px;
+}
+.class{
+  padding: 20px;
+  border: 4px solid black;
+  text-align: center;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+.grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+  font-family: Arial;
+}
+.grid .card{
+  border: 4px solid black;
+  border-radius: 15px;
+}
+.grid .legendary{
+  background-image: linear-gradient(90deg, yellow, white);
+}
+.grid .epic{
+  background-image: linear-gradient(90deg, purple, white);
+}
+.grid .rare{
+  background-image: linear-gradient(90deg, blue, white);
+}
+.grid .card .topline{
+  display: grid;
+  grid-template-columns: 75% 25%;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
+  margin: 4px;
+}
+.grid .card .topline section p{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.grid .card .topline .name{
+  font-size: 20px;
+  margin-left: 10px;
+}
+.grid .card .topline .cost{
+  font-size: 20px;
+  text-align: center;
+  border-left: 1px solid black;
+  border-radius: 5px;
+}
+.grid .card .image{
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
+  background-image: url(questionmark.png);
+  background-size: cover;
+  width: 1fr;
+  height: 150px;
+  background-color: white;
+}
+.grid .card .descbox{
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 4px;
+  height: 100px;
+  text-align: center;
+  position: relative;
+}
+.grid .legendary .descbox{
+  background-image: linear-gradient(90deg, white, yellow);
+}
+.grid .epic .descbox{
+  background-image: linear-gradient(90deg, white, purple);
+}
+.grid .rare .descbox{
+  background-image: linear-gradient(90deg, white, blue);
+}
+.grid .card .descbox .desctext{
+  margin-left: 5px;
+  margin-right: 5px;
+  /*display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50% -50%);*/
+}
+.grid .card .botline{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 4px;
+  margin-top: 0px;
+  text-align: center;
+}
+.grid .card .botline .attack{
+  background-color: red;
+  border: 1px solid black;
+  border-right: 0px;
+  border-radius: 5px 0px 0px 5px;
+}
+.grid .card .botline .health{
+  background-color: lime;
+  border: 1px solid black;
+  border-left: 0px;
+  border-radius: 0px 5px 5px 0px;
+}
+.grid .card .botlinespells,.botlineobject{
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-bottom: 4px;
+}

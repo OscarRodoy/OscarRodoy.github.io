@@ -10,6 +10,11 @@ main{
 }
   /* Nav bar Start */
 .NavBar{ /* legg til position fixed*/
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 100;
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
   background-image: linear-gradient(90deg, #FFFDF5, white);
@@ -72,15 +77,42 @@ main{
   /* Footer Start */
 .Fordeler{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  background-color: lightgrey;
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+  grid-template-columns: 1fr 2fr 2fr 2fr 1fr;
+  background-color: #242729;
+  color: white;
   margin-top: 30px;
+  height: 200px;
 }
-.Fordeler section{
+.Fordeler div{
+  position: relative;
   text-align: center;
-  align-items: center;
+}
+.Fordeler div h4{
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  width: 300px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+}
+.Fordeler div img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 4px solid orange;
+  border-radius: 50%;
+  width: 100px;
+  transition: 0.5s;
+  background-color: white;
+}
+.Fordeler div img:hover{
+  transform: translate(-50%, -30%);
+}
+.Fordeler div img:hover ~ h4{
+  opacity: 1;
 }
 .Trademark{
   text-align: center;
@@ -97,7 +129,7 @@ main{
   top: 0;
   width: 100%;
   height: 100vh;
-  animation: animate 16s ease-in-out infinite;
+  animation: animate 16s  infinite;
   background-size: cover;
   filter: brightness(40%);
 }
@@ -109,7 +141,7 @@ main{
     background-image: url(Bilder/Home_Image_2b.jpg);
   }
   50%{
-    background-image: url(Bilder/Home_Image_1.jpg);
+    background-image: url(Bilder/Home_Image_1234.jpg);
   }
   75%{
     background-image: url(Bilder/Home_Image_1.jpg);
@@ -173,6 +205,7 @@ main{
   border: 1px solid black;
   text-align: center;
   position: relative;
+  background-image: linear-gradient(90deg, white, #FFFDF5);
 }
 .Hjem_GridInformasjon section a{
   position: absolute;
@@ -186,10 +219,16 @@ main{
   width: 100px;
   background-color: orange;
 }
+.Hjem_GridInformasjon .sec_LoggInn{
+  border-radius: 25px 0px 0px 0px;
+}
 .Hjem_GridInformasjon .sec_LærOmOss p{
   margin-bottom: 60px;
   margin-left: 20px;
   margin-right: 20px;
+}
+.Hjem_GridInformasjon .sec_SeAnmeldelser{
+  border-radius: 0px 25px 0px 0px;
 }
   /* Informasjon_Grid Slutt */
   /* Produkter_Grid Start */
@@ -264,29 +303,25 @@ main{
 /* CSS Til Produkter Header Start */
   /* Forsidebilde Produkter Start */
 .Produkter_ForsideBilde{
-  position: absolute;
   width: 100%;
-  background-image: linear-gradient(90deg, #1f292b, #1c2729);
 }
 .Produkter_ForsideBilde img{
   display: block;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 0;
-  height: 300px;
+  width: 100%;
 }
   /* Forsidebilde Produkter Slutt */
   /* Sorter Etter bar Start */
 .Produkter_SorteretterBar{
-  margin-top: 300px;
-  background-color: lightgrey;
+  background-color: #242729;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .Produkter_SorteretterBar .Content{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   margin-left: 200px;
   margin-right: 200px;
+  color: white;
 }
 .Produkter_SorteretterBar .Content div{
   position: relative;
@@ -299,14 +334,58 @@ main{
   transform: translate(-50%,-50%);
 }
 .Produkter_SorteretterBar .Content div form select{
-  width: 150px;
+  width: 200px;
   padding: 15px;
   font-size: 15px;
 }
   /* Sorter Etter bar Slutt*/
 /* CSS Til Produkter Header Slutt */
 /* CSS Til Produkter Main Start */
+.mainProdukter{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 5px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.mainProdukter .secProdukter{
+  background-color: #f7f7f7;
+  position: relative;
+}
+.mainProdukter .secProdukter img{
+  width: 100%;
+  margin: 0px;
+}
+.mainProdukter .secProdukter p{
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  transform: rotateZ(20deg);
+  font-size: 20px;
+}
+.mainProdukter .secProdukter a{
+  position: absolute;
+  bottom: 50px;
+  right: 10px;
+  display: none;
+  text-decoration: none;
+  color: black;
+  border: 2px solid black;
+  padding: 10px;
+  width: 80px;
+  text-align: center;
+}
+.mainProdukter .secProdukter img:hover ~ a{
+  display: inline-block;
+}
+.mainProdukter .secProdukter a:hover{
+  display: inline-block;
+  background-color: black;
+  color: white;
+}
+.mainProdukter .row-span2{
 
+}
 /* CSS Til Produkter Main Slutt */
 
 /* CSS Til OmOss Header Start */

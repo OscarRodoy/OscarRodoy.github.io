@@ -43,13 +43,15 @@
         function visPokemon(snapshot){
               //Javascript-funksjon som skriver varene ut på nettsiden i main-elementet
             let pokeSnap = snapshot.val();
+            let parent = snapshot.ref.parent.key;
             let key = snapshot.key;
+            let ref = parent +"/" + key
             main.innerHTML +=`
                 <article class="Pokemon">
                   <h1>${pokeSnap.Name}</h1>
                   <img src="${pokeSnap.ImageURL}" alt="">
                   <p>${pokeSnap.Type1} - ${pokeSnap.Type2}</p>
-                  <a href="Underside.html?id=${key}">Les mer</a>
+                  <a href="Underside.html?id=${ref}">Les mer</a>
                 </article>
             `;
         }

@@ -5,6 +5,20 @@
     <title>Produkter</title>
     <link rel="stylesheet" href="Stilark.css">
 
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAbmYwZ56zNJGP0Dtbe6sfrzcuDKz70N84",
+        authDomain: "prosjektsommerit1.firebaseapp.com",
+        databaseURL: "https://prosjektsommerit1.firebaseio.com",
+        projectId: "prosjektsommerit1",
+        storageBucket: "prosjektsommerit1.appspot.com",
+        messagingSenderId: "563869496657"
+      };
+      firebase.initializeApp(config);
+    </script>
+
   </head>
   <body>
 
@@ -27,7 +41,7 @@
       </section>
 
       <section class="Produkter_ForsideBilde">
-        <img src="Bilder/Watches_Image_alt2_v2.jpg">
+        <img src="Bilder/Produkter_Banner.jpg">
       </section>
 
       <section class="Produkter_SorteretterBar">
@@ -35,21 +49,21 @@
           <div><h2>Sorter etter:</h2></div>
           <div>
             <form>
-              <select name="Produkter">
+              <select id="selectProdukt" onchange="sortering(this)" name="Produkter">
                 <option value="">Alle Produkter</option>
-                <option value="">Alle Klokker</option>
-                <option value="">Alle Belter</option>
-                <option value="">Alle Hatter</option>
+                <option value="">Alle Versace Klokker</option>
+                <option value="">Alle x</option>
+                <option value="">Alle y</option>
               <select>
             </form>
           </div>
           <div>
             <form>
-              <select name="Rekkefølge">
-                <option value="">A til Å</option>
-                <option value="">Lavest til Høyest</option>
-                <option value="">Høyest til Lavest</option>
-                <option value="">Rabatt</option>
+              <select id="selectRekkefolge" onchange="sortering(this)" name="Rekkefølge">
+                <option value="lavHoy">Lavest til Høyest</option>
+                <option value="hoyLav">Høyest til Lavest</option>
+                <option value="aTilAA">A til Å</option>
+                <option value="tilbud">Tilbud</option>
               <select>
             </form>
           </div>
@@ -57,24 +71,27 @@
       </section>
 
     </header>
-    <main>
 
-    </main>
+    <main class="mainProdukter"></main>
+    <script src="index.js"></script>
+
     <footer>
 
       <section class="Fordeler">
-        <section>
+        <div></div>
+        <div>
+          <img src="Bilder/Free_Shipping_Icon.png">
           <h4>Gratis Frakt</h4>
-          <img src="">
-        </section>
-        <section>
+        </div>
+        <div>
+          <img src="Bilder/Free_Shipping_Icon.png">
           <h4>14 Dager Retur</h4>
-          <img src="">
-        </section>
-        <section>
+        </div>
+        <div>
+          <img src="Bilder/Free_Shipping_Icon.png">
           <h4>Eksklusive Produkter</h4>
-          <img src="">
-        </section>
+        </div>
+        <div></div>
       </section>
 
       <p class="Trademark">trademark</p>

@@ -5,6 +5,20 @@
     <title>Hjem</title>
     <link rel="stylesheet" href="Stilark.css">
 
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAbmYwZ56zNJGP0Dtbe6sfrzcuDKz70N84",
+        authDomain: "prosjektsommerit1.firebaseapp.com",
+        databaseURL: "https://prosjektsommerit1.firebaseio.com",
+        projectId: "prosjektsommerit1",
+        storageBucket: "prosjektsommerit1.appspot.com",
+        messagingSenderId: "563869496657"
+      };
+      firebase.initializeApp(config);
+    </script>
+
   </head>
   <body>
 
@@ -81,22 +95,22 @@
 
       <section class="Hjem_GridProdukter">
         <section>
-          <h3>Alle Produkter</h3>
+          <h3>Alle Klokker</h3>
           <img src="Bilder/Produkter_seKlokker.jpg">
           <a href="Produkter.html">se alle produkter</a>
         </section>
         <section>
-          <h3>Klokker</h3>
+          <h3>Versace</h3>
           <img src="Bilder/Produkter_seKlokker.jpg">
           <a href="#">se alle klokker</a>
         </section>
         <section>
-          <h3>Belter</h3>
+          <h3>Rolex</h3>
           <img src="Bilder/Produkter_seKlokker.jpg">
           <a href="#">se alle Belter</a>
         </section>
         <section>
-          <h3>Hatter</h3>
+          <h3>Gucci</h3>
           <img src="Bilder/Produkter_seKlokker.jpg">
           <a href="#">se alle Hatter</a>
         </section>
@@ -130,18 +144,20 @@
     <footer>
 
       <section class="Fordeler">
-        <section>
+        <div></div>
+        <div>
+          <img src="Bilder/Free_Shipping_Icon.png">
           <h4>Gratis Frakt</h4>
-          <img src="">
-        </section>
-        <section>
+        </div>
+        <div>
+          <img src="Bilder/Free_Shipping_Icon.png">
           <h4>14 Dager Retur</h4>
-          <img src="">
-        </section>
-        <section>
+        </div>
+        <div>
+          <img src="Bilder/Free_Shipping_Icon.png">
           <h4>Eksklusive Produkter</h4>
-          <img src="">
-        </section>
+        </div>
+        <div></div>
       </section>
 
       <p class="Trademark">trademark</p>
