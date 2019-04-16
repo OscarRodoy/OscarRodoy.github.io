@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Hjem</title>
-    <link rel="stylesheet" href="Stilark.css">
+    <link id="themeStylesheet" rel="stylesheet" href="Stilark.css">
 
     <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
     <script>
@@ -32,17 +32,36 @@
             <li><a href="Hjem.html">Hjem</a></li>
             <li><a href="Produkter.html">Produkter</a></li>
             <li><a href="OmOss.html">Om Oss</a></li>
-            <li>Mer</li>
+            <li><a href"#">Mer</a></li>
           </ul>
+        </section>
+        <section class="NavBarThemeSelect">
+          <p>Stil:</p>
+          <form action="./" method="post">
+            <select name="themeSelect" id="themeSelect">
+              <option value="Stilark">Default</option>
+              <option value="StilarkMork" class="mork">Mørk</option>
+            </select>
+          </form>
         </section>
         <section class="NavBarLogin">
 
         </section>
       </section>
 
+      <script>
+        const themeSelect = document.getElementById("themeSelect");
+        const themeStylesheet = document.getElementById("themeStylesheet");
+
+        themeSelect.addEventListener("change", function(){
+          themeStylesheet.setAttribute("href", this.value + ".css");
+        });
+      </script>
+
       <section class="Hjem_Forside">
         <section class="Hjem_ForsideOverskrift">
-          <h1>TEXT TEXT TEXT TEXT</h1>
+          <h1>mens watches</h1>
+          <h3>Luksuriøse klokker for rekord lav pris</h3>
         </section>
         <section class="Hjem_ForsideKnapper">
           <a class="LoggInn_Knapp" href="#">Logg inn</a>
@@ -55,27 +74,34 @@
     </header>
     <main>
 
-      <section class="UnderOverskrift" id="Første_UnderOverskrift">
-        <section class="Left_Sec"><div></div></section>
-        <section>
-          <h1>Informasjon</h1>
+      <section id="scrollDownEffektBOX">
+
+        <a href="#"><img src="Bilder/Logginn_Icon.jpg" id="Logginn_Icon"></a>
+        <a href="OmOss.html"><img src="Bilder/Info_Icon.png" id="Info_Icon"></a>
+        <a href="#"><img src="Bilder/Anmeldelser_Icon.png" id="Anmeldelser_Icon"></a>
+
+        <section class="Info_Overskrift">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+          <script src="Scripts.js"></script>
+          <h1 class="konstant firstPosition moveLeft">Praktisk</h1>
+          <h1 class="konstant firstPosition moveRight">Informasjon</h1>
         </section>
-        <section class="Right_Sec"><div></div></section>
+
       </section>
 
-      <section class="Hjem_GridInformasjon">
+      <section class="Hjem_GridInformasjon HiddenEffekt">
         <section class="sec_LoggInn">
-          <h3>Logg inn:</h3>
+          <h2>Logg inn:</h2>
           <p class="info">Få opptil 20% rabatt</p>
           <a href="#">logg inn</a>
         </section>
         <section class="sec_LærOmOss">
-          <h3>Lær om oss</h3>
-          <p class="info">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <h2>Lær om oss</h2>
+          <p class="info">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa...</p>
           <a href="OmOss.html">Les mer</a>
         </section>
         <section class="sec_SeAnmeldelser">
-          <h3>Se Anmeldelser</h3>
+          <h2>Se Anmeldelser</h2>
           <p class="info"></p>
           <a href="#">Se mer</a>
         </section>
@@ -126,7 +152,7 @@
 
       <section class="Hjem_GridBestselgere">
         <section class="Bilde">
-          <img src="" alt="">
+          <img src="Bilder/BestSelgere_img.jpg">
         </section>
         <section class="Container">
           <h1>Produkt navn</h1>

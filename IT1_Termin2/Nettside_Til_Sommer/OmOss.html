@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Om Oss</title>
-    <link rel="stylesheet" href="Stilark.css">
+    <link id="themeStylesheet" rel="stylesheet" href="Stilark.css">
 
   </head>
   <body>
@@ -21,10 +21,28 @@
             <li>Mer</li>
           </ul>
         </section>
+        <section class="NavBarThemeSelect">
+          <p>Stil:</p>
+          <form action="./" method="post">
+            <select name="themeSelect" id="themeSelect">
+              <option value="Stilark">Default</option>
+              <option value="StilarkMork" class="mork">Mørk</option>
+            </select>
+          </form>
+        </section>
         <section class="NavBarLogin">
 
         </section>
       </section>
+
+      <script>
+        const themeSelect = document.getElementById("themeSelect");
+        const themeStylesheet = document.getElementById("themeStylesheet");
+
+        themeSelect.addEventListener("change", function(){
+          themeStylesheet.setAttribute("href", this.value + ".css");
+        });
+      </script>
 
       <section class="OmOss_ForsideBilde">
         <img src="Bilder/About_Us_Banner.jpg">
@@ -45,10 +63,10 @@
       <article class="OO_Tekst_Paragraf">
         <p class="Første_Paragraf">Porem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         <p> Ransectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p> Asum dolor sit amet, consectetur adipisicing elit aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. sed do eiusmod tempor incididunt ut labore et dolore magna. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Occaecat cupidatat non proident, sunt in culpa qui officia deserunt sunt non prodient mollit anim.</p>
+        <p> Asum dolor sit amet, consectetur adipisicing elit aliqua. Le guia sed tempor quendo esta do magaro orediv. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. sed do eiusmod tempor incididunt ut labore et dolore magna. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Occaecat cupidatat non proident, sunt in culpa qui officia deserunt sunt non prodient mollit anim.</p>
         <p> Norem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat culpa qui officia deserunt.</p>
         <p> Kidea laor dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Commodo consequat duis aute irure quian dolor in reprehenderit alera in voluptate velit.</p>
-        <p> Devo dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est. Consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+        <p> Devo dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est Consectetur.</p>
       </article>
 
       <section class="UnderOverskrift">
@@ -59,7 +77,7 @@
         <section class="Right_Sec"><div></div></section>
       </section>
 
-      <section class="Anmeldelse_Sec">
+      <section id="Anmeldelser" class="Anmeldelse_Sec">
         <section class="Anmeldelse_LeftPart">
           <h3>Petter har kjøpt:</h3>
           <img src="" alt="">

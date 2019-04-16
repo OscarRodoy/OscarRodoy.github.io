@@ -2,7 +2,7 @@
 body{
   margin: 0px;
   font-family: Arial;
-  background-image: linear-gradient(90deg, #FFFDF5, white);
+  background-image: linear-gradient(90deg, #393a3a, black);
 }
 main{
   margin-left: 50px;
@@ -18,7 +18,7 @@ main{
   display: grid;
   grid-template-columns: 2fr 3fr 1fr 1fr;
   /*background-image: linear-gradient(to top, rgba(255,0,0,0), #FFFDF5);*/
-  background-image: linear-gradient(90deg, #FFFDF5, white);
+  background-image: linear-gradient(90deg, #393a3a, black);
 }
 .NavBar>.NavBarKnapper{
   text-align: center;
@@ -34,15 +34,15 @@ main{
   font-size: 23px;
 }
 .NavBar>.NavBarKnapper>ul li a{
-  color: black;
+  color: white;
   text-decoration: none;
 }
 .NavBar>.NavBarKnapper>ul li a:hover{
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid white;
 }
 .NavBar .NavBarThemeSelect{
   position: relative;
-  background-image: linear-gradient(90deg, white, #242729, #242729, #242729, #242729, #242729, #242729, white);
+  background-image: linear-gradient(90deg, #242729, white, white, white, white, white, white, #242729);
 }
 .NavBar .NavBarThemeSelect p{
   position: absolute;
@@ -51,7 +51,7 @@ main{
   transform: translateY(-50%);
   margin: 0px;
   font-size: 20px;
-  color: white;
+  color: black;
 }
 .NavBar .NavBarThemeSelect form{
   position: absolute;
@@ -69,11 +69,15 @@ main{
 }
   /* Nav bar Slutt */
   /* Under Overskrifter Start */
+#Første_UnderOverskrift{
+  margin-top: 100vh;
+}
 .UnderOverskrift{
   text-align: center;
   font-size: 30px;
   display: grid;
   grid-template-columns: 2fr 1fr 2fr;
+  color: white;
 }
 .UnderOverskrift .Left_Sec,.Right_Sec{
   position: relative;
@@ -84,7 +88,7 @@ main{
   transform: translateY(50%);
   width: 95%;
   height: 1px;
-  background-image: linear-gradient(90deg, white, black);
+  background-image: linear-gradient(90deg, #393a3a, white);
 }
 .UnderOverskrift .Right_Sec div{
   position: absolute;
@@ -92,11 +96,12 @@ main{
   transform: translateY(50%);
   width: 95%;
   height: 1px;
-  background-image: linear-gradient(90deg, black, white);
+  background-image: linear-gradient(90deg, white, black);
 }
 .UnderOverskrift_2{
   font-size: 20px;
   text-align: center;
+  color: white;
 }
   /* Under Overskrifter Slutt */
   /* Footer Start */
@@ -157,7 +162,6 @@ main{
   animation: animate 16s  infinite;
   background-size: cover;
   filter: brightness(40%);
-  box-shadow: 0 4px 2px -2px gray;
 }
 @keyframes animate{
   0%, 100%{
@@ -234,77 +238,18 @@ main{
   /* Forsidebilde Hjem Tekst&Knapper Slutt */
 /* CSS Til Hjem Header Slutt */
 /* CSS Til Hjem Main Start */
-  /* scrollDownEffektBOX Start */
-#scrollDownEffektBOX{
-  margin-top: 98vh;
-  position: relative;
-  height: 130px;
-  margin-bottom: -50px;
-}
-#scrollDownEffektBOX a img{
-  width: 100px;
-  border: 1px solid black;
-  border-radius: 50%;
-  margin-top: -50px;
-  position: sticky;
-  top: 92vh;
-  z-index: 20;
-}
-#Logginn_Icon{
-  position: absolute;
-  top: 10px;
-  left: 190px;
-}
-#Info_Icon{
-  position: absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-#Anmeldelser_Icon{
-  position: absolute;
-  top: 10px;
-  left: 77%;
-}
-.Info_Overskrift{
-  position: relative;
-  text-align: center;
-  font-size: 30px;
-  margin-top: -30px;
-}
-.Info_Overskrift .konstant{
-  transition: 1.5s;
-  margin-top: 0px;
-}
-.Info_Overskrift .firstPosition{
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.ScrollEffektLeft{
-  position: absolute;
-  left: 28%;
-}
-.ScrollEffektRight{
-  position: absolute;
-  left: 58%;
-}
-  /* scrollDownEffektBOX Slutt */
   /* Informasjon_Grid Start*/
 .Hjem_GridInformasjon{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 10px;
-  transition: 2s;
-}
-.HiddenEffekt{
-  opacity: 0;
+  color: white;
 }
 .Hjem_GridInformasjon section{
-  border: 1px solid black;
+  border: 1px solid white;
   text-align: center;
   position: relative;
-  background-image: linear-gradient(90deg, white, #FFFDF5);
+  background-image: linear-gradient(90deg, black, #393a3a);
 }
 .Hjem_GridInformasjon section a{
   position: absolute;
@@ -312,14 +257,14 @@ main{
   left: 50%;
   transform: translateX(-50%);
   text-decoration: none;
-  color: black;
-  border: 1px solid black;
+  color: white;
+  border: 1px solid white;
   padding: 10px;
   width: 200px;
   background-color: orange;
 }
 .Hjem_GridInformasjon section a:hover{
-  background-color: white;
+  background-color: black;
 }
 .Hjem_GridInformasjon section h3{
 
@@ -328,15 +273,13 @@ main{
   margin-bottom: 65px;
   margin-left: 20px;
   margin-right: 20px;
+  color: white;
 }
 .Hjem_GridInformasjon .sec_LoggInn{
-  border-radius: 25px 25px 0px 0px;
-}
-.Hjem_GridInformasjon .sec_LærOmOss{
-  border-radius: 25px 25px 0px 0px;
+  border-radius: 25px 0px 0px 0px;
 }
 .Hjem_GridInformasjon .sec_SeAnmeldelser{
-  border-radius: 25px 25px 0px 0px;
+  border-radius: 0px 25px 0px 0px;
 }
   /* Informasjon_Grid Slutt */
   /* Produkter_Grid Start */
@@ -463,7 +406,7 @@ main{
 }
 .mainProdukter .secProdukter{
   background-color: #f7f7f7;
-  filter: brightness(95%);
+  filter: brightness(75%);
   position: relative;
   height: 372px;
   transition: filter 0.1s ease-in;
@@ -498,7 +441,7 @@ main{
   transition: opacity 0.1s ease-in;
 }
 .mainProdukter .secProdukter:hover{
-  filter: brightness(100%);
+  filter: brightness(90%);
 }
 .mainProdukter .secProdukter:hover a{
   opacity: 1;
@@ -511,45 +454,12 @@ main{
 .mainProdukter .VenstreSec{
   grid-row: 1 / span 4;
 }
-.mainProdukter .VenstreSec #stickyBOX{
-  position: relative;
+.mainProdukter .VenstreSec .stickyBOX{
   position: sticky;
-  top: 58px;
-  height:90.3vh;
+  top: 62px;
+  border: 1px solid black;
+  height: 89vh;
 }
-.mainProdukter .VenstreSec #stickyBOX img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(106%);
-}
-.mainProdukter .VenstreSec #stickyBOX .transparentBOX{
-  position: absolute;
-  bottom: 21px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: white;
-  opacity: 0.5;
-  width: 234px;
-  height: 50px;
-  z-index: 10;
-}
-.mainProdukter .VenstreSec #stickyBOX a{
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  text-decoration: none;
-  color: black;
-  padding: 15px;
-  border: 2px solid black;
-  width: 200px;
-  text-align: center;
-}
-.mainProdukter .VenstreSec #stickyBOX a:hover{
-  color: white;
-  background-color: black;
 /* CSS Til Produkter Main Slutt */
 
 /* CSS Til OmOss Header Start */

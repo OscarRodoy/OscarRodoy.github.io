@@ -4,65 +4,66 @@
       "versace_1":{
         "KlokkeID":"",
         "KlokkeNavn":"navn",
-        "Pris":"$1000",
+        "Pris":1000,
         "tilbud":"0",
-        "bildeURL":"ProduktBilder/Versace_klokke1.jpg"
+        "bildeURL":"ProduktBilder/Versace_klokke1.jpg",
+        "bildeURL2":"ProduktBilder/Versace_klokke1_img2.jpg"
       },
       "versace_2":{
         "KlokkeID":"",
         "KlokkeNavn":"navn",
-        "Pris":"$20000",
+        "Pris":20000,
         "tilbud":"0",
-        "bildeURL":"ProduktBilder/Versace_klokke2.jpg"
+        "bildeURL":"ProduktBilder/Versace_klokke2.jpg",
+        "bildeURL2":"ProduktBilder/Versace_klokke2_img2.jpg"
       },
       "versace_3":{
         "KlokkeID":"",
         "KlokkeNavn":"navn",
-        "Pris":"$3000",
+        "Pris":3000,
         "tilbud":"0",
-        "bildeURL":"ProduktBilder/Versace_klokke3.jpg"
+        "bildeURL":"ProduktBilder/Versace_klokke3.jpg",
+        "bildeURL2":"ProduktBilder/Versace_klokke3_img2.jpg"
       },
       "versace_4":{
         "KlokkeID":"",
         "KlokkeNavn":"navn",
-        "Pris":"$4000",
+        "Pris":4000,
         "tilbud":"0",
-        "bildeURL":"ProduktBilder/Versace_klokke4.jpg"
+        "bildeURL":"ProduktBilder/Versace_klokke4.jpg",
+        "bildeURL2":"ProduktBilder/Versace_klokke4_img2.jpg"
       },
       "versace_5":{
         "KlokkeID":"",
         "KlokkeNavn":"navn",
-        "Pris":"$50000",
+        "Pris":50000,
         "tilbud":"0",
-        "bildeURL":"ProduktBilder/Versace_klokke5.jpg"
+        "bildeURL":"ProduktBilder/Versace_klokke5.jpg",
+        "bildeURL2":"ProduktBilder/Versace_klokke5_img2.jpg"
       },
       "versace_6":{
         "KlokkeID":"",
         "KlokkeNavn":"navn",
-        "Pris":"$6000",
+        "Pris":6000,
         "tilbud":"0",
-        "bildeURL":"ProduktBilder/Versace_klokke6.jpg"
+        "bildeURL":"ProduktBilder/Versace_klokke6.jpg",
+        "bildeURL2":"ProduktBilder/Versace_klokke6_img2.jpg"
       },
       "versace_7":{
         "KlokkeID":"",
         "KlokkeNavn":"navn",
-        "Pris":"$7000",
+        "Pris":7000,
         "tilbud":"0",
-        "bildeURL":"ProduktBilder/Versace_klokke7.jpg"
-      },
-      "versace_8":{
-        "KlokkeID":"",
-        "KlokkeNavn":"navn",
-        "Pris":"$8000",
-        "tilbud":"0",
-        "bildeURL":"ProduktBilder/Versace_klokke8.jpg"
+        "bildeURL":"ProduktBilder/Versace_klokke7.jpg",
+        "bildeURL2":"ProduktBilder/Versace_klokke7_img2.jpg"
       },
       "versace_9":{
         "KlokkeID":"",
         "KlokkeNavn":"navn",
-        "Pris":"$9000",
+        "Pris":9000,
         "tilbud":"0",
-        "bildeURL":"ProduktBilder/Versace_klokke9.jpg"
+        "bildeURL":"ProduktBilder/Versace_klokke9.jpg",
+        "bildeURL2":"ProduktBilder/Versace_klokke9_img2.jpg"
       }
     },
     "rolexKlokker":{

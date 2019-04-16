@@ -19,20 +19,50 @@ function genererHTML(snapshot){
     //let ref = parent +"/" + key
     main.innerHTML +=`
           <section class="secProdukter">
-            <img src="${produktSnap.bildeURL}">
             <a href="Underside.html?id=${key}">Se detaljer</a>
+            <img onmouseover="visHoveredElement()" src="${produktSnap.bildeURL}">
             <p>${produktSnap.Pris}</p>
           </section>
     `;
 }
 
+function genererStickyBOX(snapshot){
+      //Javascript-funksjon som skriver varene ut på nettsiden i main-elementet
+    let produktSnap = snapshot.val();
+    console.log(produktSnap);
+    //let parent = snapshot.ref.parent.key;
+    let key = snapshot.key;
+    //let ref = parent +"/" + key
+    var stickyBOX = document.getElementById("stickyBOX")
+    stickyBOX.innerHTML +=`
+            <img src="${produktSnap.bildeURL2}">
+            <div class="transparentBOX"></div>
+            <a href="Underside.html?id=${key}">Se detaljer</a>
+    `;
+}
+
+function visHoveredElement(){
+  VersaceKlokker.alert(this.id).on("child_added", genererStickyBOX);
+}
+
 function visAlle(){
   main.innerHTML = `
-          <section class="row-span2">
-            <img src="">
+          <section class="VenstreSec">
+            <section id="stickyBOX">
+
+            </section>
           </section>`;
   VersaceKlokker.on("child_added", genererHTML);
   RolexKlokker.on("child_added", genererHTML);
+  GucciKlokker.on("child_added", genererHTML);
+
+  VersaceKlokker.orderByChild("Pris").limitToFirst(1).on("child_added", genererStickyBOX);
+}
+
+function visLavTilHoy(){
+  VersaceKlokker.orderByChild("Pris").on("child_added", genererHTML);
+  RolexKlokker.orderByChild("Pris").on("child_added", genererHTML);
+  GucciKlokker.orderByChild("Pris").on("child_added", genererHTML);
 }
 
 function sortering(select){
