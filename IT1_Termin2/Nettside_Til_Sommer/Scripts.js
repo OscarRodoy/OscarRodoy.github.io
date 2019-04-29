@@ -3,6 +3,7 @@ $(window).scroll(function () {
 if ($(this).scrollTop() > 40) {
  $(".moveRight").addClass("ScrollEffektRight").removeClass("firstPosition")
  $(".moveLeft").addClass("ScrollEffektLeft").removeClass("firstPosition")
+ $(".removeClick").prop("onclick", null).off("click");
 }
 if ($(this).scrollTop() < 40) {
  $(".moveRight").removeClass("ScrollEffektRight").addClass("firstPosition")

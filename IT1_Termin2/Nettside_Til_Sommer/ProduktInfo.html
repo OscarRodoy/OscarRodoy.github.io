@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="nb" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link id="themeStylesheet" rel="stylesheet" href="Stilark.css">
+
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAbmYwZ56zNJGP0Dtbe6sfrzcuDKz70N84",
+        authDomain: "prosjektsommerit1.firebaseapp.com",
+        databaseURL: "https://prosjektsommerit1.firebaseio.com",
+        projectId: "prosjektsommerit1",
+        storageBucket: "prosjektsommerit1.appspot.com",
+        messagingSenderId: "563869496657"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+  </head>
+  <body>
+
+    <header>
+      <section class="NavBar">
+        <section class="NavBarLogo">
+          <img src="">
+        </section>
+        <section class="NavBarKnapper">
+          <ul>
+            <li><a href="Hjem.html">Hjem</a></li>
+            <li><a href="Produkter.html">Produkter</a></li>
+            <li><a href="OmOss.html">Om Oss</a></li>
+            <li><a href"#">Mer</a></li>
+          </ul>
+        </section>
+        <section class="NavBarThemeSelect">
+          <p>Stil:</p>
+          <form action="./" method="post">
+            <select name="themeSelect" id="themeSelect">
+              <option value="Stilark">Default</option>
+              <option value="StilarkMork" class="mork">Mørk</option>
+            </select>
+          </form>
+        </section>
+        <section class="NavBarLogin">
+
+        </section>
+      </section>
+
+      <script>
+        const themeSelect = document.getElementById("themeSelect");
+        const themeStylesheet = document.getElementById("themeStylesheet");
+
+        themeSelect.addEventListener("change", function(){
+          themeStylesheet.setAttribute("href", this.value + ".css");
+        });
+      </script>
+
+    </header>
+
+    <main></main>
+    <script>
+      const main = document.querySelector("main");
+
+      let url_string = window.location.href;
+      let url = new URL(url_string);
+      let id = url.searchParams.get("id");
+
+      const db = firebase.database();
+      const versaceKlokker = db.ref("versaceKlokker");
+      const valgtKlokke = db.ref("Produkter/" + id);
+
+      valgtKlokke.on("value", visKlokke);
+
+      function visKlokke(snap){
+        console.log(snap.val());
+        let key = snap.key;
+        let objekt = snap.val();
+        main.innerHTML = `
+          <section class="SecProduktInfo">
+            <img src=${objekt.bildeURL}></img>
+            <div>
+              <h1>text</h1>
+              <p>${objekt.Pris}</p>
+            </div>
+          </section>
+        `
+      }
+    </script>
+
+    <footer>
+
+      <section class="Fordeler">
+        <div></div>
+        <div>
+          <img src="Bilder/Free_Shipping_Icon.png">
+          <h4>Gratis Frakt</h4>
+        </div>
+        <div>
+          <img src="Bilder/Free_Shipping_Icon.png">
+          <h4>14 Dager Retur</h4>
+        </div>
+        <div>
+          <img src="Bilder/Free_Shipping_Icon.png">
+          <h4>Eksklusive Produkter</h4>
+        </div>
+        <div></div>
+      </section>
+
+      <p class="Trademark">trademark</p>
+
+    </footer>
+
+  </body>
+</html>

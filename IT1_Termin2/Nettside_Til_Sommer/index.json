@@ -2,7 +2,7 @@
   "Produkter":{
     "versaceKlokker":{
       "versace_1":{
-        "KlokkeID":"",
+        "KlokkeID":"Ver1",
         "KlokkeNavn":"navn",
         "Pris":1000,
         "tilbud":"0",
@@ -10,7 +10,7 @@
         "bildeURL2":"ProduktBilder/Versace_klokke1_img2.jpg"
       },
       "versace_2":{
-        "KlokkeID":"",
+        "KlokkeID":"Ver2",
         "KlokkeNavn":"navn",
         "Pris":20000,
         "tilbud":"0",
@@ -18,7 +18,7 @@
         "bildeURL2":"ProduktBilder/Versace_klokke2_img2.jpg"
       },
       "versace_3":{
-        "KlokkeID":"",
+        "KlokkeID":"Ver3",
         "KlokkeNavn":"navn",
         "Pris":3000,
         "tilbud":"0",
@@ -26,7 +26,7 @@
         "bildeURL2":"ProduktBilder/Versace_klokke3_img2.jpg"
       },
       "versace_4":{
-        "KlokkeID":"",
+        "KlokkeID":"Ver4",
         "KlokkeNavn":"navn",
         "Pris":4000,
         "tilbud":"0",
@@ -34,7 +34,7 @@
         "bildeURL2":"ProduktBilder/Versace_klokke4_img2.jpg"
       },
       "versace_5":{
-        "KlokkeID":"",
+        "KlokkeID":"Ver5",
         "KlokkeNavn":"navn",
         "Pris":50000,
         "tilbud":"0",
@@ -42,7 +42,7 @@
         "bildeURL2":"ProduktBilder/Versace_klokke5_img2.jpg"
       },
       "versace_6":{
-        "KlokkeID":"",
+        "KlokkeID":"Ver6",
         "KlokkeNavn":"navn",
         "Pris":6000,
         "tilbud":"0",
@@ -50,7 +50,7 @@
         "bildeURL2":"ProduktBilder/Versace_klokke6_img2.jpg"
       },
       "versace_7":{
-        "KlokkeID":"",
+        "KlokkeID":"Ver7",
         "KlokkeNavn":"navn",
         "Pris":7000,
         "tilbud":"0",
@@ -58,7 +58,7 @@
         "bildeURL2":"ProduktBilder/Versace_klokke7_img2.jpg"
       },
       "versace_9":{
-        "KlokkeID":"",
+        "KlokkeID":"Ver9",
         "KlokkeNavn":"navn",
         "Pris":9000,
         "tilbud":"0",

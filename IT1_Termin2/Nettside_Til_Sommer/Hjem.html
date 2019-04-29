@@ -19,6 +19,9 @@
       firebase.initializeApp(config);
     </script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="Scripts.js"></script>
+
   </head>
   <body>
 
@@ -76,13 +79,21 @@
 
       <section id="scrollDownEffektBOX">
 
-        <a href="#"><img src="Bilder/Logginn_Icon.jpg" id="Logginn_Icon"></a>
-        <a href="OmOss.html"><img src="Bilder/Info_Icon.png" id="Info_Icon"></a>
-        <a href="#"><img src="Bilder/Anmeldelser_Icon.png" id="Anmeldelser_Icon"></a>
+        <script type="text/javascript"> /* når den er over - trykk for å gå ned   |   når den er under - trykk for link*/
+        function scrollDOWN(){
+                  window.scroll({
+            top: 500,
+            left: 0,
+            behavior: 'smooth'
+          });
+        }
+        </script>
+
+        <a href="#"><img onclick="scrollDOWN()" src="Bilder/Logginn_Icon.jpg" id="Logginn_Icon" class="removeClick"></a>
+        <a href="OmOss.html"><img onclick="scrollDOWN()" src="Bilder/Info_Icon.png" id="Info_Icon" class="removeClick"></a>
+        <a href="#"><img onclick="scrollDOWN()" src="Bilder/Anmeldelser_Icon.png" id="Anmeldelser_Icon" class="removeClick"></a>
 
         <section class="Info_Overskrift">
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-          <script src="Scripts.js"></script>
           <h1 class="konstant firstPosition moveLeft">Praktisk</h1>
           <h1 class="konstant firstPosition moveRight">Informasjon</h1>
         </section>
@@ -108,11 +119,11 @@
       </section>
 
       <section class="UnderOverskrift">
-        <section class="Left_Sec"><div></div></section>
+        <section class="Left_Sec"><hr></section>
         <section>
           <h1>Produkter</h1>
         </section>
-        <section class="Right_Sec"><div></div></section>
+        <section class="Right_Sec"><hr></section>
       </section>
 
       <!-- Legg til senere
@@ -128,26 +139,26 @@
         <section>
           <h3>Versace</h3>
           <img src="Bilder/Produkter_seKlokker.jpg">
-          <a href="#">se alle klokker</a>
+          <a href="#">se alle Versace Klokker</a>
         </section>
         <section>
           <h3>Rolex</h3>
           <img src="Bilder/Produkter_seKlokker.jpg">
-          <a href="#">se alle Belter</a>
+          <a href="#">se alle Rolex Klokker</a>
         </section>
         <section>
           <h3>Gucci</h3>
           <img src="Bilder/Produkter_seKlokker.jpg">
-          <a href="#">se alle Hatter</a>
+          <a href="#">se alle Gucci Klokker</a>
         </section>
       </section>
 
       <section class="UnderOverskrift">
-        <section class="Left_Sec"><div></div></section>
+        <section class="Left_Sec"><hr></section>
         <section>
           <h1>Best Selgere</h1>
         </section>
-        <section class="Right_Sec"><div></div></section>
+        <section class="Right_Sec"><hr></section>
       </section>
 
       <section class="Hjem_GridBestselgere">
