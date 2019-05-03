@@ -28,7 +28,7 @@
     <header>
       <section class="NavBar">
         <section class="NavBarLogo">
-          <img src="">
+          <img src="Bilder/Logo_MensWatches.png">
         </section>
         <section class="NavBarKnapper">
           <ul>
@@ -39,16 +39,17 @@
           </ul>
         </section>
         <section class="NavBarThemeSelect">
-          <p>Stil:</p>
-          <form action="./" method="post">
-            <select name="themeSelect" id="themeSelect">
-              <option value="Stilark">Default</option>
-              <option value="StilarkMork" class="mork">Mørk</option>
-            </select>
-          </form>
-        </section>
-        <section class="NavBarLogin">
-
+          <section class="tekstSec">
+            <p>Stil:</p>
+          </section>
+          <section class="formSec">
+            <form action="./" method="post">
+              <select name="themeSelect" id="themeSelect">
+                <option value="Stilark">Default</option>
+                <option value="StilarkMork" class="mork">Mørk</option>
+              </select>
+            </form>
+          </section>
         </section>
       </section>
 
@@ -75,11 +76,18 @@
       <section class="Hjem_ForsideBilde"></section>
 
     </header>
-    <main>
+    <main class="HjemMain">
+
+      <section class="UnderOverskrift FirstUnderOverskrift HiddenEffekt">
+        <section class="Left_Sec"><hr></section>
+        <section>
+          <h1>Informasjon</h1>
+        </section>
+        <section class="Right_Sec"><hr></section>
+      </section>
 
       <section id="scrollDownEffektBOX">
-
-        <script type="text/javascript"> /* når den er over - trykk for å gå ned   |   når den er under - trykk for link*/
+        <script type="text/javascript">
         function scrollDOWN(){
                   window.scroll({
             top: 500,
@@ -88,68 +96,75 @@
           });
         }
         </script>
-
-        <a href="#"><img onclick="scrollDOWN()" src="Bilder/Logginn_Icon.jpg" id="Logginn_Icon" class="removeClick"></a>
-        <a href="OmOss.html"><img onclick="scrollDOWN()" src="Bilder/Info_Icon.png" id="Info_Icon" class="removeClick"></a>
-        <a href="#"><img onclick="scrollDOWN()" src="Bilder/Anmeldelser_Icon.png" id="Anmeldelser_Icon" class="removeClick"></a>
-
-        <section class="Info_Overskrift">
-          <h1 class="konstant firstPosition moveLeft">Praktisk</h1>
-          <h1 class="konstant firstPosition moveRight">Informasjon</h1>
+        <section>
+          <img onclick="scrollDOWN()" src="Bilder/Logginn_Icon.jpg">
         </section>
-
+        <section>
+          <img onclick="scrollDOWN()" src="Bilder/Info_Icon.png">
+        </section>
+        <section>
+          <img onclick="scrollDOWN()" src="Bilder/Anmeldelser_Icon.png">
+        </section>
       </section>
 
       <section class="Hjem_GridInformasjon HiddenEffekt">
-        <section class="sec_LoggInn">
-          <h2>Logg inn:</h2>
-          <p class="info">Få opptil 20% rabatt</p>
-          <a href="#">logg inn</a>
+        <section>
+          <div id="HoverEffekt"></div>
+          <h2>Logg inn</h2>
+          <p>Få opptil 20% rabatt, tilgang til eksklusive tilbud og mye mer!</p>
+          <a class="LogginnKnapp" href="">Logg Inn</a>
+          <a class="LagbrukerKnapp" href="">Lag Bruker</a>
         </section>
-        <section class="sec_LærOmOss">
+        <section>
+          <div id="HoverEffekt"></div>
           <h2>Lær om oss</h2>
-          <p class="info">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa...</p>
-          <a href="OmOss.html">Les mer</a>
+          <p>Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut labore et dolore aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris quario nisi ut aliquip...</p>
+          <a class="LesmerKnapp" href="OmOss.html">Les mer</a>
         </section>
-        <section class="sec_SeAnmeldelser">
+        <section>
+          <div id="HoverEffekt"></div>
           <h2>Se Anmeldelser</h2>
-          <p class="info"></p>
-          <a href="#">Se mer</a>
+          <table>
+            <td>Kåre:</td>
+            <td>Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut labore et dolore aliqua...</td>
+          </table>
+          <a class="LesmerKnapp" href="#">Les mer</a>
         </section>
       </section>
 
-      <section class="UnderOverskrift">
-        <section class="Left_Sec"><hr></section>
-        <section>
-          <h1>Produkter</h1>
-        </section>
-        <section class="Right_Sec"><hr></section>
-      </section>
+      <section id="ContainerForGridProdukter">
 
-      <!-- Legg til senere
-      <video src="" autoplay muted loop id="Background-Video1"></video>
-      -->
+        <section class="UnderOverskrift">
+          <section class="Left_Sec"><hr></section>
+          <section>
+            <h1>Produkter</h1>
+          </section>
+          <section class="Right_Sec"><hr></section>
+        </section>
 
-      <section class="Hjem_GridProdukter">
-        <section>
-          <h3>Alle Klokker</h3>
-          <img src="Bilder/Produkter_seKlokker.jpg">
-          <a href="Produkter.html">se alle produkter</a>
-        </section>
-        <section>
-          <h3>Versace</h3>
-          <img src="Bilder/Produkter_seKlokker.jpg">
-          <a href="#">se alle Versace Klokker</a>
-        </section>
-        <section>
-          <h3>Rolex</h3>
-          <img src="Bilder/Produkter_seKlokker.jpg">
-          <a href="#">se alle Rolex Klokker</a>
-        </section>
-        <section>
-          <h3>Gucci</h3>
-          <img src="Bilder/Produkter_seKlokker.jpg">
-          <a href="#">se alle Gucci Klokker</a>
+        <video src="Video/Fuego_de_Refineria.mp4" autoplay muted loop id="BackgroundVideo"></video>
+
+        <section class="Hjem_GridProdukter">
+          <section>
+            <h3>Alle Klokker</h3>
+            <img src="Bilder/Produkter_seKlokker.jpg">
+            <a href="Produkter.html">se alle produkter</a>
+          </section>
+          <section>
+            <h3>Versace</h3>
+            <img src="Bilder/Produkter_seKlokker.jpg">
+            <a href="#">se alle Versace Klokker</a>
+          </section>
+          <section>
+            <h3>Rolex</h3>
+            <img src="Bilder/Produkter_seKlokker.jpg">
+            <a href="#">se alle Rolex Klokker</a>
+          </section>
+          <section>
+            <h3>Gucci</h3>
+            <img src="Bilder/Produkter_seKlokker.jpg">
+            <a href="#">se alle Gucci Klokker</a>
+          </section>
         </section>
       </section>
 
@@ -162,26 +177,28 @@
       </section>
 
       <section class="Hjem_GridBestselgere">
-        <section class="Bilde">
-          <img src="Bilder/BestSelgere_img.jpg">
+        <section>
+          <img src="ProduktBilder/Versace_klokke7_img2.jpg">
+          <a href="Produktinfo.html?id=versaceKlokker/versace_7">Se detaljer</a>
         </section>
-        <section class="Container">
-          <h1>Produkt navn</h1>
-          <section>
+        <section>
+          <img src="ProduktBilder/Versace_klokke3_img2.jpg">
+          <a href="Produktinfo.html?id=versaceKlokker/versace_3">Se detaljer</a>
+        </section>
+        <section>
+          <img src="ProduktBilder/Versace_klokke5_img2.jpg">
+          <a href="Produktinfo.html?id=versaceKlokker/versace_5">Se detaljer</a>
+        </section>
 
-          </section>
-          <p>info</p>
-          <p>info</p>
-          <a href="ProduktInfo.html">Kjøp</a>
-          <a href="Produkter.html">Se mer</a>
-        </section>
       </section>
 
     </main>
     <footer>
 
       <section class="Fordeler">
-        <div></div>
+        <div>
+          <h1>Fordeler</h1>
+        </div>
         <div>
           <img src="Bilder/Free_Shipping_Icon.png">
           <h4>Gratis Frakt</h4>
@@ -197,7 +214,7 @@
         <div></div>
       </section>
 
-      <p class="Trademark">trademark</p>
+      <p class="Trademark">trademark © 2019-2021 Mens Watches</p>
 
     </footer>
   </body>

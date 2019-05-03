@@ -1,4 +1,4 @@
-/* Css Til Alt Start */
+/* Css Til Alle sider Start */
 body{
   margin: 0px;
   font-family: Arial;
@@ -16,10 +16,21 @@ main{
   width: 100%;
   z-index: 100;
   display: grid;
-  grid-template-columns: 2fr 3fr 1fr 1fr;
+  grid-template-columns: 2fr 5fr 2fr;
   /*background-image: linear-gradient(to top, rgba(255,0,0,0), #FFFDF5);*/
   background-image: linear-gradient(90deg, #FFFDF5, white);
-  box-shadow: 0 4px 2px -2px black;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.NavBar .NavBarLogo{
+  position: relative;
+  margin-left: 20px;
+}
+.NavBar .NavBarLogo img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
 }
 .NavBar>.NavBarKnapper{
   text-align: center;
@@ -42,29 +53,40 @@ main{
   border-bottom: 2px solid black;
 }
 .NavBar .NavBarThemeSelect{
-  position: relative;
   background-image: linear-gradient(90deg, white, #242729, #242729, #242729, #242729, #242729, #242729, white);
+  margin-right: 40px;
+  display: grid;
+  grid-template-columns: 4fr 7fr;
 }
-.NavBar .NavBarThemeSelect p{
+.NavBar .NavBarThemeSelect .tekstSec{
+  margin-left: 30px;
+}
+.NavBar .NavBarThemeSelect .formSec{
+  margin-right: 30px;
+}
+.NavBar .NavBarThemeSelect section{
+  position: relative;
+}
+.NavBar .NavBarThemeSelect section p{
   position: absolute;
   top: 50%;
-  left: 28px;
+  right: 5px;
   transform: translateY(-50%);
   margin: 0px;
   font-size: 20px;
   color: white;
 }
-.NavBar .NavBarThemeSelect form{
+.NavBar .NavBarThemeSelect section form{
   position: absolute;
   top: 50%;
-  left: 68px;
+  left: 5px;
   transform: translateY(-50%);
 }
-.NavBar .NavBarThemeSelect form select{
+.NavBar .NavBarThemeSelect section form select{
   padding: 10px;
   border-radius: 5px;
 }
-.NavBar .NavBarThemeSelect form select .mork{
+.NavBar .NavBarThemeSelect section form select .mork{
   background-color: black;
   color: white;
 }
@@ -93,6 +115,9 @@ main{
   height: 1px;
   background-image: linear-gradient(90deg, black, white);
 }
+.FirstUnderOverskrift{
+  transition: 1s;
+}
 .UnderOverskrift_2{
   font-size: 20px;
   text-align: center;
@@ -110,6 +135,16 @@ main{
 .Fordeler div{
   position: relative;
   text-align: center;
+}
+.Fordeler div h1{
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  font-family: monospace;
+  margin-top: 15px;
 }
 .Fordeler div h4{
   position: absolute;
@@ -139,10 +174,15 @@ main{
   opacity: 1;
 }
 .Trademark{
+  background-color: #242729;
+  color: white;
+  margin-top: -16px;
+  margin-bottom: -16px;
   text-align: center;
+  padding: 10px;
 }
   /* Fotter Slutt */
-/* CSS Til Alt Slutt */
+/* CSS Til Alle sider Slutt */
 
 /* CSS Til Hjem Header Start */
   /* Forsidebilde Hjem Start*/
@@ -156,7 +196,7 @@ main{
   animation: animate 16s  infinite;
   background-size: cover;
   filter: brightness(40%);
-  box-shadow: 0 4px 2px -2px gray;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 @keyframes animate{
   0%, 100%{
@@ -233,59 +273,33 @@ main{
   /* Forsidebilde Hjem Tekst&Knapper Slutt */
 /* CSS Til Hjem Header Slutt */
 /* CSS Til Hjem Main Start */
+.HjemMain{
+  margin-top: 98vh;
+}
   /* scrollDownEffektBOX Start */
 #scrollDownEffektBOX{
-  margin-top: 98vh;
-  position: relative;
-  height: 130px;
-  margin-bottom: -50px;
+  /*position: relative;*/
+  height: 165px;
+  margin-bottom: -110px;
+  margin-top: -60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
 }
-#scrollDownEffektBOX a img{
+#scrollDownEffektBOX section{
+  position: relative;
+}
+#scrollDownEffektBOX section img{
   width: 100px;
   border-radius: 50%;
-  margin-top: -50px;
+  margin-top: -110px;
+  margin-left: 50%;
+  transform: translateX(-50%);
   position: sticky;
   top: 92vh;
   z-index: 20;
-}
-#Logginn_Icon{
-  position: absolute;
-  top: 10px;
-  left: 190px;
-}
-#Info_Icon{
-  position: absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-#Anmeldelser_Icon{
-  position: absolute;
-  top: 10px;
-  left: 77%;
-}
-.Info_Overskrift{
-  position: relative;
-  text-align: center;
-  font-size: 30px;
-  margin-top: -30px;
-}
-.Info_Overskrift .konstant{
-  transition: 1.5s;
-  margin-top: 0px;
-}
-.Info_Overskrift .firstPosition{
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.ScrollEffektLeft{
-  position: absolute;
-  left: 30%;
-}
-.ScrollEffektRight{
-  position: absolute;
-  left: 58%;
+  cursor: pointer;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
   /* scrollDownEffektBOX Slutt */
   /* Informasjon_Grid Start*/
@@ -299,14 +313,46 @@ main{
   opacity: 0;
 }
 .Hjem_GridInformasjon section{
-  border: 1px solid black;
+  border: 2px solid black;
   text-align: center;
   position: relative;
   background-image: linear-gradient(90deg, white, #FFFDF5);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  overflow: hidden;
+  transition: border 0.6s;
+}
+.Hjem_GridInformasjon section:before{
+  content: '';
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(255,255,255,.2);
+  z-index: 2;
+}
+.Hjem_GridInformasjon section h2{
+  margin-top: 120px;
+  margin-bottom: 0px;
+  z-index: 10;
+  transition: 0.6s;
+  position: inherit;
+}
+.Hjem_GridInformasjon section p{
+  margin-top: 8px;
+  margin-bottom: 70px;
+  margin-left: 30px;
+  margin-right: 30px;
+  line-height: 23px;
+  z-index: 10;
+  transition: 0.6s;
+  position: inherit;
+}
+.Hjem_GridInformasjon section:nth-child(1) p{
+  line-height: 30px;
 }
 .Hjem_GridInformasjon section a{
   position: absolute;
-  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
   text-decoration: none;
@@ -314,41 +360,103 @@ main{
   border: 1px solid black;
   padding: 10px;
   width: 200px;
+  z-index: 10;
+  transition: 0.6s;
+}
+.Hjem_GridInformasjon section .LogginnKnapp{
+  bottom: 75px;
   background-color: orange;
 }
-.Hjem_GridInformasjon section a:hover{
+.Hjem_GridInformasjon section .LagbrukerKnapp{
+  bottom: 17px;
+  background-color: orange;
+}
+.Hjem_GridInformasjon section:nth-child(2) .LesmerKnapp{
+  bottom: 17px;
+  background-color: #397fef;
+}
+.Hjem_GridInformasjon section:nth-child(3) .LesmerKnapp{
+  bottom: 17px;
+  background-color: pink;
+}
+.Hjem_GridInformasjon section:nth-child(-n+3) a:hover{
   background-color: white;
+  color: black;
 }
-.Hjem_GridInformasjon section h2{
-  margin-top: 50px;
+.Hjem_GridInformasjon section #HoverEffekt{
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  border: 1px solid white;
+  box-shadow: 0 0 0 0 white;
+  background: orange;
+  transition: 1s;
+  z-index: 1;
 }
-.Hjem_GridInformasjon .sec_LærOmOss p{
-  margin-bottom: 65px;
-  margin-left: 20px;
-  margin-right: 20px;
+.Hjem_GridInformasjon section:nth-child(1):hover #HoverEffekt{
+  box-shadow: 0 0 0 490px orange;
 }
-/*
-.Hjem_GridInformasjon .sec_LoggInn{
-  border-radius: 25px 25px 0px 0px;
+.Hjem_GridInformasjon section:nth-child(2):hover #HoverEffekt{
+  box-shadow: 0 0 0 400px #397fef;
 }
-.Hjem_GridInformasjon .sec_LærOmOss{
-  border-radius: 25px 25px 0px 0px;
+.Hjem_GridInformasjon section:nth-child(3):hover #HoverEffekt{
+  box-shadow: 0 0 0 400px pink;
 }
-.Hjem_GridInformasjon .sec_SeAnmeldelser{
-  border-radius: 25px 25px 0px 0px;
+.Hjem_GridInformasjon section:hover h2{
+  color: white;
 }
-*/
+.Hjem_GridInformasjon section:hover p{
+  color: white;
+}
+.Hjem_GridInformasjon section:hover a{
+  color: white;
+  border: 1px solid white;
+}
+.Hjem_GridInformasjon section:hover{
+  border: 2px solid white;
+}
   /* Informasjon_Grid Slutt */
   /* Produkter_Grid Start */
+#ContainerForGridProdukter{
+  margin-left: -50px;
+  margin-right: -50px;
+  margin-top: 30px;
+  height: 465px;
+  position: relative;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+#ContainerForGridProdukter section:nth-child(1) .Left_Sec{
+  margin-left: 50px;
+}
+#ContainerForGridProdukter section:nth-child(1) .Right_Sec{
+  margin-right: 50px;
+}
+#ContainerForGridProdukter .UnderOverskrift{
+  color: white;
+  font-size: 35px;
+}
+#BackgroundVideo{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 465px;
+  object-fit: fill;
+  z-index: -9;
+}
 .Hjem_GridProdukter{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 .Hjem_GridProdukter section{
-  border: 2px solid black;
+  border: 2px solid white;
   position: relative;
   text-align: center;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 .Hjem_GridProdukter section img{
   display: block;
@@ -368,15 +476,15 @@ main{
 }
 .Hjem_GridProdukter section a{
   position: absolute;
-  bottom: 5px;
+  bottom: 15px;
   left: 50%;
   transform: translateX(-50%);
   padding: 10px;
   width: 170px;
   text-decoration: none;
-  color: black;
-  border: 2px solid black;
-  background-color: orange;
+  color: white;
+  border: 2px solid white;
+  background-color: #f7a000;
   opacity: 0;
   transition: opacity 0.1s ease-in;
 }
@@ -386,29 +494,58 @@ main{
 .Hjem_GridProdukter section:hover h3{
   font-size: 30px;
 }
-.Hjem_GridProdukter section:hover a{ /* legg til animasjon */
+.Hjem_GridProdukter section:hover a{
   opacity: 1;
 }
-.Hjem_GridProdukter section:hover a:hover{ /* fungerer ikke */
+.Hjem_GridProdukter section:hover a:hover{
   background-color: white;
+  color: black;
 }
   /* Produkter_Grid Slutt */
   /* Bestselgere_Grid Start */
-.Hjem_GridBestselgere{
+.Hjem_GridBestselgere{ /* Big YIKES atm */
   display: grid;
-  grid-template-columns: 30% 70%
-}
-.Hjem_GridBestselgere .Bilde{
+  grid-template-columns: repeat(3, 1fr);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   border: 2px solid black;
-  border-right: 0px;
 }
-.Hjem_GridBestselgere .Bilde img{
+.Hjem_GridBestselgere section{
+  position: relative;
+}
+.Hjem_GridBestselgere section img{
   display: block;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(80%);
 }
-.Hjem_GridBestselgere .Container{
-  border: 2px solid black;
+.Hjem_GridBestselgere section a{
+  display: none;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 170px;
+  color: white;
+  text-decoration: none;
+  font-size: 25px;
+  border: 2px solid white;
   text-align: center;
+  padding: 13px;
+  transition: 0.6s;
+}
+.Hjem_GridBestselgere section a:hover{
+  background-color: white;
+  color: black;
+}
+.Hjem_GridBestselgere section:hover a{
+  display: block;
+}
+.Hjem_GridBestselgere section:hover img{
+  width: 450px;
+  height: 535px;
+  object-fit: cover;
+  filter: brightness(100%);
 }
   /* Bestselgere_Grid Slutt */
 /* CSS Til Hjem Main Slutt*/
@@ -426,8 +563,8 @@ main{
   /* Sorter Etter bar Start */
 .Produkter_SorteretterBar{
   background-color: #242729;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 .Produkter_SorteretterBar .Content{
   display: grid;
@@ -563,6 +700,10 @@ main{
 /* CSS Til Produkter Main Slutt */
 
 /* CSS Til Produkt Info Main Start */
+.ProduktinfoMain{
+  margin-left: 100px;
+  margin-right: 100px;
+}
 .SecProduktInfo{
   display: grid;
   grid-template-columns: 2fr 3fr;
@@ -575,12 +716,19 @@ main{
   height: 100%;
   object-fit: cover;
 }
+.SecProduktInfo .TilbakeKnapp{
+  width: 110px;
+  height: 35px;
+  font-size: 18px;
+  cursor: pointer;
+}
 /* CSS Til Produkt Info Main Slutt */
 
 /* CSS Til OmOss Header Start */
   /* Forsidebilde OmOss Start */
 .OmOss_ForsideBilde{
   position: relative;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 .OmOss_ForsideBilde img{
   display: block;
@@ -605,10 +753,10 @@ main{
   column-gap: 32px;
   background-image: linear-gradient(90deg, white, #FFFDF5);
   border: 2px solid black;
-  border-radius: 50px;
   padding-top: 20px;
   height: 576px;
   width: 100%;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 .OO_Tekst_Paragraf>p{
   line-height: 1.6;
@@ -637,6 +785,7 @@ main{
   text-align: center;
   margin-bottom: 20px;
   background-image: linear-gradient(90deg, white, #FFFDF5);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 .Anmeldelse_Sec .Anmeldelse_RightPart{
   border-left: 2px solid black;
@@ -653,6 +802,4 @@ main{
 /* Liste:
   - Underoverskrifter fungerer kun 2 ganger, ikke den siste?
   - Slider på forsidebilde er dårlig. Bruk js?
-  Mindreviktig:
-  - isteden for hvit bakgrunn på navbar, blur det som kommer bak?
 */

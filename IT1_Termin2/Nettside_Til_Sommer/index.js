@@ -21,7 +21,7 @@ function genererHTML(snapshot){
           <section class="secProdukter">
             <a href="ProduktInfo.html?id=${ref}">Trykk her for detaljer</a>
             <img onmouseover="document.querySelector('#stickyPhoto').src='${produktSnap.bildeURL2}';document.querySelector('#stickyLink').href='ProduktInfo.html?id=${ref}'" src="${produktSnap.bildeURL}">
-            <p>$${produktSnap.Pris}</p>
+            <p>${produktSnap.Pris} kr</p>
           </section>
     `;
 }
@@ -37,7 +37,7 @@ function genererHTMLSnudd(snapshot){
           <section class="secProdukter">
             <a href="ProduktInfo.html?id=${ref}">Trykk her for detaljer</a>
             <img onmouseover="document.querySelector('#stickyPhoto').src='${produktSnap.bildeURL2}';document.querySelector('#stickyLink').href='ProduktInfo.html?id=${ref}'" src="${produktSnap.bildeURL}">
-            <p>$${produktSnap.Pris}</p>
+            <p>${produktSnap.Pris} kr</p>
           </section>
     ` + main.innerHTML;
 }

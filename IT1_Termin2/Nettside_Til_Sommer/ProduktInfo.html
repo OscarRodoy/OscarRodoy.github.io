@@ -25,7 +25,7 @@
     <header>
       <section class="NavBar">
         <section class="NavBarLogo">
-          <img src="">
+          <img src="Bilder/Logo_MensWatches.png">
         </section>
         <section class="NavBarKnapper">
           <ul>
@@ -36,16 +36,17 @@
           </ul>
         </section>
         <section class="NavBarThemeSelect">
-          <p>Stil:</p>
-          <form action="./" method="post">
-            <select name="themeSelect" id="themeSelect">
-              <option value="Stilark">Default</option>
-              <option value="StilarkMork" class="mork">Mørk</option>
-            </select>
-          </form>
-        </section>
-        <section class="NavBarLogin">
-
+          <section class="tekstSec">
+            <p>Stil:</p>
+          </section>
+          <section class="formSec">
+            <form action="./" method="post">
+              <select name="themeSelect" id="themeSelect">
+                <option value="Stilark">Default</option>
+                <option value="StilarkMork" class="mork">Mørk</option>
+              </select>
+            </form>
+          </section>
         </section>
       </section>
 
@@ -60,7 +61,7 @@
 
     </header>
 
-    <main></main>
+    <main class="ProduktinfoMain"></main>
     <script>
       const main = document.querySelector("main");
 
@@ -83,7 +84,8 @@
             <img src=${objekt.bildeURL}></img>
             <div>
               <h1>text</h1>
-              <p>${objekt.Pris}</p>
+              <p>${objekt.Pris} kr</p>
+              <button class="TilbakeKnapp" onclick="history.back()">&laquo; Tilbake</button>
             </div>
           </section>
         `
@@ -93,7 +95,9 @@
     <footer>
 
       <section class="Fordeler">
-        <div></div>
+        <div>
+          <h1>Fordeler</h1>
+        </div>
         <div>
           <img src="Bilder/Free_Shipping_Icon.png">
           <h4>Gratis Frakt</h4>
@@ -109,7 +113,7 @@
         <div></div>
       </section>
 
-      <p class="Trademark">trademark</p>
+      <p class="Trademark">trademark © 2019-2021 Mens Watches</p>
 
     </footer>
 
