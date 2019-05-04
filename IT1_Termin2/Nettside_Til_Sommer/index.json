@@ -3,67 +3,75 @@
     "versaceKlokker":{
       "versace_1":{
         "KlokkeID":"Ver1",
-        "KlokkeNavn":"navn",
+        "KlokkeNavn":"ABERDEEN - Kronografklokke - gold",
         "Pris":2545,
         "tilbud":"0",
         "bildeURL":"ProduktBilder/Versace_klokke1.jpg",
-        "bildeURL2":"ProduktBilder/Versace_klokke1_img2.jpg"
+        "bildeURL2":"ProduktBilder/Versace_klokke1_img2.jpg",
+        "KjopURL":"https://www.zalando.no/versus-versace-aberdeen-kronografklokke-ve052m005-f11.html?size=One%20Size&wmc=SEM470_NB_GO._8547063993_702781662_40354029247.&opc=2211&gclid=CjwKCAjwv6blBRBzEiwAihbM-V-_KLFW4pJ96bsIfKDcLg9Kjb8Od2nirF73RMqw19iMCFcCHaCCeRoC9fIQAvD_BwE&gclsrc=aw.ds"
       },
       "versace_2":{
         "KlokkeID":"Ver2",
-        "KlokkeNavn":"navn",
+        "KlokkeNavn":"BARBES - Klokke",
         "Pris":1495,
         "tilbud":"0",
         "bildeURL":"ProduktBilder/Versace_klokke2.jpg",
-        "bildeURL2":"ProduktBilder/Versace_klokke2_img2.jpg"
+        "bildeURL2":"ProduktBilder/Versace_klokke2_img2.jpg",
+        "KjopURL":"https://www.zalando.no/versus-versace-barbes-klokke-greyrose-ve052m009-c11.html?size=One%20Size&wmc=SEM470_NB_GO._8547063993_702781671_40354026167.&opc=2211&gclid=CjwKCAjwv6blBRBzEiwAihbM-YqMjNsp_DBYAomYYdEHhoafEsz45acHJq1BRSncc-ham9kQnsmCAhoCMnAQAvD_BwE&gclsrc=aw.ds"
       },
       "versace_3":{
         "KlokkeID":"Ver3",
-        "KlokkeNavn":"navn",
+        "KlokkeNavn":"ABERDEEN EXTENSION - Klokke - gold",
         "Pris":2095,
         "tilbud":"0",
         "bildeURL":"ProduktBilder/Versace_klokke3.jpg",
-        "bildeURL2":"ProduktBilder/Versace_klokke3_img2.jpg"
+        "bildeURL2":"ProduktBilder/Versace_klokke3_img2.jpg",
+        "KjopURL":"https://www.zalando.no/versus-versace-aberdeen-extension-klokke-gold-colouredblue-ve052m00a-f11.html?size=One%20Size&wmc=SEM470_NB_GO._8547063993_702781662_40354029247.&opc=2211&gclid=CjwKCAjwv6blBRBzEiwAihbM-XsRDkLPhP_Ga72vJedpi4b6EIqCPL-TN0L5X78GMZYLBmNwZ-BSiRoCqFIQAvD_BwE&gclsrc=aw.ds"
       },
       "versace_4":{
         "KlokkeID":"Ver4",
-        "KlokkeNavn":"navn",
+        "KlokkeNavn":"PALAZZO EMPIRE - Klokke",
         "Pris":13345,
         "tilbud":"0",
         "bildeURL":"ProduktBilder/Versace_klokke4.jpg",
-        "bildeURL2":"ProduktBilder/Versace_klokke4_img2.jpg"
+        "bildeURL2":"ProduktBilder/Versace_klokke4_img2.jpg",
+        "KjopURL":"https://www.zalando.no/versace-watches-palazzo-empire-klokke-vef52m007-c11.html?size=One%20Size&wmc=SEM470_NB_GO._8547063993_702781662_40354029247.&opc=2211&gclid=CjwKCAjwv6blBRBzEiwAihbM-U8-BCCh-d_p3kvpFdpuOPLPVem_oq-cNtT3mguhDd2pjYw7QEW6pxoCuD4QAvD_BwE&gclsrc=aw.ds"
       },
       "versace_5":{
         "KlokkeID":"Ver5",
-        "KlokkeNavn":"navn",
+        "KlokkeNavn":"V-CIRCLE THE CLANS EDITION - Klokke",
         "Pris":5795,
         "tilbud":"0",
         "bildeURL":"ProduktBilder/Versace_klokke5.jpg",
-        "bildeURL2":"ProduktBilder/Versace_klokke5_img2.jpg"
+        "bildeURL2":"ProduktBilder/Versace_klokke5_img2.jpg",
+        "KjopURL":"https://www.zalando.no/versace-watches-v-circle-the-clans-edition-klokke-vef52m003-g11.html?size=One%20Size&wmc=SEM470_NB_GO._8547063993_702781671_40354026167.&opc=2211&gclid=CjwKCAjwv6blBRBzEiwAihbM-cyoWwtnLSeSPjqc8Mf34o0R_vHn9nBwbI2Q2mEKl1wJg92H8UPmDhoCArkQAvD_BwE&gclsrc=aw.ds"
       },
       "versace_6":{
         "KlokkeID":"Ver6",
-        "KlokkeNavn":"navn",
+        "KlokkeNavn":"GLAZE - Klokke",
         "Pris":9995,
         "tilbud":"0",
         "bildeURL":"ProduktBilder/Versace_klokke6.jpg",
-        "bildeURL2":"ProduktBilder/Versace_klokke6_img2.jpg"
+        "bildeURL2":"ProduktBilder/Versace_klokke6_img2.jpg",
+        "KjopURL":"https://www.zalando.no/versace-watches-glaze-klokke-ivory-vef52m004-o11.html?size=One%20Size&wmc=SEM470_NB_GO._8547063993_702781662_40354029247.&opc=2211&gclid=CjwKCAjwv6blBRBzEiwAihbM-VdebM8_gXCEPT7NTfl-tDnmTkkYcCiXKqEsHlNVOlyA3nYXrTH8OhoCEkMQAvD_BwE&gclsrc=aw.ds"
       },
       "versace_7":{
         "KlokkeID":"Ver7",
-        "KlokkeNavn":"navn",
+        "KlokkeNavn":"GLAZE - Klokke - bracelet gold",
         "Pris":11695,
         "tilbud":"0",
         "bildeURL":"ProduktBilder/Versace_klokke7.jpg",
-        "bildeURL2":"ProduktBilder/Versace_klokke7_img2.jpg"
+        "bildeURL2":"ProduktBilder/Versace_klokke7_img2.jpg",
+        "KjopURL":"https://www.zalando.no/versace-watches-glaze-klokke-vef52m005-d12.html?size=One%20Size&wmc=SEM470_NB_GO._8547063993_702781662_40354029247.&opc=2211&gclid=CjwKCAjwv6blBRBzEiwAihbM-XHOcAZ81dIK9xgb-oa8Ed4THYtiOMIhsD6nRyaaAaPGKWZprVUYAxoCnSQQAvD_BwE&gclsrc=aw.ds"
       },
       "versace_8":{
         "KlokkeID":"Ver8",
-        "KlokkeNavn":"navn",
+        "KlokkeNavn":"PALAZZO EMPIRE - Klokke - gold",
         "Pris":13345,
         "tilbud":"0",
         "bildeURL":"ProduktBilder/Versace_klokke8.jpg",
-        "bildeURL2":"ProduktBilder/Versace_klokke8_img2.jpg"
+        "bildeURL2":"ProduktBilder/Versace_klokke8_img2.jpg",
+        "KjopURL":"https://www.zalando.no/versace-watches-palazzo-empire-klokke-vef52m007-f11.html"
       }
     },
     "rolexKlokker":{

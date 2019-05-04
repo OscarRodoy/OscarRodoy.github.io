@@ -20,46 +20,9 @@
     </script>
 
   </head>
-  <body>
+  <body class="ProduktInfoBody">
 
-    <header>
-      <section class="NavBar">
-        <section class="NavBarLogo">
-          <img src="Bilder/Logo_MensWatches.png">
-        </section>
-        <section class="NavBarKnapper">
-          <ul>
-            <li><a href="Hjem.html">Hjem</a></li>
-            <li><a href="Produkter.html">Produkter</a></li>
-            <li><a href="OmOss.html">Om Oss</a></li>
-            <li><a href"#">Mer</a></li>
-          </ul>
-        </section>
-        <section class="NavBarThemeSelect">
-          <section class="tekstSec">
-            <p>Stil:</p>
-          </section>
-          <section class="formSec">
-            <form action="./" method="post">
-              <select name="themeSelect" id="themeSelect">
-                <option value="Stilark">Default</option>
-                <option value="StilarkMork" class="mork">Mørk</option>
-              </select>
-            </form>
-          </section>
-        </section>
-      </section>
-
-      <script>
-        const themeSelect = document.getElementById("themeSelect");
-        const themeStylesheet = document.getElementById("themeStylesheet");
-
-        themeSelect.addEventListener("change", function(){
-          themeStylesheet.setAttribute("href", this.value + ".css");
-        });
-      </script>
-
-    </header>
+    <video id="backgroundProduktInfo" src="Video/Fuego_de_Refineria.mp4" autoplay loop muted></video>
 
     <main class="ProduktinfoMain"></main>
     <script>
@@ -81,41 +44,26 @@
         let objekt = snap.val();
         main.innerHTML = `
           <section class="SecProduktInfo">
-            <img src=${objekt.bildeURL}></img>
+            <img class="DisplayedIMG" src=${objekt.bildeURL}></img>
             <div>
-              <h1>text</h1>
-              <p>${objekt.Pris} kr</p>
-              <button class="TilbakeKnapp" onclick="history.back()">&laquo; Tilbake</button>
+              <h1>${objekt.KlokkeNavn}</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut labore et dolore aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris quario nisi ut. incididunt ut labore et dolore aliquip...</p>
+              <h3>Pris: ${objekt.Pris} kr</h3>
+              <div class="Knapper">
+                <div><button onclick="history.back()">&laquo; Tilbake</button></div>
+                <div><a href="${objekt.KjopURL}" target="_blank">Kjøp nå &raquo;</a></div>
+              </div>
+              <hr>
+              <h2>Se Andre Bilder</h2>
+              <div class="Bilder">
+                <div><img class="LeftIMG" onclick="document.querySelector('.DisplayedIMG').src='${objekt.bildeURL}'" src=${objekt.bildeURL}></img></div>
+                <div><img class="RightIMG" onclick="document.querySelector('.DisplayedIMG').src='${objekt.bildeURL2}'" src=${objekt.bildeURL2}></img></div>
+              </div>
             </div>
           </section>
         `
       }
     </script>
-
-    <footer>
-
-      <section class="Fordeler">
-        <div>
-          <h1>Fordeler</h1>
-        </div>
-        <div>
-          <img src="Bilder/Free_Shipping_Icon.png">
-          <h4>Gratis Frakt</h4>
-        </div>
-        <div>
-          <img src="Bilder/Free_Shipping_Icon.png">
-          <h4>14 Dager Retur</h4>
-        </div>
-        <div>
-          <img src="Bilder/Free_Shipping_Icon.png">
-          <h4>Eksklusive Produkter</h4>
-        </div>
-        <div></div>
-      </section>
-
-      <p class="Trademark">trademark © 2019-2021 Mens Watches</p>
-
-    </footer>
 
   </body>
 </html>

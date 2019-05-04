@@ -20,7 +20,7 @@ function genererHTML(snapshot){
     main.innerHTML +=`
           <section class="secProdukter">
             <a href="ProduktInfo.html?id=${ref}">Trykk her for detaljer</a>
-            <img onmouseover="document.querySelector('#stickyPhoto').src='${produktSnap.bildeURL2}';document.querySelector('#stickyLink').href='ProduktInfo.html?id=${ref}'" src="${produktSnap.bildeURL}">
+            <img onmouseover="document.querySelector('#stickyPhoto').src='${produktSnap.bildeURL2}';document.querySelector('#stickyLink').href='ProduktInfo.html?id=${ref}';document.querySelector('#stickyHeader').innerHTML='${produktSnap.KlokkeNavn}'" src="${produktSnap.bildeURL}">
             <p>${produktSnap.Pris} kr</p>
           </section>
     `;
@@ -36,7 +36,7 @@ function genererHTMLSnudd(snapshot){
     main.innerHTML =`
           <section class="secProdukter">
             <a href="ProduktInfo.html?id=${ref}">Trykk her for detaljer</a>
-            <img onmouseover="document.querySelector('#stickyPhoto').src='${produktSnap.bildeURL2}';document.querySelector('#stickyLink').href='ProduktInfo.html?id=${ref}'" src="${produktSnap.bildeURL}">
+            <img onmouseover="document.querySelector('#stickyPhoto').src='${produktSnap.bildeURL2}';document.querySelector('#stickyLink').href='ProduktInfo.html?id=${ref}';document.querySelector('#stickyHeader').innerHTML='${produktSnap.KlokkeNavn}'" src="${produktSnap.bildeURL}">
             <p>${produktSnap.Pris} kr</p>
           </section>
     ` + main.innerHTML;
@@ -53,6 +53,7 @@ function genererStickyBOX(snapshot){
     stickyBOX.innerHTML +=`
             <img id="stickyPhoto" src="${produktSnap.bildeURL2}">
             <div class="transparentBOX"></div>
+            <h1 id="stickyHeader">${produktSnap.KlokkeNavn}</h1>
             <a id="stickyLink" href="ProduktInfo.html?id=${ref}">Se detaljer</a>
     `;
 }
@@ -97,7 +98,7 @@ function visHoyTilLav(){
   VersaceKlokker.orderByChild("Pris").on("child_added", genererHTMLSnudd);
   RolexKlokker.orderByChild("Pris").on("child_added", genererHTMLSnudd);
   GucciKlokker.orderByChild("Pris").on("child_added", genererHTMLSnudd);
-  VersaceKlokker.orderByChild("Pris").limitToFirst(1).on("child_added", genererStickyBOX);
+  VersaceKlokker.orderByChild("Pris").limitToLast(1).on("child_added", genererStickyBOX);
 }
 
 function visATilAA(){
@@ -110,20 +111,7 @@ function visATilAA(){
   VersaceKlokker.orderByChild("KlokkeNavn").on("child_added", genererHTML);
   RolexKlokker.orderByChild("KlokkeNavn").on("child_added", genererHTML);
   GucciKlokker.orderByChild("KlokkeNavn").on("child_added", genererHTML);
-  VersaceKlokker.orderByChild("Pris").limitToFirst(1).on("child_added", genererStickyBOX);
-}
-
-function visTilbud(){
-  main.innerHTML = `
-          <section class="VenstreSec">
-            <section id="stickyBOX">
-
-            </section>
-          </section>`;
-  VersaceKlokker.orderByChild("").on("child_added", genererHTML);
-  RolexKlokker.orderByChild("").on("child_added", genererHTML);
-  GucciKlokker.orderByChild("").on("child_added", genererHTML);
-  VersaceKlokker.orderByChild("Pris").limitToFirst(1).on("child_added", genererStickyBOX);
+  VersaceKlokker.orderByChild("KlokkeNavn").limitToFirst(1).on("child_added", genererStickyBOX);
 }
 
 function sortering(select){
@@ -135,9 +123,6 @@ function sortering(select){
   }
   else if (select.value == "aTilAA"){
     visATilAA();
-  }
-  else if (select.value == "tilbud"){
-    visTilbud();
   }
 }
 
