@@ -30,10 +30,25 @@
         <section class="NavBarKnapper">
           <ul>
             <li><a href="Hjem.html">Hjem</a></li>
-            <li><a href="Produkter.html">Produkter</a></li>
+            <li><a class="active" href="Produkter.html">Produkter</a></li>
             <li><a href="OmOss.html">Om Oss</a></li>
-            <li><a href"#">Mer</a></li>
+            <li><a href="#">Mer</a></li>
           </ul>
+        </section>
+        <section class="NavBarDropdown">
+          <section class="Knapp">
+            <div></div>
+            <div></div>
+            <div></div>
+          </section>
+          <section class="Content">
+            <ul>
+              <li><a href="Hjem.html">Hjem</a></li>
+              <li class="active"><a href="Produkter.html">Produkter</a></li>
+              <li><a href="OmOss.html">Om Oss</a></li>
+              <li><a href="#">Mer</a></li>
+            </ul>
+          </section>
         </section>
         <section class="NavBarThemeSelect">
           <section class="tekstSec">
@@ -69,10 +84,10 @@
           <div>
             <form>
               <select id="selectProdukt" onchange="sortering(this)" name="Produkter">
-                <option value="">Alle Produkter</option>
-                <option value="">Alle Versace Klokker</option>
-                <option value="">Alle x</option>
-                <option value="">Alle y</option>
+                <option value="visAlle">Alle Produkter</option>
+                <option value="visVersace">Alle Versace Klokker</option>
+                <option value="visRolex">Alle Rolex klokker</option>
+                <option value="visGucci">Alle y</option>
               <select>
             </form>
           </div>
@@ -91,7 +106,7 @@
     </header>
 
     <main class="mainProdukter"></main>
-    <script src="index.js"></script>
+    <script src="Scripts/index.js"></script>
 
     <footer>
 

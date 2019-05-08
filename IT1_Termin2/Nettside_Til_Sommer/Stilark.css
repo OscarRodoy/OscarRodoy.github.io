@@ -3,10 +3,17 @@ body{
   margin: 0px;
   font-family: Arial;
   background-image: linear-gradient(90deg, #FFFDF5, white);
+  overflow-x: hidden;
 }
 main{
   margin-left: 50px;
   margin-right: 50px;
+}
+@media (max-width: 550px){
+  main{
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 }
   /* Nav bar Start */
 .NavBar{
@@ -14,6 +21,7 @@ main{
   top: 0px;
   left: 0px;
   width: 100%;
+  height: 58px;
   z-index: 100;
   display: grid;
   grid-template-columns: 2fr 5fr 2fr;
@@ -51,6 +59,78 @@ main{
 }
 .NavBar>.NavBarKnapper>ul li a:hover{
   border-bottom: 2px solid black;
+}
+.NavBar>.NavBarKnapper>ul li .active{
+  border-bottom: 2px solid black;
+}
+.NavBar .NavBarDropdown{
+  display: none;
+  position: relative;
+}
+.NavBar .NavBarDropdown .Knapp{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding-top: 9px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.NavBar .NavBarDropdown .Knapp div{
+  width: 35px;
+  height: 5px;
+  background-color: black;
+  margin: 6px 0;
+}
+.NavBar .NavBarDropdown .Content{
+  display: none;
+  position: absolute;
+  top: 58px;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background-image: linear-gradient(90deg, #FFFDF5, white);
+  text-align: center;
+  border-top: 1px solid black;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.NavBar .NavBarDropdown .Content ul{
+  padding: 0px;
+  margin: 0px;
+}
+.NavBar .NavBarDropdown .Content ul li{
+  list-style: none;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid black;
+}
+.NavBar .NavBarDropdown .Content ul li a{
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  padding-right: calc(50vw - 35px);
+  padding-left: calc(50vw - 35px);
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.NavBar .NavBarDropdown .Content ul .active{
+  background-color: #242729;
+}
+.NavBar .NavBarDropdown .Content ul .active a{
+  color: white;
+}
+.NavBar .NavBarDropdown .Content ul li:hover{
+  background-color: #242729;
+}
+.NavBar .NavBarDropdown .Content ul li:hover a{
+  color: white;
+}
+.NavBar .NavBarDropdown .Knapp:hover + .Content{
+  display: block;
+}
+.NavBar .NavBarDropdown .Content:hover{
+  display: block;
 }
 .NavBar .NavBarThemeSelect{
   background-image: linear-gradient(90deg, white, #242729, #242729, #242729, #242729, #242729, #242729, white);
@@ -90,6 +170,53 @@ main{
   background-color: black;
   color: white;
 }
+@media (max-width: 1000px){
+  .NavBar .NavBarKnapper ul li{
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  .NavBar .NavBarThemeSelect{
+    margin-right: 5px;
+  }
+  .NavBar .NavBarLogo img{
+    width: 170px;
+  }
+}
+@media (max-width: 850px){
+  .NavBar{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .NavBar .NavBarKnapper{
+    display: none;
+  }
+  .NavBar .NavBarDropdown{
+    display: block;
+  }
+}
+@media (max-width: 600px){
+  .NavBar{
+    grid-template-columns: 2fr 1fr 2fr;
+  }
+  .NavBar .NavBarThemeSelect{
+    margin-right: 0px;
+    grid-template-columns: 1fr;
+  }
+  .NavBar .NavBarThemeSelect section:nth-child(2){
+    margin-right: 0px;
+  }
+  .NavBar .NavBarThemeSelect section:nth-child(1){
+    display: none;
+  }
+  .NavBar .NavBarThemeSelect section form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .NavBar .NavBarLogo img{
+    width: 150px;
+  }
+}
   /* Nav bar Slutt */
   /* Under Overskrifter Start */
 .UnderOverskrift{
@@ -121,6 +248,26 @@ main{
 .UnderOverskrift_2{
   font-size: 20px;
   text-align: center;
+}
+@media (max-width: 1165px){
+  .UnderOverskrift{
+    grid-template-columns: 3fr 2fr 3fr
+  }
+}
+@media (max-width: 970px){
+  .UnderOverskrift{
+    grid-template-columns: 1fr 1fr 1fr
+  }
+}
+@media (max-width: 780px){
+  .UnderOverskrift{
+    grid-template-columns: 1fr 2fr 1fr
+  }
+}
+@media (max-width: 550px){
+  .UnderOverskrift{
+    grid-template-columns: 1fr 3fr 1fr
+  }
 }
   /* Under Overskrifter Slutt */
   /* Footer Start */
@@ -181,6 +328,18 @@ main{
   text-align: center;
   padding: 10px;
 }
+@media (max-width: 780px){
+  .Fordeler div img{
+    width: 80px;
+  }
+  .Fordeler div h4{
+    font-size: 17px;
+    top: 15px;
+  }
+  .Fordeler div h1{
+    left: 45%;
+  }
+}
   /* Fotter Slutt */
 /* CSS Til Alle sider Slutt */
 
@@ -193,23 +352,20 @@ main{
   top: 0;
   width: 100%;
   height: 100vh;
-  animation: animate 16s  infinite;
+  animation: slider 9s infinite linear;
   background-size: cover;
   filter: brightness(40%);
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
-@keyframes animate{
+@keyframes slider{
   0%, 100%{
     background-image: url(Bilder/Home_Image_1.jpg);
   }
-  25%{
+  35%{
     background-image: url(Bilder/Home_Image_2b.jpg);
   }
-  50%{
-    background-image: url(Bilder/Home_Image_1234.jpg);
-  }
   75%{
-    background-image: url(Bilder/Home_Image_1.jpg);
+    background-image: url(Bilder/Home_Image_1234.jpg);
   }
 }
 .Hjem_Forside{
@@ -257,8 +413,8 @@ main{
   text-decoration: none;
   border: 2px solid white;
   padding: 10px;
-  padding-left: 45px;
-  padding-right: 45px;
+  padding-left: 40px;
+  padding-right: 40px;
   font-size: 20px;
   margin-left: 5px;
 }
@@ -269,6 +425,37 @@ main{
 .Hjem_Forside .Hjem_ForsideKnapper .LagBruker_Knapp:hover{
   color: black;
   background-color: white;
+}
+@media (max-width: 850px){
+  .Hjem_Forside .Hjem_ForsideOverskrift h1{
+    font-size: 3em;
+  }
+  .Hjem_Forside .Hjem_ForsideOverskrift h3{
+    font-size: 1.5em;
+  }
+}
+@media (max-width: 740px){
+  .Hjem_Forside .Hjem_ForsideOverskrift h1{
+    font-size: 2.5em;
+  }
+  .Hjem_Forside .Hjem_ForsideOverskrift h3{
+    margin-top: 5px;
+    font-size: 1.2em;
+  }
+  .Hjem_Forside .Hjem_ForsideKnapper .LoggInn_Knapp{
+    padding: 7px;
+    padding-left: 35px;
+    padding-right: 35px;
+    font-size: 17px;
+    margin-right: 5px;
+  }
+  .Hjem_Forside .Hjem_ForsideKnapper .LagBruker_Knapp{
+    padding: 7px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 17px;
+    margin-left: 5px;
+  }
 }
   /* Forsidebilde Hjem Tekst&Knapper Slutt */
 /* CSS Til Hjem Header Slutt */
@@ -301,6 +488,22 @@ main{
   cursor: pointer;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
+@media (max-width: 970px){
+  #scrollDownEffektBOX{
+    grid-template-columns: 1fr 1fr;
+  }
+  #scrollDownEffektBOX section:nth-child(4){
+    display: none;
+  }
+}
+@media (max-width: 740px){
+  #scrollDownEffektBOX{
+    grid-template-columns: 1fr;
+  }
+  #scrollDownEffektBOX section:nth-child(3){
+    display: none;
+  }
+}
   /* scrollDownEffektBOX Slutt */
   /* Informasjon_Grid Start*/
 .Hjem_GridInformasjon{
@@ -330,6 +533,12 @@ main{
   left: 0;
   background: rgba(255,255,255,.2);
   z-index: 2;
+}
+.Hjem_GridInformasjon section:nth-child(3) img{
+  display: none;
+}
+.Hjem_GridInformasjon section:nth-child(2) img{
+  display: none;
 }
 .Hjem_GridInformasjon section h2{
   margin-top: 120px;
@@ -436,13 +645,98 @@ main{
 .Hjem_GridInformasjon section:hover{
   border: 2px solid white;
 }
+@media (max-width: 970px){
+  .Hjem_GridInformasjon{
+    grid-template-columns: 1fr 1fr;
+  }
+  .Hjem_GridInformasjon section:nth-child(3){
+    grid-column: 1 / span 2;
+    height: 270px;
+  }
+  .Hjem_GridInformasjon section:nth-child(3) table{
+    margin-right: 50px;
+    margin-left: 50px;
+  }
+  .Hjem_GridInformasjon section:nth-child(3) img{
+    display: block;
+    width: 100px;
+    border-radius: 50%;
+    z-index: 20;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .Hjem_GridInformasjon section:nth-child(3):hover #HoverEffekt{
+    box-shadow: 0 0 0 500px salmon;
+  }
+}
+@media (max-width: 850px){
+  .Hjem_GridInformasjon section p{
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .Hjem_GridInformasjon section:nth-child(3) table{
+    margin-right: 30px;
+    margin-left: 30px;
+  }
+}
+@media (max-width: 740px){
+  .Hjem_GridInformasjon{
+    grid-template-columns: 1fr;
+  }
+  .Hjem_GridInformasjon section:nth-child(3){
+    grid-column: 1 / span 1;
+    height: 290px;
+  }
+  .Hjem_GridInformasjon section:nth-child(2) img{
+    display: block;
+    width: 100px;
+    border-radius: 50%;
+    z-index: 20;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .Hjem_GridInformasjon section:nth-child(1) .LogginnKnapp{
+    position: absolute;
+    bottom: 17px;
+    transform: translateX(10%);
+    width: 150px;
+  }
+  .Hjem_GridInformasjon section:nth-child(1) .LagbrukerKnapp{
+    position: absolute;
+    bottom: 17px;
+    transform: translateX(-110%);
+    width: 150px;
+  }
+}
+@media (max-width: 585px){
+  .Hjem_GridInformasjon section:nth-child(3){
+    height: 310px;
+  }
+  .Hjem_GridInformasjon section:nth-child(1) .LogginnKnapp{
+    transform: translateX(5%);
+    width: 120px;
+  }
+  .Hjem_GridInformasjon section:nth-child(1) .LagbrukerKnapp{
+    transform: translateX(-105%);
+    width: 120px;
+  }
+}
+@media (max-width: 517px){
+  .Hjem_GridInformasjon section:nth-child(3){
+    height: 330px;
+  }
+}
   /* Informasjon_Grid Slutt */
   /* Produkter_Grid Start */
 #ContainerForGridProdukter{
   margin-left: -50px;
   margin-right: -50px;
   margin-top: 30px;
-  height: 465px;
+  height: 425px;
   position: relative;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
@@ -456,11 +750,18 @@ main{
   color: white;
   font-size: 35px;
 }
+#ContainerForGridProdukter .UnderOverskrift h1{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+#ContainerForGridProdukter .UnderOverskrift hr{
+  bottom: 30%;
+}
 #BackgroundVideo{
   position: absolute;
   top: 0;
   width: 100%;
-  height: 465px;
+  height: 425px;
   object-fit: fill;
   z-index: -9;
 }
@@ -476,22 +777,29 @@ main{
   position: relative;
   text-align: center;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  overflow: hidden;
 }
 .Hjem_GridProdukter section img{
   display: block;
   width: 100%;
+  min-height: 278px;
+  max-height: 280px;
+  object-fit: cover;
   filter: brightness(80%);
 }
 .Hjem_GridProdukter section h3{
   position: absolute;
-  top: 50%;
+  top: 20px;
   left: 50%;
   transform: translate(-50%,-50%);
+  padding: 8px;
+  width: 100%;
+  background-color: white;
+  opacity: 0.8;
   margin: 0px;
-  color: white;
   z-index: 3;
   font-size: 25px;
-  transition: 0.1s;
+  transition: 0.2s;
 }
 .Hjem_GridProdukter section a{
   position: absolute;
@@ -499,16 +807,16 @@ main{
   left: 50%;
   transform: translateX(-50%);
   padding: 10px;
-  width: 170px;
+  width: 100%;
   text-decoration: none;
   color: white;
   border: 2px solid white;
   background-color: #f7a000;
   opacity: 0;
-  transition: opacity 0.1s ease-in;
+  transition: opacity 0.2s ease-in;
 }
 .Hjem_GridProdukter section:hover img{
-  filter: brightness(100%);
+  filter: brightness(90%);
 }
 .Hjem_GridProdukter section:hover h3{
   font-size: 30px;
@@ -520,6 +828,26 @@ main{
   background-color: white;
   color: black;
 }
+@media (max-width: 970px){
+  .Hjem_GridProdukter{
+    grid-template-columns: 1fr 1fr;
+  }
+  #ContainerForGridProdukter, #BackgroundVideo{
+    height: 725px;
+  }
+}
+@media (max-width: 740px){
+  .Hjem_GridProdukter{
+    margin-left: 50px;
+    margin-right: 50px;
+    grid-gap: 10px;
+  }
+}
+@media (max-width: 550px){
+  #ContainerForGridProdukter, #BackgroundVideo{
+    height: 695px;
+  }
+}
   /* Produkter_Grid Slutt */
   /* Bestselgere_Grid Start */
 .Hjem_GridBestselgere{
@@ -527,6 +855,23 @@ main{
   grid-template-columns: repeat(3, 1fr);
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   border: 2px solid black;
+}
+.Hjem_GridBestselgere .NextIMG{ /* vises kun ved mindre skjerm */
+  display: none;
+  position: relative;
+  cursor: pointer;
+}
+.Hjem_GridBestselgere .NextIMG p{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 80px;
+  margin: 0px;
+  transition: 0.3s;
+}
+.Hjem_GridBestselgere .NextIMG:hover p{ /* vises kun ved mindre skjerm */
+  color: grey;
 }
 .Hjem_GridBestselgere section{
   position: relative;
@@ -536,6 +881,8 @@ main{
   display: block;
   width: 100%;
   height: 100%;
+  min-height: 450px;
+  max-height: 540px;
   object-fit: cover;
   filter: brightness(80%);
   transition: 0.6s;
@@ -555,6 +902,20 @@ main{
   padding: 10px;
   transition: 0.6s;
 }
+.Hjem_GridBestselgere section h1{
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: scaleY(0) translateX(-50%);
+  width: 100%;
+  color: black;
+  font-size: 20px;
+  text-align: center;
+  padding: 10px;
+  background-color: white;
+  opacity: 0.8;
+  transition: 0.6s;
+}
 .Hjem_GridBestselgere section a:hover{
   background-color: white;
   color: black;
@@ -562,10 +923,35 @@ main{
 .Hjem_GridBestselgere section:hover a{
   transform: scale(1) translateX(-50%);
 }
+.Hjem_GridBestselgere section:hover h1{
+  transform: scale(1) translateX(-50%);
+}
 .Hjem_GridBestselgere section:hover img{
   transform: scale(1.1);
   z-index: 100;
   filter: brightness(100%);
+}
+@media (max-width: 850px){
+  .Hjem_GridBestselgere{
+    grid-template-columns: 1fr 4fr 1fr;
+  }
+  .Hjem_GridBestselgere section:nth-child(2){
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+  }
+  .Hjem_GridBestselgere section:nth-child(3){
+    display: none;
+  }
+  .Hjem_GridBestselgere section:nth-child(4){
+    display: none;
+  }
+  .Hjem_GridBestselgere .NextIMG{
+    display: block;
+  }
+  .Hjem_GridBestselgere section h1{
+    top: -20px;
+    padding: 25px;
+  }
 }
   /* Bestselgere_Grid Slutt */
 /* CSS Til Hjem Main Slutt*/
@@ -626,6 +1012,9 @@ main{
   transition: filter 0.1s ease-in;
   cursor: pointer;
 }
+.mainProdukter .secProdukter .RolexBackground{ /* ... */
+  background-color: #fdfdfd;
+}
 .mainProdukter .secProdukter img{
   position: absolute;
   left: 50%;
@@ -675,7 +1064,7 @@ main{
 
 }
 .mainProdukter .VenstreSec{
-  grid-row: 1 / span 4;
+  grid-row: 1 / span 10;
 }
 .mainProdukter .VenstreSec #stickyBOX{
   position: relative;
@@ -695,7 +1084,7 @@ main{
   left: 50%;
   transform: translateX(-50%);
   background-color: white;
-  opacity: 0.5;
+  opacity: 0.6;
   width: 234px;
   height: 50px;
   z-index: 10;
@@ -737,9 +1126,6 @@ main{
 
 /* CSS Til Produkt Info Start */
  /* CSS Til Video Bakgrunn Start*/
-.ProduktInfoBody{
-  position: relative;
-}
 #backgroundProduktInfo{
   position: absolute;
   top: 0px;
@@ -870,6 +1256,7 @@ main{
   border-radius: 5px;
   cursor: pointer;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  filter: brightness(90%);
 }
 .SecProduktInfo div .Bilder div .RightIMG{
   position: absolute;
@@ -883,6 +1270,10 @@ main{
   border-radius: 5px;
   cursor: pointer;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  filter: brightness(90%);
+}
+.SecProduktInfo div .Bilder div img:hover{
+  filter: brightness(100%);
 }
   /* CSS Til Main Start */
 /* CSS Til Produkt Info Slutt */
@@ -951,6 +1342,7 @@ main{
   transform: rotateZ(90deg);
   margin-top: -30px;
   margin-bottom: -15px;
+  transition: 1s;
 }
 .Anmeldelse_Sec section:nth-child(2){
   border-left: 2px solid black;

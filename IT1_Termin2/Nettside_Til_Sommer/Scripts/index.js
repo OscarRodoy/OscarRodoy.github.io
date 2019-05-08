@@ -1,8 +1,7 @@
-  // Variabel som referer til main-elementet
 const main = document.querySelector("main");
 const selectProdukt = document.querySelector("#selectProdukt");
 const selectRekkefolge = document.querySelector("#selectRekkefolge");
-  // Referanser til databasen
+
 const db = firebase.database();
 
 const Produkter = db.ref("Produkter"); //trengs ikke?
@@ -11,7 +10,6 @@ const RolexKlokker = db.ref("Produkter/rolexKlokker");
 const GucciKlokker = db.ref("Produkter/gucciKlokker");
 
 function genererHTML(snapshot){
-      //Javascript-funksjon som skriver varene ut på nettsiden i main-elementet
     let produktSnap = snapshot.val();
     console.log(produktSnap);
     let parent = snapshot.ref.parent.key;
@@ -27,7 +25,6 @@ function genererHTML(snapshot){
 }
 
 function genererHTMLSnudd(snapshot){
-      //Javascript-funksjon som skriver varene ut på nettsiden i main-elementet
     let produktSnap = snapshot.val();
     console.log(produktSnap);
     let parent = snapshot.ref.parent.key;
@@ -43,7 +40,6 @@ function genererHTMLSnudd(snapshot){
 }
 
 function genererStickyBOX(snapshot){
-      //Javascript-funksjon som skriver varene ut på nettsiden i main-elementet
     let produktSnap = snapshot.val();
     console.log(produktSnap);
     let parent = snapshot.ref.parent.key;
@@ -59,20 +55,62 @@ function genererStickyBOX(snapshot){
 }
 
 
+let url_string = window.location.href;
+let url = new URL(url_string);
+let id = url.searchParams.get("id");
+function visVedOpning(){
+  if(id == "alleProdukter"){
+    visAlle();
+  }
+  else if(id == "alleVersace"){
+    visVersace();
+  }
+  else if(id == "alleRolex"){
+    visRolex();
+  }
+  else if(id == "alleGucci"){
+    visGucci();
+  }
+  else{
+    visAlle();
+  }
+}
+
 function visAlle(){
+  visLavTilHoy();
+}
+
+function visVersace(){
   main.innerHTML = `
           <section class="VenstreSec">
             <section id="stickyBOX">
 
             </section>
           </section>`;
-  //VersaceKlokker.on("child_added", genererHTML);
-  //RolexKlokker.on("child_added", genererHTML);
-  //GucciKlokker.on("child_added", genererHTML);
+  VersaceKlokker.orderByChild("Pris").on("child_added", genererHTML);
+  VersaceKlokker.orderByChild("Pris").limitToFirst(1).on("child_added", genererStickyBOX);
+}
 
-  visLavTilHoy();
+function visRolex(){
+  main.innerHTML = `
+          <section class="VenstreSec">
+            <section id="stickyBOX">
 
-  //VersaceKlokker.orderByChild("Pris").limitToFirst(1).on("child_added", genererStickyBOX);
+            </section>
+          </section>`;
+  RolexKlokker.orderByChild("Pris").on("child_added", genererHTML);
+  RolexKlokker.orderByChild("Pris").limitToFirst(1).on("child_added", genererStickyBOX);
+}
+
+function visGucci(){
+  main.innerHTML = `
+          <section class="VenstreSec">
+            <section id="stickyBOX">
+
+            </section>
+          </section>`;
+  GucciKlokker.orderByChild("Pris").on("child_added", genererHTML);
+  GucciKlokker.orderByChild("Pris").limitToFirst(1).on("child_added", genererStickyBOX);
 }
 
 function visLavTilHoy(){
@@ -86,6 +124,8 @@ function visLavTilHoy(){
   RolexKlokker.orderByChild("Pris").on("child_added", genererHTML);
   GucciKlokker.orderByChild("Pris").on("child_added", genererHTML);
   VersaceKlokker.orderByChild("Pris").limitToFirst(1).on("child_added", genererStickyBOX);
+
+  // .addClass("RolexBackground") ??
 }
 
 function visHoyTilLav(){
@@ -124,6 +164,18 @@ function sortering(select){
   else if (select.value == "aTilAA"){
     visATilAA();
   }
+  else if (select.value == "visAlle"){
+    visAlle();
+  }
+  else if (select.value == "visVersace"){
+    visVersace();
+  }
+  else if (select.value == "visRolex"){
+    visRolex();
+  }
+  else if (select.value == "visGucci"){
+    visGucci();
+  }
 }
 
-visAlle();
+visVedOpning();

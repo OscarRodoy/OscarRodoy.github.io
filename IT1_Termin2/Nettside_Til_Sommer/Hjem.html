@@ -20,7 +20,7 @@
     </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="Scripts.js"></script>
+    <script src="Scripts/Jquery.js"></script>
 
   </head>
   <body>
@@ -32,11 +32,26 @@
         </section>
         <section class="NavBarKnapper">
           <ul>
-            <li><a href="Hjem.html">Hjem</a></li>
+            <li><a class="active" href="Hjem.html">Hjem</a></li>
             <li><a href="Produkter.html">Produkter</a></li>
             <li><a href="OmOss.html">Om Oss</a></li>
-            <li><a href"#">Mer</a></li>
+            <li><a href="#">Mer</a></li>
           </ul>
+        </section>
+        <section class="NavBarDropdown">
+          <section class="Knapp">
+            <div></div>
+            <div></div>
+            <div></div>
+          </section>
+          <section class="Content">
+            <ul>
+              <li class="active"><a href="Hjem.html">Hjem</a></li>
+              <li><a href="Produkter.html">Produkter</a></li>
+              <li><a href="OmOss.html">Om Oss</a></li>
+              <li><a href="#">Mer</a></li>
+            </ul>
+          </section>
         </section>
         <section class="NavBarThemeSelect">
           <section class="tekstSec">
@@ -100,10 +115,10 @@
           <img onclick="scrollDOWN()" src="Bilder/Logginn_Icon.jpg">
         </section>
         <section>
-          <img onclick="scrollDOWN()" src="Bilder/Info_Icon.png">
+          <img onclick="scrollDOWN()" src="Bilder/Info_Icon_v2.jpg">
         </section>
         <section>
-          <img onclick="scrollDOWN()" src="Bilder/Anmeldelser_Icon.png">
+          <img onclick="scrollDOWN()" src="Bilder/Anmeldelser_Icon_v2.jpg">
         </section>
       </section>
 
@@ -117,16 +132,18 @@
         </section>
         <section>
           <div id="HoverEffekt"></div>
+          <img src="Bilder/Info_Icon_v2.jpg">
           <h2>Lær om oss</h2>
           <p>Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut labore et dolore aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris quario nisi ut aliquip...</p>
           <a class="LesmerKnapp" href="OmOss.html">Les mer</a>
         </section>
         <section>
           <div id="HoverEffekt"></div>
+          <img src="Bilder/Anmeldelser_Icon_v2.jpg">
           <h2>Se Anmeldelser</h2>
           <table>
             <td>Kåre Skriver:</td>
-            <td>Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut labore et dolore aliqua. exercitation ullamco laboris quario nisi ut...</td>
+            <td>Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut labore et dolore aliqua. exercitation ullamco laboris...</td>
           </table>
           <a class="LesmerKnapp" href="OmOss.html#Anmeldelser">Les mer</a>
         </section>
@@ -148,22 +165,22 @@
           <section>
             <h3>Alle Klokker</h3>
             <img src="Bilder/Produkter_seKlokker.jpg">
-            <a href="Produkter.html">se alle produkter</a>
+            <a href="Produkter.html?id=alleProdukter">se alle produkter</a>
           </section>
           <section>
             <h3>Versace</h3>
-            <img src="Bilder/Produkter_seKlokker.jpg">
-            <a href="#">se alle Versace Klokker</a>
+            <img src="Bilder/Produkter_seVersaceKlokker2.jpg">
+            <a href="Produkter.html?id=alleVersace">se alle Versace Klokker</a>
           </section>
           <section>
             <h3>Rolex</h3>
-            <img src="Bilder/Produkter_seKlokker.jpg">
-            <a href="#">se alle Rolex Klokker</a>
+            <img src="Bilder/Produkter_seRolexKlokker.jpg">
+            <a href="Produkter.html?id=alleRolex">se alle Rolex Klokker</a>
           </section>
           <section>
             <h3>Gucci</h3>
             <img src="Bilder/Produkter_seKlokker.jpg">
-            <a href="#">se alle Gucci Klokker</a>
+            <a href="Produkter.html?id=alleGucci">se alle Gucci Klokker</a>
           </section>
         </section>
       </section>
@@ -177,20 +194,30 @@
       </section>
 
       <section class="Hjem_GridBestselgere">
-        <section>
+        <section class="NextIMG" id="LeftButton" onclick="visIMG3()"> <!-- Vises kun ved mindre skjerm -->
+          <p>&laquo;</p>
+        </section>
+        <section id="LitenSkjermVisning"> <!-- Den sectionen som vises ved liten skjerm -->
           <img src="ProduktBilder/Versace_klokke7_img2.jpg">
           <a href="Produktinfo.html?id=versaceKlokker/versace_7">Se detaljer</a>
+          <h1>GLAZE - Klokke - bracelet gold</h1>
         </section>
         <section>
           <img src="ProduktBilder/Versace_klokke3_img2.jpg">
           <a href="Produktinfo.html?id=versaceKlokker/versace_3">Se detaljer</a>
+          <h1>ABERDEEN EXTENSION - Klokke - gold</h1>
         </section>
         <section>
           <img src="ProduktBilder/Versace_klokke5_img2.jpg">
           <a href="Produktinfo.html?id=versaceKlokker/versace_5">Se detaljer</a>
+          <h1>V-CIRCLE THE CLANS EDITION - Klokke</h1>
         </section>
-
+        <section class="NextIMG" id="RightButton" onclick="visIMG2()"> <!-- Vises kun ved mindre skjerm -->
+          <p>&raquo;</p>
+        </section>
       </section>
+
+      <script src="Scripts/Slider.js"></script>
 
     </main>
     <footer>
