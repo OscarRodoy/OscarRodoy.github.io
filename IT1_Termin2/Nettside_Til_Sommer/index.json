@@ -150,10 +150,68 @@
     },
     "gucciKlokker":{
       "gucci_1":{
-
+        "KlokkeID":"Guc1",
+        "KlokkeNavn":"G-Timeless watch",
+        "Pris":1020,
+        "bildeURL":"ProduktBilder/Gucci_klokke1.jpg",
+        "bildeURL2":"ProduktBilder/Gucci_klokke1_img2.jpg",
+        "KjopURL":"https://www.gucci.com/us/en/pr/jewelry-watches/watches/watches-for-men/g-timeless-watch-38mm-p-529710I18A08489?position=17&listName=ProductGrid&categoryPath=Jewelry-Watches/Watches/Watches-For-Men"
       },
       "gucci_2":{
-
+        "KlokkeID":"Guc2",
+        "KlokkeNavn":"Gucci Dive watch",
+        "Pris":1620,
+        "bildeURL":"ProduktBilder/Gucci_klokke2.jpg",
+        "bildeURL2":"ProduktBilder/Gucci_klokke2_img2.jpg",
+        "KjopURL":"https://www.gucci.com/us/en/pr/jewelry-watches/watches/watches-for-men/gucci-dive-watch-45mm-p-559817I86108757?position=3&listName=ProductGrid&categoryPath=Jewelry-Watches/Watches/Watches-For-Men"
+      },
+      "gucci_3":{
+        "KlokkeID":"Guc3",
+        "KlokkeNavn":"Gucci Dive watch - 45mm",
+        "Pris":1380,
+        "bildeURL":"ProduktBilder/Gucci_klokke3.jpg",
+        "bildeURL2":"ProduktBilder/Gucci_klokke3_img2.jpg",
+        "KjopURL":"https://www.gucci.com/us/en/pr/jewelry-watches/watches/watches-for-men/gucci-dive-watch-45mm-p-561680I18208652?position=5&listName=ProductGrid&categoryPath=Jewelry-Watches/Watches/Watches-For-Men"
+      },
+      "gucci_4":{
+        "KlokkeID":"Guc4",
+        "KlokkeNavn":"Le Marché des Merveilles watch - 38mm",
+        "Pris":1020,
+        "bildeURL":"ProduktBilder/Gucci_klokke4.jpg",
+        "bildeURL2":"ProduktBilder/Gucci_klokke4_img2.jpg",
+        "KjopURL":"https://www.gucci.com/us/en/pr/jewelry-watches/watches/watches-for-women/le-marche-des-merveilles-watch-38mm-p-508718I18208673?position=19&listName=ProductGrid&categoryPath=Jewelry-Watches/Watches/Watches-For-Men"
+      },
+      "gucci_5":{
+        "KlokkeID":"Guc5",
+        "KlokkeNavn":"Le Marché Des Merveilles watch",
+        "Pris":980,
+        "bildeURL":"ProduktBilder/Gucci_klokke5.jpg",
+        "bildeURL2":"ProduktBilder/Gucci_klokke5_img2.jpg",
+        "KjopURL":"https://www.gucci.com/us/en/pr/jewelry-watches/watches/watches-for-men/le-marche-des-merveilles-watch-38mm-p-529662I18A08512?position=20&listName=ProductGrid&categoryPath=Jewelry-Watches/Watches/Watches-For-Men"
+      },
+      "gucci_6":{
+        "KlokkeID":"Guc6",
+        "KlokkeNavn":"Gucci Dive watch - 40mm",
+        "Pris":1380,
+        "bildeURL":"ProduktBilder/Gucci_klokke6.jpg",
+        "bildeURL2":"ProduktBilder/Gucci_klokke6_img2.jpg",
+        "KjopURL":"https://www.gucci.com/us/en/pr/jewelry-watches/watches/watches-for-women/gucci-dive-watch-40mm-p-559818I16X08489?position=2&listName=ProductGrid&categoryPath=Jewelry-Watches/Watches/Watches-For-Men"
+      },
+      "gucci_7":{
+        "KlokkeID":"Guc7",
+        "KlokkeNavn":"G-Timeless watch - 38mm",
+        "Pris":1150,
+        "bildeURL":"ProduktBilder/Gucci_klokke7.jpg",
+        "bildeURL2":"ProduktBilder/Gucci_klokke7_img2.jpg",
+        "KjopURL":"https://www.gucci.com/us/en/pr/jewelry-watches/watches/watches-for-men/g-timeless-watch-38mm-p-530237I86008486?position=12&listName=ProductGrid&categoryPath=Jewelry-Watches/Watches/Watches-For-Men"
+      },
+      "gucci_8":{
+        "KlokkeID":"Guc8",
+        "KlokkeNavn":"G-Chrono watch - 44mm",
+        "Pris":1820,
+        "bildeURL":"ProduktBilder/Gucci_klokke8.jpg",
+        "bildeURL2":"ProduktBilder/Gucci_klokke8_img2.jpg",
+        "KjopURL":"https://www.gucci.com/us/en/pr/jewelry-watches/watches/watches-for-men/g-chrono-watch-44mm-p-367375I18A08769?position=26&listName=ProductGrid&categoryPath=Jewelry-Watches/Watches/Watches-For-Men"
       }
     }
   }

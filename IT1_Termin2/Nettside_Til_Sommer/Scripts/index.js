@@ -4,7 +4,6 @@ const selectRekkefolge = document.querySelector("#selectRekkefolge");
 
 const db = firebase.database();
 
-const Produkter = db.ref("Produkter"); //trengs ikke?
 const VersaceKlokker = db.ref("Produkter/versaceKlokker");
 const RolexKlokker = db.ref("Produkter/rolexKlokker");
 const GucciKlokker = db.ref("Produkter/gucciKlokker");
@@ -16,9 +15,9 @@ function genererHTML(snapshot){
     let key = snapshot.key;
     let ref = parent +"/" + key
     main.innerHTML +=`
-          <section class="secProdukter">
+          <section class="secProdukter" onmouseover="document.querySelector('#stickyPhoto').src='${produktSnap.bildeURL2}';document.querySelector('#stickyLink').href='ProduktInfo.html?id=${ref}';document.querySelector('#stickyHeader').innerHTML='${produktSnap.KlokkeNavn}'">
             <a href="ProduktInfo.html?id=${ref}">Trykk her for detaljer</a>
-            <img onmouseover="document.querySelector('#stickyPhoto').src='${produktSnap.bildeURL2}';document.querySelector('#stickyLink').href='ProduktInfo.html?id=${ref}';document.querySelector('#stickyHeader').innerHTML='${produktSnap.KlokkeNavn}'" src="${produktSnap.bildeURL}">
+            <img src="${produktSnap.bildeURL}">
             <p>${produktSnap.Pris} kr</p>
           </section>
     `;
@@ -31,9 +30,9 @@ function genererHTMLSnudd(snapshot){
     let key = snapshot.key;
     let ref = parent +"/" + key
     main.innerHTML =`
-          <section class="secProdukter">
+          <section class="secProdukter" onmouseover="document.querySelector('#stickyPhoto').src='${produktSnap.bildeURL2}';document.querySelector('#stickyLink').href='ProduktInfo.html?id=${ref}';document.querySelector('#stickyHeader').innerHTML='${produktSnap.KlokkeNavn}'">
             <a href="ProduktInfo.html?id=${ref}">Trykk her for detaljer</a>
-            <img onmouseover="document.querySelector('#stickyPhoto').src='${produktSnap.bildeURL2}';document.querySelector('#stickyLink').href='ProduktInfo.html?id=${ref}';document.querySelector('#stickyHeader').innerHTML='${produktSnap.KlokkeNavn}'" src="${produktSnap.bildeURL}">
+            <img src="${produktSnap.bildeURL}">
             <p>${produktSnap.Pris} kr</p>
           </section>
     ` + main.innerHTML;
@@ -124,8 +123,6 @@ function visLavTilHoy(){
   RolexKlokker.orderByChild("Pris").on("child_added", genererHTML);
   GucciKlokker.orderByChild("Pris").on("child_added", genererHTML);
   VersaceKlokker.orderByChild("Pris").limitToFirst(1).on("child_added", genererStickyBOX);
-
-  // .addClass("RolexBackground") ??
 }
 
 function visHoyTilLav(){

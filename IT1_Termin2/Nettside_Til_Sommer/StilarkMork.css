@@ -1,12 +1,19 @@
-/* Css Til Alt Start */
+/* Css Til Alle sider Start */
 body{
   margin: 0px;
   font-family: Arial;
   background-image: linear-gradient(90deg, #393a3a, black);
+  overflow-x: hidden;
 }
 main{
   margin-left: 50px;
   margin-right: 50px;
+}
+@media (max-width: 550px){
+  main{
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 }
   /* Nav bar Start */
 .NavBar{
@@ -14,11 +21,23 @@ main{
   top: 0px;
   left: 0px;
   width: 100%;
+  height: 58px;
   z-index: 100;
   display: grid;
-  grid-template-columns: 2fr 3fr 1fr 1fr;
-  /*background-image: linear-gradient(to top, rgba(255,0,0,0), #FFFDF5);*/
+  grid-template-columns: 2fr 5fr 2fr;
   background-image: linear-gradient(90deg, #393a3a, black);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.NavBar .NavBarLogo{
+  position: relative;
+  margin-left: 20px;
+}
+.NavBar .NavBarLogo img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
 }
 .NavBar>.NavBarKnapper{
   text-align: center;
@@ -28,8 +47,8 @@ main{
 }
 .NavBar>.NavBarKnapper>ul li{
   display: inline;
-  margin-left: 30px;
-  margin-right: 30px;
+  margin-left: 25px;
+  margin-right: 25px;
   text-align: center;
   font-size: 23px;
 }
@@ -40,68 +59,198 @@ main{
 .NavBar>.NavBarKnapper>ul li a:hover{
   border-bottom: 2px solid white;
 }
-.NavBar .NavBarThemeSelect{
-  position: relative;
-  background-image: linear-gradient(90deg, #242729, white, white, white, white, white, white, #242729);
+.NavBar>.NavBarKnapper>ul li .active{
+  border-bottom: 2px solid white;
 }
-.NavBar .NavBarThemeSelect p{
+.NavBar .NavBarDropdown{
+  display: none;
+  position: relative;
+}
+.NavBar .NavBarDropdown .Knapp{
   position: absolute;
   top: 50%;
-  left: 28px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding-top: 9px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.NavBar .NavBarDropdown .Knapp div{
+  width: 35px;
+  height: 5px;
+  background-color: white;
+  margin: 6px 0;
+}
+.NavBar .NavBarDropdown .Content{
+  display: none;
+  position: absolute;
+  top: 58px;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background-image: linear-gradient(90deg, #393a3a, black);
+  text-align: center;
+  border-top: 1px solid black;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.NavBar .NavBarDropdown .Content ul{
+  padding: 0px;
+  margin: 0px;
+}
+.NavBar .NavBarDropdown .Content ul li{
+  list-style: none;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid white;
+  background-image: linear-gradient(90deg, #393a3a, black);
+}
+.NavBar .NavBarDropdown .Content ul li a{
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  padding-right: calc(50vw - 35px);
+  padding-left: calc(50vw - 35px);
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.NavBar .NavBarDropdown .Content ul .active{
+  background-color: white;
+}
+.NavBar .NavBarDropdown .Content ul .active a{
+  color: red;
+}
+.NavBar .NavBarDropdown .Content ul li:hover{
+  background-color: white;
+}
+.NavBar .NavBarDropdown .Content ul li:hover a{
+  color: red;
+}
+.NavBar .NavBarDropdown .Knapp:hover + .Content{
+  display: block;
+}
+.NavBar .NavBarDropdown .Content:hover{
+  display: block;
+}
+.NavBar .NavBarThemeSelect{
+  background-image: linear-gradient(90deg, white, #242729, #242729, #242729, #242729, #242729, #242729, white);
+  margin-right: 40px;
+  display: grid;
+  grid-template-columns: 4fr 7fr;
+}
+.NavBar .NavBarThemeSelect .tekstSec{
+  margin-left: 30px;
+}
+.NavBar .NavBarThemeSelect .formSec{
+  margin-right: 30px;
+}
+.NavBar .NavBarThemeSelect section{
+  position: relative;
+}
+.NavBar .NavBarThemeSelect section p{
+  position: absolute;
+  top: 50%;
+  right: 5px;
   transform: translateY(-50%);
   margin: 0px;
   font-size: 20px;
-  color: black;
+  color: white;
 }
-.NavBar .NavBarThemeSelect form{
+.NavBar .NavBarThemeSelect section form{
   position: absolute;
   top: 50%;
-  left: 68px;
+  left: 5px;
   transform: translateY(-50%);
 }
-.NavBar .NavBarThemeSelect form select{
+.NavBar .NavBarThemeSelect section form select{
   padding: 10px;
   border-radius: 5px;
 }
-.NavBar .NavBarThemeSelect form select .mork{
+.NavBar .NavBarThemeSelect section form select .mork{
   background-color: black;
   color: white;
 }
+@media (max-width: 1000px){
+  .NavBar .NavBarKnapper ul li{
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  .NavBar .NavBarThemeSelect{
+    margin-right: 5px;
+  }
+  .NavBar .NavBarLogo img{
+    width: 170px;
+  }
+}
+@media (max-width: 850px){
+  .NavBar{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .NavBar .NavBarKnapper{
+    display: none;
+  }
+  .NavBar .NavBarDropdown{
+    display: block;
+  }
+}
+@media (max-width: 600px){
+  .NavBar{
+    grid-template-columns: 2fr 1fr 2fr;
+  }
+  .NavBar .NavBarThemeSelect{
+    margin-right: 0px;
+    grid-template-columns: 1fr;
+  }
+  .NavBar .NavBarThemeSelect section:nth-child(2){
+    margin-right: 0px;
+  }
+  .NavBar .NavBarThemeSelect section:nth-child(1){
+    display: none;
+  }
+  .NavBar .NavBarThemeSelect section form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .NavBar .NavBarLogo img{
+    width: 150px;
+  }
+}
   /* Nav bar Slutt */
   /* Under Overskrifter Start */
-#Første_UnderOverskrift{
-  margin-top: 100vh;
-}
 .UnderOverskrift{
   text-align: center;
   font-size: 30px;
   display: grid;
-  grid-template-columns: 2fr 1fr 2fr;
-  color: white;
+  grid-template-columns: auto 240px auto;
 }
 .UnderOverskrift .Left_Sec,.Right_Sec{
   position: relative;
 }
-.UnderOverskrift .Left_Sec div{
-  position: absolute;
-  bottom: 50%;
-  transform: translateY(50%);
-  width: 95%;
-  height: 1px;
-  background-image: linear-gradient(90deg, #393a3a, white);
+.UnderOverskrift section h1{
+  color: white;
 }
-.UnderOverskrift .Right_Sec div{
+.UnderOverskrift .Left_Sec hr{
   position: absolute;
-  bottom: 50%;
-  transform: translateY(50%);
-  width: 95%;
+  bottom: 35%;
+  width: 100%;
   height: 1px;
   background-image: linear-gradient(90deg, white, black);
+}
+.UnderOverskrift .Right_Sec hr{
+  position: absolute;
+  bottom: 35%;
+  width: 100%;
+  height: 1px;
+  background-image: linear-gradient(90deg, black, white);
+}
+.FirstUnderOverskrift{
+  transition: 1s;
 }
 .UnderOverskrift_2{
   font-size: 20px;
   text-align: center;
-  color: white;
 }
   /* Under Overskrifter Slutt */
   /* Footer Start */
@@ -116,6 +265,16 @@ main{
 .Fordeler div{
   position: relative;
   text-align: center;
+}
+.Fordeler div h1{
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  font-family: monospace;
+  margin-top: 15px;
 }
 .Fordeler div h4{
   position: absolute;
@@ -145,10 +304,27 @@ main{
   opacity: 1;
 }
 .Trademark{
+  background-color: #242729;
+  color: white;
+  margin-top: -16px;
+  margin-bottom: -16px;
   text-align: center;
+  padding: 10px;
+}
+@media (max-width: 780px){
+  .Fordeler div img{
+    width: 80px;
+  }
+  .Fordeler div h4{
+    font-size: 17px;
+    top: 15px;
+  }
+  .Fordeler div h1{
+    left: 45%;
+  }
 }
   /* Fotter Slutt */
-/* CSS Til Alt Slutt */
+/* CSS Til Alle sider Slutt */
 
 /* CSS Til Hjem Header Start */
   /* Forsidebilde Hjem Start*/
@@ -159,22 +335,20 @@ main{
   top: 0;
   width: 100%;
   height: 100vh;
-  animation: animate 16s  infinite;
+  animation: slider 9s infinite linear;
   background-size: cover;
   filter: brightness(40%);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
-@keyframes animate{
+@keyframes slider{
   0%, 100%{
-    background-image: url(Bilder/Home_Image_1.jpg);
+    background-image: url(Bilder/Home_Image1b.jpg);
   }
-  25%{
-    background-image: url(Bilder/Home_Image_2b.jpg);
-  }
-  50%{
-    background-image: url(Bilder/Home_Image_1234.jpg);
+  35%{
+    background-image: url(Bilder/Home_Image2b.jpg);
   }
   75%{
-    background-image: url(Bilder/Home_Image_1.jpg);
+    background-image: url(Bilder/Home_Image3b.jpg);
   }
 }
 .Hjem_Forside{
@@ -222,8 +396,8 @@ main{
   text-decoration: none;
   border: 2px solid white;
   padding: 10px;
-  padding-left: 45px;
-  padding-right: 45px;
+  padding-left: 40px;
+  padding-right: 40px;
   font-size: 20px;
   margin-left: 5px;
 }
@@ -235,123 +409,526 @@ main{
   color: black;
   background-color: white;
 }
+@media (max-width: 850px){
+  .Hjem_Forside .Hjem_ForsideOverskrift h1{
+    font-size: 3em;
+  }
+  .Hjem_Forside .Hjem_ForsideOverskrift h3{
+    font-size: 1.5em;
+  }
+}
+@media (max-width: 740px){
+  .Hjem_Forside .Hjem_ForsideOverskrift h1{
+    font-size: 2.5em;
+  }
+  .Hjem_Forside .Hjem_ForsideOverskrift h3{
+    margin-top: 5px;
+    font-size: 1.2em;
+  }
+  .Hjem_Forside .Hjem_ForsideKnapper .LoggInn_Knapp{
+    padding: 7px;
+    padding-left: 35px;
+    padding-right: 35px;
+    font-size: 17px;
+    margin-right: 5px;
+  }
+  .Hjem_Forside .Hjem_ForsideKnapper .LagBruker_Knapp{
+    padding: 7px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 17px;
+    margin-left: 5px;
+  }
+}
   /* Forsidebilde Hjem Tekst&Knapper Slutt */
 /* CSS Til Hjem Header Slutt */
 /* CSS Til Hjem Main Start */
+.HjemMain{
+  margin-top: 98vh;
+}
+  /* scrollDownEffektBOX Start */
+#scrollDownEffektBOX{
+  height: 165px;
+  margin-bottom: -110px;
+  margin-top: -60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
+#scrollDownEffektBOX section{
+  position: relative;
+}
+#scrollDownEffektBOX section img{
+  width: 100px;
+  border-radius: 50%;
+  margin-top: -110px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  position: sticky;
+  top: 92vh;
+  z-index: 20;
+  cursor: pointer;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+@media (max-width: 970px){
+  #scrollDownEffektBOX{
+    grid-template-columns: 1fr 1fr;
+  }
+  #scrollDownEffektBOX section:nth-child(4){
+    display: none;
+  }
+}
+@media (max-width: 740px){
+  #scrollDownEffektBOX{
+    grid-template-columns: 1fr;
+  }
+  #scrollDownEffektBOX section:nth-child(3){
+    display: none;
+  }
+}
+  /* scrollDownEffektBOX Slutt */
   /* Informasjon_Grid Start*/
 .Hjem_GridInformasjon{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 10px;
-  color: white;
+  transition: 2s;
+}
+.HiddenEffekt{
+  opacity: 0;
 }
 .Hjem_GridInformasjon section{
-  border: 1px solid white;
+  border: 2px solid black;
   text-align: center;
   position: relative;
-  background-image: linear-gradient(90deg, black, #393a3a);
+  background-image: linear-gradient(90deg, white, #FFFDF5);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  overflow: hidden;
+  transition: border 0.6s;
+}
+.Hjem_GridInformasjon section:before{
+  content: '';
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(255,255,255,.2);
+  z-index: 2;
+}
+.Hjem_GridInformasjon section:nth-child(3) img{
+  display: none;
+}
+.Hjem_GridInformasjon section:nth-child(2) img{
+  display: none;
+}
+.Hjem_GridInformasjon section h2{
+  margin-top: 120px;
+  margin-bottom: 0px;
+  z-index: 10;
+  transition: 0.6s;
+  position: inherit;
+}
+.Hjem_GridInformasjon section p{
+  margin-top: 8px;
+  margin-bottom: 70px;
+  margin-left: 30px;
+  margin-right: 30px;
+  line-height: 23px;
+  z-index: 10;
+  transition: 0.6s;
+  position: inherit;
+}
+.Hjem_GridInformasjon section:nth-child(1) p{
+  line-height: 30px;
+}
+.Hjem_GridInformasjon section:nth-child(3) table{
+  margin-left: 20px;
+  margin-right: 30px;
+  margin-top: 4px;
+  margin-bottom: 65px;
+  z-index: 10;
+  position: inherit;
+  transition: 0.6s;
+}
+.Hjem_GridInformasjon section:nth-child(3) table td:nth-child(2){
+  text-align: left;
+  line-height: 23px;
+}
+.Hjem_GridInformasjon section:nth-child(3) table td:nth-child(1){
+  padding-right: 10px;
+  font-weight: bold;
 }
 .Hjem_GridInformasjon section a{
   position: absolute;
-  bottom: 5px;
   left: 50%;
   transform: translateX(-50%);
   text-decoration: none;
-  color: white;
-  border: 1px solid white;
+  color: black;
+  border: 1px solid black;
   padding: 10px;
   width: 200px;
+  z-index: 10;
+  transition: 0.6s;
+}
+.Hjem_GridInformasjon section .LogginnKnapp{
+  bottom: 75px;
   background-color: orange;
 }
-.Hjem_GridInformasjon section a:hover{
-  background-color: black;
+.Hjem_GridInformasjon section .LagbrukerKnapp{
+  bottom: 17px;
+  background-color: orange;
 }
-.Hjem_GridInformasjon section h3{
-
+.Hjem_GridInformasjon section:nth-child(2) .LesmerKnapp{
+  bottom: 17px;
+  background-color: #397fef;
 }
-.Hjem_GridInformasjon .sec_LærOmOss p{
-  margin-bottom: 65px;
-  margin-left: 20px;
-  margin-right: 20px;
+.Hjem_GridInformasjon section:nth-child(3) .LesmerKnapp{
+  bottom: 17px;
+  background-color: salmon;
+}
+.Hjem_GridInformasjon section:nth-child(-n+3) a:hover{
+  background-color: white;
+  color: black;
+}
+.Hjem_GridInformasjon section #HoverEffekt{
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  border: 1px solid white;
+  box-shadow: 0 0 0 0 white;
+  background: orange;
+  transition: 1s;
+  z-index: 1;
+}
+.Hjem_GridInformasjon section:nth-child(1):hover #HoverEffekt{
+  box-shadow: 0 0 0 490px orange;
+}
+.Hjem_GridInformasjon section:nth-child(2):hover #HoverEffekt{
+  box-shadow: 0 0 0 400px #397fef;
+}
+.Hjem_GridInformasjon section:nth-child(3):hover #HoverEffekt{
+  box-shadow: 0 0 0 400px salmon;
+}
+.Hjem_GridInformasjon section:hover h2{
   color: white;
 }
-.Hjem_GridInformasjon .sec_LoggInn{
-  border-radius: 25px 0px 0px 0px;
+.Hjem_GridInformasjon section:hover p{
+  color: white;
 }
-.Hjem_GridInformasjon .sec_SeAnmeldelser{
-  border-radius: 0px 25px 0px 0px;
+.Hjem_GridInformasjon section:hover table{
+  color: white;
+}
+.Hjem_GridInformasjon section:hover a{
+  color: white;
+  border: 1px solid white;
+}
+.Hjem_GridInformasjon section:hover{
+  border: 2px solid white;
+}
+@media (max-width: 970px){
+  .Hjem_GridInformasjon{
+    grid-template-columns: 1fr 1fr;
+  }
+  .Hjem_GridInformasjon section:nth-child(3){
+    grid-column: 1 / span 2;
+  }
+  .Hjem_GridInformasjon section:nth-child(3) table{
+    margin-right: 50px;
+    margin-left: 50px;
+  }
+  .Hjem_GridInformasjon section:nth-child(3) img{
+    display: block;
+    width: 100px;
+    border-radius: 50%;
+    z-index: 20;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .Hjem_GridInformasjon section:nth-child(3):hover #HoverEffekt{
+    box-shadow: 0 0 0 500px salmon;
+  }
+}
+@media (max-width: 850px){
+  .Hjem_GridInformasjon section p{
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .Hjem_GridInformasjon section:nth-child(3) table{
+    margin-right: 30px;
+    margin-left: 30px;
+  }
+}
+@media (max-width: 740px){
+  .Hjem_GridInformasjon{
+    grid-template-columns: 1fr;
+  }
+  .Hjem_GridInformasjon section:nth-child(3){
+    grid-column: 1 / span 1;
+  }
+  .Hjem_GridInformasjon section:nth-child(2) img{
+    display: block;
+    width: 100px;
+    border-radius: 50%;
+    z-index: 20;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .Hjem_GridInformasjon section:nth-child(1) .LogginnKnapp{
+    position: absolute;
+    bottom: 17px;
+    transform: translateX(10%);
+    width: 150px;
+  }
+  .Hjem_GridInformasjon section:nth-child(1) .LagbrukerKnapp{
+    position: absolute;
+    bottom: 17px;
+    transform: translateX(-110%);
+    width: 150px;
+  }
+}
+@media (max-width: 585px){
+  .Hjem_GridInformasjon section:nth-child(3) table{
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .Hjem_GridInformasjon section:nth-child(1) .LogginnKnapp{
+    transform: translateX(5%);
+    width: 120px;
+  }
+  .Hjem_GridInformasjon section:nth-child(1) .LagbrukerKnapp{
+    transform: translateX(-105%);
+    width: 120px;
+  }
 }
   /* Informasjon_Grid Slutt */
   /* Produkter_Grid Start */
+#ContainerForGridProdukter{
+  margin-left: -50px;
+  margin-right: -50px;
+  margin-top: 30px;
+  height: 425px;
+  position: relative;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+#ContainerForGridProdukter section:nth-child(1) .Left_Sec{
+  margin-left: 50px;
+}
+#ContainerForGridProdukter section:nth-child(1) .Right_Sec{
+  margin-right: 50px;
+}
+#ContainerForGridProdukter .UnderOverskrift{
+  color: white;
+  font-size: 35px;
+}
+#ContainerForGridProdukter .UnderOverskrift h1{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+#ContainerForGridProdukter .UnderOverskrift hr{
+  bottom: 30%;
+}
+#BackgroundVideo{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 425px;
+  object-fit: fill;
+  z-index: -9;
+}
 .Hjem_GridProdukter{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 .Hjem_GridProdukter section{
-  border: 2px solid black;
+  border: 2px solid white;
   position: relative;
   text-align: center;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  overflow: hidden;
 }
 .Hjem_GridProdukter section img{
   display: block;
   width: 100%;
+  min-height: 278px;
+  max-height: 280px;
+  object-fit: cover;
   filter: brightness(80%);
 }
 .Hjem_GridProdukter section h3{
   position: absolute;
-  top: 50%;
+  top: 20px;
   left: 50%;
   transform: translate(-50%,-50%);
+  padding: 8px;
+  width: 100%;
+  background-color: white;
+  opacity: 0.8;
   margin: 0px;
-  color: white;
   z-index: 3;
   font-size: 25px;
-  transition: 0.1s;
+  transition: 0.2s;
 }
 .Hjem_GridProdukter section a{
   position: absolute;
-  bottom: 5px;
+  bottom: 15px;
   left: 50%;
   transform: translateX(-50%);
   padding: 10px;
-  width: 120px;
+  width: 100%;
   text-decoration: none;
-  color: black;
-  border: 2px solid black;
-  background-color: orange;
+  color: white;
+  border: 2px solid white;
+  background-color: #f7a000;
   opacity: 0;
-  transition: opacity 0.1s ease-in;
+  transition: opacity 0.2s ease-in;
 }
 .Hjem_GridProdukter section:hover img{
-  filter: brightness(100%);
+  filter: brightness(90%);
 }
 .Hjem_GridProdukter section:hover h3{
   font-size: 30px;
 }
-.Hjem_GridProdukter section:hover a{ /* legg til animasjon */
+.Hjem_GridProdukter section:hover a{
   opacity: 1;
 }
-.Hjem_GridProdukter section:hover a:hover{ /* fungerer ikke */
+.Hjem_GridProdukter section:hover a:hover{
   background-color: white;
+  color: black;
+}
+@media (max-width: 970px){
+  .Hjem_GridProdukter{
+    grid-template-columns: 1fr 1fr;
+  }
+  #ContainerForGridProdukter, #BackgroundVideo{
+    height: 725px;
+  }
+}
+@media (max-width: 740px){
+  .Hjem_GridProdukter{
+    margin-left: 50px;
+    margin-right: 50px;
+    grid-gap: 10px;
+  }
+}
+@media (max-width: 550px){
+  #ContainerForGridProdukter, #BackgroundVideo{
+    height: 695px;
+  }
 }
   /* Produkter_Grid Slutt */
   /* Bestselgere_Grid Start */
 .Hjem_GridBestselgere{
   display: grid;
-  grid-template-columns: 30% 70%
-}
-.Hjem_GridBestselgere .Bilde{
+  grid-template-columns: repeat(3, 1fr);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   border: 2px solid black;
-  border-right: 0px;
 }
-.Hjem_GridBestselgere .Bilde img{
+.Hjem_GridBestselgere .NextIMG{ /* vises kun ved mindre skjerm */
+  display: none;
+  position: relative;
+  cursor: pointer;
+}
+.Hjem_GridBestselgere .NextIMG p{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 80px;
+  margin: 0px;
+  transition: 0.3s;
+}
+.Hjem_GridBestselgere .NextIMG:hover p{ /* vises kun ved mindre skjerm */
+  color: grey;
+}
+.Hjem_GridBestselgere section{
+  position: relative;
+  overflow: hidden;
+}
+.Hjem_GridBestselgere section img{
   display: block;
   width: 100%;
+  height: 100%;
+  min-height: 450px;
+  max-height: 540px;
+  object-fit: cover;
+  filter: brightness(80%);
+  transition: 0.6s;
+  z-index: 5;
 }
-.Hjem_GridBestselgere .Container{
-  border: 2px solid black;
+.Hjem_GridBestselgere section a{
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: scaleY(0) translateX(-50%);
+  width: 170px;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  border: 2px solid white;
   text-align: center;
+  padding: 10px;
+  transition: 0.6s;
+}
+.Hjem_GridBestselgere section h1{
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: scaleY(0) translateX(-50%);
+  width: 100%;
+  color: black;
+  font-size: 20px;
+  text-align: center;
+  padding: 10px;
+  background-color: white;
+  opacity: 0.8;
+  transition: 0.6s;
+}
+.Hjem_GridBestselgere section a:hover{
+  background-color: white;
+  color: black;
+}
+.Hjem_GridBestselgere section:hover a{
+  transform: scale(1) translateX(-50%);
+}
+.Hjem_GridBestselgere section:hover h1{
+  transform: scale(1) translateX(-50%);
+}
+.Hjem_GridBestselgere section:hover img{
+  transform: scale(1.1);
+  z-index: 100;
+  filter: brightness(100%);
+}
+@media (max-width: 850px){
+  .Hjem_GridBestselgere{
+    grid-template-columns: 1fr 4fr 1fr;
+  }
+  .Hjem_GridBestselgere section:nth-child(2){
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+  }
+  .Hjem_GridBestselgere section:nth-child(3){
+    display: none;
+  }
+  .Hjem_GridBestselgere section:nth-child(4){
+    display: none;
+  }
+  .Hjem_GridBestselgere .NextIMG{
+    display: block;
+  }
+  .Hjem_GridBestselgere section h1{
+    top: -20px;
+    padding: 25px;
+  }
 }
   /* Bestselgere_Grid Slutt */
 /* CSS Til Hjem Main Slutt*/
@@ -364,19 +941,21 @@ main{
 .Produkter_ForsideBilde img{
   display: block;
   width: 100%;
+  min-height: 340px;
+  object-fit: cover;
 }
   /* Forsidebilde Produkter Slutt */
   /* Sorter Etter bar Start */
 .Produkter_SorteretterBar{
   background-color: #242729;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 .Produkter_SorteretterBar .Content{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  margin-left: 200px;
-  margin-right: 200px;
+  margin-left: 15%;
+  margin-right: 15%;
   color: white;
 }
 .Produkter_SorteretterBar .Content div{
@@ -394,6 +973,26 @@ main{
   padding: 15px;
   font-size: 15px;
 }
+@media (max-width: 1000px){
+  .Produkter_SorteretterBar .Content div form select{
+    width: 170px;
+  }
+}
+@media (max-width: 850px){
+  .Produkter_SorteretterBar .Content{
+    margin-left: 8%;
+    margin-right: 8%;
+  }
+}
+@media (max-width: 650px){
+  .Produkter_SorteretterBar .Content{
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .Produkter_SorteretterBar .Content div form select{
+    width: 25vw;
+  }
+}
   /* Sorter Etter bar Slutt*/
 /* CSS Til Produkter Header Slutt */
 /* CSS Til Produkter Main Start */
@@ -403,20 +1002,23 @@ main{
   grid-gap: 5px;
   margin-top: 5px;
   margin-bottom: -26px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 .mainProdukter .secProdukter{
   background-color: #f7f7f7;
-  filter: brightness(75%);
+  filter: brightness(95%);
   position: relative;
-  height: 372px;
+  height: 400px;
   transition: filter 0.1s ease-in;
+  overflow: hidden;
 }
 .mainProdukter .secProdukter img{
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   display: block;
-  width: 70%;
+  width: 290px;
   margin: 0px;
 }
 .mainProdukter .secProdukter p{
@@ -425,6 +1027,7 @@ main{
   right: 40px;
   transform: rotateZ(20deg);
   font-size: 20px;
+  transition: 0.3s;
 }
 .mainProdukter .secProdukter a{
   position: absolute;
@@ -432,16 +1035,18 @@ main{
   right: 10px;
   z-index: 10;
   text-decoration: none;
+  font-size: 17px;
   color: black;
-  border: 2px solid black;
   padding: 10px;
-  width: 80px;
+  width: 85px;
   text-align: center;
+  transform: rotateZ(-20deg);
   opacity: 0;
   transition: opacity 0.1s ease-in;
+  transition: 0.3s;
 }
 .mainProdukter .secProdukter:hover{
-  filter: brightness(90%);
+  filter: brightness(100%);
 }
 .mainProdukter .secProdukter:hover a{
   opacity: 1;
@@ -450,67 +1055,375 @@ main{
   opacity: 1;
   background-color: black;
   color: white;
+  transform: scale(1.1);
+}
+.mainProdukter .secProdukter p:hover{
+  transform: scale(1.3);
+
 }
 .mainProdukter .VenstreSec{
-  grid-row: 1 / span 4;
+  grid-row: 1 / span 13;
 }
-.mainProdukter .VenstreSec .stickyBOX{
+.mainProdukter .VenstreSec #stickyBOX{
+  position: relative;
   position: sticky;
-  top: 62px;
-  border: 1px solid black;
-  height: 89vh;
+  top: 58px;
+  height:90.3vh;
+}
+.mainProdukter .VenstreSec #stickyBOX img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(106%);
+}
+.mainProdukter .VenstreSec #stickyBOX .transparentBOX{
+  position: absolute;
+  bottom: 21px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  opacity: 0.6;
+  width: 234px;
+  height: 50px;
+  z-index: 10;
+}
+.mainProdukter .VenstreSec #stickyBOX h1{
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  color: black;
+  background-color: white;
+  opacity: 0.7;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin: 0px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.mainProdukter .VenstreSec #stickyBOX a{
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  text-decoration: none;
+  color: black;
+  padding: 15px;
+  border: 2px solid black;
+  width: 200px;
+  text-align: center;
+}
+.mainProdukter .VenstreSec #stickyBOX a:hover{
+  color: white;
+  background-color: black;
+}
+@media (max-width: 1000px){
+  .mainProdukter .secProdukter p{
+    right: 10px;
+  }
+  .mainProdukter .secProdukter a{
+    right: 0px;
+  }
+}
+@media (max-width: 900px){
+  .mainProdukter{
+    grid-template-columns: 1fr 1fr;
+  }
+  .mainProdukter .secProdukter p{
+    right: 40px;
+  }
+  .mainProdukter .secProdukter a{
+    right: 10px;
+  }
+  .mainProdukter .VenstreSec{
+    grid-row: 1 / span 26;
+  }
+}
+@media (max-width: 750px){
+  .mainProdukter .secProdukter p{
+    right: 10px;
+  }
+  .mainProdukter .secProdukter a{
+    right: 0px;
+  }
+}
+@media (max-width: 600px){
+  .mainProdukter{
+    grid-template-columns: 1fr;
+  }
+  .mainProdukter .VenstreSec{
+    display: none;
+  }
+  .mainProdukter .secProdukter p{
+    right: 40px;
+    transform: rotateZ(0deg);
+    font-size: 25px;
+  }
+  .mainProdukter .secProdukter a{
+    right: 20px;
+    transform: rotateZ(0deg);
+    font-size: 25px;
+    opacity: 1;
+  }
 }
 /* CSS Til Produkter Main Slutt */
+
+/* CSS Til Produkt Info Start */
+ /* CSS Til Video Bakgrunn Start*/
+#backgroundProduktInfo{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  object-fit: fill;
+  z-index: -10;
+}
+  /* CSS Til Video Bakgrunn Slutt*/
+  /* CSS Til Main Start */
+.ProduktinfoMain{
+  position: absolute;
+  top: 0;
+  right: 50%;
+  transform: translateX(50%);
+  width: 900px;
+  z-index: 10;
+  margin: 0px;
+}
+.SecProduktInfo{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  height: 100vh;
+  min-height: 600px;
+}
+.SecProduktInfo .DisplayedIMG{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.SecProduktInfo div{
+  background-color: white;
+}
+.SecProduktInfo div h1{
+  text-align: center;
+  margin-top: 35px;
+}
+.SecProduktInfo div p{
+  text-align: center;
+  margin-left: 15%;
+  margin-right: 15%;
+  line-height: 25px;
+}
+.SecProduktInfo div h3{
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.SecProduktInfo div .Knapper{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.SecProduktInfo div .Knapper div{
+  position: relative;
+  height: 50px;
+}
+.SecProduktInfo div .Knapper div button{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 130px;
+  height: 35px;
+  font-size: 18px;
+  background-color: white;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  transition: 0.6s;
+}
+.SecProduktInfo div .Knapper div button:hover{
+  background-color: black;
+  color: white;
+}
+.SecProduktInfo div .Knapper div a{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 130px;
+  padding: 6px;
+  font-size: 18px;
+  color: black;
+  text-decoration: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  transition: 0.6s;
+}
+.SecProduktInfo div .Knapper div a:hover{
+  background-color: black;
+  color: white;
+}
+.SecProduktInfo div hr{
+  width: 99%;
+  margin-top: 15px;
+}
+.SecProduktInfo div h2{
+  text-align: center;
+}
+.SecProduktInfo div .Bilder{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+.SecProduktInfo div .Bilder div{
+  position: relative;
+  height: 150px;
+}
+.SecProduktInfo div .Bilder div .LeftIMG{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  filter: brightness(90%);
+}
+.SecProduktInfo div .Bilder div .RightIMG{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  filter: brightness(90%);
+}
+.SecProduktInfo div .Bilder div img:hover{
+  filter: brightness(100%);
+}
+@media (max-width: 1000px){
+  .ProduktinfoMain{
+    width: 90%;
+  }
+}
+@media (max-width: 942px){
+  .SecProduktInfo div p{
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  .SecProduktInfo div .Knapper{
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+@media (max-width: 810px){
+  .SecProduktInfo div p{
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  .SecProduktInfo div .Bilder{
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  .SecProduktInfo div h2{
+    font-size: 20px;
+  }
+}
+@media (max-width: 720px){
+  .ProduktinfoMain{
+    width: 80%;
+  }
+  .SecProduktInfo{
+    grid-template-columns: 1fr;
+  }
+  .SecProduktInfo .DisplayedIMG{
+    min-height: 600px;
+  }
+}
+  /* CSS Til Main Start */
+/* CSS Til Produkt Info Slutt */
 
 /* CSS Til OmOss Header Start */
   /* Forsidebilde OmOss Start */
 .OmOss_ForsideBilde{
   position: relative;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 .OmOss_ForsideBilde img{
   display: block;
   width: 100%;
+  min-height: 340px;
+  object-fit: cover;
   filter: brightness(90%);
 }
 .OmOss_ForsideBilde h1{
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: calc(50% + 29px);
+  transform: translateY(-50%);
   font-size: 50px;
   color: white;
+  margin: 0px;
+  width: 100%;
+  text-align: center;
+}
+@media (max-width: 520px){
+  .OmOss_ForsideBilde h1{
+    font-size: 40px;
+  }
 }
   /* Forsidebilde OmOss Slutt */
 /* CSS Til OmOss Header Slutt */
 /* CSS Til OmOss Main Start */
   /* OmOss-Tekst Start */
-.OO_Tekst_Paragraf{
+.OmOssTekstSec{
   column-count: 2;
   column-rule: 1px solid black;
-  column-gap: 32px;
-  background-image: linear-gradient(90deg, white, #FFFDF5);
   border: 2px solid black;
-  border-radius: 50px;
+  background-image: linear-gradient(90deg, white, #FFFDF5);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.OmOssTekstSec p{
+  margin: 20px;
+  line-height: 25px;
+}
+.OmOssTekstSec p:nth-child(4){
   padding-top: 20px;
-  height: 576px;
-  width: 100%;
 }
-.OO_Tekst_Paragraf>p{
-  line-height: 1.6;
-  margin-bottom: 24px;
-  text-align: left;
-  margin-left: 20px;
-  margin-right: 20px;
-}
-.Første_Paragraf{
-  margin-top: 0px;
-}
-.OO_Tekst_Paragraf>p::first-letter{
+.OmOssTekstSec p::first-letter{
   font-size: 48px;
   color: #100011;
   float: left;
   line-height: 1;
   padding-right: 8px;
+}
+@media (max-width: 910px){
+  .OmOssTekstSec{
+    column-count: 1;
+  }
+  .OmOssTekstSec p:nth-child(4){
+    padding-top: 0px;
+  }
 }
   /* OmOss-Tekst Slutt */
   /* Anmeldelser Start */
@@ -521,23 +1434,31 @@ main{
   border-radius: 50px 0px 50px 0px;
   text-align: center;
   margin-bottom: 20px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+.Anmeldelse_Sec section:nth-child(1){
+  background-color: #ffffff;
+}
+.Anmeldelse_Sec section:nth-child(1) img{
+  width: 100px;
+  transform: rotateZ(90deg);
+  margin-top: -25px;
+  transition: 1s;
+}
+.Anmeldelse_Sec section:nth-child(2){
+  border-left: 2px solid black;
   background-image: linear-gradient(90deg, white, #FFFDF5);
 }
-.Anmeldelse_Sec .Anmeldelse_RightPart{
-  border-left: 2px solid black;
-}
-.Anmeldelse_Sec .Anmeldelse_RightPart p{
+.Anmeldelse_Sec section:nth-child(2) p{
   margin-left: 30px;
   margin-right: 30px;
 }
+@media (max-width: 900px){
+  .Anmeldelse_Sec section:nth-child(1) img{
+    transform: rotateZ(0deg);
+    margin-top: -5px;
+  }
+}
   /* Anmeldelser Slutt */
 /* CSS til OmOss Main Slutt */
-
-
-
-/* Liste:
-  - Underoverskrifter fungerer kun 2 ganger, ikke den siste?
-  - Slider på forsidebilde er dårlig. Bruk js?
-  Mindreviktig:
-  - isteden for hvit bakgrunn på navbar, blur det som kommer bak?
-*/
