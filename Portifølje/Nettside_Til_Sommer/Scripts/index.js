@@ -28,7 +28,7 @@ function genererHTMLSnudd(snapshot){
     console.log(produktSnap);
     let parent = snapshot.ref.parent.key;
     let key = snapshot.key;
-    let ref = parent +"/" + key
+    let ref = parent +"/" + key;
     main.innerHTML =`
           <section class="secProdukter" onmouseover="document.querySelector('#stickyPhoto').src='${produktSnap.bildeURL2}';document.querySelector('#stickyLink').href='ProduktInfo.html?id=${ref}';document.querySelector('#stickyHeader').innerHTML='${produktSnap.KlokkeNavn}'">
             <a href="ProduktInfo.html?id=${ref}">Trykk her for detaljer</a>
@@ -60,15 +60,19 @@ let id = url.searchParams.get("id");
 function visVedOpning(){
   if(id == "alleProdukter"){
     visAlle();
+    selectProdukt.selectedIndex = 0;
   }
   else if(id == "alleVersace"){
     visVersace();
+    selectProdukt.selectedIndex = 1;
   }
   else if(id == "alleRolex"){
     visRolex();
+    selectProdukt.selectedIndex = 2;
   }
   else if(id == "alleGucci"){
     visGucci();
+    selectProdukt.selectedIndex = 3;
   }
   else{
     visAlle();
@@ -88,6 +92,7 @@ function visVersace(){
           </section>`;
   VersaceKlokker.orderByChild("Pris").on("child_added", genererHTML);
   VersaceKlokker.orderByChild("Pris").limitToFirst(1).on("child_added", genererStickyBOX);
+
 }
 
 function visRolex(){
@@ -173,6 +178,7 @@ function sortering(select){
   else if (select.value == "visGucci"){
     visGucci();
   }
+  changeSpan(select);
 }
 
 visVedOpning();

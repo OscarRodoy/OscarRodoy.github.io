@@ -103,6 +103,37 @@
         </section>
       </section>
 
+      <script type="text/javascript">
+      function changeSpan(select){
+        if(select.value == "visAlle"){
+          span13();
+        }
+        else if (select.value == "visVersace"){
+          span4();
+        }
+        else if (select.value == "visRolex"){
+          span5();
+        }
+        else if (select.value == "visGucci"){
+          span4();
+        }
+      }
+
+      function span4(){
+        var VenstreSec = document.getElementById("VenstreSec");
+        VenstreSec.style.gridRow = "span 4";
+      }
+      function span5(){
+        var VenstreSec = document.querySelector(".VenstreSec");
+        VenstreSec.style.gridRow = "span 5";
+      }
+      function span13(){
+        var VenstreSec = document.querySelector(".VenstreSec");
+        VenstreSec.style.gridRow = "span 13";
+      }
+      </script>
+
+
     </header>
 
     <main class="mainProdukter"></main>

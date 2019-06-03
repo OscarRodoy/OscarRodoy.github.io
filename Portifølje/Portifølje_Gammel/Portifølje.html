@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Portifølje</title>
+    <link rel="stylesheet" href="Portifølje.css">
+    <meta name="viewport" content="width=device-width, inital-scale=1.0">
+  </head>
+  <body>
+    <header>
+      <section class="forside">
+        <img src="Bilder/HeaderPortifolje.jpg">
+        <div class="Tekstboks">
+          <h1>Portifølje</h1>
+        </div>
+        <div class="boks1"></div>
+        <div class="boks2"></div>
+        <div class="boks3"></div>
+      </section>
+    </header>
+    <main>
+      <h1 class="overskrift">Prosjekter</h1>
+      <section class="ProsjekterSec">
+        <section class="Bokser">
+          <div class="ProsjektBoks" onmouseover="changebackground('Nettside_Til_Jul/index.html')">
+            <img src="Bilder/NettsideTilJul.jpg">
+            <div class="backgroundTekst"></div>
+            <h1>Nettsted og multimedier</h1>
+            <div class="backgroundLink"></div>
+            <a target="_blank" href="Nettside_Til_Jul/index.html">Åpne</a>
+          </div>
+          <div class="ProsjektBoks" onmouseover="changebackground('Nettside_Til_Sommer/Hjem.html')">
+            <img src="Bilder/NettsideTilSommer.jpg">
+            <div class="backgroundTekst"></div>
+            <h1>Nettsted med database</h1>
+            <div class="backgroundLink"></div>
+            <a target="_blank" href="Nettside_Til_Sommer/Hjem.html">Åpne</a>
+          </div>
+          <div class="ProsjektBoks" onmouseover="changebackground('Nettsikkerhet/index.html')">
+            <img src="Bilder/NettsideNettSikkerhet.jpg">
+            <div class="backgroundTekst"></div>
+            <h1>Nettside om Nettsikkerhet</h1>
+            <div class="backgroundLink"></div>
+            <a target="_blank" href="Nettsikkerhet/index.html">Åpne</a>
+          </div>
+          <div class="ProsjektBoks" onmouseover="changebackground('DigitalSamtid/DigitalSamtid.html')">
+            <img src="Bilder/NettsideDigitalsamtid.jpg">
+            <div class="backgroundTekst"></div>
+            <h1>Digital samtid</h1>
+            <div class="backgroundLink"></div>
+            <a target="_blank" href="DigitalSamtid/DigitalSamtid.html">Åpne</a>
+          </div>
+        </section>
+        <section class="iframe">
+          <iframe id="iframe" src="Nettside_Til_Sommer/Hjem.html" width="550px" height="600px"></iframe>
+        </section>
+      </section>
+
+      <script>
+        function changebackground(link){
+          var iframe = document.getElementById("iframe");
+          iframe.src = link;
+        }
+      </script>
+
+      <h1 class="contactHeader">hhhhhh</h1>
+
+      <section class="Contact">
+        <section>
+          <img src="" alt="">
+          <h1>Location</h1>
+          <p>hhh</p>
+        </section>
+        <section>
+          <img src="" alt="">
+          <h1>Mobile</h1>
+          <p>hhh</p>
+        </section>
+        <section>
+          <img src="" alt="">
+          <h1>Email</h1>
+          <p>hhh</p>
+        </section>
+        <section>
+          <img src="" alt="">
+          <h1>Social Media</h1>
+          <a href="#">hhh</a>
+        </section>
+      </section>
+
+    </main>
+    <footer>
+
+    </footer>
+  </body>
+</html>
