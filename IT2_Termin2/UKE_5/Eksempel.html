@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      body{
+        height: 100%;
+        background-color: black;
+        overflow: hidden;
+      }
+      .stjerne{
+        background-color: yellow;
+        position: absolute;
+        border-radius: 50%;
+        transition: 2s;
+      }
+    </style>
+  </head>
+  <body>
+    <script type="text/javascript">
+      for (var i = 0; i < 2000; i++){
+        var stjerne = document.createElement("div");
+        stjerne.className = "stjerne";
+        stjerne.style.left = Math.random() * innerWidth + "px";
+        stjerne.style.top = Math.random() * innerHeight + "px";
+        document.body.appendChild(stjerne);
+      };
+
+      var stjerner = document.getElementsByClassName("stjerne");
+      stjerner = Array.from(stjerner);
+
+      function blinke(){
+        for (stjerne of stjerner){
+          stjerne.style.width = Math.random() * 3 + "px";
+          stjerne.style.height = stjerne.style.width;
+        };
+      };
+
+      blinke();
+      setInterval(blinke, 1500);
+    </script>
+  </body>
+</html>

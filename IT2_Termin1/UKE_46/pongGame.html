@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      #display{
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 40px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        color: white;
+      };
+    </style>
+  </head>
+  <body>
+    <div id="display">
+      <h1 id="p1Display">0</h1>
+      <h1> - </h1>
+      <h1 id="p2Display">0</h1>
+    </div>
+    <canvas id="canvas"></canvas>
+    <script>
+      var ctx = document.querySelector("canvas").getContext("2d");
+      ctx.canvas.width = 1260;
+      ctx.canvas.height = 590;
+    //  ctx.canvas.width  = window.innerWidth;
+    //  ctx.canvas.height = window.innerHeight;
+    //  fungerer ikke
+
+      var p1Diplay = document.getElementById("p1Display");
+      var p2Diplay = document.getElementById("p2Display");
+
+      var controller = {
+        left:false,
+        right:false,
+        keyUpDown:function(event) {
+          var key_state = (event.type == "keydown")?true:false;
+          switch(event.keyCode) {
+            case 87: controller.w = key_state; break; // w key
+            case 83: controller.s = key_state; break; // s key
+            case 38: controller.up = key_state; break; // up key
+            case 40: controller.down = key_state; break; // down key
+          }
+        }
+      };
+
+      var movementSpeed = 8;
+      var ballSpeed = 6;
+
+      var ball = {
+        x: 1260/2,
+        y: 590/2,
+        xVel: 6,
+        yVel: 2,
+        radius: 20
+      };
+
+      var player1 = {
+        x: 0,
+        y: 100,
+        yVel: 0,
+        width: 30,
+        height: 150,
+        points: 0
+      };
+
+      var player2 = {
+        x: ctx.canvas.width - 30,
+        y: 100,
+        yVel: 0,
+        width: 30,
+        height: 150,
+        points: 0
+      };
+
+      function drawWorld(){
+        ctx.fillStyle = "#202020";
+        ctx.fillRect(0, 0, 1260, 590);
+
+        ctx.fillStyle = "white";
+      //  ctx.fillRect(ball.x, ball.y, 20, 20);
+        ctx.beginPath();
+        ctx.arc(ball.x, ball.y, ball.radius, 0, 2*Math.PI, false);
+        ctx.fill();
+        ctx.fillRect(player1.x, player1.y, player1.width, player1.height);
+        ctx.fillRect(player2.x, player2.y, player2.width, player2.height);
+      };
+
+      function updateWorld(){
+        player1.y += player1.yVel;
+        player2.y += player2.yVel;
+        ball.x += ball.xVel;
+        ball.y += ball.yVel;
+
+        p1Diplay.innerHTML = player1.points
+        p2Diplay.innerHTML = player2.points
+
+        if (controller.w == true){
+          player1.yVel = -movementSpeed;
+        } else if (controller.s == true){
+          player1.yVel = movementSpeed;
+        } else {
+          player1.yVel = 0;
+        };
+        if (controller.up == true){
+          player2.yVel = -movementSpeed;
+        } else if (controller.down == true){
+          player2.yVel = movementSpeed;
+        } else {
+          player2.yVel = 0;
+        };
+
+        if (ball.y > 590 || ball.y < 0){
+          ball.yVel *= -1;
+        };
+        if (ball.x == player1.x + player1.width && ball.y - player1.y > 0 && ball.y - (player1.y + player1.height) < 0){
+          ball.xVel *= -1;
+        };
+        if (ball.x == player2.x && ball.y - player2.y > 0 && ball.y - (player2.y + player2.height) < 0){
+          ball.xVel *= -1;
+        };
+
+        if (ball.x < 0){
+          player2.points += 1;
+          ball.x = 1260/2;
+          ball.y = 590/2;
+          ball.xVel *= -1;
+        };
+        if (ball.x > 1260){
+          player1.points += 1;
+          ball.x = 1260/2;
+          ball.y = 590/2;
+          ball.xVel *= -1;
+        };
+      };
+
+      var loop = function(){
+
+        drawWorld();
+
+        updateWorld();
+
+        window.requestAnimationFrame(loop);
+      };
+      window.requestAnimationFrame(loop);
+      window.addEventListener("keydown", controller.keyUpDown);
+      window.addEventListener("keyup", controller.keyUpDown);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+html, body {
+  height:100%;
+  width:100%;
+}
+body {
+  align-content:space-around;
+  background-color:#202830;
+  color:#ffffff;
+  display:grid;
+  justify-content:center;
+  position: relative;
+}
+canvas {
+  background-color:#ffffff;
+}
+#Deathnote{
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: red;
+  font-size: 60px;
+  opacity: 0;
+}
+#Victorynote{
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: green;
+  font-size: 60px;
+  opacity: 0;
+}
+#Score{
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  color: white;
+}
+#PlayerHealth{
+  position: absolute;
+  top: 20%;
+  left: 0;
+  width: 60px;
+  margin-left: 20px;
+}
+#PlayerHealth h3{
+  text-align: center;
+  color: white;
+  margin-bottom: 10px;
+}
+#PlayerHealth div{
+  width: 32px;
+  height: 32px;
+  margin-left: 13px;
+  background-color: green;
+  border: 1px solid white;
+}
+#EnemyHealth{
+  position: absolute;
+  top: 20%;
+  right: 0;
+  width: 60px;
+  margin-right: 20px;
+}
+#EnemyHealth h3{
+  text-align: center;
+  color: white;
+  margin-bottom: 10px;
+}
+#EnemyHealth div{
+  width: 32px;
+  height: 32px;
+  margin-left: 13px;
+  background-color: green;
+  border: 1px solid white;
+}

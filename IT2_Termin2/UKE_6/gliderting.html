@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="./master.css">
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <button type="button" onclick="visAnimasjon()" name="button">Yeet</button>
+
+    <div id="klikkbartbilde" class="klikkbarBilde">
+
+    </div>
+
+    <div id="div">
+
+    </div>
+
+    <input type="range" id="glider" min="1" max="20">
+
+    <script type="text/javascript">
+
+      var klikkbarBilde = document.getElementById("klikkbartbilde")
+      var div = document.getElementById("div")
+      var glider =document.getElementById("glider")
+      var x = glider.value
+
+
+      for (var i = 0; i < 4; i++) {
+        klikkbartbilde.innerHTML+= `<div class="klikkbarDiv" id="${i}"> </div>`
+        }
+
+      function visAnimasjon(){
+        div.innerHTML+=`<div class="animasjon">
+          <img id="bilde" src="./bilde.jpg">
+        </div>`
+        var bilde = document.getElementById("bilde")
+        bilde.style.animation="hopp " + x + "s infinite"
+      }
+      glider.onchange=()=>{
+        x=glider.value
+        bilde.style.animation="hopp " + x +"s infinite"
+      }
+
+    </script>
+
+  </body>
+
+</html>

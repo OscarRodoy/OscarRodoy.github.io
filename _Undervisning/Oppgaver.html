@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+      // 1) prompt i funksjon
+      function skrivUtTekst(tekst){
+        document.querySelector("body").innerHTML += tekst + "<br>";
+      };
+      skrivUtTekst(prompt("Skriv din tekst her: "));
+
+      // 2) Sortering
+      var array = [
+        {navn: "ost", pris: 32},
+        {navn: "pizza", pris: 130},
+        {navn: "burger", pris: 54},
+        {navn: "eple", pris: 2},
+        {navn: "vann", pris: 22}
+      ];
+      var array2 = [3, 4, 10, 93, 2, 76, 23, 12];
+
+      array.sort(sorterAlfabetisk); console.log(array);
+      array2.sort(sortPrisDyrest); console.log(array2);
+
+      function sortPrisBilligst(a, b){ // sorterer fra billigst til dyrest
+        return a.pris - b.pris;
+      };
+
+      function sortPrisDyrest(a, b){ // sorterer fra dyrest til billigst
+        return b - a;
+      };
+
+      function sorterAlfabetisk(a, b){ // sorterer alfrabetisk med hensyn på "navn" (bytt om a og b for omvent)
+        if (a.navn.toLowerCase() < b.navn.toLowerCase()) {return -1;};
+        if (a.navn.toLowerCase() > b.navn.toLowerCase()) {return 1;};
+        return 0;
+      };
+
+      // 3)
+      var mouseX, mouseY;
+      document.onmousemove = function(event){
+      	mouseX = event.clientX;
+      	mouseY = event.clientY;
+      };
+
+    </script>
+  </body>
+</html>

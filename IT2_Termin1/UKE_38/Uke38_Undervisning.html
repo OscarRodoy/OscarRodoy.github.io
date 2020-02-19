@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+      // konkatenering
+      var a = 2
+      var b = 5
+      document.write(a + " * " + b + " = " + a*b);
+      var navn = "per";
+      document.write(`<p id="avsnitt">${navn}</p><br>`);
+      //eksempel
+      var minArray = ["kari", "Fredrik", "Oscar", "Mats", "Helene", "Marcus"];
+      var lengde = minArray.length;
+      var teller = 0;
+      for (var i = 0; i < lengde; i++){
+        var navn = minArray[i];
+        teller += 1;
+        document.write(`<p id="navn"> ${teller}. ${navn}</p>`);
+      };
+      // bruker `` isteden for ""
+      // kan bruke "" inni ``
+      // må bruke ${var} for variabler
+      
+    </script>
+  </body>
+</html>

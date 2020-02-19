@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      // forEach
+      var array = [2, 3, 5, 8];
+
+      array.forEach(myFunction); // kjører funksjonen for alle elementene i arrayet
+
+      function myFunction(item, index, array) { // funksjonen har parameter "item" som er elementet, "index" som er indexen til elementet, og "array" som er arrayet
+        array[index] = item * 10;
+        document.write(index + ": " + array[index] + "<br>");
+      };
+      
+      // return
+      var a = Number(10);
+      var b = Number(50);
+      function myFunction(){
+        var sum = (((a * b) + a - b) * b) / a
+        return sum; // return gjør "myFunction()" om til en type "variabel" som man kan bruke
+      };
+      var display = myFunction(); // hadde ikke fungert uten "return sum;"
+      document.write(display);
+    </script>
+  </body>
+</html>

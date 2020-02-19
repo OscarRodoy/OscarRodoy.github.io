@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    
+    <input id="temp" type="number">
+    <button id="beregn" type="button">Gjør om til Celsius</button>
+
+    <script type="text/javascript">
+      var temp = document.getElementById("temp");
+      var beregn = document.getElementById("beregn");
+
+      beregn.onclick = function(){
+        document.write((temp.value - 32) * (5/9));
+      };
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      body{
+        position: relative;
+        background-color: #303840;
+      }
+      main{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: white;
+        border: 2px solid black;
+        border-radius: 20px;
+        text-align: center;
+        padding: 30px;
+      }
+      label{
+        font-size: 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <label>Handleliste</label><br>
+      Vare: <input id="inpVare" type="text" placeholder="Vare"><br>
+      Pris: <input id="inpPris" type="number" placeholder="Pris"><br>
+      <button id="btnRegistrer" type="button">Registrer</button>
+        <hr>
+      <label>Handlekurv</label>
+      <ul id="txtHandlekurv"></ul>
+        <hr>
+      <p id="txtSum"></p>
+      <p id="txtDyrest"></p>
+      <button id="btnReset" type="button">Fjærn alt</button>
+    </main>
+    <script>
+      var inpVare = document.getElementById("inpVare");
+      var inpPris = document.getElementById("inpPris");
+      var btnRegistrer = document.getElementById("btnRegistrer");
+      var txtHandlekurv = document.getElementById("txtHandlekurv");
+      var handlekurvArray = [];
+      var sum = Number();
+      var txtSum = document.getElementById("txtSum");
+      var txtDyrest = document.getElementById("txtDyrest");
+      var prisArray = [];
+      var btnReset = document.getElementById("btnReset");
+
+      btnRegistrer.onclick = function(){
+        var nyVare = inpVare.value;
+        var nyPris = Number(inpPris.value);
+        handlekurvArray.push({vare: nyVare, pris: nyPris});
+        txtHandlekurv.innerHTML = "";
+        for (var vare of handlekurvArray) {
+         txtHandlekurv.innerHTML += `<li> Varenavn: ${vare.vare} Pris: ${vare.pris} </li>`;
+        };
+        inpVare.value = "";
+        inpPris.value = "";
+
+        sum = 0;
+        for (var i=0; i<handlekurvArray.length; i++) {
+          sum += handlekurvArray[i].pris;
+        }
+        txtSum.innerHTML = "Summen = kr. " + sum;
+
+        prisArray.push(nyPris)
+        function sortNumber(a, b) {
+          return b - a; // b - a = dyrest til lavest |||| a - b = lavest til dyrest
+        };
+        prisArray.sort(sortNumber);
+        txtDyrest.innerHTML = "Det dyrestet produktet koster kr. " + prisArray[0];
+      };
+
+      btnReset.onclick = function(){
+        handlekurvArray = [];
+        prisArray = [];
+        sum = 0;
+        txtSum.innerHTML = "";
+        txtDyrest.innerHTML = "";
+        txtHandlekurv.innerHTML = "";
+      };
+    </script>
+  </body>
+</html>

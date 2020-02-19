@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      body{
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+
+    <form action="Knapper.html" method="post">
+
+      <p>Skriv text, tall, passord</p>
+      <!-- type="text" = velg type -->
+      <!-- minlength="3" = velg minst lengde -->
+      <!-- maxlength="12" = velg max lengde -->
+      <!-- placeholder="Skriv her" = text som vises før du skriver -->
+      <!-- autofocus = klar til å skrive med en gang -->
+      <!-- disabled = umulig å skrive -->
+      <!-- required = må skrives inn når det er i et form element -->
+      <!-- value="" = velg forhandsbestemt verdi -->
+      <!-- data-navn = ?? -->
+      <input type="text" minlength="3" maxlength="12" placeholder="Skriv her" autofocus required>
+      <br><br>
+      <input id="num" type="number" placeholder="1234">
+      <br><br>
+      <input type="password" placeholder="passord">
+      <br><br>
+      <input type="email" placeholder="email">
+      <script>
+        var myInp = document.getElementById("num");
+        myInp.onchange = function() {
+          console.log(myInp.value);
+        };
+      </script>
+
+      <hr>
+
+      <p>Radio knapp</p>
+      <!-- radio knapper må ha samme name verdi for at de skal være i en gruppe, Da kan man kun selected en av dem-->
+      <label><input id="knp1" type="radio" name="sammeGruppe">Knapp 1</label>
+      <label><input id="knp2" type="radio" name="sammeGruppe">Knapp 2</label>
+      <label><input id="knp3" type="radio" name="sammeGruppe">Knapp 3</label>
+      <script>
+          // if (id.checked) {};
+      </script>
+
+      <hr>
+
+      <p>checkbox</p>
+      <!-- kan velge flere alternativer -->
+      <input type="checkbox" name="g1">
+      <input type="checkbox" name="g1">
+      <input type="checkbox" name="g1">
+
+      <hr>
+
+      <p>Range</p>
+      <input id="myRange" type="range" min="0" max="360" step="36" style="width: 500px;">
+      <!-- min="min number" max="max number" step="steps in range" -->
+      <div id="displayValue" style="width: 100px; height: 100px; background-color: skyblue; margin-left: calc(50% - 50px);"></div>
+      <script>
+        var myRange = document.getElementById("myRange");
+        var displayValue = document.getElementById("displayValue");
+        myRange.value = 0;
+        myRange.onchange = function(){
+          displayValue.innerHTML = `<p>${myRange.value}</p>`;
+          displayValue.style.transform = `rotate(${myRange.value}deg)`
+        };
+      </script>
+
+      <hr>
+
+      <p>dropdown meny med valg</p>
+      <select id="mySelect">
+        <option>Index 0</option>
+        <option>Index 1</option>
+        <option>Index 2</option>
+      </select>
+      <script>
+        var mySelect = document.getElementById("mySelect");
+        mySelect.onchange = function(){
+          var valgtIndex = mySelect.selectedIndex;
+          console.log(valgtIndex);
+        };
+      </script>
+
+      <hr>
+
+      <p>Farge velger</p>
+      <input type="color">
+
+      <p>Skriv dato</p>
+      <input type="date">
+
+      <p>Velg fil</p>
+      <input type="file">
+
+      <p>Knapp</p>
+      <button>Button</button>
+
+      <p>skrivefelt</p>
+      <textarea name="name" rows="8" cols="80"></textarea> <br>
+
+      <br><br>
+      <button type="submit">Send inn!</button>
+    </form>
+
+  </body>
+</html>

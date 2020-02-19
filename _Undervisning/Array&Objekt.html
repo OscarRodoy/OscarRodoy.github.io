@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      // Array
+      var array = ["index0", 1, "index2", "lengde4"];
+      document.write(minArray[2]); //hender ut et element i en array
+
+      var array2 = [10, 12, 52, 52, 14];
+      array.push(15); // legger til på slutten
+      array.unshift(9); // legger til på staten
+      array.pop(); // fjerner det siste elemente
+      array.shift(); //fjerner det første elemente
+      array.splice(2, 1); //fjerner et element i posisjon 2 og fjerner antall 1 elementer mot slutten
+      array.splice(2, 1, 13); // samme men bytter ut med 13
+      array.splice(1, 0, 11); // splice(går inn i index 1, fjerner 0 elemeter fra og med index 1, legger til 11 i posisjon 1)
+      array.reverse(); // snur rekefølgen på arrayet
+      array.join("<br>"); //Legger til seperator mellom elementer i et array || default tekst mellom elementer i array er ", "
+      document.write(array2 + "<br><br>");
+
+      // forEach
+      var array = [2, 3, 5, 8];
+      array.forEach(myFunction); // kjører funksjonen for alle elementene i arrayet
+      function myFunction(item, index, array) { // funksjonen har parameter "item" som er elementet, "index" som er indexen til elementet, og "array" som er arrayet
+        array[index] = item * 10;
+        document.write(index + ": " + array[index] + "<br>");
+      };
+
+      // indexOf()
+      const beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
+      console.log(beasts.indexOf('bison')); // finner første index som er like det inni parantesene // expected output: 1
+      console.log(beasts.indexOf('bison', 2)); // starter fra index 2 // expected output: 4
+      console.log(beasts.indexOf('giraffe')); // når elementet ikke finnes // expected output: -1
+
+      // Objekt
+      var person1 = {
+        navn: "Ole",
+        Alder: "17"
+      };
+      document.write(person1.navn);
+
+      // Objekter i array
+      var array2 = [
+        {navn: "Per", alder: 21},
+        {navn: "Kåre", alder: 32}
+      ];
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      #imgOvelser{
+        height: 95vh;
+        border: 2px solid black;
+      }
+      #videoSkihopp{
+        position: absolute;
+        top: 10px;
+        right: 100px;
+        width: 510px;
+        border: 2px solid black;
+        display: none;
+      }
+      #imgSkibakke{
+        position: absolute;
+        top: 305px;
+        right: 100px;
+        width: 510px;
+        border: 2px solid black;
+        display: none;
+      }
+      #imgSkihopper{
+        position: absolute;
+        top: 305px;
+        right: 100px;
+        width: 100px;
+        z-index: 10;
+        display: none;
+      }
+      #imgSkoyter{
+        position: absolute;
+        top: 10px;
+        left: 580px;
+        width: 200px;
+        display: none;
+      }
+      #range{
+        position: absolute;
+        top: 580px;
+        right: 150px;
+        width: 400px;
+        display: none;
+      }
+      #tekst{
+        position: absolute;
+        top: 400px;
+        right: 200px;
+        font-size: 50px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+
+    <img id="imgOvelser" src="Vedlegg/ovelser.jpg" usemap="#imgKnapper">
+    <map name="imgKnapper">
+      <area id="btnSkoyter" shape="rect" coords="190, 0, 370, 220" href="#" alt="">
+      <area id="btnSkihopp" shape="rect" coords="250, 220, 600, 400" href="#" alt="">
+    </map>
+
+    <video id="videoSkihopp" src="Vedlegg/hoppklipp.mp4" poster="Vedlegg/skihopp.png"></video>
+
+    <img id="imgSkibakke" src="Vedlegg/skibakke.png">
+
+    <img id="imgSkihopper" src="Vedlegg/skihopp.png">
+
+    <input id="range" type="range" min="1" max="20">
+
+    <div id="tekst">Tekst boks</div>
+
+    <audio id="audioSkoyter" src="Vedlegg/skoytelyd.wav"></audio>
+
+    <img id="imgSkoyter" src="Vedlegg/skoyteloper.jpg">
+
+    <script type="text/javascript">
+
+      var btnSkoyter = document.getElementById("btnSkoyter");
+      var btnSkihopp = document.getElementById("btnSkihopp");
+      var videoSkihopp = document.getElementById("videoSkihopp");
+      var audioSkoyter = document.getElementById("audioSkoyter");
+      var range = document.getElementById("range");
+      var imgSkibakke = document.getElementById("imgSkibakke");
+      var imgSkihopper = document.getElementById("imgSkibakke");
+      var imgSkoyter = document.getElementById("imgSkoyter");
+      var tekst = document.getElementById("tekst");
+      var count = 1;
+
+      var imgSkihopper = document.getElementById("imgSkihopper");
+      var myAnimation = imgSkihopper.animate([
+        {top: 320 + "px", right: 100 + "px"},
+        {top: 320 + "px", right: 150 + "px"},
+        {top: 450 + "px", right: 300 + "px"},
+        {top: 450 + "px", right: 500 + "px"}
+      ],{
+        duration: 5000,
+        iterations: 3,
+      });
+      myAnimation.pause();
+
+      range.onchange = function(){
+        var playBackRate = range.value;
+        myAnimation.playbackRate = playBackRate / 10;
+        videoSkihopp.playbackRate = playBackRate / 10;
+      };
+
+      var imgSkoyter = document.getElementById("imgSkoyter");
+      var myAnimation2 = imgSkoyter.animate([
+        {left: 580 + "px"},
+        {left: 1050 + "px"},
+        {left: 580 + "px"}
+      ],{
+        duration: 2250,
+        iterations: 6,
+        direction: "alternate"
+      });
+      myAnimation2.pause();
+
+      btnSkihopp.onclick = function(){
+        videoSkihopp.currentTime = 0;
+        myAnimation.currentTime = 0;
+        myAnimation.play();
+        videoSkihopp.play();
+        videoSkihopp.style.display = "block";
+        imgSkibakke.style.display = "block";
+        imgSkihopper.style.display = "block";
+        range.style.display = "block";
+        imgSkoyter.style.display = "none";
+        tekst.style.display = "block";
+        myAnimation2.pause();
+        myAnimation2.currentTime = 0;
+        audioSkoyter.pause();
+        audioSkoyter.currentTime = 0;
+      }
+
+      btnSkoyter.onclick = function(){
+        myAnimation2.play();
+        audioSkoyter.play();
+        videoSkihopp.style.display = "none";
+        imgSkibakke.style.display = "none";
+        imgSkihopper.style.display = "none";
+        range.style.display = "none";
+        imgSkoyter.style.display = "block";
+        tekst.style.display = "none";
+        myAnimation.pause();
+        myAnimation.currentTime = 0;
+        videoSkihopp.pause();
+        videoSkihopp.currentTime = 0;
+        count = 1;
+      }
+
+      var myAnimationTekst = tekst.animate([
+        {right: 200 + "px"},
+        {right: 300 + "px"}
+      ],{
+        duration: 2000,
+        fill: "forwards"
+      });
+      myAnimationTekst.pause();
+
+      var myAnimationTekst2 = tekst.animate([
+        {right: 300 + "px"},
+        {right: 500 + "px"}
+      ],{
+        duration: 10000,
+        fill: "forwards"
+      });
+      myAnimationTekst.pause();
+
+      var loop = function(){
+
+        if (videoSkihopp.currentTime >= 1 && count == 1){
+          tekst.innerHTML = "Dette er starten av hoppet";
+          myAnimationTekst.play();
+          count += 1;
+        };
+        if (videoSkihopp.currentTime >= 3 && count == 2){
+          tekst.innerHTML = "Dette er andre del av hoppet";
+          myAnimationTekst2.play();
+          count += 1;
+        };
+        if (videoSkihopp.currentTime >= 5 && count == 3){
+          tekst.innerHTML = "";
+        };
+
+        window.requestAnimationFrame(loop);
+      };
+      window.requestAnimationFrame(loop);
+
+    </script>
+  </body>
+</html>

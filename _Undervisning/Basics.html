@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <div id="div1"></div>
+    <div class="div2"></div>
+
+    <script type="text/javascript">
+
+      // % resten (eks. 12/11 = 1 + 1/11  =>  rest = 1/11)
+      var tall1 = 12;
+      var tall2 = 11;
+      var sum = tall1 % tall2;
+      document.write("sum: " + sum  + "<br>"); // vises på nettsiden
+      console.log("dette er din sum: " + sum);  // vises i konsollen
+
+      // pop-up
+      alert("dette er en alert") // gir en pop-up alert
+      var tall3 = prompt("Skriv inn et tall her"); // gir en pop-up der man skriver noe som blir lik variablen
+
+      // selectors
+      var div1 = document.getElementById("div1");
+      var div2 = document.getElementsByClassName("div2");
+      var div1_v2 = document.querySelector("#div1");
+      var div2_v2 = document.querySelector(".div2");
+      var nodeList = document.querySelectorAll("div");
+      console.log(nodeList);
+
+      // innerHTML
+      div1.innerHTML = "<p id=`avsnitt1`>" + tall1 + "</p>";  // Bruker "" for å skrive JS
+      div2.innerHTML = `<p id="avsnitt2">${tall1}</p>`;       // Bruker `` for å skrive HTML
+      div2_v2.innerHTML += `<p><b>${tall1} % ${tall2} = ${tall1 % tall2}</b></p>`;
+
+      // Math
+      console.log(Math.floor(Math.random()*11)); //Math.random gir decimal tall mellom 0 og 1 // Ganger med 11 for å få decimal tall mellom 0 og 11 // runder ned for å få tall 0 til 9
+      console.log(Math.pow(10, 2)) // 10^2
+
+    </script>
+  </body>
+</html>

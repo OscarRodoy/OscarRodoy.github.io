@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <button type="button" id="btn">Detter er en knapp</button><br><br>
+    <p id="melding"></p><br><br>
+    <script type="text/javascript">
+      //enkel funksjon
+      function funksjonnavn() { // for å lage en funksjon
+        document.write("Hei <br>");
+      };
+      funksjonnavn(); // for å tilkalle en funksjon
+
+      //funksjon med et parameter
+      function funk(x) { // gir funksjonen f en parameterverdi x
+        var verdi = 2 * x - 1;
+        document.write(`Funksjon funk(x) = ${verdi} når x er lik ${x}. <br>`)
+      }
+      funk(2); // tilkaller funksjonen f med parameterverdi x = 2
+      funk(-4);
+      funk(7);
+
+      //funksjon med flere parameter
+      function areal(bredde, hoyde) {
+        var areal = bredde * hoyde;
+        document.write("bredden er: " + areal + "<br>")
+      };
+      areal(10, 5);
+
+      // lokale variabler = variabler definert inni en funksjon | kan ikke endres eller brukes utenfor funksjonen
+      // globale variabler = variabler definert utenfor funksjonen | kan endres og brukes overalt
+
+      // Eksempel
+      var poengsum = 0;
+      function leggTilPoeng(antall){
+        poengsum += antall;
+      };
+      function trekkFraPoeng(antall){
+        poengsum -= antall;
+      };
+      leggTilPoeng(5);
+      trekkFraPoeng(2);
+      leggTilPoeng(3);
+      document.write("Poengsum er lik: " + poengsum);
+
+      // Anonyme funksjoner
+        // Automatisk funksjon
+      (function(){ // tilkalles med en gang nettsiden laster
+        var navn = "per";
+        document.write(navn);
+      })();
+        // Hendelsesstyrte fuksjon
+      window.onclick = function() { // tilkalles når hendelsen skjer | hendelser kan være onclick, onmouseover, onkeyup, onload, onresize
+        alert("Du klikket på nettsiden");
+      };
+      var btn = document.getElementById("btn");
+      btn.onclick = function(){
+        alert("Du klikket på knappen");
+      };
+
+      // Funksjoner returnerer en verdi
+      function funksjonsnavn() {
+        // koden fuksjonen skal utføre
+        return // verdi;
+      };
+      var variabelnavn = funksjonsnavn();
+
+      // eksempel
+      var melding = document.getElementById("melding");
+      var saldo = 7000;
+      function uttak(belop){
+        saldo = saldo - belop;
+        return "Du har tatt ut kr " + belop + ". Ny saldo er kr " + saldo;
+      }
+      melding.innerHTML = uttak(1500);
+
+    </script>
+  </body>
+</html>

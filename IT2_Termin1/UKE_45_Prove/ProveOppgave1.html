@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <p id="tekst"></p>
+    <input id="inpTall" type="text" placeholder="skriv tallet ditt her"><br>
+    <script>
+    // Oppgave 1
+      var tekst = document.getElementById("tekst");
+      var inpTall = document.getElementById("inpTall");
+      finnSum(10);
+      finnSum(9);
+      finnSum(3);
+      function finnSum(tall){
+        var sum = Number(0);
+        for (var i = 0; i<=tall; i++){
+          sum += i
+        };
+        tekst.innerHTML += "ditt tall var: " + tall + " dette gir sum: " + sum + "<br>";
+      }; 
+
+      inpTall.onchange = function(){
+        var dittTall = inpTall.value;
+        finnSum(dittTall);
+        inpTall.value = "";
+      };
+
+    </script>
+  </body>
+</html>

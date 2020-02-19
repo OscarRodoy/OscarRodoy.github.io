@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <audio id="lyd" src="../Lyder/gitar.mp3" controls></audio>
+    <!--
+      autoplay = spilles av med en gang
+      controls = viser en lyd avspiller
+      loop = spilles av flere ganger
+      muted = volumet er muted
+      preload = lydfilen lastes ned med en gang siden åpnes
+    -->
+
+    <script type="text/javascript">
+      var lyd = document.getElementById("lyd");
+      document.onclick = function(){
+        lyd.play();
+      };
+    </script>
+
+  </body>
+</html>

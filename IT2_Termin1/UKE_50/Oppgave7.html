@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <button id="btnNyPers" type="button">Ny Tilfeldig Person</button>
+    <p></p>
+    <img style="width:500px;" src="">
+
+    <script type="text/javascript">
+
+      var btnNyPers = document.getElementById("btnNyPers");
+      var paragraph = document.querySelector("p");
+      var img = document.querySelector("img");
+
+      btnNyPers.onclick = function(){
+        var alder = Math.ceil(Math.random()*70);
+        if (alder < 15){
+          paragraph.innerHTML = "ikke for smårollinger, minst 15 år!";
+          img.src = "Pic1.jpg";
+        } else if (alder > 60){
+          paragraph.innerHTML = "ikke for gamling, maks 60 år!";
+          img.src = "Pic2.jpg";
+        } else {
+          paragraph.innerHTML = alder + " år! Gratulere du er akkurat gammel nok!";
+          img.src = "Pic3.jpg";
+        };
+      };
+
+    </script>
+  </body>
+</html>

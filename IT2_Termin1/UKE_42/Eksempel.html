@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input id="inpNavn" type="text">
+    <button id="btn">Sett inn</button>
+    <p id="txtElever"></p>
+    <script>
+      var inpNavn = document.getElementById("inpNavn");
+      var btn = document.getElementById("btn");
+      var txtElever = document.getElementById("txtElever");
+      var elever = [];
+      btn.onclick = function(){
+        elever.push(inpNavn.value);
+        txtElever.innerHTML = elever.join("<br>");
+        inpNavn.value = "";
+      }
+    </script>
+  </body>
+</html>

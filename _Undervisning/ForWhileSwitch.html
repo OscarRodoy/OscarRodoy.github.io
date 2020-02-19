@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+      // SWITCH SETNING // ser om tillfellene stemmer, om ikke gjør default
+      var svar = prompt("Hva er hei på engelsk");
+      switch(svar){
+        case "Hi":
+          document.write("Riktig");
+          break;
+        case "Hello":
+          document.write("Riktig");
+          break;
+        case "Hey":
+          document.write("Riktig");
+          break;
+        default:
+          document.write("Feil");
+      };
+      document.write("<br><br>");
+
+      // WHILE SETNING // så lenge betingelsen er sann, utfør koden igjen og igjen
+      var i = 0;
+      var countTo = 50;
+      while (i <= countTo) {
+        document.write(i);
+        if (i < countTo){
+          document.write(", ");
+        };
+        if (i == countTo) {
+          document.write("<br><br>")
+        };
+        i = i + 1;
+      };
+
+      // FOR SETNING // definerer variabel ; skriver betingelse ; øk variablen
+      // øke med 1 // i = i + 1 // i++
+      // øke med 5 // i = i + 5 // i+=5
+      // minske med 1 // i = i - 1 // i--
+      for (var j = 1; j <= 10; j++){
+        document.write(j + ", ");
+        if (j == 10){
+          document.write("<br><br>")
+        };
+      };
+
+      // FOR OF LØKKE // Gjør var "x" til det første elemente i arrayet, utfører koden og repeterer med x = de forskjellige elementene i arrayet
+      var cars = ['BMW', 'Volvo', 'Mini'];
+      for (var x of cars) {
+        document.write(x + "<br>");
+      }
+      document.write("<br>");
+
+      // FOR IN LØKKE // Gjør var "x" til det første elemente i objektet, utfører koden og repeterer med x = de forskjellige elementene i objektet
+      var person = {
+        navn: "Pål",
+        alder: 43,
+        øyne: "blå"
+      };
+      for (var x in person) {
+        document.write(person[x] + "<br>");
+      };
+
+    </script>
+  </body>
+</html>

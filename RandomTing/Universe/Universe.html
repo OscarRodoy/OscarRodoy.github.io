@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <canvas id="canvas" width="1260" height="590"></canvas>
+    <script type="text/javascript">
+
+      var ctx = document.querySelector("canvas").getContext("2d");
+      ctx.canvas.width = 1260;
+      ctx.canvas.height = 590;
+
+      var hypotenuse = 1; // determines speed of atoms
+      var atomCount = 800; // determines amount of atoms
+      var grMultiplier = 6; // determines when range of gravity
+
+      var atom1 = {
+        mass: 0.3,
+        density: 1,
+        red:20,
+        green:-20,
+        blue:-20
+      };
+
+      var atom2 = {
+        mass: 0.3,
+        density: 1,
+        red:-20,
+        green:20,
+        blue:-20
+      };
+
+      var atom3 = {
+        mass: 0.3,
+        density: 1,
+        red:-20,
+        green:-20,
+        blue:20
+      };
+
+      var atomArray = [atom1, atom2, atom3];
+
+      var atoms = [];
+      for (var i=0; i<atomCount; i++){
+        atoms[i] = new Object();
+        atoms[i].x = Math.round(Math.random() * ctx.canvas.width);
+        atoms[i].y = Math.round(Math.random() * ctx.canvas.height);
+        atoms[i].phi = Math.round((Math.random() * 2*Math.PI) * 100) / 100;
+        atoms[i].xVel = Math.round((hypotenuse * Math.cos(atoms[i].phi)) * 100) / 100;
+        atoms[i].yVel = Math.round((hypotenuse * Math.sin(atoms[i].phi)) * 100) / 100;
+        atoms[i] = {...atoms[i], ...atomArray[Math.floor(Math.random() * 3)]};
+        atoms[i].radius = atoms[i].mass * atoms[i].density / 2;
+        atoms[i].gravRadius = atoms[i].mass * grMultiplier;
+      };
+
+      function drawAtom(){
+        for (var j=0; j<atomCount; j++){
+          // grav field
+          ctx.fillStyle = "rgba(" + (255 + atoms[j].red) + "," + (255 + atoms[j].green) + "," + (255 + atoms[j].blue) + ", 0.2)";
+          ctx.beginPath();
+          ctx.arc(atoms[j].x, atoms[j].y, atoms[j].gravRadius, 0, 2*Math.PI, false);
+          ctx.fill();
+          // atom
+          ctx.fillStyle = "rgb(" + (255 + atoms[j].red) + "," + (255 + atoms[j].green) + "," + (255 + atoms[j].blue) + ")";
+          ctx.beginPath();
+          ctx.arc(atoms[j].x, atoms[j].y, atoms[j].radius, 0, 2*Math.PI, false);
+          ctx.fill();
+        };
+      };
+
+      function updateAtom(){
+        for (var k=0; k<atomCount; k++){
+          // update posision
+          atoms[k].x += atoms[k].xVel;
+          atoms[k].y += atoms[k].yVel;
+          // collision detection left/right
+          if (((atoms[k].x < atoms[k].radius) && (atoms[k].xVel < 0)) || ((atoms[k].x > ctx.canvas.width - atoms[k].radius) && (atoms[k].xVel > 0))){
+            atoms[k].xVel *= -1;
+          };
+          // collision detection top/bottom
+          if (((atoms[k].y < atoms[k].radius) && (atoms[k].yVel < 0)) || ((atoms[k].y > ctx.canvas.height - atoms[k].radius) && (atoms[k].yVel > 0))){
+            atoms[k].yVel *= -1;
+          };
+          // objects to object interactions
+          for (var h=k+1; h<atomCount; h++){
+            var distX = atoms[k].x - atoms[h].x;
+            var distY = atoms[k].y - atoms[h].y;
+            var distance = Math.sqrt(Math.pow(distX, 2) + Math.pow(distY, 2));
+            var totalForce = (atoms[k].mass + atoms[h].mass) / (Math.pow(distance, 2) * 2);
+            var totalForceX = totalForce * distX / distance;
+            var totalForceY = totalForce * distY / distance;
+            // gravity between objects
+            if (distance < (atoms[k].gravRadius + atoms[h].gravRadius)) {
+              atoms[k].xVel += -totalForceX * atoms[h].mass;
+              atoms[k].yVel += -totalForceY * atoms[h].mass;
+              atoms[h].xVel += totalForceX * atoms[k].mass;
+              atoms[h].yVel += totalForceY * atoms[k].mass;
+            };
+            // collision between objects
+            if (distance < atoms[k].radius + atoms[h].radius) {
+              if (atoms[k].mass > 3 * atoms[h].mass) {
+                atoms[k].x = atoms[k].x;
+                atoms[k].y = atoms[k].y;
+              } else {
+                atoms[k].x = (atoms[k].x + atoms[h].x) / 2;
+                atoms[k].y = (atoms[k].y + atoms[h].y) / 2;
+              };
+              atoms[k].xVel = ((atoms[k].xVel*atoms[k].mass) + (atoms[h].xVel*atoms[h].mass)) / (atoms[k].mass + atoms[h].mass);
+              atoms[k].yVel = ((atoms[k].yVel*atoms[k].mass) + (atoms[h].yVel*atoms[h].mass)) / (atoms[k].mass + atoms[h].mass);
+              atoms[k].mass += atoms[h].mass;
+              atoms[k].density = (atoms[k].mass + atoms[h].mass) / ((atoms[k].mass/atoms[k].density) + (atoms[h].mass/atoms[h].density))//(((atoms[k].density*atoms[k].mass) + (atoms[h].density*atoms[h].mass)) / (atoms[k].mass + atoms[h].mass)) / 2;//(atoms[k].density + atoms[h].density)/2;
+              atoms[k].radius = atoms[k].mass * atoms[k].density / 2;
+              atoms[k].gravRadius = atoms[k].mass *  grMultiplier;
+              atoms[k].red += atoms[h].red;
+              atoms[k].green += atoms[h].green;
+              atoms[k].blue += atoms[h].blue;
+              atoms[h] = 0;
+            };
+          };
+        };
+      };
+
+      var loop = function(){
+
+        ctx.fillStyle = "#202020";
+        ctx.fillRect(0, 0, 1260, 590);
+
+        drawAtom();
+
+        updateAtom();
+
+        window.requestAnimationFrame(loop);
+      };
+      window.requestAnimationFrame(loop);
+
+    </script>
+  </body>
+</html>

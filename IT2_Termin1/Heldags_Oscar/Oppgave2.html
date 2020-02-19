@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Oppgave 2</title>
+    <style media="screen">
+      #diagram{
+        width: 1000px;
+      }
+      #diagram div{
+        font-size: 25px;
+        display: grid;
+        grid-template-columns: 200px 800px;
+        margin-bottom: 10px;
+      }
+      #diagram div .stolpe{
+        background-color: red;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+
+    <p>Forbruk:
+    <input id="inpForbruk" type="number" required placeholder="Forbruk"></p>
+    <p>Tank:
+    <input id="inpTank" type="number" required placeholder="Kapasitet"></P>
+    <br>
+    <button id="btnBeregn" type="button">Beregn</button>
+    <p id="visSvar"></p>
+
+    <hr>
+
+    <p>Velg et bilmerke</p>
+    <label><input id="fiat" type="radio" name="velgBil">Fiat 500</label>
+    <label><input id="porsche" type="radio" name="velgBil">Porsche 911</label>
+    <label><input id="toyota" type="radio" name="velgBil"> Toyota Prius</label>
+
+    <div id="bilInfo"></div>
+
+    <hr>
+
+    <div id="diagram">
+      <div>
+        <div>Fiat 500</div>
+        <div id="fiatDiv" class="stolpe"></div>
+      </div>
+      <div>
+        <div>Porsche 911</div>
+        <div id="porscheDiv" class="stolpe"></div>
+      </div>
+      <div>
+        <div>Toyota Prius</div>
+        <div id="toyotaDiv" class="stolpe"></div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+
+      // a
+      var inpForbruk = document.getElementById("inpForbruk");
+      var inpTank = document.getElementById("inpTank");
+      var btnBeregn = document.getElementById("btnBeregn");
+
+      btnBeregn.onclick = function(){
+        var sum = inpTank.value / inpForbruk.value;
+        visSvar.innerHTML = "Du kan kjøre " + sum +  " mil på en full tank.";
+      };
+
+      // b
+      var fiat = document.getElementById("fiat");
+      var porsche = document.getElementById("porsche");
+      var toyota = document.getElementById("toyota");
+      var bilInfo = document.getElementById("bilInfo");
+
+      var fiatMil = Math.round(35 / 0.51);
+      var porscheMil = Math.round(64 / 0.95);
+      var toyotaMil = Math.round(45 / 0.39);
+
+      fiat.onclick = function(){
+        visFiat();
+      };
+
+      porsche.onclick = function(){
+        visPorsche();
+      };
+
+      toyota.onclick = function(){
+        visToyota();
+      };
+
+      function visFiat(){
+        bilInfo.innerHTML = `
+          <p>Bilmerke: Fiat 500</p>
+          <p>Tank: 35 Liter</p>
+          <p>Forbruk: 0.51 l/mil<p>
+          <p>Mil: ${fiatMil}</p>
+        `;
+      };
+
+      function visPorsche(){
+        bilInfo.innerHTML = `
+          <p>Bilmerke: Porsche 911</p>
+          <p>Tank: 64 Liter</p>
+          <p>Forbruk: 0.95 l/mil<p>
+          <p>Mil: ${porscheMil}</p>
+        `;
+      };
+
+      function visToyota(){
+        bilInfo.innerHTML = `
+          <p>Bilmerke: Toyota Prius</p>
+          <p>Tank: 45 Liter</p>
+          <p>Forbruk: 0.39 l/mil<p>
+          <p>Mil: ${toyotaMil}</p>
+        `;
+      };
+
+      // c
+      var fiatDiv = document.getElementById("fiatDiv");
+      var porscheDiv = document.getElementById("porscheDiv");
+      var toyotaDiv = document.getElementById("toyotaDiv");
+
+      fiatDiv.style.width = fiatMil * 3 + "px"; // ganger alle med 3 så man ser det bedre
+      fiatDiv.innerHTML = fiatMil + "mil";
+      fiatDiv.onclick = function(){
+        visFiat();
+      };
+      porscheDiv.style.width = porscheMil * 3 + "px";
+      porscheDiv.innerHTML = porscheMil + "mil";
+      porscheDiv.onclick = function(){
+        visPorsche();
+      };
+      toyotaDiv.style.width = toyotaMil * 3 + "px";
+      toyotaDiv.innerHTML = toyotaMil  + "mil";
+      toyotaDiv.onclick = function(){
+        visToyota();
+      };
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      map{
+        cursor: grab;
+      }
+      .app{
+        position: relative;
+        overflow: hidden;
+        margin: auto;
+        width: 607px;
+      }
+      #overskrift{
+        text-align: center;
+      }
+      #tekst{
+        position: absolute;
+        left: 100px;
+        top: 100px;
+        font-size:20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <h1 id="overskrift">Muskler</h1>
+      <p id ="tekst"></p>
+      <img src="kropp.gif" width="607px" height="700px" usemap="#muskler" alt="">
+    </div>
+    <map name="muskler">
+      <area id="brede-ryggmuskel" shape="rect" coords="300,200,400,250" href="#" alt="">
+      <area id="armstrekkeren" shape="rect" coords="350,150,500,200" href="#" alt="">
+    </map>
+    <audio id="lyd-armstrekkeren" src="armstrekkeren.mp3"></audio>
+    <audio id="lyd-ryggmuskel" src="brede_ryggmuskel.mp3"></audio>
+    <script>
+      const armstrekkeren=document.querySelector("#armstrekkeren");
+      const bredeRyggmuskel=document.querySelector("#brede-ryggmuskel");
+      const lydArm=document.querySelector("#lyd-armstrekkeren");
+      const lydRygg=document.querySelector("#lyd-ryggmuskel");
+      const tekst=document.querySelector("#tekst");
+      document.onmousemove=(e)=>{
+        console.log("X-koordinaten: "+e.clientX + "; y-koordinaten: "+e.clientY)
+      }
+      armstrekkeren.onclick=()=>{
+        tekst.innerHTML="armstrekkeren";
+        lydArm.play();
+      }
+      bredeRyggmuskel.onclick=()=>{
+        tekst.innerHTML="Brede ryggmuskel";
+        lydRygg.play();
+      }
+    </script>
+  </body>
+</html>

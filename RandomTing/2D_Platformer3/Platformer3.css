@@ -1,0 +1,120 @@
+canvas{
+  margin-left: 6px;
+  margin-top: 7px;
+  border: 2px solid black;
+}
+/* Main Menu */
+#mainMenu{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #303840;
+  z-index: 20;
+  text-align: center;
+}
+#mainMenu h1{
+  font-size: 70px;
+  color: white;
+}
+#mainMenu div{
+  width: 300px;
+  height: 50px;
+  margin: 10px;
+  font-size: 30px;
+}
+#selectLevel{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 20;
+  text-align: center;
+  display: none;
+}
+#selectLevel h1{
+  font-size: 70px;
+}
+/* Display */
+#playerDisplay{
+  position: absolute;
+  top: 10;
+  left: 10;
+  width: 290px;
+  height: 76px;
+  margin-left: 12px;
+  margin-top: 13px;
+  z-index: 10;
+  overflow: hidden;
+}
+#playerIcon{
+  background-color: white;
+  font-size: 50px;
+  height: 72px;
+  width: 72px;
+  border: 2px solid black;
+  border-radius: 5px;
+  float: left;
+  margin-right: 4px;
+}
+#healthBar{
+  background-color: lime;
+  height: 32px;
+  width: 200px;
+  border: 2px solid black;
+  border-radius: 5px;
+  line-height: 32px;
+  overflow: hidden;
+  margin-bottom: 4px;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+}
+#healthBar p{
+  margin: 0px 0px 0px 5px;
+}
+#moneyBar{
+  background-color: gold;
+  height: 32px;
+  width: 98px;
+  border: 2px solid black;
+  border-radius: 5px;
+  line-height: 32px;
+  overflow: hidden;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+}
+#moneyBar p{
+  margin: 0px 0px 0px 5px;
+}
+#btnPause{
+  position: absolute;
+  top: 21px;
+  right: 21px;
+  height: 72px;
+  width: 72px;
+  border: 2px solid black;
+  border-radius: 5px;
+  z-index: 10;
+  background-color: white;
+  text-align: center;
+  font-size: 48px;
+}
+#pausedMenu{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  height: 300px;
+  width: 500px;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: white;
+  text-align: center;
+  display: none;
+}

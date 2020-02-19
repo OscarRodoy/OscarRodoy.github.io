@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="nb" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      table{
+        border-collapse: collapse;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 20px;
+      }
+      table tr th{
+        background-color: lime;
+        border: 1px solid black;
+      }
+      table tr td{
+        border: 1px solid black;
+      }
+      table tr:nth-child(even) td{
+        background-color: lightgrey;
+      }
+      table tr td:nth-child(1){
+        background-color: darkgrey;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>Nr</th>
+        <th>Tittel</th>
+        <th>Utgiv. år</th>
+        <th>Regissør</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Ironman</td>
+        <td>2008</td>
+        <td>Jon Favreau</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>John Wick 3</td>
+        <td>2019</td>
+        <td>Chad Stahelski</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Infinity war</td>
+        <td>2018</td>
+        <td>Russo-Brothers</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Avatar</td>
+        <td>2009</td>
+        <td>James Cameron</td>
+      </tr>
+    </table>
+  </body>
+</html>

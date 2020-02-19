@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <script>
+      var ctx = document.querySelector("canvas").getContext("2d");
+      ctx.canvas.style = "margin-left: 6px; margin-top: 7px; border: 2px solid black";
+      var cvsWidth = ctx.canvas.width = 1248;
+      var cvsHeight = ctx.canvas.height = 576;
+
+      var world = {
+        tileSize: 48,
+        rows: 12,
+        columns: 26,
+        get length() { return this.columns * this.tileSize;},
+        get height() { return this.rows * this.tileSize;},
+        map: [00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00]
+      };
+
+      var controller = {
+        left:false,
+        right:false,
+        keyUpDown:function(event) {
+          var key_state = (event.type == "keydown")?true:false;
+          switch(event.keyCode) {
+            case 65: controller.a = key_state; break; // a key
+            case 87: controller.w = key_state; break; // w key
+            case 68: controller.d = key_state; break; // d key
+            case 83: controller.s = key_state; break; // s key
+            case 32: controller.space = key_state; break; // spcae key
+            case 16: controller.shift = key_state; break; // spcae key
+          }
+        }
+      };
+
+      var player = {
+        xPos: 48*3,
+        yPos: 48*3,
+        xPosOld: 48*3,
+        yPosOld: 48*3,
+        xVel: 0,
+        yVel: 0,
+        radius: world.tileSize/2,
+        color: "blue",
+        movementSpeed: 6,
+        get top()         { return this.yPos - this.radius; },
+        get bottom()      { return this.yPos + this.radius; },
+        get left()        { return this.xPos - this.radius; },
+        get right()       { return this.xPos + this.radius; },
+        get topOld()      { return this.yPosOld - this.radius; },
+        get bottomOld()   { return this.yPosOld + this.radius; },
+        get leftOld()     { return this.xPosOld - this.radius; },
+        get rightOld()    { return this.xPosOld + this.radius; }
+      };
+
+      function collisionBottom(xPos, yPos){
+        if (player.right > xPos && player.left < xPos + world.tileSize &&
+            player.bottom > yPos && player.bottomOld <= yPos){
+          player.onGround = true;
+          player.yVel = 0;
+          player.jumps = 2;
+          player.yPos = yPos - player.height;
+        };
+      };
+      function collisionRight(xPos, yPos){
+        if (player.right > xPos && player.rightOld <= xPos &&
+            player.bottom > yPos && player.top < yPos + world.tileSize){
+          player.xVel = 0;
+          player.xPos = xPos - player.width;
+        };
+      };
+      function collisionTop(xPos, yPos){
+        if (player.right > xPos && player.left < xPos + world.tileSize &&
+            player.top < yPos + world.tileSize && player.topOld >= yPos + world.tileSize){
+          player.yVel = 0;
+          player.yPos = yPos + player.height;
+        };
+      };
+      function collisionLeft(xPos, yPos){
+        if (player.left < xPos + world.tileSize && player.leftOld >= xPos + world.tileSize &&
+            player.bottom > yPos && player.top < yPos + world.tileSize){
+          player.xVel = 0;
+          player.xPos = xPos + player.width;
+        };
+      };
+
+      function drawWorld(){
+        for (var i = 0; i < world.columns; i++){
+          if (i % 2 == 0){
+            ctx.fillStyle = "#00ff2f";
+            ctx.fillRect(i*world.tileSize, 0, world.tileSize, world.height);
+          } else {
+            ctx.fillStyle = "#10c932";
+            ctx.fillRect(i*world.tileSize, 0, world.tileSize, world.height);
+          };
+        };
+        for (var i = 0; i < world.map.length; i++){
+          var xPos = (i * world.tileSize) - (world.length * Math.floor((i * world.tileSize) / world.length));
+          var yPos = Math.floor(i / world.columns) * world.tileSize;
+          if (world.map[i] == 00){}
+          else if (world.map[i] == 01) {createSquare01(xPos, yPos);};
+        };
+        function createSquare01(xPos, yPos){
+          ctx.fillStyle = "darkgrey";
+          ctx.fillRect(xPos, yPos, world.tileSize, world.tileSize);
+        };
+        ctx.fillStyle = player.color;
+        ctx.beginPath();
+        ctx.arc(player.xPos, player.yPos, player.radius, 0, 2*Math.PI, false);
+        ctx.fill();
+      };
+
+      function updateWorld(){
+        // game physics
+        player.xPosOld = player.xPos;
+        player.yPosOld = player.yPos;
+        player.xPos += player.xVel;
+        player.yPos += player.yVel;
+        player.xVel *= 0.85;
+        player.yVel *= 0.85;
+        // collision detection
+        for (var i = 0; i < world.map.length; i++){
+          var xPos = (i * world.tileSize) - (world.length * Math.floor((i * world.tileSize) / world.length));
+          var yPos = Math.floor(i / world.columns) * world.tileSize;
+          if (world.map[i] == 01){
+            collisionRight(xPos, yPos);
+            collisionTop(xPos, yPos);
+            collisionLeft(xPos, yPos);
+            collisionBottom(xPos, yPos);
+          };
+        };
+        // player movement
+        if (controller.a){
+          player.xVel = -player.movementSpeed;
+        };
+        if (controller.d){
+          player.xVel = player.movementSpeed;
+        };
+        if (controller.w){
+          player.yVel = -player.movementSpeed;
+        };
+        if (controller.s){
+          player.yVel = player.movementSpeed;
+        };
+      };
+
+      var loop = function(){
+
+        drawWorld();
+
+        updateWorld();
+
+        window.requestAnimationFrame(loop);
+      };
+      window.requestAnimationFrame(loop);
+      window.addEventListener("keydown", controller.keyUpDown);
+      window.addEventListener("keyup", controller.keyUpDown);
+    </script>
+  </body>
+</html>

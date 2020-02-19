@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+      var tall = 2.71;
+      console.log(tall);
+
+      var sitat = "Javascript tar kontroll over nettsiden";
+      console.log(sitat[13]);
+      console.log(sitat.indexOf("a"));
+      console.log(sitat.substring(14, 23));
+      console.log(sitat.length);
+
+      document.write("Oppgave 2: " + "<br>");
+      var name = prompt("skriv inn navn her");
+      name = name.charAt(0).toUpperCase()+name.slice(1).toLowerCase();
+      document.write("Hallo " + name + "<br>" + "Du har blitt invitert til klassefest " + name + "!" + "<br><br>");
+
+      document.write("Oppgave 3: " + "<br>");
+      var name2 = prompt("skriv inn ditt navn her")
+      document.write("velkommen tilbake " + name2 + "!" + "<br><br>");
+      alert("Hallo, " + name2);
+
+      document.write("Oppgave 4: " + "<br>");
+      var name3 = prompt("skriv navn til elev her");
+      var utak = "blitt tatt ut til å spille kamp neste helg";
+      document.write("Gratulerer " + name3 + ", du har " + utak + "<br><br>");
+      document.write("Beklager " + name3 + ", du har ikke " + utak + "<br><br>");
+
+      document.write("Oppgave 5: " + "<br>");
+      var bredde = 4;
+      var hoyde = 4;
+      document.write("Areal = " + bredde * hoyde + "<br>" + "Omkrets = " + (bredde*2 + hoyde*2) + "<br><br>");
+      var radius = prompt("skriv inn radius her");
+      var areal = Math.PI * Math.pow(radius, 2);
+      var omkrets = 2 * Math.PI * radius;
+      var volum = Math.round(Math.PI * Math.pow(radius, 3) * 4 / 3);
+      areal = Math.round(areal);
+      omkrets = Math.round(omkrets);
+      document.write("Areal = " + areal + "<br>" + "Omkrets = " + omkrets + "<br>" + "Volum = " + volum + "<br><br>");
+
+    </script>
+  </body>
+</html>

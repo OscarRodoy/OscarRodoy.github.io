@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      body{
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+
+    <form action="Knapper.html" method="post">
+
+      <p>Skriv text, tall, passord</p>
+      <!-- type="text" = velg type -->
+      <!-- minlength="3" = velg minst lengde -->
+      <!-- maxlength="12" = velg max lengde -->
+      <!-- placeholder="Skriv her" = text som vises før du skriver -->
+      <!-- autofocus = klar til å skrive med en gang -->
+      <!-- disabled = umulig å skrive -->
+      <!-- required = må skrives inn når det er i et form element -->
+      <!-- value="" = velg forhandsbestemt verdi -->
+      <!-- data-navn = ?? -->
+      <input type="text" minlength="3" maxlength="12" placeholder="Skriv her" autofocus required>
+      <br><br>
+      <input type="number" placeholder="1234">
+      <br><br>
+      <input type="password" placeholder="passord">
+      <br><br>
+      <input type="email" placeholder="email">
+
+      <hr>
+
+      <p>Radio knapp</p>
+      <!-- radio knapper må ha samme name verdi for at de skal være i en gruppe, Da kan man kun selected en av dem-->
+      <label><input type="radio" name="sammeGruppe">Knapp 1</label>
+      <label><input type="radio" name="sammeGruppe">Knapp 2</label>
+      <label><input type="radio" name="sammeGruppe">Knapp 3</label>
+
+      <hr>
+
+      <p>checkbox</p>
+      <!-- kan velge flere alternativer -->
+      <input type="checkbox" name="g1">
+      <input type="checkbox" name="g1">
+      <input type="checkbox" name="g1">
+
+      <hr>
+
+      <p>Range</p>
+      <input id="myRange" type="range" style="width: 500px;">
+      <div id="displayValue"></div>
+      <script>
+        var myRange = document.getElementById("myRange");
+        var displayValue = document.getElementById("displayValue");
+        myRange.value = 20;
+        myRange.onchange = function(){
+          displayValue.innerHTML = `<p>${myRange.value}</p>`;
+          console.log(myRange.value - 50);
+        };
+      </script>
+
+      <hr>
+
+      <p>dropdown meny med valg</p>
+      <select>
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option>Option 3</option>
+      </select>
+
+      <p>Farge velger</p>
+      <input type="color">
+
+      <p>Skriv dato</p>
+      <input type="date">
+
+      <p>Velg fil</p>
+      <input type="file">
+
+      <p>Knapp</p>
+      <button>Button</button>
+
+      <p>skrivefelt</p>
+      <textarea name="name" rows="8" cols="80"></textarea> <br>
+
+      <br><br>
+      <button type="submit">Send inn!</button>
+    </form>
+
+  </body>
+</html>

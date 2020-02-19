@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    </style>
+  </head>
+  <body>
+
+    <!--
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <i class="fas fa-clock"></i>
+    <a href="https://www.w3schools.com/icons/default.asp">w3school</a>
+
+    <video src="dikt.mp4" width="500px" controls autoplay poster="bass_blek.png">
+      <track kind="captions" src="teksting.vtt" label="Norsk" srclang="no">
+    </video>
+    -->
+    <video src="dikt.mp4" id="minFilm" width="640px" autoplay poster="bass_blek.png">
+
+    </video>
+    <br>
+    <button type="button" id="btnPlay" name="button">Play</button>
+    <button type="button" id="btnPause" name="button">Pause</button>
+    <button type="button" id="btnSkip" name="button">Skip</button>
+    <button type="button" id="btnMute" name="button">Mute</button>
+
+    <script type="text/javascript">
+      const minFilm = document.querySelector("#minFilm");
+      const btnPlay = document.querySelector("#btnPlay");
+      const btnPause = document.querySelector("#btnPause");
+      const btnSkip = document.querySelector("#btnSkip");
+      const btnMute = document.querySelector("#btnMute");
+      btnPlay.onclick = function(){
+        minFilm.play();
+      };
+      btnPause.onclick = function(){
+        minFilm.pause();
+      };
+      btnSkip.onclick = function(){
+        minFilm.currentTime = minFilm.currentTime + 10;
+      };
+      btnMute.onclick = function(){
+        if (minFilm.muted == false) {
+          minFilm.muted = true;
+          btnMute.innerHTML = "Unmute";
+        } else {
+          minFilm.muted = false;
+          btnMute.innerHTML = "Mute";
+        }
+      };
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      body{
+        margin: 0px;
+        padding: 0px;
+      }
+      header{
+        width: 100vw;
+        height: 40px;
+        position: relative;
+      }
+      .NavBar{
+        width: 75%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%);
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-gap: 10px;
+      }
+      .NavBar div{
+        background-color: #4d4e4f;
+        border-bottom: 4px solid red;
+        text-align: center;
+      }
+      .NavBar div h1{
+        margin: 5px;
+        color: white;
+      }
+      .NavBar div:checked{
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <section class="NavBar">
+        <div>
+          <h1>Play</h1>
+        </div>
+        <div>
+          <h1>Customize</h1>
+        </div>
+        <div>
+          <h1>Shop</h1>
+        </div>
+        <div>
+          <h1>Profile</h1>
+        </div>
+        <div>
+          <h1>Settings</h1>
+        </div>
+      </section>
+    </header>
+
+    <main>
+
+    </main>
+  </body>
+</html>

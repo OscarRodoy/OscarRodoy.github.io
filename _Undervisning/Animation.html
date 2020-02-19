@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      /* CSS Transition */
+      #transition{
+        background-color: red;
+        width: 100px;
+        height: 100px;
+      /*transition-property: all;            hva som skal endres
+        transition-duration: 100ms;          varighet på overgang i s eller ms
+        transition-delay: 100ms;             delay på når overgangen starter i s eller ms
+        transition: width 1s 2s ease-in;     hva som skal endres, varighet, delay, type */
+        transition: width 1s 0s, height 1s 1s;
+      }
+      #transition:hover{
+        width: 200px;
+        height: 200px;
+      }
+
+      /* CSS Transform */
+      #transform{
+        background-color: limegreen;
+        width: 100px;
+        height: 100px;
+        transition: 1s 1s;
+        /*transform-origin: right bottom;  punktet den roterer rundt*/
+      }
+      #transform:hover{
+        transform: translateX(100px);
+      }
+
+      /* CSS Animation */
+      @keyframes valgtNavn{
+        from {
+          width: 100px;
+          height: 100px;
+          background-color: blue;
+        }
+        to {
+          width: 200px;
+          height: 200px;
+          background-color: lightblue;
+        }
+      }
+      @keyframes valgtNavn2{
+        0% {width: 100px;}
+        25% {width: 125px;}
+        50% {width: 150px;}
+        100% {width: 200px;}
+      }
+      #keyframes{
+        height: 100px;
+        background-color: blue;
+        animation: valgtNavn 2s; /* Kobler den til keyframen */
+        animation-fill-mode: forwards;
+     /* animation-duration: 2s;
+        animation-delay: 2s;
+        animation-direction: reverse; (alternate (endrer retning om animasjonen repeteres))
+        animation-fill-mode: forwards; (hva som skjer når det er ferdig (forwards (fryser sånn det er når det er ferdig)))*/
+        animation-iteration-count: 1; /* antall gjentagelser av animasjonen (infinite => evig) */
+        animation-timing-function: linear;
+                                /* ease - slow start, then fast, then end slowly (this is default)
+                                   linear - same speed from start to end
+                                   ease-in - slow start
+                                   ease-out - slow end
+                                   ease-in-out - slow start and end
+                                */
+      }
+
+      /* Javascript Animasjon */
+      #jS_Animate{
+        width: 50px;
+        height: 100px;
+        background-color: orange;
+      }
+      #jS_Animate2{
+        width: 100px;
+        height: 100px;
+        background-color: purple;
+      }
+      #jS_Animate3{
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+      }
+      #ninjakatt{
+        width: 300px;
+        height: 300px;
+        background-image: url(../Media/Ninjakatt.png);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="transition">hhhhhhh</div>
+
+    <div id="transform">hhhhhhh</div>
+
+    <div id="keyframes">hhhhhhh</div>
+
+    <div id="javascript">hhhhhhh</div>
+
+    <!-- Endre stil med Javasript -->
+    <script type="text/javascript">
+        var element = document.getElementById("javascript");
+        element.style.backgroundColor = "yellow";
+        element.style.width = "100px";
+        element.style.height = "100px";
+        element.style.transition = "1s";
+        element.onclick = function(){
+          element.style.transform = "rotate(20deg)";
+        };
+    </script>
+
+    <!-- Animate med Javascript -->
+    <div id="jS_Animate">a</div>
+    <div id="jS_Animate2">b</div>
+    <div id="jS_Animate3">c</div>
+    <script>
+        var jS_Animate = document.getElementById("jS_Animate");
+        jS_Animate.animate([
+          {width:100 + "px", opacity:1},
+          {width:200 + "px", opacity:0.5}
+        ],5000);
+
+        var jS_Animate2 = document.getElementById("jS_Animate2");
+        jS_Animate2.animate([
+          {width:100 + "px"},
+          {width:200 + "px"},
+          {width:400 + "px"}
+        ],{
+          duration: 5000,         // varighet i millisekunder
+          delay: 500,             // delay før det starter i millisekunder
+          iterations: 3,          // antall ganger det skal repeteres (kan bruke infinity)
+          easing: "linear",         // hvordan animationen skal se ut | linear, ease-in-out, steps(antall)
+          direction: "alternate",   // alternate = skifter retning etter hver iteration, reverse = omvendt vei, normal = normal
+          fill: "forwards"          // hva skjer etter animasjonen er ferdig | backwards = tilbake til start, forwards = frys på slutten
+        });
+
+        var jS_Animate3 = document.getElementById("jS_Animate3");
+        var myAnimation = jS_Animate3.animate([
+          {width:100 + "px"},
+          {width:200 + "px"},
+          {width:300 + "px"}
+        ],3000);
+        myAnimation.pause(); // sett animasjonen på pause
+        myAnimation.play();  // start animasjonen
+        myAnimation.reverse(); // snu retningen på animasjonen
+        //myAnimation.currentTime = tid; // antall millisekunder siden animasjonen startet (sett tiden til noe med = tid?)
+        //myAnimation.playbackRate = nyfart; // hvor raskt animasjonen spilles av der 1 = normal og 2 = dobbelt så fort
+        //myAnimation.playState; // kan ha paused, running, idle, finnished
+
+        var array = document.getAnimations(); // The getAnimations() method of the Document interface returns an array of all Animation objects currently in effect whose target elements are descendants of the document. This array includes CSS Animations, CSS Transitions, and Web Animations.
+        console.log(array) // not supported by chrome......
+    </script>
+
+    <!-- Stop Motion Animation -->
+    <div id="ninjakatt"></div>
+    <script>
+        // Lager bilde med x bilder ved siden av hverandre som alle har lik bredde
+        // Bruker Css til å kun vise ett av de x bildene ved sette bredde lik (bilde bredde / x)
+        // Lager en animasjon som flytter bildet (bilde bredde / x) bortover så man kun viser det neste bilde og gjør det x ganger ved hjelp av steps(x)
+        var animasjonKatt = [
+          {backgroundPosition: "0 0"},
+          {backgroundPosition: "-1800px 0"}
+        ];
+        var innstillingerKatt = {
+          duration: 750,
+          iterations: Infinity,
+          easing: "steps(6)"
+        };
+        var ninjakatt = document.getElementById("ninjakatt");
+        var player = ninjakatt.animate(animasjonKatt, innstillingerKatt);
+    </script>
+  </body>
+</html>

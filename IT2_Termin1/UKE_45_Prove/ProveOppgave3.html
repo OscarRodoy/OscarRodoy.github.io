@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>Bilmerke</th>
+          <th>Land</th>
+        </tr>
+      </thead>
+      <tbody> 
+
+      </tbody>
+    </table>
+    <button id="btnSkrivUt" type="button">Skriv Ut</button>
+    <button id="btnSorter" type="button">Sorter Alfabetisk</button>
+    <button id="btnSnu" type="button">Snu Rekkefølgen</button>
+    <script>
+      var bilmerker = [
+        {bilmerke: "toyota", land: "Japan"},
+        {bilmerke: "opel", land: "tyskland"},
+        {bilmerke: "farrari", land: "italia"},
+        {bilmerke: "audi", land: "tyskland"},
+        {bilmerke: "bmw", land: "tyskland"}
+      ];
+      console.log(bilmerker);
+
+      var btnSkrivUt = document.getElementById("btnSkrivUt");
+      var tbody = document.querySelector("tbody");
+      btnSkrivUt.onclick = function(){
+        skrivUt();
+      };
+      function skrivUt(){
+        tbody.innerHTML = "";
+        for (var objekt of bilmerker){
+          tbody.innerHTML += `<tr><td>${objekt.bilmerke}</td><td>${objekt.land}</td></tr>`
+        };
+      };
+
+      var btnSorter = document.getElementById("btnSorter");
+      btnSorter.onclick = function(){
+        bilmerker.sort(sorterAlfabetisk);
+        skrivUt();
+      };
+
+      function sorterAlfabetisk(a, b){
+        if (a.bilmerke.toLowerCase() < b.bilmerke.toLowerCase()) {return -1;};
+        if (a.bilmerke.toLowerCase() > b.bilmerke.toLowerCase()) {return 1;};
+        return 0;
+      };
+
+      var btnSnu = document.getElementById("btnSnu");
+      btnSnu.onclick = function(){
+        bilmerker.reverse();
+        skrivUt();
+      };
+    </script>
+  </body>
+</html>

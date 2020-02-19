@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Smash Bros (Lite)</title>
+    <style media="screen">
+      /* Main Menu */
+      #mainMenu{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 350px;
+        height: 450px;
+        background-color: white;
+        z-index: 10;
+        text-align: center;
+        display: block;
+      }
+      #headLine{
+        font-size: 40px;
+      }
+      #mainMenu #tekst{
+        font-size: 20px;
+        margin-bottom: 16px;
+      }
+      #inpName{
+        width: 250px;
+        height: 40px;
+        margin-bottom: 6px;
+        text-align: center;
+      }
+      #inpName2{
+        width: 250px;
+        height: 40px;
+        margin-bottom: -10px;
+        text-align: center;
+      }
+      #btn1v1Bot{
+        width: 250px;
+        height: 50px;
+        filter: brightness(90%);
+        margin-bottom: 6px;
+      }
+      #btn1v1Bot:hover{
+        filter: brightness(100%);
+        cursor: pointer;
+      }
+      #btn1v1Player{
+        width: 250px;
+        height: 50px;
+        filter: brightness(90%);
+      }
+      #btn1v1Player:hover{
+        filter: brightness(100%);
+        cursor: pointer;
+      }
+      #alertTekst{
+        color: red;
+        display: none;
+      }
+      /* Player Display */
+      #playerDisplay{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 205px;
+        height: 80px;
+        margin-left: 16px;
+        margin-top: 17px;
+        background-color: white;
+        z-index: 10;
+        display: none;
+        border-radius: 0px 0px 40px 0px;
+      }
+      #nameDisplay{
+        margin-top: 0px;
+        margin-left: 5px;
+        margin-bottom: -8px;
+      }
+      #healthBar{
+        height: 32px;
+        width: 200px;
+        background: lime;
+        border-radius: 0px 0px 40px 0px;
+      }
+      /* Player Display 2 */
+      #playerDisplay2{
+        position: absolute;
+        top: 0;
+        right: 0px;
+        width: 205px;
+        height: 80px;
+        margin-right: 16px;
+        margin-top: 17px;
+        background-color: white;
+        z-index: 10;
+        display: none;
+        border-radius: 0px 0px 0px 40px;
+        text-align: right;
+      }
+      #nameDisplay2{
+        margin-top: 0px;
+        margin-right: 5px;
+        margin-bottom: -8px;
+      }
+      #healthBar2{
+        height: 32px;
+        width: 200px;
+        margin-left: 5px;
+        background: lime;
+        border-radius: 0px 0px 0px 40px;
+      }
+      /* Scoreboard */
+      #scoreBoard{
+        position: absolute;
+        top: 25px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 240px;
+        height: 50px;
+        background-color: white;
+        border-radius: 25px;
+        z-index: 10;
+        text-align: center;
+        display: none;
+        grid-template-columns: 1fr 1fr 1fr;
+        overflow: hidden;
+      }
+      #playerLives{
+        background-color: blue;
+      }
+      #player2Lives{
+        background-color: red;
+      }
+      /* Game Over Menu */
+      #gameOver{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 350px;
+        height: 450px;
+        background-color: white;
+        z-index: 10;
+        text-align: center;
+        display: none;
+      }
+      #winner{
+        font-size: 40px;
+      }
+      #btnNext{
+        width: 250px;
+        height: 50px;
+        filter: brightness(90%);
+      }
+      #btnNext:hover{
+        filter: brightness(100%);
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mainMenu">
+      <h1 id="headLine">Smash Bros (Lite)</h1>
+      <p id="tekst">Select your battletags:</p>
+      <input id="inpName" type="text" placeholder="player 1"><br>
+      <input id="inpName2" type="text" placeholder="player 2"><br>
+      <p id="tekst">Choose a game type:</p>
+      <button id="btn1v1Bot" type="button">1v1 a Bot</button>
+      <button id="btn1v1Player" type="button">1v1 a Player</button>
+      <p id="alertTekst" style="color:red;"></p>
+    </div>
+
+    <div id="gameOver">
+      <h1 id="winner">Game Over!</h1>
+      <p>Score: xxx <br> coming soon!</p>
+      <button id="btnNext" type="button">Continue</button>
+    </div>
+
+    <div id="playerDisplay">
+      <h1 id="nameDisplay"></h1>
+      <div id="healthBar"><p id="healthTekst" style="font-size: 20px; margin-top: 17px;"></p></div>
+    </div>
+    <div id="playerDisplay2">
+      <h1 id="nameDisplay2"></h1>
+      <div id="healthBar2"><p id="healthTekst2" style="font-size: 20px; margin-top: 17px;"></p></div>
+    </div>
+
+    <div id="scoreBoard">
+      <div id="playerLives"></div>
+      <div id="timer"></div>
+      <div id="player2Lives"></div>
+    </div>
+
+    <canvas id="canvas"></canvas>
+
+    <script>
+      var ctx = document.querySelector("canvas").getContext("2d");
+      ctx.canvas.style = "margin-left: 6px; margin-top: 7px; border: 2px solid black";
+      ctx.canvas.width = 1248;
+      ctx.canvas.height = 576;
+      var cvsWidth = ctx.canvas.width;
+      var cvsHeight = ctx.canvas.height;
+      var tileSize = 48;
+      var totalLives = 3;
+
+      var inpName = document.getElementById("inpName");
+      var inpName2 = document.getElementById("inpName2");
+      var btn1v1Bot = document.getElementById("btn1v1Bot");
+      var btn1v1Player = document.getElementById("btn1v1Player");
+      var alertTekst = document.getElementById("alertTekst");
+      var mainMenu = document.getElementById("mainMenu");
+
+      var gameOver = document.getElementById("gameOver");
+      var winner = document.getElementById("winner");
+      var btnNext = document.getElementById("btnNext");
+
+      var playerDisplay = document.getElementById("playerDisplay");
+      var healthBar = document.getElementById("healthBar");
+      var healthTekst = document.getElementById("healthTekst");
+      var playerDisplay2 = document.getElementById("playerDisplay2");
+      var healthBar2 = document.getElementById("healthBar2");
+      var healthTekst2 = document.getElementById("healthTekst2");
+
+      var scoreBoard = document.getElementById("scoreBoard");
+      var playerLives = document.getElementById("playerLives");
+      var timer = document.getElementById("timer");
+      var player2Lives = document.getElementById("player2Lives");
+
+      var game = {
+        paused: true
+      };
+
+      var controller = {
+        left:false,
+        right:false,
+        keyUpDown:function(event) {
+          var key_state = (event.type == "keydown")?true:false;
+          switch(event.keyCode) {
+            case 65: controller.a = key_state; break; // a key
+            case 87: controller.w = key_state; break; // w key
+            case 68: controller.d = key_state; break; // d key
+            case 83: controller.s = key_state; break; // s key
+            case 32: controller.space = key_state; break; // spcae key
+
+            case 37: controller.left = key_state; break; // left key
+            case 38: controller.up = key_state; break; // up key
+            case 39: controller.right = key_state; break; // right key
+            case 40: controller.down = key_state; break; // down key
+            case 13: controller.enter = key_state; break; // enter key
+          }
+        }
+      };
+
+      var player = {
+        lives: totalLives,
+        health: 200,
+        width: tileSize,
+        height: tileSize,
+        x: 300,
+        y: 300,
+        xVel: 0,
+        yVel: 0,
+        onGround: false,
+        jumps: 0,
+        jumpTimeout: false,
+        movingLeft: false,
+        movingRight: false,
+        dashLeft: false,
+        dashRight: false,
+        color: "blue",
+        handColor: "red",
+        punch: false,
+        leftHand: {
+          size: 20,
+          x: 0,
+          y: 0
+        },
+        rightHand: {
+          size: 20,
+          x: 0,
+          y: 0
+        }
+      };
+
+      var player2 = {
+        playable: false, // needs implementation
+        lives: totalLives,
+        health: 200,
+        width: tileSize,
+        height: tileSize,
+        x: ctx.canvas.width - 300,
+        y: 300,
+        xVel: 0,
+        yVel: 0,
+        onGround: false,
+        jumps: 0,
+        jumpTimeout: false,
+        movingLeft: false,
+        movingRight: false,
+        dashLeft: false,
+        dashRight: false,
+        color: "red",
+        handColor: "blue",
+        punch: false,
+        leftHand: {
+          size: 20,
+          x: 0,
+          y: 0
+        },
+        rightHand: {
+          size: 20,
+          x: 0,
+          y: 0
+        }
+      };
+
+      btn1v1Bot.onclick = function(){
+        if (inpName.value == "") {
+          inpName.value = "Player 1";
+        };
+        if (inpName.value.length >= 12){
+          alertTekst.style.display = "block";
+          alertTekst.innerHTML = "Player 1 character limit exceeded!";
+          return;
+        };
+        inpName2.value = "AI";
+        game.paused = false;
+        mainMenu.style.display = "none";
+        ctx.canvas.style.filter = "brightness(100%)";
+        window.requestAnimationFrame(loop);
+        playerDisplay.style.display = "block";
+        playerDisplay2.style.display = "block";
+        scoreBoard.style.display = "grid";
+        nameDisplay.innerHTML = inpName.value;
+        nameDisplay2.innerHTML = inpName2.value;
+        countDown();
+      };
+
+      btn1v1Player.onclick = function(){
+        if (inpName.value == "") {
+          inpName.value = "Player 1";
+        };
+        if (inpName2.value == "") {
+          inpName2.value = "Player 2";
+        };
+        if (inpName.value.length >= 12){
+          alertTekst.style.display = "block";
+          alertTekst.innerHTML = "Player 1 character limit exceeded!";
+          return;
+        };
+        if (inpName2.value.length >= 12){
+          alertTekst.style.display = "block";
+          alertTekst.innerHTML = "Player 2 character limit exceeded!";
+          return;
+        };
+        player2.playable = "true";
+        game.paused = false;
+        mainMenu.style.display = "none";
+        ctx.canvas.style.filter = "brightness(100%)";
+        window.requestAnimationFrame(loop);
+        playerDisplay.style.display = "block";
+        playerDisplay2.style.display = "block";
+        scoreBoard.style.display = "grid";
+        nameDisplay.innerHTML = inpName.value;
+        nameDisplay2.innerHTML = inpName2.value;
+        countDown();
+      };
+
+      btnNext.onclick = function(){
+        gameOver.style.display = "none";
+        mainMenu.style.display = "block";
+        playerDisplay.style.display = "none";
+        playerDisplay2.style.display = "none";
+        scoreBoard.style.display = "none";
+        timer.innerHTML = `<p style="font-size: 30px; margin-top: 7px;">5:00</p>`;
+      }
+
+      var i = 300;
+      function countDown(){
+        var minutes = Math.floor(i / 60);
+        var seconds = i % 60;
+        if (seconds < 10) {
+          seconds = "0" + seconds;
+        };
+        if (i > 0 && game.paused == false){
+          setTimeout(function(){
+            i -= 1;
+            timer.innerHTML = `<p style="font-size: 30px; margin-top: 7px;">${minutes}:${seconds}</p>`
+            countDown();
+          }, 1000);
+        };
+      };
+
+      function playerReset(){
+        player.x = 300;
+        player.y = 300;
+        player.xVel = 0;
+        player.yVel = 0;
+        player.health = 200;
+        player.onGround = false;
+        player.jumps = 0;
+        player.jumpTimeout = false;
+        player.movingLeft = false;
+        player.movingRight = false;
+        player.dashLeft = false;
+        player.dashRight = false;
+        player.punch = false;
+        player.color = "blue";
+      };
+
+      function player2Reset(){
+        player2.x = ctx.canvas.width - 300;
+        player2.y = 300;
+        player2.xVel = 0;
+        player2.yVel = 0;
+        player2.health = 200;
+        player2.onGround = false;
+        player2.jumps = 0;
+        player2.jumpTimeout = false;
+        player2.movingLeft = false;
+        player2.movingRight = false;
+        player2.dashLeft = false;
+        player2.dashRight = false;
+        player2.punch = false;
+        player2.color = "red";
+        player2.playable = false;
+      };
+
+      function gameReset(){
+        playerReset();
+        player2Reset();
+        if (player2.lives == 0){
+          winner.innerHTML = inpName.value + " wins!";
+        };
+        if (player.lives == 0){
+          winner.innerHTML = inpName2.value + " wins!";
+        };
+        player.lives = totalLives;
+        player2.lives = totalLives;
+        alertTekst.innerHTML = "";
+        inpName.value = "";
+        inpName2.value = "";
+        i = 300;
+      };
+
+      function drawWorld(){
+        // background
+        ctx.fillStyle = "#202020";
+        ctx.fillRect(0, 0, 1248, 576);
+        // floor
+        ctx.fillStyle = "green";
+        ctx.fillRect(0, cvsHeight - (tileSize*2), cvsWidth, 16);
+        ctx.fillStyle = "#8B4513";
+        ctx.fillRect(0, cvsHeight - (tileSize*2 - 16), cvsWidth, (tileSize*2 - 16));
+        // player
+        ctx.fillStyle = player.color;
+        ctx.fillRect(player.x, player.y, player.width, player.height);
+        if (controller.a == false && controller.d == false) {
+          ctx.fillStyle = "black";
+          ctx.fillRect(player.x + 6, player.y + 6, 10, 10);
+          ctx.fillRect(player.x + player.width - 16, player.y + 6, 10, 10);
+          ctx.fillStyle = player.handColor;
+          ctx.fillRect(player.leftHand.x, player.leftHand.y, player.leftHand.size, player.leftHand.size);
+          ctx.fillRect(player.rightHand.x, player.rightHand.y, player.rightHand.size, player.rightHand.size);
+        } else if (controller.a == true) {
+          ctx.fillStyle = "black";
+          ctx.fillRect(player.x + 6, player.y + 6, 10, 10);
+          ctx.fillStyle = player.handColor;
+          ctx.fillRect(player.leftHand.x, player.leftHand.y, player.leftHand.size, player.leftHand.size);
+        } else if (controller.d == true) {
+          ctx.fillStyle = "black";
+          ctx.fillRect(player.x + player.width - 16, player.y + 6, 10, 10);
+          ctx.fillStyle = player.handColor;
+          ctx.fillRect(player.rightHand.x, player.rightHand.y, player.rightHand.size, player.rightHand.size);
+        };
+        // player health
+        healthBar.style.width = Number(player.health) + "px";
+        healthTekst.innerHTML = player.health;
+        if (player.health >= 100) {
+          healthBar.style.backgroundColor = "lime";
+        };
+        if (player.health < 100 && player.health > 50){
+          healthBar.style.backgroundColor = "yellow";
+        };
+        if (player.health <= 50){
+          healthBar.style.backgroundColor = "red";
+        };
+        // player 2
+        ctx.fillStyle = player2.color;
+        ctx.fillRect(player2.x, player2.y, player2.width, player2.height);
+        if (controller.left == false && controller.right == false) {
+          ctx.fillStyle = "black";
+          ctx.fillRect(player2.x + 6, player2.y + 6, 10, 10);
+          ctx.fillRect(player2.x + player2.width - 16, player2.y + 6, 10, 10);
+          ctx.fillStyle = player2.handColor;
+          ctx.fillRect(player2.leftHand.x, player2.leftHand.y, player2.leftHand.size, player2.leftHand.size);
+          ctx.fillRect(player2.rightHand.x, player2.rightHand.y, player2.rightHand.size, player2.rightHand.size);
+        } else if (controller.left == true) {
+          ctx.fillStyle = "black";
+          ctx.fillRect(player2.x + 6, player2.y + 6, 10, 10);
+          ctx.fillStyle = player2.handColor;
+          ctx.fillRect(player2.leftHand.x, player2.leftHand.y, player2.leftHand.size, player2.leftHand.size);
+        } else if (controller.right == true) {
+          ctx.fillStyle = "black";
+          ctx.fillRect(player2.x + player2.width - 16, player2.y + 6, 10, 10);
+          ctx.fillStyle = player2.handColor;
+          ctx.fillRect(player2.rightHand.x, player2.rightHand.y, player2.rightHand.size, player2.rightHand.size);
+        };
+        // player 2 health
+        healthBar2.style.width = Number(player2.health) + "px";
+        healthBar2.style.marginLeft = Number(200 - player2.health) + 5 + "px";
+        healthTekst2.innerHTML = player2.health;
+        if (player2.health >= 100) {
+          healthBar2.style.backgroundColor = "lime";
+        };
+        if (player2.health < 100 && player2.health > 50){
+          healthBar2.style.backgroundColor = "yellow";
+        };
+        if (player2.health <= 50){
+          healthBar2.style.backgroundColor = "red";
+        };
+        // scorebaord
+        playerLives.innerHTML = `<p style="font-size: 30px; margin-top: 7px; color: white;">${player.lives}</p>`;
+        player2Lives.innerHTML = `<p style="font-size: 30px; margin-top: 7px; color: white;">${player2.lives}</p>`;
+      };
+
+      function updatePlayer(){
+        // player health
+        if (player.x > ctx.canvas.width || player.x + player.width < 0 || player.y + player.height < 0) {player.health -= 1;};
+        if (player.health <= 0){
+          player.lives -= 1;
+          playerReset();
+        };
+        if (player.lives == 0){
+          healthTekst.innerHTML = 0;
+          playerLives.innerHTML = `<p style="font-size: 30px; margin-top: 7px; color: white;">0</p>`;
+          gameOver.style.display = "block";
+          game.paused = true;
+          gameReset();
+        };
+        // game physics
+        player.x += player.xVel;
+        player.y += player.yVel;
+        player.xVel *= 0.9;
+        player.yVel *= 0.9;
+        player.leftHand.x = player.x - 6;
+        player.leftHand.y = player.y + player.height/2;
+        player.rightHand.x = player.x + player.width - 14;
+        player.rightHand.y = player.y + player.height/2;
+        if (player.onGround == false) {
+          player.yVel += 1;
+        };
+        // collision with floor
+        if (player.y >= cvsHeight - (tileSize*2) - player.height){
+          player.onGround = true;
+          player.yVel = 0;
+          player.y = cvsHeight - (tileSize*2) - player.height;
+        } else {
+          player.onGround = false;
+        };
+        // player movement left
+        if (controller.a == true){
+          player.xVel -= 0.6;
+          player.movingLeft = true;
+        //  setTimeout(function(){player.movingLeft = false;}, 1000); // settes til true med en gang igjen
+      } else if (controller.a == false && player.movingLeft == true) {
+            player.dashLeft = true;
+            player.movingLeft = false;
+            setTimeout(function(){player.dashLeft = false;}, 500);
+        };
+        // player movement right
+        if (controller.d == true){
+          player.xVel += 0.6;
+          player.movingRight = true;
+        } else if (controller.d == false && player.movingRight == true) {
+            player.dashRight = true;
+            player.movingRight = false;
+            setTimeout(function(){player.dashRight = false;}, 500);
+        };
+        // player dash left
+        if (controller.a == true && player.dashLeft == true){
+          player.dashLeft = false;
+          player.xVel = -15;
+        };
+        // player dash right
+        if (controller.d == true && player.dashRight == true){
+          player.dashRight = false;
+          player.xVel = 15;
+        };
+        // player jump
+        if (player.onGround == true) {
+          player.jumps = 2;
+        };
+        if (controller.w == true && player.jumps > 0 && player.jumpTimeout == false){
+          player.yVel = -30;
+          player.jumps -= 1;
+          player.jumpTimeout = true;
+          setTimeout(function(){player.jumpTimeout = false;}, 200);
+        };
+        // player punch
+        if (controller.space == true && player.punch == false){
+          player.punch = true;
+          if (controller.a == true){
+            player.leftHand.x -= 60;
+          } else if (controller.d == true){
+            player.rightHand.x += 60;
+          } else if (controller.w == true){
+            player.leftHand.y -= 60;
+            player.rightHand.y -= 60;
+          } else {
+            player.leftHand.x -= 60;
+            player.rightHand.x += 60;
+          };
+          setTimeout(function(){player.punch = false;}, 200);
+        };
+        // player get punched
+        if (player2.punch == true && controller.left == true && player2.leftHand.x - player.x > 0 && player2.leftHand.x - player.x < player.width &&
+           player2.leftHand.y + player2.leftHand.size - player.y > 0 && player2.leftHand.y - player.y + player.height < 0 ){
+          player.xVel -= 40;
+          player.color = "white";
+          setTimeout(function(){player.color = "blue"}, 100);
+        };
+        if (player2.punch == true && controller.right == true && player2.rightHand.x + player2.rightHand.size - player.x > 0 && player2.rightHand.x - player.x < player.width){
+          player.xVel += 40;
+          player.color = "white";
+          setTimeout(function(){player.color = "blue"}, 100);
+        };
+      };
+
+      function updatePlayer2(){
+        // player2 health
+        if (player2.x > ctx.canvas.width || player2.x + player2.width < 0 || player2.y + player2.height < 0) {player2.health -= 1;};
+        if (player2.health <= 0){
+          player2.lives -= 1;
+          player2Reset();
+        };
+        if (player2.lives == 0){
+          healthTekst2.innerHTML = 0;
+          player2Lives.innerHTML = `<p style="font-size: 30px; margin-top: 7px; color: white;">0</p>`;
+          gameOver.style.display = "block";
+          game.paused = true;
+          gameReset();
+        };
+        // game physics
+        player2.x += player2.xVel;
+        player2.y += player2.yVel;
+        player2.xVel *= 0.9;
+        player2.yVel *= 0.9;
+        player2.leftHand.x = player2.x - 6;
+        player2.leftHand.y = player2.y + player2.height/2;
+        player2.rightHand.x = player2.x + player2.width - 14;
+        player2.rightHand.y = player2.y + player2.height/2;
+        if (player2.onGround == false) {
+          player2.yVel += 1;
+        };
+        // collision with floor
+        if (player2.y >= cvsHeight - (tileSize*2) - player2.height){
+          player2.onGround = true;
+          player2.yVel = 0;
+          player2.y = cvsHeight - (tileSize*2) - player2.height;
+        } else {
+          player2.onGround = false;
+        };
+        // player2 movement left
+        if (controller.left == true){
+          player2.xVel -= 0.6;
+          player2.movingLeft = true;
+        //  setTimeout(function(){player2.movingLeft = false;}, 1000); // wrong! settes til true med en gang igjen
+        } else if (controller.left == false && player2.movingLeft == true) {
+            player2.dashLeft = true;
+            player2.movingLeft = false;
+            setTimeout(function(){player2.dashLeft = false;}, 500);
+        };
+        // player2 movement right
+        if (controller.right == true){
+          player2.xVel += 0.6;
+          player2.movingRight = true;
+        } else if (controller.right == false && player2.movingRight == true) {
+            player2.dashRight = true;
+            player2.movingRight = false;
+            setTimeout(function(){player2.dashRight = false;}, 500);
+        };
+        // player2 dash left
+        if (controller.left == true && player2.dashLeft == true){
+          player2.dashLeft = false;
+          player2.xVel = -15;
+        };
+        // player2 dash right
+        if (controller.right == true && player2.dashRight == true){
+          player2.dashRight = false;
+          player2.xVel = 15;
+        };
+        // player2 jump
+        if (player2.onGround == true) {
+          player2.jumps = 2;
+        };
+        if (controller.up == true && player2.jumps > 0 && player2.jumpTimeout == false){
+          player2.yVel = -30;
+          player2.jumps -= 1;
+          player2.jumpTimeout = true;
+          setTimeout(function(){player2.jumpTimeout = false;}, 200);
+        };
+        // player2 punch
+        if (controller.enter == true && player2.punch == false){
+          player2.punch = true;
+          if (controller.left == true){
+            player2.leftHand.x -= 60;
+          } else if (controller.right == true){
+            player2.rightHand.x += 60;
+          } else if (controller.up == true){
+            player2.leftHand.y -= 60;
+            player2.rightHand.y -= 60;
+          } else {
+            player2.leftHand.x -= 60;
+            player2.rightHand.x += 60;
+          };
+          setTimeout(function(){player2.punch = false;}, 200);
+        };
+      };
+
+      var loop = function(){
+
+        drawWorld();
+
+        updatePlayer();
+
+        updatePlayer2();
+
+        if (game.paused == true){
+          ctx.canvas.style.filter = "brightness(60%)";
+          return;
+        };
+
+        window.requestAnimationFrame(loop);
+      };
+      window.requestAnimationFrame(loop);
+      window.addEventListener("keydown", controller.keyUpDown);
+      window.addEventListener("keyup", controller.keyUpDown);
+    </script>
+  </body>
+</html>

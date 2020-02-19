@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      // 2x + 10 = 20
+      var x = 0;
+      var expressionLeft = (2 * x) + 100;
+      var expressionRight = 200;
+      function findX(){
+        while (expressionLeft != expressionRight) {
+          x += 1;
+          expressionLeft = (2 * x) + 100;
+        };
+        return x;
+      };
+      findX();
+      document.write(findX())
+    </script>
+  </body>
+</html>

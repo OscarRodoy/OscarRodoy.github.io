@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <canvas id="canvas" width="300" height="300"></canvas>
+    <script type="text/javascript">
+
+      var ctx = document.querySelector("canvas").getContext("2d");
+      ctx.canvas.width = 1260;
+      ctx.canvas.height = 590;
+
+      var controller;
+      controller = {
+        left:false, right:false,
+        keyUpDown:function(event) {
+          var key_state = (event.type == "keydown")?true:false;
+          switch(event.keyCode) {
+            case 37: controller.left = key_state; break; // left key
+            case 65: controller.left = key_state; break; // a key
+            case 38: controller.up = key_state; break; // up key
+            case 87: controller.up = key_state; break; // w key
+            case 39: controller.right = key_state; break; // right key
+            case 68: controller.right = key_state; break; // d key
+            case 40: controller.down = key_state; break; // down key
+            case 83: controller.down = key_state; break; // s key
+          }
+        }
+      };
+
+      var player = {
+        width: 32,
+        height: 32,
+        x: ctx.canvas.width/2 - 16,
+        y: ctx.canvas.height/2 - 16
+      }
+
+      var drawY, drawX;
+      var movmentSpeed = 5;
+
+      var loop = function(){
+
+        ctx.fillStyle = "#202020";
+        ctx.fillRect(0, 0, 1260, 590);
+
+        ctx.fillStyle = "white";
+        ctx.beginPath();
+        ctx.fillRect(player.x, player.y, player.width, player.height);
+        ctx.fill();
+
+        ctx.fillStyle = "white";
+        ctx.beginPath();
+        ctx.fillRect(100, 100, 64, 64);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.fillRect(700, 150, 128, 64);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.fillRect(200, 400, 32, 128);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.fillRect(1000, 400, 96, 96);
+        ctx.fill();
+
+        ctx.fillStyle = "blue";
+        ctx.beginPath();
+        if (controller.up) {
+          ctx.moveTo(player.x, player.y);
+          ctx.lineTo(player.x + player.width, player.y);
+          ctx.lineTo(player.x + player.width/2, player.y - 16);
+          player.y -= movmentSpeed;
+          drawY = 0;
+          drawX = 0;
+          drawY += movmentSpeed;
+        } else if (controller.left) {
+          ctx.moveTo(player.x, player.y);
+          ctx.lineTo(player.x, player.y + player.height);
+          ctx.lineTo(player.x - 16, player.y + player.height/2);
+          player.x -= movmentSpeed;
+          drawX = 0;
+          drawY = 0;
+          drawX += movmentSpeed;
+        } else if (controller.right) {
+          ctx.moveTo(player.x + player.width, player.y);
+          ctx.lineTo(player.x + player.width, player.y + player.height);
+          ctx.lineTo(player.x + player.width + 16, player.y + player.height/2);
+          player.x += movmentSpeed;
+          drawX = 0;
+          drawY = 0;
+          drawX -= movmentSpeed;
+        } else if (controller.down){
+          ctx.moveTo(player.x, player.y + player.height);
+          ctx.lineTo(player.x + player.width, player.y + player.height);
+          ctx.lineTo(player.x + player.width/2, player.y + player.height + 16);
+          player.y += movmentSpeed;
+          drawY = 0;
+          drawX = 0;
+          drawY -= movmentSpeed;
+        }
+        ctx.fill();
+
+        if (controller.up || controller.down || controller.left || controller.right) {
+          ctx.translate(drawX, drawY);
+        };
+
+        window.requestAnimationFrame(loop);
+      };
+      window.requestAnimationFrame(loop);
+
+      window.addEventListener("keydown", controller.keyUpDown);
+      window.addEventListener("keyup", controller.keyUpDown);
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <p>Hei, <b><span class="inv"></span></b>. <b><span class="inv"></span></b>, du inviteres til fest.</p>
+    <script type="text/javascript">
+
+      // 1
+    //  alert("Hei på deg");
+
+      //2
+      document.write("hei på deg");
+
+      //3
+      document.write("<br><br>");
+      var b = "20";
+      var c = "30";
+      var a = b + c;
+      document.write(a);
+
+      //4
+      document.write("<br><br>");
+      var aa = 2;
+      var bb = 3;
+      var tekst = `${aa} + ${bb} = ${aa + bb}`;
+      var tekst2 = aa + " + " + bb + " = " + (aa+bb);
+      document.write(tekst);
+      document.write("<br>" + tekst2);
+
+      //5
+      if(false){
+        alert("HEY");
+      };
+
+      //8
+      document.write("<br><br>");
+      for (var lol = 0; lol < 50; lol+=1) {
+        document.write(Math.floor((Math.random()*3 )-1) + " ");
+      };
+
+      //10
+      document.write("<br><br>");
+      if ("10" == 10){ // === gir false   |   == gir true
+        document.write("true");
+      } else {
+        document.write("false");
+      };
+
+      //15
+      var hei;
+      hei = 10;
+      var hallo = 20;
+      document.write("<br><br>")
+
+      //21
+      var aaa = 0;
+      var bbb = 1;
+      while (bbb < 88) {
+        var ny = aaa + bbb;
+        //document.write(ny + "<br>");
+        document.write(`${ny}<br>`)
+        aaa = bbb;
+        bbb = ny;
+      };
+
+      //22
+      var navn = prompt("Skriv inn navn her");
+      document.write("<br>");
+      var inv = document.querySelectorAll(".inv");
+      var lengde = inv.length;
+      for (var i = 0; i < lengde; i++) {
+        inv[i].innerHTML = navn
+      };
+
+      // 4
+      var a1 = 2;
+      var b1 = 3;
+      var tekst123 = a1 + " + " + b1 + " = " + (a1+b1);
+      document.write("<br>" + tekst123);
+
+      // 6
+      var g = Math.round("10.3");
+      document.write("<br><br>" + g + "<br>");
+
+      // 9
+      document.write(Math.pow(10, 2));
+
+      //13
+      var navn = prompt("skriv inn navn her");
+      var tekst1 = navn + ", du kom med på laget.";
+      var tekst2 = navn + ", du kom ikke med på laget";
+      document.write("<br>" + tekst1);
+      
+      //14
+      var kvadratH = 4;
+      var kvadratB = 4;
+      var kvadratOmkets = (kvadratH * 2) + (kvadratB * 2);
+      var kvadratAreal = (kvadratH * kvadratB);
+
+    </script>
+  </body>
+</html>

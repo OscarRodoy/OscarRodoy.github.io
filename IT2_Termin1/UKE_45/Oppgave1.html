@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body id="body">
+    <ul id="ulTodo"></ul>
+    <script>
+    // 1a
+      var bredde = Number(prompt("skriv inn bredde her: "));
+      var lengde = Number(prompt("skriv inn lengde her: "));
+      var hoyde = Number(prompt("skriv inn høyde her: "));
+      Cube(bredde, lengde, hoyde);
+      Cube(3, 2, 2);
+      function Cube(bredde, lengde, hoyde){
+        var volum = bredde * lengde * hoyde;
+        document.write("Volumet av kuben = " + volum + "<br>");
+      };
+      document.write("<br>");
+
+    // 1b
+      var body = document.getElementById("body");
+      function skrivUtTekst(tekst){
+        body.innerHTML += tekst + "<br>";
+      };
+      skrivUtTekst(prompt("Skriv din tekst her: "));
+      document.write("<br>");
+
+    // 1c
+      var ulTodo = document.getElementById("ulTodo");
+      function addTodo(todo, done){
+        if (done == false){
+          ulTodo.innerHTML += `<li> ${todo} </li>`;
+        } else {
+          ulTodo.innerHTML += `<li style="text-decoration: line-through"> ${todo} </li>`;
+        };
+      };
+      addTodo("rydde rommet", true);
+      addTodo("vaske rommet", false);
+      addTodo("lage mat", false);
+      addTodo("pakke sekk", true);
+    </script>
+  </body>
+</html>

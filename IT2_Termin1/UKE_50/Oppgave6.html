@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <input id="pris" type="number">
+    <button id="regnUt" type="button">Regn ut prisen</button>
+    <p id="visPris"></p>
+
+    <script type="text/javascript">
+
+      var pris = document.getElementById("pris");
+      var regnUt = document.getElementById("regnUt");
+      var visPris = document.getElementById("visPris");
+
+      regnUt.onclick = function(){
+        if (pris.value >= 350){
+          visPris.innerHTML += ((pris.value * 1.25) + 158 + "<br>");
+        } else {
+          visPris.innerHTML += (pris.value + "<br>");
+        };
+      };
+
+    </script>
+  </body>
+</html>

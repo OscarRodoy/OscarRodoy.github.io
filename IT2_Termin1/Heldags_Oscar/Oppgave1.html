@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Oppgave 5</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+      // a)
+      var d1 = Number(50.5);
+      var d2 = Number(70);
+      var d3 = Number(23);
+      var d4 = Number(90);
+
+      // b)
+      var array = [d1, d2, d3, d4];
+      console.log(array.length);
+
+      // c)
+      var sum = 0;
+      for (var i = 0; i < array.length; i++){
+        sum += array[i];
+      };
+      document.write(sum + "<br>");
+
+      // d)
+      for (var i = 0; i < array.length; i++){
+        document.write(array[i] + "<br>");
+      };
+
+      // e)
+      array[2] = Number(93);
+    </script>
+  </body>
+</html>

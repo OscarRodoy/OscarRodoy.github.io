@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Oppgave 4</title>
+  </head>
+  <body>
+    <select id="aktivitet">
+      <option>Velg aktivitet</option>
+      <option>Fotball</option>
+      <option>Golf</option>
+      <option>Jogging</option>
+    </select>
+
+    <p>Velg Intensitet:</p>
+    <label><input id="lav" type="radio" name="Intensitet">Lav</label>
+    <label><input id="middels" type="radio" name="Intensitet">Middels</label>
+    <label><input id="hoy" type="radio" name="Intensitet">Høy</label>
+
+    <p>Oppgi varihet på treningen i minutter</p>
+    <input id="varihet" type="number" placeholder="0"><br><br>
+
+    <button id="btnBeregn" type="button">Beregn kaloriforbruk</button>
+
+    <p id="svar"></p>
+
+    <script type="text/javascript">
+      var aktivitet = document.getElementById("aktivitet");
+      var lav = document.getElementById("lav");
+      var middels = document.getElementById("middels");
+      var hoy = document.getElementById("hoy");
+      var varihet = document.getElementById("varihet");
+      var btnBeregn = document.getElementById("btnBeregn");
+      var svar = document.getElementById("svar");
+
+      btnBeregn.onclick = function(){
+        var forbruk;
+        var timer = varihet.value / 60;
+        var valgtIndex = aktivitet.selectedIndex;
+        if (valgtIndex == 0){
+          alert("Velg en aktivitet");
+          return;
+        } else if (valgtIndex == 1){
+          forbruk = 510 * timer;
+        } else if (valgtIndex == 2){
+          forbruk = 244 * timer;
+        } else if (valgtIndex == 3){
+          forbruk = 666 * timer;
+        };
+        if (!lav.checked && !middels.checked && !hoy.checked){
+          alert("Velg en intensitet");
+          return;
+        } else if (lav.checked){
+          forbruk *= 0.8;
+        } else if (hoy.checked){
+          forbruk *= 1.2;
+        };
+        svar.innerHTML = "Du brenner " + Math.round(forbruk) + " Kcal!";
+      };
+
+    </script>
+  </body>
+</html>

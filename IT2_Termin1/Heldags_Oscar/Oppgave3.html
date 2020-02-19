@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Oppgave 3</title>
+  </head>
+  <body>
+
+    <h1>Lag Invitasjon</h1>
+    <form id="invInfo" method="post">
+      <p>Velg anledning:</p>
+      <label><input id="daap" type="radio" name="anledning">Dåp</label>
+      <label><input id="bryllup" type="radio" name="anledning">Bryllup</label>
+      <label><input id="konfir" type="radio" name="anledning">Konfirmasjon</label>
+      <br><br>
+      <label>Dag<input id="dag" type="text" placeholder="mandag"></label><br><br>
+      <label>Dato<input id="dato" type="text" placeholder="19.12.19"></label><br><br>
+      <label>Klokkeslett<input id="kl" type="text" placeholder="09:50"><label><br><br>
+      <label>Sted<input id="sted" type="text" placeholder="bergveien 01"><label><br><br>
+      <label>Tekst<label><br><textarea id="tekst" rows="8" cols="80" placeholder="skriv hva du vil"></textarea><br><br>
+      <button id="lagInv" type="button">Lag invitasjon</button>
+    </form>
+
+    <div id="visInv"></div>
+
+    <script type="text/javascript">
+      var daap = document.getElementById("daap");
+      var bryllup = document.getElementById("bryllup");
+      var konfir = document.getElementById("konfir");
+
+      var dag = document.getElementById("dag");
+      var dato = document.getElementById("dato");
+      var kl = document.getElementById("kl");
+      var sted = document.getElementById("sted");
+      var tekst = document.getElementById("tekst");
+      var lagInv = document.getElementById("lagInv");
+      var visinv = document.getElementById("visInv");
+
+      lagInv.onclick = function(){
+        if (dag.value == "" || dato.value == "" || kl.value == "" || sted.value == ""){
+          alert("Fyll inn resten av skjemaet først!")
+          return;
+        };
+        if (daap.checked){
+          var header = "Invitasjon til dåp";
+          var bilde = "daap.jpg";
+        } else if (bryllup.checked){
+          var header = "Invitasjon til bryllupsfest";
+          var bilde = "bryllup.jpg";
+        } else if (konfir.checked){
+          var header = "Invitasjon til konfirmasjon";
+          var bilde = "konfirmasjon.jpg";
+        } else {
+          alert("Fyll inn resten av skjemaet først!");
+          return
+        };
+        visInv.innerHTML = `
+          <h1>${header}</h1>
+          <p>${tekst.value}</p>
+          <li style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; width: 600px;">
+            <ul>${dag.value}</ul>
+            <ul>${dato.value}</ul>
+            <ul>${kl.value}</ul>
+            <ul>${sted.value}</ul>
+          </li>
+          <img style="width: 600px;" src="">
+        `;
+        var img = document.querySelector("img");
+        img.src = bilde;
+      };
+    </script>
+  </body>
+</html>

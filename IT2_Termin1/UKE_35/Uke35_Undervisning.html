@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      body{
+        text-align: center;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+      var tall1 = 8;
+      var tall2 = 5;
+
+      var sum = tall1 + tall2;
+
+      document.write("addisjon: " + sum  + "<br>"); // vises på nettsiden
+      console.log(sum+2);  // vises i konsollen
+
+      // + addisjon
+      // - subtraksjon
+      // * multiplikasjon
+      // / divisjon
+      // % resten (eks. 12/11 = 1 + 1/11  |  rest = 1/11)
+
+      document.write("Multiplikasjon: " + tall1 * tall2 + "<br>");
+      document.write("divisjon: " + tall1 / tall2  + "<br>");
+      document.write("rest: " + tall1 % tall2  + "<br>");
+      document.write("pluss 1: " + tall1++ + "<br>");
+      document.write("minus 1: " + tall1-- + "<br><br>");
+
+      // Math.round(tall)
+      // Math.ceil(tall)
+      // Math.floor(tall)
+
+       var bredde = prompt("Skriv inn bredde til rektangelet"); // gir deg en poppup der du skriver inn bredde
+       var hoyde = prompt("Skriv inn høyde til rektangelet");
+
+       var omkrets = hoyde*2 + bredde*2;
+       var areal = hoyde * bredde;
+
+       document.write("Omkretsen av kvatratet med bredde " + bredde + " og høyde " + hoyde + " er " + omkrets + "<br>");
+       document.write("Arealet av kvatratet med bredde " + bredde + " og høyde " + hoyde + " er " + areal);
+
+       //array
+       document.write("<br><br>" + "array" + "<br>");
+       var minArray = ["Ole", "Per", "Petter", "Kare"];
+       document.write(minArray[2]); //hender ut et element i en array
+
+       //objekt
+       var person1 = {
+         navn: "Ole",
+         Alder: "17"
+       };
+       document.write(person1.navn);
+
+    </script>
+  </body>
+</html>

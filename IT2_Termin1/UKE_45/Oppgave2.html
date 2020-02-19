@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <canvas id="canvas" width="1000" height="300"></canvas>
+    <script>
+    // 2a
+      var mineTall = [2,5,8,12,15,20,32,56];
+
+    //2b
+      var sumMineTall = Number();
+      for (var i = 0; i<mineTall.length; i++){
+        sumMineTall += mineTall[i];
+      }
+      document.write("<br><br> Summen av tallene i arrayet = " + sumMineTall + "<br>");
+      document.write("<br>");
+
+    //2c
+      mineTall.pop();
+      mineTall.shift();
+
+    //2d
+      mineTall.splice(3, 0, 40);
+      console.log(mineTall);
+
+    //2e
+      var ctx = document.querySelector("canvas").getContext("2d");
+      ctx.canvas.width = 1000;
+      ctx.canvas.height = 300;
+
+      ctx.fillStyle = "#202020";
+      ctx.fillRect(0, 0, 1000, 300);
+
+      for (var i = 0; i<mineTall.length; i++){
+        var xPosisjon = Number((i + 1) * 100);
+        var radius = Number(mineTall[i]);
+        ctx.fillStyle = "blue";
+        ctx.beginPath();
+        ctx.arc(xPosisjon, ctx.canvas.height/2, radius, 0, 2*Math.PI, false);
+        ctx.fill();
+      };
+
+    //Ekstra (finne største tall)
+      var storst = Number(0);
+      for (var i = 0; i<mineTall.length; i++){
+        if (storst < mineTall[i]){
+          storst = mineTall[i];
+        };
+      };
+      document.write("<br> Det største tallet i Arrayet = " + storst);
+    //Ekstra (finne minste tall)
+      var minst = Number(mineTall[0]);
+      for (var i = 0; i<mineTall.length; i++){
+        if (minst > mineTall[i]){
+          minst = mineTall[i];
+        };
+      };
+      document.write("<br> Det minste tallet i Arrayet = " + minst);
+    </script>
+  </body>
+</html>

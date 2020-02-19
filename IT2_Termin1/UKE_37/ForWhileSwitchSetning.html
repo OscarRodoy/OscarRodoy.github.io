@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      table{
+        margin-left: 50%;
+        transform: translateX(-50%);
+        width: 900px;
+      }
+      table tr td{
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+      // SWITCH SETNING // ser om tillfellene stemmer, om ikke gjør default
+      var svar = prompt("Hva er hei på engelsk");
+      document.write("Hva er hei på engelsk" + "<br><br>");
+      document.write("Ditt svar: <i>" + svar + "</i><br><br>");
+      switch(svar){
+        case "Hi":
+          document.write("Riktig");
+          break;
+        case "Hello":
+          document.write("Riktig");
+          break;
+        case "Hey":
+          document.write("Riktig");
+          break;
+        default:
+          document.write("Feil");
+      };
+      document.write("<br><br>");
+
+      // øke med 1 // i = i + 1 // i++
+      // øke med 5 // i = i + 5 // i+=5
+      // minske med 1 // i = i - 1 // i--
+
+      var i = 0;
+      var countTo = 50;
+
+      // WHILE SETNING // så lenge betingelsen er sann, utfør koden igjen og igjen // brukes når du ikke vet hvor mange ganger det skal gjentas
+      while (i <= countTo) {
+        document.write(i);
+        if (i < countTo){
+          document.write(", ");
+        };
+        if (i == countTo) {
+          document.write("<br><br>")
+        };
+        i = i + 1;
+      };
+
+      // FOR SETNING // definerer variabel ; skriver betingelse ; øk variablen // bruktes når du vet hvor mange ganger det skal gjentas
+      for (var j = 1; j <= 10; j++){
+        document.write(j + ", ");
+        if (j == 10){
+          document.write("<br><br>")
+        };
+      };
+
+      // Oppgave // Gangetabell for 8
+      var tall = 8;
+      for (var k = 1; k <= 10; k++){
+        document.write(tall + " x " + k + " = " + (k * tall) + "<br>")
+      };
+      document.write("<br>");
+
+      // Eksempel
+      document.write("<table>"); // alt inni den første for setningen skjer til det er ferdig før a øker
+      for (var a=1; a<=10; a++){
+        document.write("<tr>");
+        for (var b=1; b<=10; b++){
+          document.write("<td>" + b + " x " + a + " = " + (b*a) + " </td>");
+        }
+        document.write("</tr>");
+      };
+      document.write("</table>");
+
+    </script>
+  </body>
+</html>

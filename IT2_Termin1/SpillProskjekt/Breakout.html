@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Breakout</title>
+    <link rel="stylesheet" href="breakout.css">
+  </head>
+  <body>
+
+    <div id="displayGrid">
+      <div id="visObjekterFjernet"></div>
+      <div id="timer"><p>0:00</p></div>
+      <div id="visScore"></div>
+    </div>
+
+    <div id="startSide">
+      <h1>Breakout</h1>
+      <div id="rekorder"><p style="margin: 10px; text-decoration: underline;">Rekorder:</p><table id="rekordTabell"></table></div>
+      <button id="startKnapp" class="knapp" type="button">Trykk her for å starte spillet</button>
+    </div>
+
+    <div id="gameoverSide">
+      <h1>Game Over</h1>
+      <div id="statistikk"></div>
+      <button id="fortsettKnapp" class="knapp" type="button">Trykk her for å gå <br>videre</button>
+    </div>
+
+    <canvas id="canvas"></canvas>
+
+    <script src="Variabler.js"></script>
+
+    <script src="lagSpiller.js"></script>
+    <script src="lagBall.js"></script>
+    <script src="lagObjektArray.js"></script>
+
+    <script src="tegnSpill.js"></script>
+    <script src="oppdaterSpill.js"></script>
+    <script src="resetSpill.js"></script>
+    
+    <script src="Main.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+      <style media="screen">
+        body{
+          margin: 0px;
+          padding: 0px;
+          overflow: hidden;
+        }
+        #grid{
+          width: 100vw;
+          background-color: red;
+          position: absolute;
+          top: 0px;
+        }
+        #grid li{
+          text-decoration: none;
+          list-style-type: none;
+          display: inline;
+        }
+        #grid li img{
+          width: calc(90vw / 5);
+        }
+      </style>
+  </head>
+  <body>
+
+    <ul id="grid">
+      <li><img id="ImgTrommer" src="../Bilder/trommer_sort.png"><audio id="AudTrommer" src="../Lyder/trommer.mp3"></audio></li>
+      <li><img id="ImgBass" src="../Bilder/bass_sort.png"><audio id="AudBass" src="../Lyder/bass.mp3"></audio></li>
+      <li><img id="ImgOrgel" src="../Bilder/orgel_sort.png"><audio id="AudOrgel" src="../Lyder/orgel.mp3"></audio></li>
+      <li><img id="ImgPiano" src="../Bilder/piano_sort.png"><audio id="AudPiano" src="../Lyder/piano.mp3"></audio></li>
+      <li><img id="ImgGitar" src="../Bilder/gitar_sort.png"><audio id="AudGitar" src="../Lyder/gitar.mp3"></audio></li>
+    </ul>
+
+    <script type="text/javascript">
+      var ImgTrommer = document.getElementById("ImgTrommer");
+      var ImgBass = document.getElementById("ImgBass");
+      var ImgOrgel = document.getElementById("ImgOrgel");
+      var ImgPiano = document.getElementById("ImgPiano");
+      var ImgGitar = document.getElementById("ImgGitar");
+
+      var AudTrommer = document.getElementById("AudTrommer");
+      var AudBass = document.getElementById("AudBass");
+      var AudOrgel = document.getElementById("AudOrgel");
+      var AudPiano = document.getElementById("AudPiano");
+      var AudGitar = document.getElementById("AudGitar");
+
+      var img = document.querySelector("img");
+
+      const band = [
+        {navn: "Trommer", ImgSort: "../Bilder/trommer_sort.png", ImgBlek: "../Bilder/trommer_blek.png", Audio: "../Lyder/trommer.mp3"},
+        {navn: "Bass", ImgSort: "../Bilder/bass_sort.png", ImgBlek: "../Bilder/bass_blek.png", Audio: "../Lyder/bass.mp3"},
+        {navn: "Orgel", ImgSort: "../Bilder/orgel_sort.png", ImgBlek: "../Bilder/orgel_blek.png", Audio: "../Lyder/orgel.mp3"},
+        {navn: "Piano", ImgSort: "../Bilder/piano_sort.png", ImgBlek: "../Bilder/piano_blek.png", Audio: "../Lyder/piano.mp3"},
+        {navn: "Gitar", ImgSort: "../Bilder/gitar_sort.png", ImgBlek: "../Bilder/gitar_blek.png", Audio: "../Lyder/gitar.mp3"}
+      ];
+
+      img.onclick = function(){
+        this.src
+      }
+
+    </script>
+
+  </body>
+</html>

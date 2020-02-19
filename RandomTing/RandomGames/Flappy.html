@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <canvas id="canvas" width="300" height="300"></canvas>
+    <script type="text/javascript">
+
+      var ctx = document.querySelector("canvas").getContext("2d");
+      ctx.canvas.width = 1260;
+      ctx.canvas.height = 590;
+
+      var controller;
+      controller = {
+        left:false, right:false,
+        keyUpDown:function(event) {
+          var key_state = (event.type == "keydown")?true:false;
+          switch(event.keyCode) {
+            case 37: controller.left = key_state; break; // left key
+            case 39: controller.right = key_state; break; // right key
+          }
+        }
+      };
+
+      var player = {
+        x: 100,
+        y: 400,
+        xVel: 0,
+        yVel: 0
+      };
+
+      var loop = function() {
+
+        // Game physics start
+        player.x += player.xVel;
+        player.y += player.yVel;
+
+        player.yVel += 0.7;
+
+        player.xVel *= 0.97;
+        player.yVel *= 0.95;
+        // Game physics stop
+
+        // Controlls start
+        if (controller.left == true) {
+          player.xVel += -8;
+          player.yVel = -15;
+          controller.left = false;
+        };
+        if (controller.right == true) {
+          player.xVel += 8;
+          player.yVel = -15;
+          controller.right = false;
+        };
+        // Controlls stop
+
+        // Collision detection start
+        if (player.y + 16 > ctx.canvas.height - 100) {
+          player.yVel = 0;
+          player.y = ctx.canvas.height - 100 - 16;
+        };
+        if (player.x < 16){
+          player.xVel = 0;
+          player.x = 16;
+        };
+        if (player.x > ctx.canvas.width - 16){
+          player.xVel = 0;
+          player.x = ctx.canvas.width - 16;
+        };
+        if (player.y < 16){
+          player.yVel = 0;
+          player.y = 16;
+        };
+        // Collision detection stop
+
+        // Draw start
+        ctx.fillStyle = "#202020";
+        ctx.fillRect(0, 0, 1260, 590);
+
+        ctx.fillStyle = "yellow";
+        ctx.beginPath();
+        ctx.arc(player.x, player.y, 16, 0, 2*Math.PI, false);
+        ctx.fill();
+
+        ctx.fillStyle = "green";
+        ctx.beginPath();
+        ctx.rect(0, ctx.canvas.height - 100, ctx.canvas.width, 100);
+        ctx.fill();
+        //Draw stop
+
+        console.log(player.yVel);
+
+        window.requestAnimationFrame(loop);
+      };
+      window.requestAnimationFrame(loop);
+
+      window.addEventListener("keydown", controller.keyUpDown);
+      window.addEventListener("keyup", controller.keyUpDown);
+    </script>
+  </body>
+</html>

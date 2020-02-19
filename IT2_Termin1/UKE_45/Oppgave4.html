@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <ul id="fagListe"></ul>
+    <button id="btnFjern" type="button">Fjern Et Fag</button>
+    <input id="inpLeggTil" type="text" placeholder="Legg til Fag">
+    <script>
+    //4a
+      var fagArray = ["Norsk", "Gym", "Fysikk", "Religion", "Historie", "IT", "Matte"];
+      var fagListe = document.getElementById("fagListe");
+      function visListe(){
+        fagListe.innerHTML = "";
+        for (var fag of fagArray){
+          fagListe.innerHTML += `<li> ${fag} </li>`;
+        };
+      };
+      visListe();
+
+    //4b+c      b = sammen uten if-setning og kun pop();
+      var btnFjern = document.getElementById("btnFjern");
+      var hjelpeVar = 1;
+      btnFjern.onclick = function(){
+        hjelpeVar += 1;
+        if (hjelpeVar % 2 == 0){
+          fagArray.pop();
+        } else {
+          fagArray.shift();
+        };
+        visListe();
+      };
+
+    //4d+e        d = sammen uten if-setning, for-løkke, hjelpeVar2 og kun push();
+      var inpLeggTil = document.getElementById("inpLeggTil");
+      var hjelpeVar2 = false;
+      inpLeggTil.onchange = function(){
+        var nyttFag = inpLeggTil.value;
+        for (var i = 0; i < fagArray.length; i++){
+          if (fagArray[i] === nyttFag){
+            fagArray.splice(i, 1);
+            hjelpeVar2 = true;
+          };
+        };
+        if (hjelpeVar2 == false) {
+          fagArray.push(nyttFag);
+        };
+        visListe();
+        inpLeggTil.value = "";
+        hjelpeVar2 = false;
+      };
+    </script>
+  </body>
+</html>

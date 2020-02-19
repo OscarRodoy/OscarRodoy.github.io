@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      body{
+        margin: 0px;
+        overflow: hidden;
+      }
+      /* Side Bar Start */
+      #sideBar{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 298px;
+        height: 100vh;
+        border-right: 2px solid black;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        user-select: none;
+        font-family: Comic Sans MS;
+      }
+      #sideBar #background{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: -10;
+        width: 100%;
+        height: 100vh;
+        filter: brightness(50%) grayscale(0.5);
+      }
+      /* Side Bar Buttons */
+      #sideBar #gridBtns{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 10px;
+        margin: 10px 10px 0px 10px;
+      }
+      #sideBar #gridBtns #btnCraft, #btnBuild, #btnInventory{
+        height: 30px;
+        line-height: 30px;
+        font-size: 17px;
+        text-align: center;
+        border: 2px solid black;
+        background-color: white;
+        cursor: pointer;
+      }
+      /* Side Bar Slots Grid */
+      #sideBar #gridSlots{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-gap: 2px;
+        overflow-x: hidden;
+        max-height: 278px;
+      }
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.8);
+      }
+      #sideBar #gridSlots div{
+        background-color: white;
+        opacity: 0.9;
+        height: 54px;
+        filter: brightness(50%);
+        transition: 0.5s filter linear, 0.5s -webkit-filter linear;
+        animation-timing-function: linear;
+      }
+      #sideBar #gridSlots div img{
+        width: 100%;
+        animation-timing-function: linear;
+      }
+      @keyframes cantBuy{
+        0% {transform: rotate(4deg);}
+        25% {transform: rotate(-4deg);}
+        50% {transform: rotate(2deg);}
+        75% {transform: rotate(-2deg);}
+        100% {transform: rotate(0deg);}
+      }
+      @keyframes buy{
+        0% {transform: scaleX(1);}
+        50% {transform: scaleX(-1);}
+        100% {transform: scaleX(1);}
+      }
+      @keyframes textPulse{
+        50% {opacity: 25%;}
+      }
+      /* Side Bar Item Info */
+      #sideBar #itemInfo{
+        display: none;
+        position: absolute;
+        color: red;
+        background-color: white;
+        border: 1px solid black;
+        border-radius: 5px;
+        padding: 0px 5px 0px 5px;
+        white-space: nowrap;
+      }
+      #sideBar #itemInfo::first-line{
+        color: black;
+        text-decoration: underline;
+      }
+      /* Side Bar Mid Grid */
+      #sideBar #gridMid{
+        display: grid;
+        grid-template-columns: 3fr 4fr;
+        border-top: 2px solid black;
+        border-bottom: 2px solid black;
+        margin-top: 10px;
+        height: 180px;
+      }
+      #sideBar #gridMid #resourcesDisplay{
+        border-right: 2px solid black;
+        font-size: 17px;
+        font-weight: bold;
+        margin-left: 2px;
+        line-height: 0px;
+        text-shadow: 1px 1px black;
+      }
+      /* Canvas */
+      canvas{
+        margin-left: 300px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="sideBar">
+      <img id="background" src="SideBar_Background2.jpg">
+      <div id="gridBtns">
+        <div id="btnCraft" onclick="gridBtnOnclick(`1`)">Craft</div>
+        <div id="btnBuild" onclick="gridBtnOnclick(`2`)">Build</div>
+        <div id="btnInventory" onclick="gridBtnOnclick(`3`)">Inventory</div>
+      </div>
+      <div id="gridSlots">
+
+      </div>
+      <div id="itemInfo"></div>
+      <div id="gridMid">
+        <div id="resourcesDisplay">
+
+        </div>
+        <div id="itemsInUse">
+
+        </div>
+      </div>
+    </div>
+
+    <canvas id="canvas"></canvas>
+
+    <script src="Draw.js"></script>
+    <script src="Update.js"></script>
+    <script src="Main.js"></script>
+  </body>
+</html>

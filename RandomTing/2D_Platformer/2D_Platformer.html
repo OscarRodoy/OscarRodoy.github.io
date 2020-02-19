@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <meta name = "viewport" content = "width=device-width">
+    <title>Cool Game</title>
+    <link href = "2D_Platformer.css" rel = "stylesheet" type = "text/css">
+
+  </head>
+
+  <body>
+
+    <script type="text/javascript"> //no good
+      var sec = 0;
+     function pad ( val ) { return val > 9 ? val : "0" + val; }
+     setInterval( function(){
+         $("#seconds").html(pad(++sec%60));
+         $("#minutes").html(pad(parseInt(sec/60,10)));
+     }, 1000);
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <div id="Score"><span id="minutes"></span>:<span id="seconds"></span></div>
+
+    <h1 id="Deathnote">You Died!</h1>
+    <h1 id="Victorynote">You Win!</h1>
+
+    <div id="PlayerHealth">
+      <h3>Player:</h3>
+      <div id="P_Health_1"></div>
+      <div id="P_Health_2"></div>
+      <div id="P_Health_3"></div>
+    </div>
+
+    <div id="EnemyHealth">
+      <h3>Enemy:</h3>
+      <div id="E_Health_1"></div>
+      <div id="E_Health_2"></div>
+      <div id="E_Health_3"></div>
+    </div>
+
+    <canvas></canvas>
+
+    <script src = "2D_Platformer.js" type = "text/javascript"></script>
+
+  </body>
+
+</html>

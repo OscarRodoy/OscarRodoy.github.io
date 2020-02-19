@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      canvas{
+        margin-left: 6px;
+        margin-top: 7px;
+        border: 2px solid black;
+      }
+      /* Player Display */
+      #playerDisplay{
+        position: absolute;
+        top: 10;
+        left: 10;
+        width: 290px;
+        height: 76px;
+        margin-left: 12px;
+        margin-top: 13px;
+        z-index: 10;
+        overflow: hidden;
+      }
+      #playerIcon{
+        background-color: white;
+        font-size: 50px;
+        height: 72px;
+        width: 72px;
+        border: 2px solid black;
+        border-radius: 5px;
+        float: left;
+        margin-right: 4px;
+      }
+      #healthBar{
+        background-color: lime;
+        height: 32px;
+        width: 200px;
+        border: 2px solid black;
+        border-radius: 5px;
+        line-height: 32px;
+        overflow: hidden;
+        margin-bottom: 4px;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: Arial, sans-serif;
+      }
+      #healthBar p{
+        margin: 0px 0px 0px 5px;
+      }
+      #moneyBar{
+        background-color: gold;
+        height: 32px;
+        width: 98px;
+        border: 2px solid black;
+        border-radius: 5px;
+        line-height: 32px;
+        overflow: hidden;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: Arial, sans-serif;
+      }
+      #moneyBar p{
+        margin: 0px 0px 0px 5px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="playerDisplay">
+      <div id="playerIcon">&#129497;</div>
+      <div id="healthBar"><p id="health">&#128151; 200</p></div>
+      <div id="moneyBar"><p id="money">&#128176; 0</p></div>
+    </div>
+
+    <canvas id="canvas"></canvas>
+
+    <script>
+      var ctx = document.querySelector("canvas").getContext("2d");
+      const cvsWidth = ctx.canvas.width = 1248;
+      const cvsHeight = ctx.canvas.height = 576;
+      const tileSize = 48;
+
+      var camera = {
+        center: ctx.canvas.width/2,
+        columns: (cvsWidth / tileSize) + 2,
+        tileTL: 0,
+        tilesPassed: 1
+      };
+
+      var controller = {
+        left:false,
+        right:false,
+        keyUpDown:function(event) {
+          var key_state = (event.type == "keydown")?true:false;
+          switch(event.keyCode) {
+            case 65: controller.a = key_state; break; // a key
+            case 87: controller.w = key_state; break; // w key
+            case 68: controller.d = key_state; break; // d key
+            case 83: controller.s = key_state; break; // s key
+            case 32: controller.space = key_state; break; // spcae key
+            case 16: controller.shift = key_state; break; // spcae key
+          }
+        }
+      };
+
+      var level_1 = {
+        xPosStart: tileSize * 3,
+        yPosStart: tileSize * 8,
+        background: "",
+        get rows() { return cvsHeight / tileSize;},
+        get columns() { return this.map.length / this.rows;},
+        get length() { return this.columns * tileSize;},
+        map: [00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,02,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,13,03,07,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,02,10,10,10,10,21,03,03,03,03,03,03,03,03,03,03,03,03,03,03,03,03,03,20,10,10,10,04,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,02,10,10,10,21,17,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,16,20,10,10,04,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,09,09,09,00,00,00,00,00,00,00,00,00,00,00,06,03,03,03,17,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,16,20,10,14,01,08,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,16,20,10,10,04,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,09,09,09,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,09,09,09,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,16,03,03,07,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,
+              00,00,00,00,00,00,00,09,09,09,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,09,09,09,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,09,09,09,00,00,00,00,00,00,05,01,01,18,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,05,01,01,01,01,01,08,00,00,00,05,01,18,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,02,10,10,22,18,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,15,08,00,00,00,05,18,00,00,00,00,00,00,00,00,02,10,10,10,10,10,04,00,00,00,02,10,22,18,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,05,01,01,01,01,01,01,01,18,00,00,00,00,00,00,00,00,00,00,00,00,00,02,10,10,10,22,18,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,
+              00,00,00,00,00,00,00,00,00,00,00,00,00,15,19,04,00,00,00,02,22,18,00,00,00,00,00,00,00,02,10,10,10,10,10,04,00,00,00,02,10,10,22,18,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,05,01,01,01,01,08,00,00,00,02,10,10,10,10,10,10,10,22,18,00,00,00,00,00,00,00,00,00,00,00,00,02,10,10,10,10,22,18,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,
+              01,01,01,01,01,01,01,01,01,01,01,01,01,19,10,04,00,00,00,02,10,22,01,01,01,01,01,01,01,11,10,10,10,10,10,04,00,00,00,02,10,10,10,22,01,01,01,01,01,01,01,01,01,01,01,01,01,08,00,00,00,02,10,10,10,10,04,00,00,00,02,10,10,10,10,10,10,10,10,22,01,01,01,01,01,01,01,01,08,00,00,00,02,10,10,10,10,10,22,01,01,01,01,01,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,
+              10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,04,00,00,00,02,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,04,00,00,00,02,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,04,00,00,00,02,10,10,10,10,04,00,00,00,02,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,04,00,00,00,02,10,10,10,10,10,10,10,10,10,10,10,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00]
+      };
+
+      var world = level_1;
+
+      var background = new Image();
+      background.src = world.background;
+      var tile_01 = new Image();
+      tile_01.src = "";
+
+      var player = {
+        xPosOld: world.xPosStart,
+        yPosOld: world.yPosStart,
+        xPos: world.xPosStart,
+        yPos: world.yPosStart,
+        xVel: 0,
+        yVel: 0,
+        height: tileSize,
+        width: tileSize,
+        color: "blue",
+        movementSpeed: 6,
+        jumps: 0,
+        jumpTimeout: false,
+        onGround: false,
+        get top()       { return this.yPos; },
+        get bottom()    { return this.yPos + this.height; },
+        get left()      { return this.xPos; },
+        get right()     { return this.xPos + this.width; },
+        get topOld()    { return this.yPosOld; },
+        get bottomOld() { return this.yPosOld + this.height; },
+        get leftOld()   { return this.xPosOld; },
+        get rightOld()  { return this.xPosOld + this.width; },
+      };
+
+      function collisionBottom(xPos, yPos){
+        if (player.right > xPos && player.left < xPos + tileSize &&
+            player.bottom > yPos && player.bottomOld <= yPos){
+          player.onGround = true;
+          player.yVel = 0;
+          player.jumps = 2;
+          player.yPos = yPos - player.height;
+        };}; // (bottom of player)
+      function collisionRight(xPos, yPos){
+        if (player.right > xPos && player.rightOld <= xPos &&
+            player.bottom > yPos && player.top < yPos + tileSize){
+          player.xVel = 0;
+          player.xPos = xPos - player.width;
+        };
+      };
+      function collisionTop(xPos, yPos){
+        if (player.right > xPos && player.left < xPos + tileSize &&
+            player.top < yPos + tileSize && player.topOld >= yPos + tileSize){
+          player.yVel = 0;
+          player.yPos = yPos + tileSize;
+        };
+      };
+      function collisionLeft(xPos, yPos){
+        if (player.left < xPos + tileSize && player.leftOld >= xPos + tileSize &&
+            player.bottom > yPos && player.top < yPos + tileSize){
+          player.xVel = 0;
+          player.xPos = xPos + tileSize;
+        };
+      };
+      function collisionSlopeBR(xPos, yPos){
+        let xCurrent = player.right - xPos;
+        let slopeTop = -1 * xCurrent + yPos + tileSize;
+        if (xCurrent > tileSize && player.bottom > yPos && player.top < yPos + tileSize && player.right > xPos && player.left < xPos + tileSize){
+          player.onGround = true;
+          player.yVel = 0;
+          player.jumps = 2;
+          player.yPos = yPos - player.height;
+        } else if (player.bottom > slopeTop && player.bottom > yPos && player.top < yPos + tileSize && player.right > xPos && player.left < xPos + tileSize){
+          player.onGround = true;
+          player.yVel = 0;
+          player.jumps = 2;
+          player.yPos = slopeTop - player.height;
+        };
+      };
+      function collisionSlopeTR(xPos, yPos){
+
+      };
+      function collisionSlopeTL(xPos, yPos){
+
+      };
+      function collisionSlopeBL(xPos, yPos){
+        let xCurrent = xPos + tileSize - player.left;
+        let slopeTop = -1 * xCurrent + yPos + tileSize;
+        if (xCurrent > tileSize && player.bottom > yPos && player.top < yPos + tileSize && player.left < xPos + tileSize && player.right > xPos){
+          player.onGround = true;
+          player.yVel = 0;
+          player.jumps = 2;
+          player.yPos = yPos - player.height;
+        } else if (player.bottom > slopeTop && player.bottom > yPos && player.top < yPos + tileSize && player.left < xPos + tileSize && player.right > xPos){
+          player.onGround = true;
+          player.yVel = 0;
+          player.jumps = 2;
+          player.yPos = slopeTop - player.height;
+        };
+      };
+
+      function drawWorld(){
+        // draw background
+        //ctx.drawImage(background, camera.center - cvsWidth/2, 0, cvsWidth, cvsHeight);
+        ctx.fillStyle = "skyblue";
+        ctx.fillRect(0, 0, cvsWidth, cvsHeight);
+
+        // draw tiles
+        /*for (var i = 0; i < world.map.length; i++){
+          var xPos = (i * tileSize) - (world.length * Math.floor((i * tileSize) / world.length));
+          var yPos = Math.floor(i / world.columns) * tileSize;
+        };*/
+        for (var i = 0; i < camera.columns * world.rows; i++){
+          var k = Math.floor(i / camera.columns);
+          var n = (world.columns * k) + camera.tileTL - 1 + i - camera.columns * k;
+          var xPos = (n * tileSize) - (world.length * Math.floor((n * tileSize) / world.length));
+          var yPos = Math.floor(n / world.columns) * tileSize;
+          if (world.map[n] == 00){}
+          else if (world.map[n] == 01) {
+            ctx.fillStyle = "green";
+            ctx.fillRect(xPos, yPos, tileSize, tileSize);
+            ctx.fillStyle = "#8B4513";
+            ctx.fillRect(xPos, yPos + tileSize/2, tileSize, tileSize/2);
+            //ctx.drawImage(tile_01, xPos, yPos, tileSize, tileSize);
+          }
+          else if (world.map[n] == 02) {
+            ctx.fillStyle = "green";
+            ctx.fillRect(xPos, yPos, tileSize, tileSize);
+            ctx.fillStyle = "#8B4513";
+            ctx.fillRect(xPos + tileSize/2, yPos, tileSize/2, tileSize);
+          }
+          else if (world.map[n] == 03) {
+            ctx.fillStyle = "green";
+            ctx.fillRect(xPos, yPos, tileSize, tileSize);
+            ctx.fillStyle = "#8B4513";
+            ctx.fillRect(xPos, yPos, tileSize, tileSize/2);
+          }
+          else if (world.map[n] == 04) {
+            ctx.fillStyle = "green";
+            ctx.fillRect(xPos, yPos, tileSize, tileSize);
+            ctx.fillStyle = "#8B4513";
+            ctx.fillRect(xPos, yPos, tileSize/2, tileSize);
+          }
+          else if (world.map[n] == 05) {
+            ctx.fillStyle = "green";
+            ctx.fillRect(xPos, yPos, tileSize, tileSize);
+            ctx.fillStyle = "#8B4513";
+            ctx.fillRect(xPos + tileSize/2, yPos + tileSize/2, tileSize/2, tileSize/2);
+          }
+          else if (world.map[n] == 06) {
+            ctx.fillStyle = "green";
+            ctx.fillRect(xPos, yPos, tileSize, tileSize);
+            ctx.fillStyle = "#8B4513";
+            ctx.fillRect(xPos + tileSize/2, yPos, tileSize/2, tileSize/2);
+          }
+          else if (world.map[n] == 07) {
+            ctx.fillStyle = "green";
+            ctx.fillRect(xPos, yPos, tileSize, tileSize);
+            ctx.fillStyle = "#8B4513";
+            ctx.fillRect(xPos, yPos, tileSize/2, tileSize/2);
+          }
+          else if (world.map[n] == 08) {
+            ctx.fillStyle = "green";
+            ctx.fillRect(xPos, yPos, tileSize, tileSize);
+            ctx.fillStyle = "#8B4513";
+            ctx.fillRect(xPos, yPos + tileSize/2, tileSize/2, tileSize/2);
+          }
+          else if (world.map[n] == 09) {
+            ctx.fillStyle = "green";
+            ctx.fillRect(xPos, yPos, tileSize, tileSize);
+          }
+          else if (world.map[n] == 10) {
+            ctx.fillStyle = "#8B4513";
+            ctx.fillRect(xPos, yPos, tileSize, tileSize);
+          }
+          else if (world.map[n] == 11) {
+            ctx.fillStyle = "#8B4513";
+            ctx.fillRect(xPos, yPos, tileSize, tileSize);
+            ctx.fillStyle = "green";
+            ctx.fillRect(xPos, yPos, tileSize/2, tileSize/2);
+          }
+          else if (world.map[n] == 12) {
+            ctx.fillStyle = "#8B4513";
+            ctx.fillRect(xPos, yPos, tileSize, tileSize);
+            ctx.fillStyle = "green";
+            ctx.fillRect(xPos, yPos + tileSize/2, tileSize/2, tileSize/2);
+          }
+          else if (world.map[n] == 13) {
+            ctx.fillStyle = "#8B4513";
+            ctx.fillRect(xPos, yPos, tileSize, tileSize);
+            ctx.fillStyle = "green";
+            ctx.fillRect(xPos + tileSize/2, yPos + tileSize/2, tileSize/2, tileSize/2);
+          }
+          else if (world.map[n] == 14) {
+            ctx.fillStyle = "#8B4513";
+            ctx.fillRect(xPos, yPos, tileSize, tileSize);
+            ctx.fillStyle = "green";
+            ctx.fillRect(xPos + tileSize/2, yPos, tileSize/2, tileSize/2);
+          }
+          else if (world.map[n] == 15) {
+            ctx.fillStyle = "green";
+            ctx.beginPath();
+            ctx.moveTo(xPos, yPos + tileSize);
+            ctx.lineTo(xPos + tileSize, yPos + tileSize);
+            ctx.lineTo(xPos + tileSize, yPos);
+            ctx.fill();
+            ctx.fillStyle = "#8B4513"
+            ctx.beginPath();
+            ctx.moveTo(xPos + tileSize/2, yPos + tileSize);
+            ctx.lineTo(xPos + tileSize, yPos + tileSize);
+            ctx.lineTo(xPos + tileSize, yPos + tileSize/2);
+            ctx.fill();
+          }
+          else if (world.map[n] == 16) {
+            ctx.fillStyle = "green";
+            ctx.beginPath();
+            ctx.moveTo(xPos, yPos);
+            ctx.lineTo(xPos + tileSize, yPos);
+            ctx.lineTo(xPos + tileSize, yPos + tileSize);
+            ctx.fill();
+            ctx.fillStyle = "#8B4513"
+            ctx.beginPath();
+            ctx.moveTo(xPos + tileSize/2, yPos);
+            ctx.lineTo(xPos + tileSize, yPos);
+            ctx.lineTo(xPos + tileSize, yPos + tileSize/2);
+            ctx.fill();
+          }
+          else if (world.map[n] == 17) {
+            ctx.fillStyle = "green";
+            ctx.beginPath();
+            ctx.moveTo(xPos + tileSize, yPos);
+            ctx.lineTo(xPos, yPos);
+            ctx.lineTo(xPos, yPos + tileSize);
+            ctx.fill();
+            ctx.fillStyle = "#8B4513"
+            ctx.beginPath();
+            ctx.moveTo(xPos + tileSize/2, yPos);
+            ctx.lineTo(xPos, yPos);
+            ctx.lineTo(xPos, yPos + tileSize/2);
+            ctx.fill();
+          }
+          else if (world.map[n] == 18) {
+            ctx.fillStyle = "green";
+            ctx.beginPath();
+            ctx.moveTo(xPos + tileSize, yPos + tileSize);
+            ctx.lineTo(xPos, yPos + tileSize);
+            ctx.lineTo(xPos, yPos);
+            ctx.fill();
+            ctx.fillStyle = "#8B4513"
+            ctx.beginPath();
+            ctx.moveTo(xPos + tileSize/2, yPos + tileSize);
+            ctx.lineTo(xPos, yPos + tileSize);
+            ctx.lineTo(xPos, yPos + tileSize/2);
+            ctx.fill();
+          }
+          else if (world.map[n] == 19) {
+            ctx.fillStyle = "#8B4513";
+            ctx.fillRect(xPos, yPos, tileSize, tileSize);
+            ctx.fillStyle = "green";
+            ctx.beginPath();
+            ctx.moveTo(xPos, yPos);
+            ctx.lineTo(xPos, yPos + tileSize/2);
+            ctx.lineTo(xPos + tileSize/2, yPos);
+            ctx.fill();
+          }
+          else if (world.map[n] == 20) {
+            ctx.fillStyle = "#8B4513";
+            ctx.fillRect(xPos, yPos, tileSize, tileSize);
+            ctx.fillStyle = "green";
+            ctx.beginPath();
+            ctx.moveTo(xPos, yPos + tileSize/2);
+            ctx.lineTo(xPos, yPos + tileSize);
+            ctx.lineTo(xPos + tileSize/2, yPos + tileSize);
+            ctx.fill();
+          }
+          else if (world.map[n] == 21) {
+            ctx.fillStyle = "#8B4513";
+            ctx.fillRect(xPos, yPos, tileSize, tileSize);
+            ctx.fillStyle = "green";
+            ctx.beginPath();
+            ctx.moveTo(xPos + tileSize/2, yPos + tileSize);
+            ctx.lineTo(xPos + tileSize, yPos + tileSize);
+            ctx.lineTo(xPos + tileSize, yPos + tileSize/2);
+            ctx.fill();
+          }
+          else if (world.map[n] == 22) {
+            ctx.fillStyle = "#8B4513";
+            ctx.fillRect(xPos, yPos, tileSize, tileSize);
+            ctx.fillStyle = "green";
+            ctx.beginPath();
+            ctx.moveTo(xPos + tileSize, yPos);
+            ctx.lineTo(xPos + tileSize/2, yPos);
+            ctx.lineTo(xPos + tileSize, yPos + tileSize/2);
+            ctx.fill();
+          };
+        };
+
+        //draw player
+        ctx.fillStyle = player.color;
+        ctx.fillRect(player.xPos, player.yPos, player.width, player.height);
+      };
+
+      function updateWorld(){
+        // game physics
+        player.xPosOld = player.xPos;
+        player.yPosOld = player.yPos;
+        player.xPos += player.xVel;
+        player.yPos += player.yVel;
+        player.xVel *= 0.85;
+        player.yVel *= 0.9;
+        player.yVel += 1;
+
+        // collision detection
+        /*for (var i = 0; i < world.map.length; i++){
+          var xPos = (i * tileSize) - (world.length * Math.floor((i * tileSize) / world.length));
+          var yPos = Math.floor(i / world.columns) * tileSize;
+        };*/
+        for (var i = 0; i < camera.columns * world.rows; i++){
+          var k = Math.floor(i / camera.columns);
+          var n = (world.columns * k) + camera.tileTL - 1 + i - camera.columns * k;
+          var xPos = (n * tileSize) - (world.length * Math.floor((n * tileSize) / world.length));
+          var yPos = Math.floor(n / world.columns) * tileSize;
+          if (world.map[n] == 01) {collisionBottom(xPos, yPos)}
+          else if (world.map[n] == 02) {collisionRight(xPos, yPos)}
+          else if (world.map[n] == 03) {collisionTop(xPos, yPos)}
+          else if (world.map[n] == 04) {collisionLeft(xPos, yPos)}
+          else if (world.map[n] == 05) {collisionRight(xPos, yPos); collisionBottom(xPos, yPos)}
+          else if (world.map[n] == 06) {collisionRight(xPos, yPos); collisionTop(xPos, yPos)}
+          else if (world.map[n] == 07) {collisionLeft(xPos, yPos); collisionTop(xPos, yPos)}
+          else if (world.map[n] == 08) {collisionLeft(xPos, yPos); collisionBottom(xPos, yPos)}
+          else if (world.map[n] == 09) {collisionRight(xPos, yPos); collisionTop(xPos, yPos); collisionLeft(xPos, yPos); collisionBottom(xPos, yPos)}
+          else if (world.map[n] == 15) {collisionSlopeBR(xPos, yPos)}
+          else if (world.map[n] == 18) {collisionSlopeBL(xPos, yPos)};
+        //  else if (world.map[n] == 16) {collisionSlopeTR(xPos, yPos)};
+        };
+
+        // collision with boundaries of screen
+        if (player.xPos < 0){
+          player.xVel = 0;
+          player.xPos = 0;
+        };
+        if (player.xPos > world.length - player.width){
+          player.xVel = 0;
+          player.xPos = world.length - player.width;
+        };
+        if (player.yPos > ctx.canvas.height){
+          window.location.reload();
+        };
+
+        // player movement
+        if (controller.a){
+          player.xVel = -player.movementSpeed;
+        };
+        if (controller.d){
+          player.xVel = player.movementSpeed;
+        };
+        if (controller.w && player.jumps > 0 && player.jumpTimeout == false){
+          player.yVel = -25;
+          player.onGround = false;
+          player.jumps -= 1;
+          player.jumpTimeout = true;
+          setTimeout(function(){player.jumpTimeout = false;}, 200);
+        };
+        if (controller.shift){
+          player.movementSpeed = 3;
+        } else {
+          player.movementSpeed = 6;
+        };
+
+        // move screen with player
+        var translateX = Number();
+        if (controller.d && player.left > camera.center && camera.center < world.length - cvsWidth/2){
+          if (player.left > camera.center + tileSize/2){
+            translateX = -player.movementSpeed*1.5;
+          } else {
+            translateX = -player.movementSpeed;
+          };
+          camera.center -= translateX;
+          ctx.translate(translateX, 0);
+        };
+        if (controller.a && player.right < camera.center && camera.center > cvsWidth/2){
+          if (player.right < camera.center - tileSize/2){
+            translateX = player.movementSpeed*1.5;
+          } else {
+            translateX = player.movementSpeed;
+          };
+          camera.center -= translateX;
+          ctx.translate(translateX, 0);
+        };
+        if (camera.center < cvsWidth/2) {
+          ctx.translate(-1,0);
+          camera.center += 1;
+        };
+        if (camera.center > world.length - cvsWidth/2){
+
+        };
+
+        // calculate top left tile
+        if (camera.center - cvsWidth/2 > tileSize * camera.tilesPassed){
+          camera.tilesPassed += 1;
+          camera.tileTL += 1;
+        };
+        if ((camera.center - cvsWidth/2) - ((camera.tilesPassed - 1)*tileSize) <= -tileSize){
+          camera.tilesPassed -= 1;
+          camera.tileTL -= 1;
+        };
+      };
+
+      var loop = function(){
+
+        drawWorld();
+
+        updateWorld();
+
+        window.requestAnimationFrame(loop);
+      };
+      window.requestAnimationFrame(loop);
+      window.addEventListener("keydown", controller.keyUpDown);
+      window.addEventListener("keyup", controller.keyUpDown);
+
+    </script>
+
+  </body>
+</html>

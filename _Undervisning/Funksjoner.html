@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <button type="button" id="btn">Detter er en knapp</button><br>
+    <div onclick="myFunction(event)">
+      <p>Dette er tekst</p>
+      <a href="#">Dette er en link</a>
+      <i>Dette er også tekst</i>
+    </div>
+
+    <script type="text/javascript">
+
+      // lokale Variabler = variabler definert inni en funksjon | kan ikke endres eller brukes utenfor funksjonen
+      // Globale Variabler = variabler definert utenfor funksjonen | kan endres og brukes overalt
+
+      // Funksjon
+      function funksjon1() {
+        document.write("Hei <br>");
+      };
+      funksjon1();
+
+      // Funksjon med Parameter
+      function funksjon2(tall) { // gir funksjonen f en parameterverdi x
+        var verdi = 2 * tall - 1;
+        document.write(`verdi = ${verdi} når tall = ${tall} <br>`);
+      };
+      funksjon2(2);  // tilkaller funksjonen f med parameterverdi tall = 2
+      funksjon2(-4); // tilkaller funksjonen f med parameterverdi tall = -4
+
+      // Funksjon med flere Parametere
+      function areal(bredde, hoyde) {
+        var areal = bredde * hoyde;
+        document.write("arealet er: " + areal + "<br>")
+      };
+      areal(10, 5);
+
+      // Automatisk funksjon (Anonym funksjon)
+      (function(){ // tilkalles med en gang nettsiden laster
+        var navn = "per";
+        document.write(navn);
+      })();
+
+      // Hendelsesstyrte fuksjon (Anonym funksjon)
+      window.onclick = function() { // kjøres når hendelsen skjer | hendelser: onclick, onmouseover, onkeyup, onload, onresize
+        alert("Du klikket på nettsiden");
+      };
+      var btn = document.getElementById("btn");
+      btn.onclick = function(){
+        alert("Du klikket på knappen");
+      };
+
+      // Funksjoner som returnerer en verdi
+      function funksjonsnavn() {
+        // koden fuksjonen skal utføre
+        return // verdi;
+      };
+      var variabelnavn = funksjonsnavn(); // variabelen blir lik "verdi"
+
+      // Events
+      function myFunction(event) {
+        console.log(event.target.nodeName);    // viser elementet du trykket på
+        console.log(event.target.id);          // viser id til elementet du trykket på
+        console.log(event.target.innerHTML);   // viser innholdet til elementet du trykket på
+      };
+
+    </script>
+  </body>
+</html>

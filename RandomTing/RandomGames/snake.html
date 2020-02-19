@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <script>
+      var ctx = document.querySelector("canvas").getContext("2d");
+      ctx.canvas.style = "margin-left: 6px; margin-top: 7px; border: 2px solid black";
+      var cvsWidth = ctx.canvas.width = 1248;
+      var cvsHeight = ctx.canvas.height = 576;
+
+      var world = {
+        tileSize: 24,
+        rows: 24,
+        columns: 52,
+      };
+
+      var controller = {
+        left:false,
+        right:false,
+        keyUpDown:function(event) {
+          var key_state = (event.type == "keydown")?true:false;
+          switch(event.keyCode) {
+            case 65: controller.a = key_state; break; // a key
+            case 87: controller.w = key_state; break; // w key
+            case 68: controller.d = key_state; break; // d key
+            case 83: controller.s = key_state; break; // s key
+            case 32: controller.space = key_state; break; // spcae key
+            case 16: controller.shift = key_state; break; // spcae key
+          }
+        }
+      };
+
+      var snake = {
+        xPos: 48*3,
+        yPos: 48*3,
+        width: world.tileSize,
+        height: world.tileSize,
+        color: "blue",
+        retning: "opp",
+        lengde: 3,
+        get top()         { return this.yPos; },
+        get bottom()      { return this.yPos + this.height; },
+        get left()        { return this.xPos; },
+        get right()       { return this.xPos + this.width; }
+      };
+
+      var gamlePosisjoner = [];
+
+      function drawWorld(){
+        // bakgrunn
+        ctx.fillStyle = "#202020";
+        ctx.fillRect(0, 0, world.tileSize, world.tileSize);
+        // spiller
+        ctx.fillStyle = snake.color;
+        for (var i = 0; i > gamlePosisjoner.length; i++){
+          ctx.fillRect(gamlePosisjoner[i].xPos, gamlePosisjoner[i].yPos, snake.width, snake.height);
+        };
+      //  ctx.fillRect(snake.xPos, snake.yPos, snake.width, snake.height);
+      };
+
+      function updateWorld(){
+        // oppdater retning
+        if (controller.w){
+          snake.retning = "opp";
+        } else if (controller.a){
+          snake.retning = "venstre";
+        } else if (controller.d){
+          snake.retning = "hoyre";
+        } else if (controller.s){
+          snake.retning = "ned";
+        };
+        // oppdater lengde
+        if (gamlePosisjoner.length > snake.lengde){
+          gamlePosisjoner.pop();
+        };
+
+      };
+
+      setInterval(function(){
+        gamlePosisjoner.push({xPos: snake.xPos, yPos: snake.yPos});
+        if (snake.retning == "opp"){
+          snake.yPos -= world.tileSize;
+        } else if (snake.retning == "venstre"){
+          snake.xPos -= world.tileSize;
+        } else if (snake.retning == "hoyre"){
+          snake.xPos += world.tileSize;
+        } else if (snake.retning == "ned"){
+          snake.yPos += world.tileSize;
+        };
+      }, 100);
+
+      var loop = function(){
+
+        drawWorld();
+
+        updateWorld();
+
+        window.requestAnimationFrame(loop);
+      };
+      window.requestAnimationFrame(loop);
+      window.addEventListener("keydown", controller.keyUpDown);
+      window.addEventListener("keyup", controller.keyUpDown);
+    </script>
+  </body>
+</html>

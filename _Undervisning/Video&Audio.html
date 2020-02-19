@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    </style>
+  </head>
+  <body>
+
+    <audio id="lyd" src="Filer/Audio.mp3" controls></audio>
+    <br>
+    <video src="Filer/Video.mp4" id="minFilm" width="640px" style="border: 2px solid black;" autoplay poster="Filer/Image.png"></video>
+    <!-- CAPTIONS:
+      <video src="Filer/Video.mp4" width="500px" controls autoplay poster="Filer/Image.png">
+        <track kind="captions" src="Filer/Captions.vtt" label="Norsk" srclang="no">
+      </video>
+    -->
+    <!--
+      autoplay = spilles av med en gang
+      controls = viser kontroller for avspiller
+      loop = spilles av igjen og igjen
+      muted = volumet er muted
+      preload = filen lastes ned med en gang siden åpnes
+      poster = bilde som vises før videoen spilles av (bare for video)
+    -->
+    <!--
+      volume	              Sets or returns the volume of the audio/video
+      currentTime          	Sets or returns the current playback position in the audio/video (in seconds)
+      duration	            Returns the length of the current audio/video (in seconds)
+      playbackRate        	Sets or returns the speed of the audio/video playback
+      defaultPlaybackRate	  Sets or returns the default speed of the audio/video playback
+      muted	                Sets or returns whether the audio/video is muted or not
+      defaultMuted        	Sets or returns whether the audio/video should be muted by default
+      paused              	Returns whether the audio/video is paused or not
+      played              	Returns a TimeRanges object representing the played parts of the audio/video
+      preload             	Sets or returns whether the audio/video should be loaded when the page loads
+      readyState          	Returns the current ready state of the audio/video
+      ended	                Returns whether the playback of the audio/video has ended or not
+      autoplay            	Sets or returns whether the audio/video should start playing as soon as it is loaded
+      controls            	Sets or returns whether the audio/video should display controls (like play/pause etc.)
+      error	                Returns a MediaError object representing the error state of the audio/video
+      loop	                Sets or returns whether the audio/video should start over again when finished
+      src                 	Sets or returns the current source of the audio/video element
+      currentSrc          	Returns the URL of the current audio/video
+      seekable            	Returns a TimeRanges object representing the seekable parts of the audio/video
+      seeking             	Returns whether the user is currently seeking in the audio/video
+      buffered             	Returns a TimeRanges object representing the buffered parts of the audio/video
+      textTracks          	Returns a TextTrackList object representing the available text tracks
+      videoTracks	          Returns a VideoTrackList object representing the available video tracks
+      audioTracks         	Returns an AudioTrackList object representing available audio tracks
+    -->
+    <br>
+    <button type="button" id="btnPlay" name="button">Play</button>
+    <button type="button" id="btnPause" name="button">Pause</button>
+    <button type="button" id="btnSkip" name="button">Skip</button>
+    <button type="button" id="btnMute" name="button">Mute</button>
+
+    <script type="text/javascript">
+
+      var lyd = document.getElementById("lyd");
+      document.onclick = function(){
+        lyd.play();
+      };
+
+      const minFilm = document.querySelector("#minFilm");
+      const btnPlay = document.querySelector("#btnPlay");
+      const btnPause = document.querySelector("#btnPause");
+      const btnSkip = document.querySelector("#btnSkip");
+      const btnMute = document.querySelector("#btnMute");
+      btnPlay.onclick = function(){
+        minFilm.play();
+      };
+      btnPause.onclick = function(){
+        minFilm.pause();
+      };
+      btnSkip.onclick = function(){
+        minFilm.currentTime = minFilm.currentTime + 10;
+      };
+      btnMute.onclick = function(){
+        if (minFilm.muted == false) {
+          minFilm.muted = true;
+          btnMute.innerHTML = "Unmute";
+        } else {
+          minFilm.muted = false;
+          btnMute.innerHTML = "Mute";
+        }
+      };
+    </script>
+  </body>
+</html>

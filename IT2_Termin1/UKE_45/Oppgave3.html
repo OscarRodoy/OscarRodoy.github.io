@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>Navn</th>
+          <th>Pris</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+    <script>
+    //3a
+      var array = [
+        {navn: "ost", pris: 32},
+        {navn: "pizza", pris: 130},
+        {navn: "burger", pris: 54},
+        {navn: "eple", pris: 2},
+        {navn: "vann", pris: 22}
+      ];
+
+    //3b
+      array.sort(sortPrisBilligst);
+      console.log(array);
+
+      function sortPrisBilligst(a, b){ // sorterer fra billigst til dyrest
+        return a.pris - b.pris;
+      };
+
+      function sortPrisDyrest(a, b){ // sorterer fra dyrest til billigst
+        return b.pris - a.pris;
+      };
+
+      function sorterAlfabetisk(a, b){ // sorterer alfrabetisk med hensyn på "navn" (bytt om a og b for omvent)
+        if (a.navn.toLowerCase() < b.navn.toLowerCase()) {return -1;};
+        if (a.navn.toLowerCase() > b.navn.toLowerCase()) {return 1;};
+        return 0;
+      };
+
+    //3d
+      for (var vare of array){
+        vare.pris *= 1.25;
+      };
+
+    //3c
+      var sum = Number();
+      for (var vare of array){
+        sum += vare.pris
+      };
+      //for (var i = 0; i < array.length; i++){
+      //  sum += array[i].pris
+      //};
+      document.write("<br> Summen = " + sum + "<br>");
+
+    //3e
+      var tbody = document.querySelector("tbody")
+      for (var vare of array){
+        tbody.innerHTML += `<tr><td>${vare.navn}</td><td>${vare.pris}</td></tr>`
+      };
+    </script>
+  </body>
+</html>

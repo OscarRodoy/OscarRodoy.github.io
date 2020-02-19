@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <script>
+      var ctx = document.querySelector("canvas").getContext("2d");
+      ctx.canvas.style = "margin-left: 6px; margin-top: 7px; border: 2px solid black";
+      var cvsWidth = ctx.canvas.width = 1248;
+      var cvsHeight = ctx.canvas.height = 576;
+
+      var screenCenter = ctx.canvas.width/2;
+
+      var world = {
+        tileSize: 48,
+        rows: 12,
+        columns: 48,
+        get length() { return this.columns * this.tileSize;},
+        map: [00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,09,09,09,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,09,09,09,
+              00,00,00,00,00,00,00,09,09,09,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,05,01,01,01,01,01,08,00,00,00,05,01,18,00,00,00,00,00,00,
+              00,00,00,00,00,00,00,00,00,00,00,00,00,00,15,08,00,00,00,05,18,00,00,00,00,00,00,00,00,02,10,10,10,10,10,04,00,00,00,02,10,22,18,00,00,00,00,00,
+              00,00,00,00,00,00,00,00,00,00,00,00,00,15,19,04,00,00,00,02,22,18,00,00,00,00,00,00,00,02,10,10,10,10,10,04,00,00,00,02,10,10,22,18,00,00,00,00,
+              01,01,01,01,01,01,01,01,01,01,01,01,01,19,10,04,00,00,00,02,10,22,01,01,01,01,01,01,01,11,10,10,10,10,10,04,00,00,00,02,10,10,10,22,01,01,01,01,
+              10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,04,00,00,00,02,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,04,00,00,00,02,10,10,10,10,10,10,10,10]
+      };
+
+      var controller = {
+        left:false,
+        right:false,
+        keyUpDown:function(event) {
+          var key_state = (event.type == "keydown")?true:false;
+          switch(event.keyCode) {
+            case 65: controller.a = key_state; break; // a key
+            case 87: controller.w = key_state; break; // w key
+            case 68: controller.d = key_state; break; // d key
+            case 83: controller.s = key_state; break; // s key
+            case 32: controller.space = key_state; break; // spcae key
+            case 16: controller.shift = key_state; break; // spcae key
+          }
+        }
+      };
+
+      var player = {
+        xPosOld: 48*2,
+        yPosOld: 48*8,
+        xPos: 48*2,
+        yPos: 48*8,
+        xVel: 0,
+        yVel: 0,
+        height: world.tileSize,
+        width: world.tileSize,
+        color: "blue",
+        movementSpeed: 6,
+        onGround: false,
+        jumps: 0,
+        jumpTimeout: false,
+        get top()       { return this.yPos; },
+        get bottom()    { return this.yPos + this.height; },
+        get left()      { return this.xPos; },
+        get right()     { return this.xPos + this.width; },
+        get topOld()    { return this.yPosOld; },
+        get bottomOld() { return this.yPosOld + this.height; },
+        get leftOld()   { return this.xPosOld; },
+        get rightOld()  { return this.xPosOld + this.width; }
+      };
+
+      var enemyType1 = {
+        xPosOld: Number(),
+        yPosOld: Number(),
+        xPos: Number(),
+        yPos: Number(),
+        xVel: 0,
+        yVel: 0,
+        height: world.tileSize,
+        width: world.tileSize,
+        color: "red",
+        movementSpeed: 2,
+        onGround: false,
+        jumps: 0,
+        attackRange: 5*world.tileSize,
+        attacking: false,
+        get top()       { return this.yPos; },
+        get bottom()    { return this.yPos + this.height; },
+        get left()      { return this.xPos; },
+        get right()     { return this.xPos + this.width; },
+        get topOld()    { return this.yPosOld; },
+        get bottomOld() { return this.yPosOld + this.height; },
+        get leftOld()   { return this.xPosOld; },
+        get rightOld()  { return this.xPosOld + this.width; }
+      };
+      var enemyType2 = {
+        xPosOld: Number(),
+        yPosOld: Number(),
+        xPos: Number(),
+        yPos: Number(),
+        xVel: 0,
+        yVel: 0,
+        height: world.tileSize,
+        width: world.tileSize,
+        color: "orange",
+        movementSpeed: 2,
+        onGround: false,
+        jumps: 0,
+        attackRange: 5*world.tileSize,
+        attacking: false,
+        get top()       { return this.yPos; },
+        get bottom()    { return this.yPos + this.height; },
+        get left()      { return this.xPos; },
+        get right()     { return this.xPos + this.width; },
+        get topOld()    { return this.yPosOld; },
+        get bottomOld() { return this.yPosOld + this.height; },
+        get leftOld()   { return this.xPosOld; },
+        get rightOld()  { return this.xPosOld + this.width; }
+      };
+
+      var newEnemy = [
+        {xPos: 10 * world.tileSize, yPos: 8 * world.tileSize, type: 2},
+        {xPos: 32 * world.tileSize, yPos: 6 * world.tileSize, type: 1}
+      ];
+      var enemies = [];
+
+      function createEnemyT1(){
+        this.xPos = 0;
+        this.yPos = 0;
+        this.xPosOld = 0;
+        this.yPosOld = 0;
+        this.xVel = 0;
+        this.yVel = 0;
+        this.height = world.tileSize;
+        this.width = world.tileSize;
+        this.color = "red";
+        this.movementSpeed = 2;
+        this.onGround = false;
+        this.jumps = 0;
+        this.attackRange = 5*world.tileSize;
+        this.attacking = false;
+        this.top = this.yPos;
+        this.bottom = this.yPos + this.height;
+        this.left = this.xPos;
+        this.right = this.xPos + this.width;
+        this.topOld = this.yPosOld;
+        this.bottomOld = this.yPosOld + this.height;
+        this.leftOld = this.xPosOld;
+        this.rightOld = this.xPosOld + this.width;
+      };
+      function createEnemyT2(){
+        this.xPos = 0;
+        this.yPos = 0;
+        this.xPosOld = 0;
+        this.yPosOld = 0;
+        this.xVel = 0;
+        this.yVel = 0;
+        this.height = world.tileSize;
+        this.width = world.tileSize;
+        this.color = "orange";
+        this.movementSpeed = 2;
+        this.onGround = false;
+        this.jumps = 0;
+        this.attackRange = 5*world.tileSize;
+        this.attacking = false;
+        this.top = this.yPos;
+        this.bottom = this.yPos + this.height;
+        this.left = this.xPos;
+        this.right = this.xPos + this.width;
+        this.topOld = this.yPosOld;
+        this.bottomOld = this.yPosOld + this.height;
+        this.leftOld = this.xPosOld;
+        this.rightOld = this.xPosOld + this.width;
+      };
+
+      for (var i = 0; i < newEnemy.length; i++){
+        enemies[i] = new Object();
+        if (newEnemy[i].type == 1){
+          enemies[i] = enemyType1//new createEnemyT1(); //{...enemies[i], ...enemyType1};
+        } else if (newEnemy[i].type == 2){
+          enemies[i] = enemyType2//new createEnemyT1(); //{...enemies[i], ...enemyType2};
+        };
+        enemies[i].xPos = newEnemy[i].xPos;
+        enemies[i].yPos = newEnemy[i].yPos;
+        /*enemies[i].top = newEnemy[i].yPos;
+        enemies[i].bottom = newEnemy[i].yPos + 48;
+        enemies[i].left = newEnemy[i].xPos;
+        enemies[i].right = newEnemy[i].xPos + 48;
+        enemies[i].topOld = newEnemy[i].yPos;
+        enemies[i].bottomOld = newEnemy[i].yPos + 48;
+        enemies[i].leftOld = newEnemy[i].xPos;
+        enemies[i].rightOld = newEnemy[i].xPos + 48;*/
+      };
+      console.log(enemies)
+
+      function collisionBottom(xPos, yPos, object){
+        if (object.right > xPos && object.left < xPos + world.tileSize &&
+            object.bottom > yPos && object.bottomOld <= yPos){
+          object.onGround = true;
+          object.yVel = 0;
+          object.jumps = 2;
+          object.yPos = yPos - object.height;
+        };
+      };
+      function collisionRight(xPos, yPos, object){
+        if (object.right > xPos && object.rightOld <= xPos &&
+            object.bottom > yPos && object.top < yPos + world.tileSize){
+          object.xVel = 0;
+          object.xPos = xPos - object.width;
+        };
+      };
+      function collisionTop(xPos, yPos, object){
+        if (object.right > xPos && object.left < xPos + world.tileSize &&
+            object.top < yPos + world.tileSize && object.topOld >= yPos + world.tileSize){
+          object.yVel = 0;
+          object.yPos = yPos + object.height;
+        };
+      };
+      function collisionLeft(xPos, yPos, object){
+        if (object.left < xPos + world.tileSize && object.leftOld >= xPos + world.tileSize &&
+            object.bottom > yPos && object.top < yPos + world.tileSize){
+          object.xVel = 0;
+          object.xPos = xPos + object.width;
+        };
+      };
+      function collisionSlopeBR(xPos, yPos, object){
+        let xCurrent = object.right - xPos;
+        let slopeTop = -1 * xCurrent + yPos + world.tileSize;
+        if (xCurrent > world.tileSize && object.bottom > yPos && object.top < yPos + world.tileSize && object.right > xPos && object.left < xPos + world.tileSize){
+          object.onGround = true;
+          object.yVel = 0;
+          object.jumps = 2;
+          object.yPos = yPos - object.height;
+        } else if (object.bottom > slopeTop && object.bottom > yPos && object.top < yPos + world.tileSize && object.right > xPos && object.left < xPos + world.tileSize){
+          object.onGround = true;
+          object.yVel = 0;
+          object.jumps = 2;
+          object.yPos = slopeTop - object.height;
+        };
+      };
+      function collisionSlopeTR(xPos, yPos, object){
+
+      };
+      function collisionSlopeTL(xPos, yPos, object){
+
+      };
+      function collisionSlopeBL(xPos, yPos, object){
+
+      };
+
+      function drawWorld(){
+        ctx.fillStyle = "skyblue";
+        ctx.fillRect(0, 0, world.length, 576);
+        for (var i = 0; i < world.map.length; i++){
+          var xPos = (i * world.tileSize) - (world.length * Math.floor((i * world.tileSize) / world.length));
+          var yPos = Math.floor(i / world.columns) * world.tileSize;
+          if (world.map[i] == 00){}
+          else if (world.map[i] == 01) {createSquare01(xPos, yPos);}
+          else if (world.map[i] == 02) {createSquare02(xPos, yPos);}
+          else if (world.map[i] == 03) {createSquare03(xPos, yPos);}
+          else if (world.map[i] == 04) {createSquare04(xPos, yPos);}
+          else if (world.map[i] == 05) {createSquare05(xPos, yPos);}
+          else if (world.map[i] == 06) {createSquare06(xPos, yPos);}
+          else if (world.map[i] == 07) {createSquare07(xPos, yPos);}
+          else if (world.map[i] == 08) {createSquare08(xPos, yPos);}
+          else if (world.map[i] == 09) {createSquare09(xPos, yPos);}
+          else if (world.map[i] == 10) {createSquare10(xPos, yPos);}
+          else if (world.map[i] == 11) {createSquare11(xPos, yPos);}
+          else if (world.map[i] == 12) {createSquare12(xPos, yPos);}
+          else if (world.map[i] == 13) {createSquare13(xPos, yPos);}
+          else if (world.map[i] == 14) {createSquare14(xPos, yPos);}
+          else if (world.map[i] == 15) {createSquare15(xPos, yPos);}
+          else if (world.map[i] == 16) {createSquare16(xPos, yPos);}
+          else if (world.map[i] == 17) {createSquare17(xPos, yPos);}
+          else if (world.map[i] == 18) {createSquare18(xPos, yPos);}
+          else if (world.map[i] == 19) {createSquare19(xPos, yPos);}
+          else if (world.map[i] == 20) {createSquare20(xPos, yPos);}
+          else if (world.map[i] == 21) {createSquare21(xPos, yPos);}
+          else if (world.map[i] == 22) {createSquare22(xPos, yPos);};
+        };
+
+        function createSquare01(xPos, yPos){
+          ctx.fillStyle = "green";
+          ctx.fillRect(xPos, yPos, world.tileSize, world.tileSize);
+          ctx.fillStyle = "#8B4513";
+          ctx.fillRect(xPos, yPos + world.tileSize/2, world.tileSize, world.tileSize/2);
+        };
+        function createSquare02(xPos, yPos){
+          ctx.fillStyle = "green";
+          ctx.fillRect(xPos, yPos, world.tileSize, world.tileSize);
+          ctx.fillStyle = "#8B4513";
+          ctx.fillRect(xPos + world.tileSize/2, yPos, world.tileSize/2, world.tileSize);
+        };
+        function createSquare03(xPos, yPos){
+          ctx.fillStyle = "green";
+          ctx.fillRect(xPos, yPos, world.tileSize, world.tileSize);
+          ctx.fillStyle = "#8B4513";
+          ctx.fillRect(xPos, yPos, world.tileSize, world.tileSize/2);
+        };
+        function createSquare04(xPos, yPos){
+          ctx.fillStyle = "green";
+          ctx.fillRect(xPos, yPos, world.tileSize, world.tileSize);
+          ctx.fillStyle = "#8B4513";
+          ctx.fillRect(xPos, yPos, world.tileSize/2, world.tileSize);
+        };
+        function createSquare05(xPos, yPos){
+          ctx.fillStyle = "green";
+          ctx.fillRect(xPos, yPos, world.tileSize, world.tileSize);
+          ctx.fillStyle = "#8B4513";
+          ctx.fillRect(xPos + world.tileSize/2, yPos + world.tileSize/2, world.tileSize/2, world.tileSize/2);
+        };
+        function createSquare06(xPos, yPos){
+          ctx.fillStyle = "green";
+          ctx.fillRect(xPos, yPos, world.tileSize, world.tileSize);
+          ctx.fillStyle = "#8B4513";
+          ctx.fillRect(xPos + world.tileSize/2, yPos, world.tileSize/2, world.tileSize/2);
+        };
+        function createSquare07(xPos, yPos){
+          ctx.fillStyle = "green";
+          ctx.fillRect(xPos, yPos, world.tileSize, world.tileSize);
+          ctx.fillStyle = "#8B4513";
+          ctx.fillRect(xPos, yPos, world.tileSize/2, world.tileSize/2);
+        };
+        function createSquare08(xPos, yPos){
+          ctx.fillStyle = "green";
+          ctx.fillRect(xPos, yPos, world.tileSize, world.tileSize);
+          ctx.fillStyle = "#8B4513";
+          ctx.fillRect(xPos, yPos + world.tileSize/2, world.tileSize/2, world.tileSize/2);
+        };
+        function createSquare09(xPos, yPos){
+          ctx.fillStyle = "green";
+          ctx.fillRect(xPos, yPos, world.tileSize, world.tileSize);
+        };
+        function createSquare10(xPos, yPos){
+          ctx.fillStyle = "#8B4513";
+          ctx.fillRect(xPos, yPos, world.tileSize, world.tileSize);
+        };
+        function createSquare11(xPos, yPos){
+          ctx.fillStyle = "#8B4513";
+          ctx.fillRect(xPos, yPos, world.tileSize, world.tileSize);
+          ctx.fillStyle = "green";
+          ctx.fillRect(xPos, yPos, world.tileSize/2, world.tileSize/2);
+        };
+        function createSquare12(xPos, yPos){
+          ctx.fillStyle = "#8B4513";
+          ctx.fillRect(xPos, yPos, world.tileSize, world.tileSize);
+          ctx.fillStyle = "green";
+          ctx.fillRect(xPos, yPos + world.tileSize/2, world.tileSize/2, world.tileSize/2);
+        };
+        function createSquare13(xPos, yPos){
+          ctx.fillStyle = "#8B4513";
+          ctx.fillRect(xPos, yPos, world.tileSize, world.tileSize);
+          ctx.fillStyle = "green";
+          ctx.fillRect(xPos + world.tileSize/2, yPos + world.tileSize/2, world.tileSize/2, world.tileSize/2);
+        };
+        function createSquare14(xPos, yPos){
+          ctx.fillStyle = "#8B4513";
+          ctx.fillRect(xPos, yPos, world.tileSize, world.tileSize);
+          ctx.fillStyle = "green";
+          ctx.fillRect(xPos + world.tileSize/2, yPos, world.tileSize/2, world.tileSize/2);
+        };
+        function createSquare15(xPos, yPos){
+          ctx.fillStyle = "green";
+          ctx.beginPath();
+          ctx.moveTo(xPos, yPos + world.tileSize);
+          ctx.lineTo(xPos + world.tileSize, yPos + world.tileSize);
+          ctx.lineTo(xPos + world.tileSize, yPos);
+          ctx.fill();
+          ctx.fillStyle = "#8B4513"
+          ctx.beginPath();
+          ctx.moveTo(xPos + world.tileSize/2, yPos + world.tileSize);
+          ctx.lineTo(xPos + world.tileSize, yPos + world.tileSize);
+          ctx.lineTo(xPos + world.tileSize, yPos + world.tileSize/2);
+          ctx.fill();
+        };
+        function createSquare16(xPos, yPos){
+          ctx.fillStyle = "green";
+          ctx.beginPath();
+          ctx.moveTo(xPos, yPos);
+          ctx.lineTo(xPos + world.tileSize, yPos);
+          ctx.lineTo(xPos + world.tileSize, yPos + world.tileSize);
+          ctx.fill();
+          ctx.fillStyle = "#8B4513"
+          ctx.beginPath();
+          ctx.moveTo(xPos + world.tileSize/2, yPos);
+          ctx.lineTo(xPos + world.tileSize, yPos);
+          ctx.lineTo(xPos + world.tileSize, yPos + world.tileSize/2);
+          ctx.fill();
+        };
+        function createSquare17(xPos, yPos){
+          ctx.fillStyle = "green";
+          ctx.beginPath();
+          ctx.moveTo(xPos + world.tileSize, yPos);
+          ctx.lineTo(xPos, yPos);
+          ctx.lineTo(xPos, yPos + world.tileSize);
+          ctx.fill();
+          ctx.fillStyle = "#8B4513"
+          ctx.beginPath();
+          ctx.moveTo(xPos + world.tileSize/2, yPos);
+          ctx.lineTo(xPos, yPos);
+          ctx.lineTo(xPos, yPos + world.tileSize/2);
+          ctx.fill();
+        };
+        function createSquare18(xPos, yPos){
+          ctx.fillStyle = "green";
+          ctx.beginPath();
+          ctx.moveTo(xPos + world.tileSize, yPos + world.tileSize);
+          ctx.lineTo(xPos, yPos + world.tileSize);
+          ctx.lineTo(xPos, yPos);
+          ctx.fill();
+          ctx.fillStyle = "#8B4513"
+          ctx.beginPath();
+          ctx.moveTo(xPos + world.tileSize/2, yPos + world.tileSize);
+          ctx.lineTo(xPos, yPos + world.tileSize);
+          ctx.lineTo(xPos, yPos + world.tileSize/2);
+          ctx.fill();
+        };
+        function createSquare19(xPos, yPos){
+          ctx.fillStyle = "#8B4513";
+          ctx.fillRect(xPos, yPos, world.tileSize, world.tileSize);
+          ctx.fillStyle = "green";
+          ctx.beginPath();
+          ctx.moveTo(xPos, yPos);
+          ctx.lineTo(xPos, yPos + world.tileSize/2);
+          ctx.lineTo(xPos + world.tileSize/2, yPos);
+          ctx.fill();
+        };
+        function createSquare20(xPos, yPos){
+          ctx.fillStyle = "#8B4513";
+          ctx.fillRect(xPos, yPos, world.tileSize, world.tileSize);
+          ctx.fillStyle = "green";
+          ctx.beginPath();
+          ctx.moveTo(xPos, yPos + world.tileSize/2);
+          ctx.lineTo(xPos, yPos + world.tileSize);
+          ctx.lineTo(xPos + world.tileSize/2, yPos + world.tileSize);
+          ctx.fill();
+        };
+        function createSquare21(xPos, yPos){
+          ctx.fillStyle = "#8B4513";
+          ctx.fillRect(xPos, yPos, world.tileSize, world.tileSize);
+          ctx.fillStyle = "green";
+          ctx.beginPath();
+          ctx.moveTo(xPos + world.tileSize/2, yPos + world.tileSize);
+          ctx.lineTo(xPos + world.tileSize, yPos + world.tileSize);
+          ctx.lineTo(xPos + world.tileSize, yPos + world.tileSize/2);
+          ctx.fill();
+        };
+        function createSquare22(xPos, yPos){
+          ctx.fillStyle = "#8B4513";
+          ctx.fillRect(xPos, yPos, world.tileSize, world.tileSize);
+          ctx.fillStyle = "green";
+          ctx.beginPath();
+          ctx.moveTo(xPos + world.tileSize, yPos);
+          ctx.lineTo(xPos + world.tileSize/2, yPos);
+          ctx.lineTo(xPos + world.tileSize, yPos + world.tileSize/2);
+          ctx.fill();
+        };
+        ctx.fillStyle = player.color;
+        ctx.fillRect(player.xPos, player.yPos, player.width, player.height);
+        for (var i = 0; i < enemies.length; i++){
+          ctx.fillStyle = enemies[i].color;
+          ctx.fillRect(enemies[i].xPos, enemies[i].yPos, enemies[i].width, enemies[i].height);
+        };
+      };
+
+      function updateWorld(){
+        // update player
+        player.xPosOld = player.xPos;
+        player.yPosOld = player.yPos;
+        player.xPos += player.xVel;
+        player.yPos += player.yVel;
+        player.xVel *= 0.85;
+        player.yVel *= 0.9;
+        player.yVel += 1;
+
+        // update enemies
+        for (var i = 0; i < enemies.length; i++){
+          enemies[i].xPosOld = enemies[i].xPos;
+          enemies[i].yPosOld = enemies[i].yPos;
+          enemies[i].xPos += enemies[i].xVel;
+          enemies[i].yPos += enemies[i].yVel;
+          enemies[i].xVel *= 0.85;
+          enemies[i].yVel *= 0.9;
+          enemies[i].yVel += 1;
+          enemies[i].top = enemies[i].yPos;
+          enemies[i].bottom = enemies[i].yPos + enemies[i].height;
+          enemies[i].left = enemies[i].xPos;
+          enemies[i].right = enemies[i].xPos + enemies[i].width;
+          enemies[i].topOld = enemies[i].yPos;
+          enemies[i].bottomOld = enemies[i].yPos + enemies[i].height;
+          enemies[i].leftOld = enemies[i].xPos;
+          enemies[i].rightOld = enemies[i].xPos + enemies[i].width;
+        };
+
+        // collision detection
+        for (var i = 0; i < world.map.length; i++){
+          var xPos = (i * world.tileSize) - (world.length * Math.floor((i * world.tileSize) / world.length));
+          var yPos = Math.floor(i / world.columns) * world.tileSize;
+          for (var j = -1; j < enemies.length; j++){
+            if (j == -1) {
+              var object = player;
+            } else {
+              var object = enemies[j];
+            };
+            if (world.map[i] == 01) {collisionBottom(xPos, yPos, object)}
+            else if (world.map[i] == 02) {collisionRight(xPos, yPos, object)}
+            else if (world.map[i] == 03) {collisionTop(xPos, yPos, object)}
+            else if (world.map[i] == 04) {collisionLeft(xPos, yPos, object)}
+            else if (world.map[i] == 05) {collisionRight(xPos, yPos, object); collisionBottom(xPos, yPos, object)}
+            else if (world.map[i] == 06) {collisionRight(xPos, yPos, object); collisionTop(xPos, yPos, object)}
+            else if (world.map[i] == 07) {collisionLeft(xPos, yPos, object); collisionTop(xPos, yPos, object)}
+            else if (world.map[i] == 08) {collisionLeft(xPos, yPos, object); collisionBottom(xPos, yPos, object)}
+            else if (world.map[i] == 09) {collisionRight(xPos, yPos, object); collisionTop(xPos, yPos, object); collisionLeft(xPos, yPos, object); collisionBottom(xPos, yPos, object)}
+            else if (world.map[i] == 15) {collisionSlopeBR(xPos, yPos, object)};
+        //  else if (world.map[i] == 16) {collisionSlopeTR(xPos, yPos, object)};
+          };
+        };
+
+        // collisjon screen boundaries
+        if (player.xPos < 0){
+          player.xVel = 0;
+          player.xPos = 0;
+        };
+        if (player.xPos > world.length - player.width){
+          player.xVel = 0;
+          player.xPos = world.length - player.width;
+        };
+        if (player.yPos > ctx.canvas.height){
+          window.location.reload();
+        };
+
+        // player movement
+        if (controller.a){
+          player.xVel = -player.movementSpeed;
+        };
+        if (controller.d){
+          player.xVel = player.movementSpeed;
+        };
+        if (controller.w && player.jumps > 0 && player.jumpTimeout == false){
+          player.yVel = -25;
+          player.onGround = false;
+          player.jumps -= 1;
+          player.jumpTimeout = true;
+          setTimeout(function(){player.jumpTimeout = false;}, 200);
+        };
+        if (controller.shift){
+          player.xVel *= 0.4;
+        };
+
+        // enemy movement
+        for (var i = 0; i < enemies.length; i++){
+          var distanceX = (player.xPos + (player.width/2)) - (enemies[i].xPos + (enemies[i].width/2));
+          var distanceY = (player.yPos + (player.height/2)) - (enemies[i].yPos + (enemies[i].height/2));
+          if (Math.abs(distanceX) < enemies[i].attackRange){
+            enemies[i].attacking = true;
+            if (Math.abs(distanceX) < enemies[i].movementSpeed){
+              enemies[i].xVel = 0;
+            } else if (distanceX < 0){
+              enemies[i].xVel = -enemies[i].movementSpeed;
+            } else if (distanceX > 0){
+              enemies[i].xVel = enemies[i].movementSpeed;
+            };
+            if (Math.abs(distanceX) < player.width/2 + enemies[i].width/2 && Math.abs(distanceY) < player.height/2 + enemies[i].height/2) {
+              player.color = "black";
+            };
+          } else {
+            enemies[i].attacking = false;
+          };
+        };
+
+        // move screen with player
+        var translateX = Number();
+        if (controller.d && player.xPos > screenCenter && screenCenter < world.length - ctx.canvas.width/2){
+          translateX = -player.movementSpeed;
+          screenCenter -= translateX;
+          ctx.translate(translateX, 0);
+        };
+        if (controller.a && player.xPos < screenCenter && screenCenter > ctx.canvas.width/2){
+         translateX = player.movementSpeed;
+         screenCenter -= translateX;
+          ctx.translate(translateX, 0);
+        };
+      };
+
+      var loop = function(){
+
+        drawWorld();
+
+        updateWorld();
+
+        window.requestAnimationFrame(loop);
+      };
+      window.requestAnimationFrame(loop);
+      window.addEventListener("keydown", controller.keyUpDown);
+      window.addEventListener("keyup", controller.keyUpDown);
+    </script>
+  </body>
+</html>

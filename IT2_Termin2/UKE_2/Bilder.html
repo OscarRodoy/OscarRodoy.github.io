@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    body{
+      margin: 0px;
+      padding: 0px;
+      overflow: hidden;
+    }
+      #bilde1{
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        position: relative;
+        filter: invert(70%);
+        z-index: 1;
+      }
+      #bilde2{
+        filter: drop-shadow(100px 50px 5px black);
+        height: 50vh;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+      }
+    </style>
+  </head>
+  <body>
+
+    <img id="bilde1" src="../Bilder/fugl.jpg">
+    <img id="bilde2" src="../Bilder/gitar_sort.png">
+
+    <svg width="200px" height="200px">
+      <rect width="100px" height="100px"></rect>
+    </svg>
+
+    <!-- geogrbra -> fil -> ekporter -> bilde -> svg fil format -->
+
+  </body>
+</html>

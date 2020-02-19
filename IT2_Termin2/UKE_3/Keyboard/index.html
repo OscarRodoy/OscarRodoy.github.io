@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  <style media="screen">
+    .svarteknapper{
+      background-color:black;
+      width: 25px;
+      height: 120px;
+    }
+    .keyboard{position: relative;}
+    .hvitdiv{
+      position: absolute;
+      top: 0;
+      left: 300px;
+    }
+    .lyddiv{
+      position: absolute;
+      top: 300;
+      left: 0px;
+    }
+    .hviteknapper{
+      width: 50px;
+      height: 180px;
+      background-color: white;
+    }
+    .svarteknapper{
+      position: absolute;
+      top: 0;
+    }
+    #k14{left: 337.5px;}
+    #k15{left: 437.5px;}
+    #k16{left: 487.5px;}
+    #k17{left: 587.5px;}
+    #k18{left: 637.5px;}
+    #k19{left: 687.5px;}
+    #k20{left: 787.5px;}
+    #k21{left: 837.5px;}
+    #k22{left: 937.5px;}
+  </style>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+<div class="keyboard">
+<div class="hvitdiv">
+</div>
+</div>
+<div class="" id="lyddiv">
+</div>
+<script type="text/javascript">
+var lyddiv=document.querySelector("#lyddiv");
+var keyboard=document.querySelector(".keyboard");
+var hvitdiv=document.querySelector(".hvitdiv");
+
+var lyderArray=["Lyder/k1.wav","Lyder/k2.wav","Lyder/k3.wav","Lyder/k4.wav","Lyder/k5.wav","Lyder/k6.wav","Lyder/k7.wav",
+"Lyder/k8.wav","Lyder/k9.wav","Lyder/k10.wav","Lyder/k11.wav","Lyder/k12.wav","Lyder/k13.wav","Lyder/k14.wav","Lyder/k15.wav",
+"Lyder/k1.wav","Lyder/k2.wav","Lyder/k3.wav","Lyder/k4.wav","Lyder/k5.wav","Lyder/k6.wav","Lyder/k7.wav",
+"Lyder/k8.wav"];
+const arraykoder=[90,88,65,83,68,70,71,72,74,75,76,192,222,77,87,69,82,84,89,85,73,79,80];
+for (var i =0;i<14;i++){
+  hvitdiv.innerHTML+=`<button class="hviteknapper" id="k${i}"></button>`
+}
+for(var i =14;i<23;i++){
+  keyboard.innerHTML+=`<button class="svarteknapper" type="button" id="k${i}"></button>`
+}
+for (var i = 0;i<lyderArray.length;i++){
+lyddiv.innerHTML+=`<audio src="${lyderArray[i]}" ></audio>`
+}
+var knapper = document.querySelectorAll("button");
+var lyder = document.querySelectorAll("audio");
+
+for(var knapp of knapper){
+  knapp.onmousedown=SpillNote;
+  knapp.onmouseup=ByttFarge;
+}
+function SpillNote(evt){
+var i=evt.target.id;
+var j=i.slice(1);
+playAudio(j);
+evt.target.style.backgroundColor='#f3e939';
+}
+function ByttFarge(e){
+  var klassenavnet=e.target.className;
+  if(klassenavnet=='hviteknapper'){
+    e.target.style.backgroundColor='white';
+  }else {
+    e.target.style.backgroundColor='black';
+  }
+}
+
+document.onkeydown=function(evt){
+  var i = arraykoder.indexOf(evt.keyCode);
+  if (i>=0 & i<arraykoder.length){
+    playAudio(i);
+    knapper[i].style.backgroundColor='#f3e939'}
+}
+document.onkeyup=function(evt){
+  var i = arraykoder.indexOf(evt.keyCode);
+  if (i>=0 & i<arraykoder.length){
+    var klassenavnet=knapper[i].className;
+    if(klassenavnet=='hviteknapper'){
+      knapper[i].style.backgroundColor='white';
+    }else {
+      knapper[i].style.backgroundColor='black';
+    }
+  }
+}
+function playAudio(i) {
+    if (lyder[i].paused) {
+        lyder[i].play();
+        console.log("Play!");}
+    else {
+        if(lyder[i].currentTime>0.2){
+          lyder[i].currentTime = 0
+          console.log("Play Again!");
+        }
+    }
+}
+</script>
+  </body>
+</html>

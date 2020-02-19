@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <h1>Minibank</h1>
+    <div>
+      Saldo
+      <input type="number" id="inpSaldo" autofocus placeholder="Saldo">
+    </div>
+    <div>
+      Uttak
+      <input type="number" id="inpUttak" placeholder="Uttak">
+    </div>
+    <button type="button" id="btn">Beregn ny saldo</button>
+    <button type="button" id="btnSlett">Slett</button>
+    <div id="melding"></div>
+
+    <script type="text/javascript">
+      var inpSaldo = document.getElementById("inpSaldo");
+      var inpUttak = document.getElementById("inpUttak");
+      var btn = document.getElementById("btn");
+      var btnSlett = document.getElementById("btnSlett");
+      var medling = document.getElementById("melding");
+      var saldo = 0;
+      var uttak = 0;
+
+      btnSlett.onclick = function(){
+        inpSaldo.value = inpUttak.value = "";
+      };
+
+      function visSaldo(){
+        saldo = Number(inpSaldo.value);
+        uttak = Number(inpUttak.value);
+        if (saldo < uttak) {
+          melding.innerHTML += "Du har ikke dekning på kontoen!<br>";
+        } else {
+          saldo = saldo - uttak;
+          melding.innerHTML += "Du har tatt ut kr " + uttak + ". Ny saldo er kr " + saldo + ".<br>";
+          inpSaldo.value = saldo;
+        };
+      };
+
+      btn.onclick = visSaldo;
+
+    </script>
+
+  </body>
+</html>

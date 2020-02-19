@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      #ramme{
+        width: 800px;
+        height: 580px;
+        border: 2px solid black;
+        background-image: url(bakgrunn.JPG);
+        position: relative;
+        overflow: hidden;
+      }
+      #ramme #bil{
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        width: 100px;
+        display: block;
+        transform: scaleX(-1);
+      }
+      #ramme #sol{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 200px;
+        display: block;
+      }
+      #ramme #shrek{
+        position: absolute;
+        bottom: 0px;
+        left: 600px;
+        width: 100px;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="ramme">
+      <img id="sol" src="sol.png">
+      <img id="bil" src="bil.png">
+      <img id="shrek" src="shrek.png">
+    </div>
+
+    <script type="text/javascript">
+
+    var solAnimasjon = document.getElementById("sol");
+    solAnimasjon.animate([
+      {left: 0 + "px"},
+      {left: 200 + "px"},
+      {left: 400 + "px"},
+      {left: 600 + "px"}
+    ],{
+      duration: 5000,
+      iterations: Infinity,
+      easing: "linear",
+      direction: "alternate"
+    });
+
+    var bilAnimasjon = document.getElementById("bil");
+    bilAnimasjon.animate([
+      {left: -100 + "px"},
+      {left: 100 + "px"},
+      {left: 600 + "px"},
+      {left: 800 + "px"}
+    ],{
+      duration: 5000,
+      iterations: Infinity,
+      easing: "linear"
+    });
+
+    var shrekAnimasjon = document.getElementById("shrek");
+    shrekAnimasjon.animate([
+      {left: 600 + "px", bottom: 0 + "px"},
+      {left: 550 + "px", bottom: 0 + "px"},
+      {left: 500 + "px", bottom: 0 + "px"},
+      {left: 450 + "px", bottom: 100 + "px"}, //, transform: "rotateX(180deg)"},
+      {left: 400 + "px", bottom: 0 + "px"}, //, transform: "rotateX(180deg)"},
+      {left: 600 + "px", bottom: 0 + "px"}
+    ],{
+      duration: 5000,
+      iterations: Infinity,
+      easing: "linear"
+    });
+    </script>
+  </body>
+</html>

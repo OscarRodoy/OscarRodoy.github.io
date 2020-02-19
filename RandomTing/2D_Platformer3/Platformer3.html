@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="Platformer3.css">
+  </head>
+  <body>
+
+    <div id="mainMenu">
+      <h1>Title</h1>
+      <div id="btnSelectLevel">Select</div><br>
+      <div>Placeholder</div><br>
+      <div>Placeholder</div>
+    </div>
+
+    <div id="selectLevel">
+      <h1>Select a Level</h1>
+      <button id="btnLevel_1" type="button">Level 1</button>
+      <button type="button">Level 2</button>
+      <button type="button">Level 3</button>
+    </div>
+
+    <div id="playerDisplay">
+      <div id="playerIcon">&#129497;</div>
+      <div id="healthBar"><p id="health">&#128151; 200</p></div>
+      <div id="moneyBar"><p id="money">&#128176; 0</p></div>
+    </div>
+
+    <div id="btnPause">&#10074;&#10074;</div>
+    <div id="pausedMenu">
+      <button type="button">Back to Manu</button>
+      <button id="btnContinue" type="button">Continue</button>
+      <button type="button">Settings</button>
+    </div>
+
+    <canvas id="canvas"></canvas>
+
+    <script src="funcDraw.js"></script>
+    <script src="funcUpdate.js"></script>
+    <script src="main.js"></script>
+    <script src="menu.js"></script>
+
+  </body>
+</html>

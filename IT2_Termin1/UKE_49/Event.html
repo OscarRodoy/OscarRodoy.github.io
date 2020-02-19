@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body onclick="myFunction(event)">
+
+    <!-- Eks 1 -->
+    <p>Click on an element</p>
+    <h1>Return the element you clicked on</h1>
+    <p><strong>Note:</strong> The target property returns the element that triggered the event, and not necessarily the eventlistener's element.</p>
+    <script>
+    function myFunction(event) {
+      console.log(event.target.nodeName);    // viser elementet du trykket på
+      console.log(event.target.id);          // viser id til elementet du trykket på
+      console.log(event.target.innerHTML);   // viser innholdet til elementet du trykket på
+    }
+    </script>
+
+    <!-- Eks 2 -->
+    <img id="bilde" src="">
+    <button id="btnBilde1" type="button" data-typeAnything="Pic1.jpg">Vis Bilde 1</button>
+    <button id="btnBilde2" type="button" data-typeAnything="Pic2.jpg">Vis Bilde 2</button>
+    <script type="text/javascript">
+      var bilde = document.getElementById("bilde");
+      var btnBilde1 = document.getElementById("btnBilde1");
+      var btnBilde2 = document.getElementById("btnBilde2");
+      function visBilde(evt){
+        var knapp = evt.target;
+        var bildefil = knapp.getAttribute("data-typeAnything");
+        bilde.src = bildefil;
+      };
+      btnBilde1.onclick = btnBilde2.onclick = visBilde;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      map{
+        cursor: grab;
+      }
+      img{
+        border: 1px solid black;
+        width: 400px;
+        height: 500px;
+      }
+      #animasjon{
+        width: 100px;
+        height: 100px;
+        background-color: skyblue;
+        position: absolute;
+        top: 100px;
+        right: 100px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <img src="Filer/Image.png" usemap="#bildeKnapper">
+    <map name="bildeKnapper">
+      <area id="knapp1" shape="rect" coords="200,100,400,200" href="#" alt="">
+      <area id="knapp2" shape="rect" coords="200,400,400,500" href="#" alt="">
+    </map>
+    <video id="video" src="Filer/Video.mp4" poster="Filer/Image.png" style="border: 1px solid black; width: 400px"></video>
+    <p id="tekst">Tekst tekst tekst</p>
+    <input id="range" type="range" min="1" max="20">
+    <div id="animasjon">a</div>
+
+    <script type="text/javascript">
+
+      var knapp1 = document.getElementById("knapp1");
+      var knapp2 = document.getElementById("knapp2");
+      var video = document.getElementById("video");
+      var range = document.getElementById("range");
+
+      knapp1.onclick = function(){
+        video.play();
+        myAnimation.play();
+      };
+
+      knapp2.onclick = function(){
+        video.pause();
+        myAnimation.pause();
+      };
+
+      range.onchange = function(){
+        var playBackRate = range.value;
+        console.log(playBackRate);
+        myAnimation.playbackRate = playBackRate / 10;
+        video.playbackRate = playBackRate / 10;
+      };
+
+      var animasjon = document.getElementById("animasjon");
+      var myAnimation = animasjon.animate([
+        {width: 200 + "px", height: 200 + "px", top: 200 + "px", right: 200 + "px"},
+        {width: 300 + "px", height: 300 + "px", top: 300 + "px", right: 300 + "px"},
+        {width: 200 + "px", height: 200 + "px", top: 100 + "px", right: 200 + "px"}
+      ],{
+        duration: 5000,
+        iterations: 3,
+        easing: "linear",
+        direction: "alternate",
+        fill: "forwards"
+      });
+      myAnimation.pause();
+
+      var loop = function(){
+
+        if (video.currentTime >= video.duration / 2){
+          video.pause();
+        };
+        
+        console.log(video.currentTime, video.duration)
+
+        window.requestAnimationFrame(loop);
+      };
+      window.requestAnimationFrame(loop);
+
+    </script>
+  </body>
+</html>

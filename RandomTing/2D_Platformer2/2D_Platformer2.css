@@ -1,0 +1,21 @@
+body{
+  margin: 0px;
+  text-align: center;
+  height: 100vh;
+  position: relative;
+}
+canvas{
+  background-color:#303840;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+p{
+  color: red;
+  z-index: 10;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
