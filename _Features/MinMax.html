@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      body{
+        margin: 0px;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      div{
+        background: gray;
+        width: clamp(100px + 50px, 30%, 200px); /* clamp(min value, standard value, max value)*/
+        text-align: center;
+      }
+      p{
+        width: max(50%, 100px); /* max(value1, value2) can use as many values as desired, chooses the highest value inside*/
+        font-size: min(5vw, 16px); /* min(value1, value2) can use as many values as desired, chooses the lowest value inside*/
+        padding: 2px;
+        background: skyblue;
+      }
+      /*
+        1rem = 100% of root font size
+        1em = 100% of parent font size
+        1% = 1% of parent size
+        1vh = 1% of viewport height (screen height)
+        1vw = 1% of viewport width (screen width)
+        1vmin = 1% of the smaller viewport (the smallest of width or height)
+        1vmax = 1% of the largest viewport (the largest of the width or height)
+        1px = 1px (depends on pixel density)
+        1fr = 1 / however many fractions you have minus gaps (only for flex or grid)
+      */
+    </style>
+  </head>
+  <body>
+    <div>
+      <p>This is some text</p>
+    </div>
+  </body>
+</html>

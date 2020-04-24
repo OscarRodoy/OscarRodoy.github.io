@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Free and Easy to use 2D platformer level creator. Use your own, or our premade tiles and backgrounds, to quickly construct any world your imagination can come up with">
+    <meta name="keywords" content="Tile-based, 2D-platformer, platformer, level-creator">
+    <title>Map Creator - Free tile based map editor</title>
+    <link rel="stylesheet" href="Game.css">
+  </head>
+  <body>
+
+    <!-- HELLO -->
+
+    <div id="sideBar">
+      <div id="headline">Map Creator</div>
+      <div id="gridBtns">
+        <div id="btnConfig" onclick="setModeConfig()"><p>Config</p></div>
+        <div id="btnBuild" onclick="setModeBuild()"><p>Build</p></div>
+        <div id="btnEdit" onclick="setModeEdit()"><p>Edit</p></div>
+      </div>
+      <div id="mainArea">
+
+        <div id="gridConfig">
+          <h1 id="headerBackground" onclick="toggleDiv(`divBackground`)"> Background: </h1>
+          <div id="divBackground">
+            <div>
+              <input type="radio" name="backgroundOption" value="color" onclick="selectBackground(this);" id="bgOption1">
+              <label for="bgOption1"><label id="container">Select Color<input id="colorPicker" type="color" name="" value="#202020"></label></label>
+            </div>
+            <div>
+              <input type="radio" name="backgroundOption" value="Imported/Background1.svg" onclick="selectBackground(this);" id="bgOption2">
+              <label for="bgOption2"><img src="Imported/Background1.svg"></label>
+            </div>
+            <div>
+              <input type="radio" name="backgroundOption" value="Imported/Background2.svg" onclick="selectBackground(this);" id="bgOption3">
+              <label for="bgOption3"><img src="Imported/Background2.svg"></label>
+            </div>
+            <div>
+              <input type="radio" name="backgroundOption" value="Background_Desert.jpg" onclick="selectBackground(this);" id="bgOption4">
+              <label for="bgOption4"><img src="Background_Desert.jpg"></label>
+            </div>
+            <div>
+              <input type="radio" name="backgroundOption" value="Background_Snow.png" onclick="selectBackground(this);" id="bgOption5">
+              <label for="bgOption5"><img src="Background_Snow.png"></label>
+            </div>
+            <div>
+              <input type="radio" name="backgroundOption" value="Background_Forest.png" onclick="selectBackground(this);" id="bgOption6">
+              <label for="bgOption6"><img src="Background_Forest.png"></label>
+            </div>
+            <div>
+              <input type="radio" name="backgroundOption" value="file" onclick="selectBackground(this);" id="bgOption7" accept="image/png, image/jpeg">
+              <label for="bgOption7"><label id="container">Select Image<input id="filePicker" type="file" name="" value=""></label></label>
+            </div>
+          </div>
+          <h1 id="headerWorld" onclick="toggleDiv(`divWorld`)"> World Size: </h1>
+          <div id="divWorld">
+            <label>Map Width: (tiles) <input id="inpWorldWidth" type="number" value="" min="" placeholder=""></label>
+            <label>Map Height: (tiles)<input id="inpWorldHeight" type="number" value="" min="" placeholder=""></label>
+            <p id="currentTiles">*10.000 Max tiles (current: xxxx) <br>*adds/removes from the right/top</p>
+          </div>
+        </div>
+
+        <div id="gridBuild"></div>
+
+        <div id="gridEdit">
+          <div>  </div>
+          <div id="select" onclick="setEditState(`select`)" style="background-image: url(IconSelect.png)">+</div>
+          <div id="deselect" onclick="setEditState(`deselect`)" style="background-image: url(IconSelect.png)">-</div>
+          <div id="delete" onclick="setEditState(`delete`)" style="background-image: url(IconEraser.png)"></div>
+          <div id="spanText" onclick="deselectAll()">Deselect all (0)</div>
+          <div>  </div>
+          <div id="translateUp" onclick="translateUp()" onmousedown="onHold(`translateUp`)" onmouseup="onRelease()"> /\ </div>
+          <div>  </div>
+          <div id="translateLeft" onclick="translateLeft()" onmousedown="onHold(`translateLeft`)" onmouseup="onRelease()"> < </div>
+          <div id="deleteAll" onclick="deleteAll()"> del </div>
+          <div id="translateRight" onclick="translateRight()" onmousedown="onHold(`translateRight`)" onmouseup="onRelease()"> > </div>
+          <div>  </div>
+          <div id="translateDown" onclick="translateDown()" onmousedown="onHold(`translateDown`)" onmouseup="onRelease()"> v </div>
+          <div>  </div>
+        </div>
+
+        <div id="fadeout-gridTop"></div>
+        <div id="fadeout-gridBottom"></div>
+
+      </div>
+      <div id="btnTest">
+        <div onclick=""><p>Test Map</p></div>
+      </div>
+      <div id="gridBtns2">
+        <div id="btnImport" onclick=""><p>Import Map</p></div>
+        <div id="btnExport" onclick=""><p>Export Map</p></div>
+      </div>
+    </div>
+
+    <div id="canvasArea">
+      <canvas id="canvas"></canvas>
+    </div>
+
+    <script src="Draw.js"></script>
+    <script src="Update.js"></script>
+    <script src="Main.js"></script>
+
+  </body>
+</html>

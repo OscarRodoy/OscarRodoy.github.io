@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      /* :root referes to the html tag */
+      :root{
+        --mainColor: skyblue;
+        --secondary: orange;
+        --layout: 1fr 1fr 1fr;
+        --headerHeight: 100px;
+      }
+      /* On screens that are 800px or less, set the background color to blue */
+      @media screen and (max-width: 800px) {
+        :root {
+          --layout: 1fr;
+        }
+      }
+      body{
+        padding: 0px;
+        margin: 0px;
+      }
+      header{
+        background: var(--mainColor);
+        width: 100%;
+        height: var(--headerHeight);
+      }
+      header h1{
+        margin: 0px;
+        text-align: center;
+        line-height: var(--headerHeight);
+        color: var(--secondary);
+      }
+      main{
+        margin: 100px;
+        border: 4px solid var(--mainColor);
+      }
+      main p{
+        text-align: center;
+        margin: 0px;
+        line-height: 40px;
+        font-size: 20px;
+        background: var(--secondary);
+        color: var(--mainColor);
+      }
+      footer{
+        display: grid;
+        grid-template-columns: var(--layout);
+        text-align: center;
+      }
+      footer h2:nth-child(odd) {
+        color: var(--mainColor);
+      }
+      footer h2:nth-child(even) {
+        color: var(--secondary);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>This is text</h1>
+    </header>
+    <main>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </main>
+    <footer>
+      <h2>This is more text</h2>
+      <h2>This is even more text</h2>
+      <h2>Finally, the last text</h2>
+    </footer>
+    <script type="text/javascript">
+
+      var color = "#202020";
+
+      document.querySelector(":root").style.setProperty("--mainColor", color);
+    //  document.querySelector("p").style.setProperty("color", "--mainColor"); doesnt work...
+
+    </script>
+  </body>
+</html>

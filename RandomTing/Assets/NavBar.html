@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+      * {
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+      }
+      li, a, button{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 16px;
+        color: #edf0f1;
+        text-decoration: none;
+      }
+      header{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 15px 10%;
+        background-color: #24252A;
+      }
+      header .logo{
+        cursor: pointer;
+        margin-right: auto;
+        width: 150px;
+      }
+      header ul{
+        list-style: none;
+      }
+      header ul li{
+        display: inline-block;
+        padding: 0px 20px;
+      }
+      header ul li a{
+        transition: all 0.3s ease;
+        padding: 10px;
+      }
+      header ul li a:hover{
+        color: #0088a9;
+      }
+      button{
+        padding: 9px 25px;
+        background-color: rgba(0, 136, 169, 1);
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-left: 20px;
+      }
+      button:hover{
+        background-color: rgba(0, 136, 169, .8);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img class="logo" src="Logo.svg">
+      <nav>
+        <ul>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </nav>
+      <a class="navBtn" href="#"><button type="button" name="button">Contact</button></a>
+    </header>
+  </body>
+</html>

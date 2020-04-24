@@ -1,0 +1,272 @@
+body{
+  margin: 0px;
+  overflow: hidden;
+}
+#canvasArea{
+  position: absolute;
+  top: 0px;
+  left: 252px;
+  overflow: scroll;
+}
+::-webkit-scrollbar{
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track{
+  background-color: #202020;
+}
+::-webkit-scrollbar-thumb{
+  background-color: white;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-corner{
+  background-color: #202020;
+}
+canvas{
+  display: block;
+}
+#sideBar{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 250px;
+  height: 100vh;
+  border-right: 2px solid black;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  background-color: #404040;
+}
+#sideBar h1{
+  text-align: center;
+  font-family: Comic Sans MS;
+  margin: 0px;
+  padding: 8px 0px 8px 0px;
+  color: white;
+}
+#sideBar #gridBtns{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 5px;
+  margin: 5px;
+}
+#sideBar #gridBtns #btnConfig, #btnBuild, #btnEdit{
+  height: 30px;
+  line-height: 30px;
+  font-size: 17px;
+  text-align: center;
+  border: 2px solid white;
+  background-color: #202020;
+  color: white;
+  cursor: pointer;
+}
+#sideBar #gridBtns .active{
+  background-color: white !important;
+  color: #202020 !important;
+  text-decoration: underline;
+}
+#sideBar #gridArea{
+  position: relative;
+}
+#sideBar #gridArea #gridConfig{
+  display: none;
+  overflow-x: hidden;
+  max-height: 67.5vh;
+  min-height: 67.5vh;
+}
+#sideBar #gridArea #gridConfig h1{
+  width: 100%;
+  background-color: grey;
+  font-size: 20px;
+  line-height: 17px;
+  border-top: 2px solid black;
+  margin: 0px;
+}
+#sideBar #gridArea #gridConfig #divBackground{
+  display: grid;
+  grid-template-columns: repeat(6, 150px);
+  grid-gap: 2px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+#sideBar #gridArea #gridConfig #divBackground div{
+  width: 150px;
+  height: 80px;
+  overflow: hidden;
+}
+#sideBar #gridArea #gridConfig #divBackground div input[type="radio"]{
+  display: none;
+}
+#sideBar #gridArea #gridConfig #divBackground div label{
+  cursor: pointer;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  display: block;
+  position: relative;
+  border: 2px solid black;
+  background-color: #202020;
+}
+#sideBar #gridArea #gridConfig #divBackground div label img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#sideBar #gridArea #gridConfig #divBackground div label #container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(50% - 2px);
+  height: calc(50% - 2px);
+  transform: translate(-50%, -50%);
+  padding: 0px;
+  cursor: pointer;
+  text-align: center;
+  color: white;
+  border-color: white;
+  background-color: #202020;
+}
+#sideBar #gridArea #gridConfig #divBackground div label #container input{
+  visibility: hidden;
+}
+#sideBar #gridArea #gridConfig #divBackground div input[type="radio"]:checked + label {
+  border: 2px solid lime;
+}
+#sideBar #gridArea #gridConfig #divWorld{
+  display: grid;
+  grid-template-columns: 1fr;
+}
+#sideBar #gridArea #gridConfig #divWorld #currentTiles{
+  color: darkgrey;
+  margin: 2px 5px 0px 0px;
+  text-align: right;
+}
+#sideBar #gridArea #gridConfig #divWorld label{
+  color: white;
+  font-size: 17px;
+  line-height: 30px;
+  margin: 0px 5px 0px 5px;
+  position: relative;
+}
+#sideBar #gridArea #gridConfig #divWorld label input{
+  width: 87px;
+  position: absolute;
+  right: 0px;
+  height: 20px;
+  margin-top: 5px;
+  padding: 0px;
+}
+#sideBar #gridArea #gridBuild{
+  display: none;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 5px;
+  margin: 0px 0px 0px 5px;
+  overflow-x: hidden;
+  max-height: 67.5vh;
+  min-height: 67.5vh;
+}
+#sideBar ::-webkit-scrollbar {
+  width: 5px;
+}
+#sideBar ::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.6);
+  border-radius: 5px;
+}
+#sideBar ::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: white;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+#sideBar #gridArea #gridBuild div{
+  height: calc((250px - 25px) / 4);
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+#sideBar #gridArea #gridBuild div:hover{
+  filter: brightness(140%);
+}
+#sideBar #gridArea #gridEdit{
+  display: none;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 5px;
+  margin: 0px 12.5% 0px 12.5%;
+  overflow-x: hidden;
+  max-height: 67.5vh;
+  min-height: 67.5vh;
+}
+#sideBar #gridArea #gridEdit div{
+  height: calc((250px - 25px) / 4);
+  width: calc((250px - 25px) / 4);
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 5px;
+  text-align: center;
+  line-height: calc((250px - 25px) / 4);
+  font-size: 40px;
+  font-weight: bold;
+}
+#sideBar #gridArea #gridEdit div:hover{
+  filter: brightness(80%);
+}
+#sideBar #gridArea #gridEdit #spanText{
+  grid-column: 1 / span 3;
+  width: 100%;
+  height: 30px;
+  font-size: 20px;
+  line-height: 30px;
+}
+#sideBar #gridArea #fadeout-gridTop{
+  opacity: 0;
+  transition: opacity 0.3s linear;
+  width: calc(100% - 10px);
+  height: calc((250px - 25px) / 4 / 2);
+  position: absolute;
+  top: 0px;
+  left: 5px;
+  background: -webkit-linear-gradient(
+      rgba(64, 64, 64, 1) 0%,
+      rgba(64, 64, 64, 0) 100%
+  );
+  pointer-events: none;
+}
+#sideBar #gridArea #fadeout-gridBottom{
+  opacity: 1;
+  transition: opacity 0.3s linear;
+  width: calc(100% - 10px);
+  height: calc((250px - 25px) / 4 / 2);
+  position: absolute;
+  bottom: 0px;
+  left: 5px;
+  background: -webkit-linear-gradient(
+      rgba(64, 64, 64, 0) 0%,
+      rgba(64, 64, 64, 1) 100%
+  );
+  pointer-events: none;
+}
+#btnTestMap{
+  height: 40px;
+  margin: 5px;
+  line-height: 40px;
+  font-size: 20px;
+  text-align: center;
+  border: 2px solid white;
+  background-color: #202020;
+  color: white;
+  cursor: pointer;
+}
+#sideBar #gridBtns2{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+  margin: 5px;
+}
+#sideBar #gridBtns2 #btnExport, #btnImport{
+  height: 30px;
+  line-height: 30px;
+  font-size: 17px;
+  text-align: center;
+  border: 2px solid white;
+  background-color: #202020;
+  color: white;
+  cursor: pointer;
+}

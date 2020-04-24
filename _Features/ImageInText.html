@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      body{
+        margin: 0px;
+      }
+      header{
+        height: 100vh;
+        background-color: #404040;
+        position: relative;
+      }
+      main{
+        height: 100vh;
+        background-color: white;
+        position: relative;
+      }
+      footer{
+        height: 100vh;
+        background-color: skyblue;
+        position: relative;
+      }
+      #text{
+        line-height: 100vh;
+        text-align: center;
+        margin: 0px;
+        font-size: 200px;
+        font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+        /* These 5 lines create the effect (be careful with positioning the element) */
+        background-image: url(_Example.jpg);
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        background-attachment: fixed;
+        background-size: contain;
+      }
+    </style>
+  </head>
+  <body>
+
+    <header>
+        <h1 id="text">TEXT</h1>
+    </header>
+
+    <main>
+      <h1 id="text">IMAGE</h1>
+    </main>
+
+    <footer>
+      <h1 id="text">AWESOME</h1>
+    </footer>
+
+  </body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Panteautomat</title>
+    <link rel="stylesheet" href="style.css"> <!--Her er lenke til css-->
+  </head>
+  <body>
+    <h1>Panteautomat</h1>
+    <div id="grid">
+
+      <div id="flasker">
+        <div id="2.5L">
+          <img src="Bilder/flaske.png">
+          <button type="button" name="button" onclick="funcAnimate(`flaskeStor`)">Pant Stor flaske</button>
+        </div>
+        <div id="0.5L">
+          <img src="Bilder/flaske.png">
+          <button type="button" name="button" onclick="funcAnimate(`flaskeLiten`)">Pant Liten flaske</button>
+        </div>
+        <div id="0.4L">
+          <img src="Bilder/boks.png">
+          <button type="button" name="button" onclick="funcAnimate(`boksStor`)">Pant Stor boks</button>
+        </div>
+        <div id="0.3L">
+          <img src="Bilder/boks.png">
+          <button type="button" name="button" onclick="funcAnimate(`boksLiten`)">Pant Liten boks</button>
+        </div>
+      </div>
+
+      <div id="pant">
+        <img src="Bilder/panteautomat.jpg">
+        <div id="skjerm">
+          <p id="visSum">Sum: 0kr</p>
+          <button id="kvitering" type="button">Få Kvitering</button>
+          <button id="rodeKors" type="button">Gi til rødekors</button>
+        </div>
+      </div>
+
+      <div id="info">
+        <p>Info:</p>
+        <ul>
+          <li>Trykk på flaske du vil pante</li>
+          <li>Når du er ferdig trykk på panteknapp eller pantelotteriet</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div id="divAnimasjon">
+
+    </div>
+
+    <script type="text/javascript">
+
+      var divAnimasjon = document.getElementById("divAnimasjon");
+      var topPos, leftPos;
+      var animasjonVarighet = 4000;
+      var animasjon, animasjonFerdig;
+
+      var visSum = document.getElementById("visSum");
+      var sum = 0;
+
+      var flaskeStor = {
+        img: "Bilder/flaske.png",
+        width: "160px",
+        pant: 3,
+        targetLeftPos: 40,
+        targetTopPos: 50
+      };
+
+      var flaskeLiten = {
+        img: "Bilder/flaske.png",
+        width: "80px",
+        pant: 2,
+        targetLeftPos: 42,
+        targetTopPos: 58
+      };
+
+      var boksStor = {
+        img: "Bilder/boks.png",
+        width: "160px",
+        pant: 2.5,
+        targetLeftPos: 40,
+        targetTopPos: 50
+      };
+
+      var boksLiten = {
+        img: "Bilder/boks.png",
+        width: "80px",
+        pant: 1.5,
+        targetLeftPos: 42,
+        targetTopPos: 58
+      };
+
+      function funcAnimate(object) {
+
+        clearTimeout(animasjonFerdig); // hindrer at den legger til penger om animasjonen ikke var ferdig før functionen startet på nytt
+
+        var object = eval(object) // gjør at stringen som vi fikk av parameteret i functionen refererer til objectet med samme navn
+
+        divAnimasjon.innerHTML = `<img src="${object.img}">`;
+        divAnimasjon.style.width = object.width;
+
+        animasjon = divAnimasjon.animate([
+          {left: 100 + "%", top: 10 + "%"}, // der animasjonen starter
+          {left: object.targetLeftPos + "%", top: object.targetTopPos + "%"} // der animasjonen slutter
+        ],{
+          duration: animasjonVarighet,
+          easing: "linear",
+          fill: "backwards"
+        });
+        animasjon.play();
+
+        animasjonFerdig = setTimeout(function(){ // koden starter etter animasjonen er ferdig
+          sum += object.pant;
+          visSum.innerHTML = "Sum: " + sum + "kr";
+        }, animasjonVarighet);
+
+      };
+
+      document.getElementById("kvitering").onclick = function(){
+        clearTimeout(animasjonFerdig);
+        animasjon.currentTime = animasjonVarighet;
+        alert("Din sum ble " + sum + "kr.\nLever kviteringen i kassa for å hente pengene.");
+        sum = 0;
+        visSum.innerHTML = "Sum: " + 0 + "kr";
+      };
+
+      document.getElementById("rodeKors").onclick = function(){
+        clearTimeout(animasjonFerdig);
+        animasjon.currentTime = animasjonVarighet;
+        var number = Math.ceil(Math.random()*10); // 1 av 10 sansynlighet for å vinne
+        if (number == 10) {
+          alert("Gratulerer du vant!\nTa kontakt på 420 69 360 for mer info")
+        } else {
+          alert("Du vant dessverre ikke\nTakk for din donasjon!");
+        };
+        sum = 0;
+        visSum.innerHTML = "Sum: " + 0 + "kr";
+      };
+
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,81 @@
+body{
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
+}
+h1{
+  text-align: center;
+  background-color: red;
+  color: white;
+  line-height: 80px;
+  font-size: 40px;
+  margin: 0px;
+}
+/* Div venstre */
+#grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+#flasker{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+#flasker div{
+  position: relative;
+  border: 2px solid black;
+}
+#flasker div img{
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#flasker div:nth-child(odd) img{
+  width: 160px;
+  margin-top: 20px;
+}
+#flasker div:nth-child(even) img{
+  width: 80px;
+  margin-top: 30%;
+}
+#flasker div button{
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 50px;
+}
+/* Div midten */
+#pant{
+  position: relative;
+}
+#pant img{
+  width: 100%;
+  display: block;
+  height: 500px;
+}
+#pant #skjerm{
+  width: 180px;
+  height: 250px;
+  position: absolute;
+  top: 40%;
+  left: 51%;
+  background-color: white;
+  border-radius: 10px;
+}
+/* Div høyre */
+#info p{
+  margin-left: 20px;
+}
+#info ul{
+  line-height: 30px;
+}
+/* Animasjonen */
+#divAnimasjon{
+  position: absolute;
+  left: 100%;
+  top: 10%;
+  width: 160px;
+}
+#divAnimasjon img{
+  width: 100%;
+}

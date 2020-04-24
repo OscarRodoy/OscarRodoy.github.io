@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      :root{
+        --navHeight: 60px;
+        --margin: 60px;
+        --mainFont: Helvetica;
+
+        --darkRed: #770D15;
+        --lightRed: #B4000F;
+        --grey: #58483A;
+        --darkGreen: #597718;
+        --lightGreen: #90A74C;
+      }
+      body{
+        margin: 0px;
+      }
+      #navBar{
+        height: var(--navHeight);
+        width: calc(100% - var(--margin)*2);
+        position: fixed;
+        top: 0px;
+        background-color: var(--grey);
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        font-family: var(--mainFont);
+        padding-left: var(--margin);
+        padding-right: var(--margin);
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 100;
+      }
+      #logo{
+        line-height: var(--navHeight);
+        margin: 0px;
+        color: white;
+      }
+      #buttons{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-gap: 10px;
+      }
+      #buttons div{
+        text-align: center;
+      }
+      #buttons div a{
+        color: white;
+        text-decoration: none;
+        line-height: var(--navHeight);
+        font-size: 17px;
+      }
+      #heroSection{
+        margin-top: var(--navHeight);
+        height: calc(100vh - var(--navHeight));
+        width: 100%;
+        position: relative;
+      }
+      #heroImage{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(50%);
+      }
+      #heroText{
+        position: absolute;
+        top: 40%;
+        left: var(--margin);
+        width: calc(100% - var(--margin)*2);
+        z-index: 10;
+      }
+      #heroHeadline{
+        color: white;
+        font-size: 70px;
+        font-weight: bold;
+        margin: 0px;
+        font-family: var(--mainFont);
+      }
+      #heroParagraph{
+        margin: 0px;
+        color: white;
+        font-size: 20px;
+        margin-bottom: 15px;
+      }
+      #callToAction{
+        background-color: var(--grey);
+        color: white;
+        border: 2px solid white;
+        line-height: 40px;
+        text-decoration: none;
+        font-size: 20px;
+        padding: 10px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="navBar">
+      <h1 id="logo">DankPizzas</h1>
+      <div id="buttons">
+        <div> <a href="#">Home</a> </div>
+        <div> <a href="#">Menu</a> </div>
+        <div> <a href="#">Blog</a> </div>
+        <div> <a href="#">Contact</a> </div>
+      </div>
+    </div>
+
+    <div id="heroSection">
+      <div id="heroText">
+        <h1 id="heroHeadline">Taste The Dank</h1>
+        <p id="heroParagraph">Our secret ingredience are the dank memes</p>
+        <a id="callToAction" href="#">Book a dank reservation</a>
+      </div>
+      <img id="heroImage" src="HeroImage.jpg">
+    </div>
+
+    <script type="text/javascript">
+
+    </script>
+  </body>
+</html>

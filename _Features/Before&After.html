@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      body{
+        margin: 0px;
+      }
+      div{
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 5rem;
+      }
+      div:nth-child(even){
+        background: lightgrey;
+      }
+      /*
+        Needs to use content property to work
+        Has default value of inline with the text, can be set to display: block; to display on a line before or after
+      */
+      /********* Example 1 **********/
+      #example1::before{ /* The content displays before the 'content' of the p element, yet still inside the p element */
+        content: 'Hello';
+        background: red;
+        font-size: 20px;
+        color: white;
+        font-weight: 900;
+      }
+      #example1::after{ /* The content displays after the 'content' of the p element, yet still inside the p element */
+        content: 'Goodbye';
+        background: red;
+        font-size: 20px;
+        color: white;
+        font-weight: 900;
+      }
+      /********* Example 2 **********/
+      #example2::before{
+        /* content: url(_Example.jpg); Possible, but cant be styled*/
+        content: '';
+        background-image: url("https://unsplash.it/60/60");
+        background-size: 60px 60px; /* Need to use both background size AND width/height to work */
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+      }
+      /********* Example 3 **********/
+      #example3::before{
+        content: open-quote;
+        color: red;
+        font-size: 100px;
+      }
+      #example3::after{
+        content: close-quote;
+        color: red;
+        font-size: 100px;
+      }
+      /********* Example 4 **********/
+      p[data-tool-tip]{ /* p elements that has the specified attribute on it */
+        position: relative;
+      }
+      p[data-tool-tip]::before{
+        content: attr(data-tool-tip); /* Writes the text you have specidied in data-tool-tip */
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        transform: scale(0);
+        transition:
+          transform ease-out 150ms,
+          top ease-out 150ms;
+        background: black;
+        color: white;
+      }
+      p[data-tool-tip]:hover::before{ /* when hover on p, change its before */
+        transform: scale(1);
+        top: -80px;
+      }
+      /********* Counter **********/
+      h1{
+        font-size: 30px;
+      }
+      .counterreset{
+        counter-reset: myCounter; /* Resets the counter everytime it passes spesifed elements */
+      }
+      div{
+        position: relative;
+      }
+      div::before{
+        counter-increment: myCounter; /* counts up everytime it passes spesifed elements */
+        content: counter(myCounter) '.'; /* displays number before content of div | can use '' after to add more content*/
+        position: absolute;
+        left: 100px;
+        background: url(https://unsplash.it/100/100);
+        background-size: cover;
+        color: white;
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        border: 3px solid darkgrey;
+        box-sizing: border-box; /* means that border is included in width and height (inner border, (dont change size)) */
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      }
+      /********* Example 5 **********/
+      #container {
+        position: relative;
+        background: grey;
+        box-sizing: border-box;
+        width: 400px;
+        height: 400px;
+      }
+      #container::before, #container::after {
+        content: '';
+        position: absolute;
+        top: 20px;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        opacity: 1;
+        transition: transform ease-out 250ms;
+      }
+      #container::before {
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        transform: scale(0,1);
+      }
+      #container::after {
+        border-left: 1px solid white;
+        border-right: 1px solid white;
+        transform: scale(1,0);
+      }
+      #container:hover::before {
+        transform: scale(1.05, 1);
+      }
+      #container:hover::after {
+        transform: scale(1, 1.05);
+      }
+      #bgImage {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: opacity ease-out 250ms;
+      }
+      #container:hover #bgImage{
+        opacity: .4;
+      }
+      #textContainer {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        opacity: 0;
+        transition: opacity ease-out 250ms;
+        text-align: center;
+        white-space: nowrap;
+      }
+      #container:hover #textContainer {
+        opacity: 1;
+      }
+      #title {
+        font-size: 50px;
+        color: white;
+        margin-bottom: 0;
+      }
+      #text{
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="counterreset">
+      <p id="example1">Here is some text</p>
+    </div>
+    <div>
+      <p id="example2">Here is some text</p>
+    </div>
+    <div>
+      <p id="example3">Here is some text</p>
+    </div>
+    <div class="counterreset">
+      <p data-tool-tip="This is more text" id="example4">Here is some text</p>
+    </div>
+    <div>
+      <section id="container">
+        <img id="bgImage" src="https://unsplash.it/400/400"> <!-- /g/ before sizes = greyscale, /?blur after sizes = blur, width then height -->
+        <section id="textContainer">
+          <h3 id="title">Card title</h3>
+          <p id="text">And here is some text</p>
+        </section>
+      </section>
+    </div>
+  </body>
+</html>

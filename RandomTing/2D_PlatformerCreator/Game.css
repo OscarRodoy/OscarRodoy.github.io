@@ -1,0 +1,383 @@
+:root{
+  --sideBarWidth: 250px;
+}
+body{
+  margin: 0px;
+  overflow: hidden;
+}
+/* CANVAS START */
+#canvasArea{
+  position: absolute;
+  top: 0px;
+  left: 252px;
+  overflow: scroll;
+}
+::-webkit-scrollbar{
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track{
+  background-color: #202020;
+}
+::-webkit-scrollbar-thumb{
+  background-color: white;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-corner{
+  background-color: #202020;
+}
+canvas{
+  display: block;
+}
+/* CANVAS END */
+/* SIDEBAR START */
+#sideBar{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100vh;
+  width: var(--sideBarWidth);
+  background-color: #404040;
+  display: grid;
+  grid-template-rows: 1fr 1fr 10fr 1fr 1fr;
+  border-right: 2px solid black;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+/* HEADLINE START */
+#sideBar #headline{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: Comic Sans MS;
+}
+/* HEADLINE END */
+/* GRIDBTNS START */
+#sideBar #gridBtns{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 5px;
+  margin: 0px 5px 0px 5px;
+}
+#sideBar #gridBtns div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+#sideBar #gridBtns div p{
+  background-color: #202020;
+  border: 2px solid white;
+  color: white;
+  margin: 0px;
+  width: 100%;
+  height: 70%;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#sideBar #gridBtns div .active{
+  background-color: white !important;
+  color: #202020 !important;
+  text-decoration: underline;
+}
+/* GRIDBTNS END */
+/* mainArea START */
+#sideBar #mainArea{
+  margin-bottom: 4px;
+  position: relative;
+}
+/* GRIDCONFIG START */
+#sideBar #mainArea #gridConfig{
+  display: none;
+  overflow-x: hidden;
+  max-width: var(--sideBarWidth);
+  max-height: 1px;
+  min-height: 100%;
+}
+#sideBar #mainArea #gridConfig h1{
+  width: 100%;
+  background-color: grey;
+  color: white;
+  font-size: 20px;
+  line-height: 25px;
+  border-top: 2px solid black;
+  margin: 0px;
+  text-align: center;
+}
+#sideBar #mainArea #gridConfig #divBackground{
+  display: grid;
+  grid-template-columns: repeat(7, 150px);
+  grid-gap: 2px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+#sideBar #mainArea #gridConfig #divBackground::-webkit-scrollbar{
+  height: 5px;
+}
+#sideBar #mainArea #gridConfig #divBackground div{
+  width: 150px;
+  height: 80px;
+  overflow: hidden;
+}
+#sideBar #mainArea #gridConfig #divBackground div input[type="radio"]{
+  display: none;
+}
+#sideBar #mainArea #gridConfig #divBackground div label{
+  cursor: pointer;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  display: block;
+  position: relative;
+  border: 2px solid black;
+  background-color: #202020;
+}
+#sideBar #mainArea #gridConfig #divBackground div label img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#sideBar #mainArea #gridConfig #divBackground div label #container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(50% - 2px);
+  height: calc(50% - 2px);
+  transform: translate(-50%, -50%);
+  padding: 0px;
+  cursor: pointer;
+  text-align: center;
+  color: white;
+  border-color: white;
+  background-color: #202020;
+}
+#sideBar #mainArea #gridConfig #divBackground div label #container input{
+  visibility: hidden;
+}
+#sideBar #mainArea #gridConfig #divBackground div input[type="radio"]:checked + label {
+  border: 2px solid lime;
+}
+#sideBar #mainArea #gridConfig #divWorld{
+  display: grid;
+  grid-template-columns: 1fr;
+}
+#sideBar #mainArea #gridConfig #divWorld #currentTiles{
+  color: darkgrey;
+  margin: 2px 5px 0px 0px;
+  text-align: right;
+}
+#sideBar #mainArea #gridConfig #divWorld label{
+  color: white;
+  font-size: 17px;
+  line-height: 30px;
+  margin: 0px 5px 0px 5px;
+  position: relative;
+}
+#sideBar #mainArea #gridConfig #divWorld label input{
+  width: 87px;
+  position: absolute;
+  right: 0px;
+  height: 20px;
+  margin-top: 5px;
+  padding: 0px;
+}
+/* GRIDCONFIG END */
+/* GRIDBUILD START */
+#sideBar #mainArea #gridBuild{
+  display: none;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 5px;
+  margin: 0px 0px 0px 5px;
+  overflow-x: hidden;
+  max-height: 1px;
+  min-height: 100%;
+}
+#sideBar ::-webkit-scrollbar {
+  width: 5px;
+}
+#sideBar ::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.6);
+  border-radius: 5px;
+}
+#sideBar ::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: white;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+#sideBar #mainArea #gridBuild div{
+  height: calc((250px - 25px) / 4);
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+#sideBar #mainArea #gridBuild div:hover{
+  filter: brightness(140%);
+}
+/* GRIDBUILD END */
+/* GRIDEDIT START */
+#sideBar #mainArea #gridEdit{
+  display: none;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(10, calc((250px - 25px) / 4));
+  grid-gap: 5px;
+  margin: 0px 12.5% 0px 12.5%;
+  overflow-x: hidden;
+  max-height: 1px;
+  min-height: 100%;
+}
+#sideBar #mainArea #gridEdit div{
+  height: calc((250px - 25px) / 4 - 4px);
+  width: calc((250px - 25px) / 4 - 4px);
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  background-color: #202020;
+  color: white;
+  border-radius: 5px;
+  border: 2px solid white;
+  text-align: center;
+  line-height: calc((250px - 25px) / 4 - 4px);
+  font-size: 35px;
+  font-weight: bold;
+}
+#sideBar #mainArea #gridEdit .active{
+  background-color: white;
+  color: black;
+  border-color: black;
+}
+#sideBar #mainArea #gridEdit div:hover{
+  filter: brightness(170%);
+}
+#sideBar #mainArea #gridEdit div:nth-child(1){
+  grid-column: 1 / span 3;
+  visibility: hidden;
+}
+#sideBar #mainArea #gridEdit #spanText{
+  grid-column: 1 / span 3;
+  width: calc(100% - 4px);
+  height: 30px;
+  margin-top: calc((250px - 25px) / 4 - 4px - 30px);
+  font-size: 20px;
+  line-height: 30px;
+}
+/* GRIDEDIT END */
+#sideBar #mainArea #fadeout-gridTop{
+  opacity: 0;
+  transition: opacity 0.3s linear;
+  width: calc(100% - 10px);
+  height: calc((250px - 25px) / 4 / 2);
+  position: absolute;
+  top: 0px;
+  left: 5px;
+  background: -webkit-linear-gradient(
+      rgba(64, 64, 64, 1) 0%,
+      rgba(64, 64, 64, 0) 100%
+  );
+  pointer-events: none;
+}
+#sideBar #mainArea #fadeout-gridBottom{
+  opacity: 1;
+  transition: opacity 0.3s linear;
+  width: calc(100% - 10px);
+  height: calc((250px - 25px) / 4 / 2);
+  position: absolute;
+  bottom: 0px;
+  left: 5px;
+  background: -webkit-linear-gradient(
+      rgba(64, 64, 64, 0) 0%,
+      rgba(64, 64, 64, 1) 100%
+  );
+  pointer-events: none;
+}
+/* mainArea END */
+/* BTNTEST START */
+#sideBar #btnTest{
+  margin: 0px 5px 0px 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#sideBar #btnTest div{
+  cursor: pointer;
+  background-color: #202020;
+  border: 2px solid white;
+  color: white;
+  width: 100%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#sideBar #btnTest div p{
+  margin: 0px;
+  font-size: 20px;
+}
+/* BTNTEST END */
+/* GRIDBTNS2 START */
+#sideBar #gridBtns2{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+  margin: 0px 5px 0px 5px;
+}
+#sideBar #gridBtns2 div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+#sideBar #gridBtns2 div p{
+  background-color: #202020;
+  border: 2px solid white;
+  color: white;
+  margin: 0px;
+  width: 100%;
+  height: 70%;
+  font-size: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* GRIDBTNS2 END */
+/* SIDEBAR END */
+@media screen and (max-height: 500px) {
+  #sideBar{
+    grid-template-rows: 1fr 1fr 9fr 1fr 1fr;
+  }
+  #sideBar #mainArea{
+    margin-bottom: 2px;
+  }
+}
+@media screen and (max-height: 400px) {
+  #sideBar{
+    grid-template-rows: 1fr 1fr 8fr 1fr 1fr;
+  }
+  #sideBar #btnTest div{
+    height: 80%;
+  }
+}
+@media screen and (max-height: 350px) {
+  #sideBar #mainArea{
+    margin-top: 2px;
+  }
+}
+@media screen and (max-height: 300px) {
+  #sideBar{
+    grid-template-rows: 1fr 1fr 7fr 1fr 1fr;
+  }
+}
+
+/*
+
+  - mainArea -> main
+  - .active in javascript needs change
+
+*/
